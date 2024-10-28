@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="501e8501-7dd7-47d5-9904-da20104293b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Projet_Lprs2.2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/img1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/logoLprs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controleur/TraitementConnexion.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controleur/uploads/cv/CV_ALT_sh.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/Connexion.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/Offres.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/pageaccueil.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/uploads/cv/CV_ALT_sh.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bdd/Bdd.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/bdd/Bdd.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementIns.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementIns.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Utilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/Connexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/Connexion.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue/Inscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/Inscription.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +21,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -43,18 +32,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -75,6 +67,7 @@
       <workItem from="1730060348593" duration="117000" />
       <workItem from="1730060625637" duration="9165000" />
       <workItem from="1730119014030" duration="482000" />
+      <workItem from="1730124631657" duration="3939000" />
     </task>
     <servers />
   </component>

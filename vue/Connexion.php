@@ -14,6 +14,14 @@ if (array_key_exists("erreur", $_GET)) {
     <title>Connexion</title>
 </head>
 <style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
     form {
 
         margin: 0 auto;
@@ -46,6 +54,7 @@ if (array_key_exists("erreur", $_GET)) {
 <form action="../src/controleur/TraitementConnexion.php" method="post">
 
     <CENTER><img src="../assets/images/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></CENTER>
+
     <CENTER><input type="email" name="email" placeholder="indentifiant"/></CENTER>
     <br>
 
@@ -54,7 +63,7 @@ if (array_key_exists("erreur", $_GET)) {
         <input type="password" name="mdp" placeholder="mots de passe"/></CENTER>
     <br><br>
 
-    <CENTER><input type="submit" name="ins"/><br></CENTER>
+    <CENTER><input type="submit" name="ins"/><br><br></CENTER>
 
     <CENTER><a href="Inscription.php">Vous n'avez pas de compte</a></td></CENTER>
 
