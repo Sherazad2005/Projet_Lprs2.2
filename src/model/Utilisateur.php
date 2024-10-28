@@ -273,12 +273,12 @@ class Utilisateur
 
     public function editer(){
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET nom=:nom,prenom=:prenom,role=:role WHERE id_utilisateur=:id_utilisateur');
+        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET nom=:nom,prenom=:prenom,role=:role WHERE idutilisateur=:idutilisateur');
         $res = $req->execute(array(
             "role" =>$this->getRole(),
             "prenom" =>$this->getPrenom(),
             "nom" =>$this->getNom(),
-            "id_utilisateur" =>$this->getIdutilisateur(),
+            "idutilisateur" =>$this->getIdutilisateur(),
         ));
 
         if ($res){

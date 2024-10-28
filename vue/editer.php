@@ -2,9 +2,9 @@
 include '../src/bdd/Bdd.php';
 
 $bdd = new bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE id_utilisateur=:id_utilisateur');
+$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE idutilisateur=:idutilisateur');
 $req->execute(array(
-    "id_utilisateur" =>$_GET["id_utilisateur"]
+    "idutilisateur" =>$_GET["idutilisateur"]
 ));
 $res = $req->fetch();
 
@@ -60,7 +60,7 @@ $res = $req->fetch();
 
     <input type="password" name="mdp" placeholder="mdp" value="<?=$res["mdp"]?>"/>
 
-    <input type="hidden" name="id_utilisateur" value="<?=$res["id_utilisateur"]?>"/><br>
+    <input type="hidden" name="idutilisateur" value="<?=$res["idutilisateur"]?>"/><br>
     <input type="submit" name="ins"/><br>
 
     <label for="role"></label>
