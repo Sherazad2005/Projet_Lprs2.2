@@ -1,9 +1,18 @@
+<?php
+if (array_key_exists("erreur",$_GET)){
+    echo "if y a une erreur.";
+    if ($_GET["erreur"] == 0){
+        echo "indentifiant deja utilisé";
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Inscription</title>
-    </head>
+</head>
     <style>
         form {
 

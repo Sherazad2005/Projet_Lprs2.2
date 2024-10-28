@@ -77,4 +77,8 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="editer,supprimer" />
+    <option name="LAST_COMMIT_MESSAGE" value="editer,supprimer" />
+  </component>
 </project>
