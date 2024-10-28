@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="501e8501-7dd7-47d5-9904-da20104293b0" name="Changes" comment="">
+    <list default="true" id="501e8501-7dd7-47d5-9904-da20104293b0" name="Changes" comment="editer,supprimer">
       <change afterPath="$PROJECT_DIR$/.idea/Projet_Lprs2.2.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
@@ -91,5 +91,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="editer,supprimer" />
+    <option name="LAST_COMMIT_MESSAGE" value="editer,supprimer" />
   </component>
 </project>
