@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
+
+>>>>>>> e53381d8345903d91904a8ff78efff0439b924de
 class Utilisateur
 {
 
@@ -16,6 +20,10 @@ class Utilisateur
     private $poste_entreprise;
     private $role;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e53381d8345903d91904a8ff78efff0439b924de
     public function __construct(array $donnee)
     {
         $this->hydrate($donnee);
@@ -220,6 +228,7 @@ class Utilisateur
         $this->poste_entreprise = $poste_entreprise;
     }
 
+<<<<<<< HEAD
 
     public function inscription(){
         $bdd = new Bdd();
@@ -249,6 +258,42 @@ class Utilisateur
             "nom" =>$this->getNom(),
             "mdp" =>$this->getMdp(),
             "role"=>$this->getRole(),
+=======
+    /**
+     * @return mixed
+     */
+
+
+
+    public function inscription() {
+        $bdd = new Bdd();
+        $req = $bdd->getBdd()->prepare(
+            'INSERT INTO utilisateur (nom, prenom, email, mdp, nom_promo, cv, secteur_activite, classe, specialite_prof, poste_entreprise, role) 
+         VALUES (:nom, :prenom, :email, :mdp, :nom_promo, :cv, :secteur_activite, :classe, :specialite_prof, :poste_entreprise, :role)'
+        );
+        $req->execute([
+            'nom' => $this->getNom(),
+            'prenom' => $this->getPrenom(),
+            'email' => $this->getEmail(),
+            'mdp' => $this->getMdp(),
+            'nom_promo' => $this->getNomPromo(),
+            'cv' => $this->getCv(),
+            'secteur_activite' => $this->getSecteurActivite(),
+            'classe' => $this->getClasse(),
+            'specialite_prof' => $this->getSpecialiteProf(),
+            'poste_entreprise' => $this->getPosteEntreprise(),
+            'role' => $this->getRole(),
+        ]);
+
+        header("Location: ../../vue/inscription.php?success"); // Redirection après succès
+    }
+    public function connexion(){
+        $bdd = new Bdd();
+        $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE email=:email and mdp=:mdp');
+        $req->execute(array(
+            "email" =>$this->getEmail(),
+            "mdp" =>$this->getMdp(),
+>>>>>>> e53381d8345903d91904a8ff78efff0439b924de
         ));
         $res = $req->fetch();
         if (is_array($res)){
@@ -258,7 +303,11 @@ class Utilisateur
             session_start();
 
             $_SESSION["utilisateur"] = $this;
+<<<<<<< HEAD
             header("Location: ../../vue/accueil.php");
+=======
+            header("Location: ../../vue/pageaccueil.php");
+>>>>>>> e53381d8345903d91904a8ff78efff0439b924de
         }else{
             header("Location: ../../vue/connexion.php");
         }
@@ -266,6 +315,7 @@ class Utilisateur
 
     public function editer(){
         $bdd = new Bdd();
+<<<<<<< HEAD
         $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET nom=:nom,prenom=:prenom,mdp=:mdp,role=:role WHERE id_utilisateur=:id_utilisateur');
 
         $id_utilisateur = $this->getIdutilisateur();
@@ -282,6 +332,20 @@ class Utilisateur
             header("Location: ../../vue/accueil.php?success");
         }else{
             header("Location: ../../vue/editer.php?id_utilisateur=".$this->getIdutilisateur()."&erreur");
+=======
+        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET nom=:nom,prenom=:prenom,role=:role WHERE id_utilisateur=:id_utilisateur');
+        $res = $req->execute(array(
+            "role" =>$this->getRole(),
+            "prenom" =>$this->getPrenom(),
+            "nom" =>$this->getNom(),
+            "id_utilisateur" =>$this->getIdutilisateur(),
+        ));
+
+        if ($res){
+            header("Location: ../../vue/accueilid.php?success");
+        }else{
+            header("Location: ../../vue/edition.php?id_utilisateur=".$this->getIdutilisateur()."&erreur");
+>>>>>>> e53381d8345903d91904a8ff78efff0439b924de
         }
     }
     public function supprimer(){
@@ -292,10 +356,18 @@ class Utilisateur
         ));
 
         if ($res){
+<<<<<<< HEAD
             return true;
         }else{
             return false;
         }
+=======
+            header("Location: ../../vue/accueilid.php?success");
+        }else{
+            header("Location: ../../vue/connexion.php?erreur");
+        }
+        var_dump();
+>>>>>>> e53381d8345903d91904a8ff78efff0439b924de
     }
 
     public function afficherNom()
