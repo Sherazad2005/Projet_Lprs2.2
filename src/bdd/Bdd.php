@@ -3,7 +3,7 @@ class Bdd
 {
     private $bdd;
     private $serveur = "localhost" ;
-    private $nomBdd = "site" ;
+    private $nomBdd = "projet_lprs" ;
     private $username = "root";
     private $password = "";
 
@@ -16,8 +16,6 @@ class Bdd
     public function getBdd(){
         return $this->bdd;
     }
-
-
 
 
 }

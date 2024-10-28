@@ -15,13 +15,20 @@ if (array_key_exists("erreur",$_GET)){
 </head>
 <body>
 <style>
+
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
     form {
-        /* On centre le formulaire */
         margin: 0 auto;
         width: 400px;
-        /* Le contour du formulaire */
         padding: 1em;
-        border: 1px solid #ccc;
+        border: 2px solid #ccc;
         border-radius: 1em;
     }
 
@@ -36,7 +43,6 @@ if (array_key_exists("erreur",$_GET)){
     }
 
     label {
-        /* Taille et alignement uniformes */
         display: inline-block;
         width: 90px;
         text-align: right;
@@ -48,18 +54,13 @@ if (array_key_exists("erreur",$_GET)){
     <CENTER> <input type="text" name="nom" placeholder="Nom"/><br></CENTER><br>
 
     <CENTER> <input type="text" name="prenom" placeholder="Prenom"/><br></CENTER><br>
-
-
-
-
-
     <CENTER>  <input type="password" name="mdp" placeholder="Mots de passe"/><br></CENTER><br>
 
 
 
-    <BLOCKQUOTE> <label for="fonction-select"></label>
-        <select name="fonction" id="fonction-select">
-            <option value="">--Fonction--</option>
+    <BLOCKQUOTE> <label for="role-select"></label>
+        <select name="role" id="fonction-select">
+            <option value="">--Role--</option>
             <option value="Professeur">Professeur</option>
             <option value="Entreprise">Entreprise</option>
             <option value="Eleve">Eleve</option>
@@ -67,7 +68,7 @@ if (array_key_exists("erreur",$_GET)){
         </select></BLOCKQUOTE><br><br>
 
     <CENTER> <input type="submit" name="ins"/></CENTER><br>
-    <CENTER> <a href="Inscription.php"> Ce connecter </a></td></CENTER>
+    <CENTER> <a href="connexion.php"> Se connecter </a></td></CENTER>
 
 
 </form>

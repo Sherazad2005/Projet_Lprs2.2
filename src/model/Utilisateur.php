@@ -1,7 +1,4 @@
 <?php
-
-namespace model;
-
 class Utilisateur
 {
 
@@ -18,7 +15,6 @@ class Utilisateur
     private $specialite_prof;
     private $poste_entreprise;
     private $role;
-    private $ref_emploie;
 
     public function __construct(array $donnee)
     {
@@ -224,22 +220,6 @@ class Utilisateur
         $this->poste_entreprise = $poste_entreprise;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getRefEmploie()
-    {
-        return $this->ref_emploie;
-    }
-
-    /**
-     * @param mixed $ref_emploie
-     */
-    public function setRefEmploie($ref_emploie)
-    {
-        $this->ref_emploie = $ref_emploie;
-    }
-
 
     public function inscription(){
         $bdd = new Bdd();
@@ -252,17 +232,11 @@ class Utilisateur
         if (is_array($res)){
             header("Location: ../../vue/inscription.php?erreur=0");
         }else{
-            $req = $bdd->getBdd()->prepare('INSERT INTO `utilisateur`( `nom`, `prenom`,`email`, `mdp`, `nom_promo`,`secteur_activite`,`classe`,`specialite_prof`,`poste_entreprise`,`role`) VALUES (:nom,:prenom,:email,:mdp,:nom_promo,:cv,:secteur_activite,:classe,:specialite_prof,:poste_entreprise,:role,:ref_emplois	)');
+            $req = $bdd->getBdd()->prepare('INSERT INTO `utilisateur`( `nom`, `prenom`, `mdp`, `role`) VALUES (:nom,:prenom,:mdp,:role)');
             $req->execute(array(
                 'nom'=>$this->getNom(),
                 'prenom'=>$this->getPrenom(),
-                'email'=>$this->getEmail(),
                 'mdp'=>$this->getMdp(),
-                'nom_promo'=>$this->getNomPromo(),
-                'cv'=>$this->getCv(),
-                'secteur_activite'=>$this->getSecteurActivite(),
-                'specialite_prof'=>$this->getSpecialiteProf(),
-                'poste_entreprise'=>$this->getPosteEntreprise(),
                 'role'=>$this->getRole(),
             ));
             header("Location: ../../vue/inscription.php");
@@ -270,10 +244,11 @@ class Utilisateur
     }
     public function connexion(){
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE nom=:nom and mdp=:mdp');
+        $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE nom=:nom and mdp=:mdp and role=:role');
         $req->execute(array(
             "nom" =>$this->getNom(),
             "mdp" =>$this->getMdp(),
+            "role"=>$this->getRole(),
         ));
         $res = $req->fetch();
         if (is_array($res)){
@@ -283,7 +258,7 @@ class Utilisateur
             session_start();
 
             $_SESSION["utilisateur"] = $this;
-            header("Location: ../../vue/pageaccueil.php");
+            header("Location: ../../vue/accueil.php");
         }else{
             header("Location: ../../vue/connexion.php");
         }
@@ -291,18 +266,22 @@ class Utilisateur
 
     public function editer(){
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET nom=:nom,prenom=:prenom,role=:role WHERE id_utilisateur=:id_utilisateur');
+        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET nom=:nom,prenom=:prenom,mdp=:mdp,role=:role WHERE id_utilisateur=:id_utilisateur');
+
+        $id_utilisateur = $this->getIdutilisateur();
+
         $res = $req->execute(array(
-            "role" =>$this->getRole(),
-            "prenom" =>$this->getPrenom(),
             "nom" =>$this->getNom(),
-            "id_utilisateur" =>$this->getIdutilisateur(),
+            "prenom" =>$this->getPrenom(),
+            "mdp"=>$this->getMdp(),
+            "role" =>$this->getRole(),
+            "id_utilisateur" => $this->getIdutilisateur(),
         ));
 
         if ($res){
-            header("Location: ../../vue/accueilid.php?success");
+            header("Location: ../../vue/accueil.php?success");
         }else{
-            header("Location: ../../vue/edition.php?id_utilisateur=".$this->getIdutilisateur()."&erreur");
+            header("Location: ../../vue/editer.php?id_utilisateur=".$this->getIdutilisateur()."&erreur");
         }
     }
     public function supprimer(){
@@ -313,11 +292,10 @@ class Utilisateur
         ));
 
         if ($res){
-            header("Location: ../../vue/accueilid.php?success");
+            return true;
         }else{
-            header("Location: ../../vue/connexion.php?erreur");
+            return false;
         }
-        var_dump();
     }
 
     public function afficherNom()
