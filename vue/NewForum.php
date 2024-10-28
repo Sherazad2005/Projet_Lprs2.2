@@ -43,10 +43,16 @@ titre, messages, date_messages, heure_messages, canal
         <label for="messages"></label>
         <input type="text" name="messages" required placeholder="messages"><br>
 
-        <label for="mdp"></label>
-        <input type="password" name="mdp" required placeholder="Mots de passe"><br>
-
+        <BLOCKQUOTE> <label for="canal-select"></label>
+            <select name="canal" id="canal-select">
+                <option value="">--Canal--</option>
+                <option value="generale">Generale</option>
+                <option value="eleve/alumni">Eleve-Alumni</option>
+                <option value="eleve/professeur">Eleve-Professeur</option>
+            </select></BLOCKQUOTE><br><br>
     </CENTER>
+    <CENTER> <input type="submit" name="ins"/></CENTER><br>
+    <CENTER> <a href="Inscription.php"> Crée </a></td></CENTER>
 </form>
 </body>
 </html>

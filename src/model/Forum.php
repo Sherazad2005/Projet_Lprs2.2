@@ -1,7 +1,5 @@
 <?php
 
-namespace model;
-
 class Forum
 {
     private $ifForum ;
@@ -78,7 +76,7 @@ class Forum
      */
     public function getDateMessages()
     {
-        return $this->date_messages;
+        return  date("d/m/Y");
     }
 
     /**
@@ -94,7 +92,7 @@ class Forum
      */
     public function getHeureMessages()
     {
-        return $this->heure_messages;
+        return date_default_timezone_set("'Europe/Paris'");
     }
 
     /**
@@ -125,7 +123,7 @@ class Forum
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare(
             'INSERT INTO forum (titre, messages, date_messages, heure_messages, canal) 
-         VALUES (:titre, :messages, :CURRENT_DATE, CURRENT_TIME, :canal)'
+         VALUES (:titre, :messages, :date_messages, :heure_message, :canal)'
         );
 
         $req->execute([
