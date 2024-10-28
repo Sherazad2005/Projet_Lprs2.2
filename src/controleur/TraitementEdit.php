@@ -8,12 +8,12 @@ $utilisateur = new Utilisateur([
     "nom" =>$_POST['nom'],
     "prenom" =>$_POST['prenom'],
     "mdp" =>$_POST['mdp'],
-    "role"
-    "classe"
-    "nom_promo"
-    "cv"
-    "specialite_prof"
-    "poste_entreprise"
-    "secteur_activite"
+    "role" =>$_POST['role'],
+    "classe" =>$_POST['classe'],
+    "nom_promo" =>$_POST['nom_promo'],
+    "cv"=>$_POST['cv'],
+    "specialite_prof"=>$_POST['specialite_prof'],
+    "poste_entreprise"=>$_POST['poste_entreprise'],
+    "secteur_activite"=>$_POST['secteur_activite'],
 ]);
-$utilisateur->edition();
+$utilisateur->editer();
