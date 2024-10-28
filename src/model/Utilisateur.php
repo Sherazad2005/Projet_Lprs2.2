@@ -1,7 +1,5 @@
 <?php
 
-namespace model;
-
 class Utilisateur
 {
 
@@ -18,7 +16,7 @@ class Utilisateur
     private $specialite_prof;
     private $poste_entreprise;
     private $role;
-    private $ref_emploie;
+
 
     public function __construct(array $donnee)
     {
@@ -227,52 +225,36 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getRefEmploie()
-    {
-        return $this->ref_emploie;
-    }
-
-    /**
-     * @param mixed $ref_emploie
-     */
-    public function setRefEmploie($ref_emploie)
-    {
-        $this->ref_emploie = $ref_emploie;
-    }
 
 
-    public function inscription(){
+
+    public function inscription() {
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('SELECT nom FROM `utilisateur` WHERE nom=:nom');
-        $req->execute(array(
-            "nom" =>$this->getNom()
+        $req = $bdd->getBdd()->prepare(
+            'INSERT INTO utilisateur (nom, prenom, email, mdp, nom_promo, cv, secteur_activite, classe, specialite_prof, poste_entreprise, role) 
+         VALUES (:nom, :prenom, :email, :mdp, :nom_promo, :cv, :secteur_activite, :classe, :specialite_prof, :poste_entreprise, :role)'
+        );
+        $req->execute([
+            'nom' => $this->getNom(),
+            'prenom' => $this->getPrenom(),
+            'email' => $this->getEmail(),
+            'mdp' => $this->getMdp(),
+            'nom_promo' => $this->getNomPromo(),
+            'cv' => $this->getCv(),
+            'secteur_activite' => $this->getSecteurActivite(),
+            'classe' => $this->getClasse(),
+            'specialite_prof' => $this->getSpecialiteProf(),
+            'poste_entreprise' => $this->getPosteEntreprise(),
+            'role' => $this->getRole(),
+        ]);
 
-        ));
-        $res = $req->fetch();
-        if (is_array($res)){
-            header("Location: ../../vue/inscription.php?erreur=0");
-        }else{
-            $req = $bdd->getBdd()->prepare('INSERT INTO `utilisateur`( `nom`, `prenom`,`email`, `mdp`, `nom_promo`,`secteur_activite`,`classe`,`specialite_prof`,`poste_entreprise`,`role`) VALUES (:nom,:prenom,:email,:mdp,:nom_promo,:cv,:secteur_activite,:classe,:specialite_prof,:poste_entreprise,:role,:ref_emplois	)');
-            $req->execute(array(
-                'nom'=>$this->getNom(),
-                'prenom'=>$this->getPrenom(),
-                'email'=>$this->getEmail(),
-                'mdp'=>$this->getMdp(),
-                'nom_promo'=>$this->getNomPromo(),
-                'cv'=>$this->getCv(),
-                'secteur_activite'=>$this->getSecteurActivite(),
-                'specialite_prof'=>$this->getSpecialiteProf(),
-                'poste_entreprise'=>$this->getPosteEntreprise(),
-                'role'=>$this->getRole(),
-            ));
-            header("Location: ../../vue/inscription.php");
-        }
+        header("Location: ../../vue/inscription.php?success"); // Redirection après succès
     }
     public function connexion(){
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE nom=:nom and mdp=:mdp');
+        $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE email=:email and mdp=:mdp');
         $req->execute(array(
-            "nom" =>$this->getNom(),
+            "email" =>$this->getEmail(),
             "mdp" =>$this->getMdp(),
         ));
         $res = $req->fetch();
