@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="501e8501-7dd7-47d5-9904-da20104293b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controleur/uploads/cv/istockphoto-1300845620-612x612.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Entreprise.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/ProfilEntreprise.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="501e8501-7dd7-47d5-9904-da20104293b0" name="Changes" comment="Profil entreprise" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +64,17 @@
       <workItem from="1730119014030" duration="482000" />
       <workItem from="1730120592722" duration="7964000" />
       <workItem from="1730129703929" duration="552000" />
+      <workItem from="1730130268209" duration="306000" />
     </task>
+    <task id="LOCAL-00001" summary="Profil entreprise">
+      <option name="closed" value="true" />
+      <created>1730130555968</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1730130555968</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -88,5 +93,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Profil entreprise" />
+    <option name="LAST_COMMIT_MESSAGE" value="Profil entreprise" />
   </component>
 </project>
