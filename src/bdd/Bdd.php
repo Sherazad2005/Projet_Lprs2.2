@@ -3,11 +3,8 @@ class Bdd
 {
     private $bdd;
     private $serveur = "localhost" ;
-<<<<<<< HEAD
     private $nomBdd = "projet_lprs" ;
-=======
     private $nomBdd = "projet_lprs";
->>>>>>> e53381d8345903d91904a8ff78efff0439b924de
     private $username = "root";
     private $password = "";
 
@@ -20,11 +17,3 @@ class Bdd
     public function getBdd(){
         return $this->bdd;
     }
-
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> e53381d8345903d91904a8ff78efff0439b924de
-}
