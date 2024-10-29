@@ -5,10 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="501e8501-7dd7-47d5-9904-da20104293b0" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/controleur/TraitementSupp.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue/Supprimer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementForum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementForum.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Forum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Forum.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Utilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/Inscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/Inscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/NewForum.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/NewForum.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/PageForum.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/PageForumEleve.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/pageaccueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/pageaccueil.php" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementConnexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementConnexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementEdit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementEdit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementForum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementForum.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Utilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/editer.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/editer.php" afterDir="false" />
+>>>>>>> 683a94af2356d2d0c7da51484a6ee7ca8fec0ebd
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +73,7 @@
       <workItem from="1728917503622" duration="2979000" />
       <workItem from="1730060348593" duration="117000" />
       <workItem from="1730060625637" duration="9165000" />
-      <workItem from="1730119014030" duration="10109000" />
+      <workItem from="1730119014030" duration="21167000" />
     </task>
     <task id="LOCAL-00001" summary="Forum2.1">
       <option name="closed" value="true" />

@@ -67,7 +67,7 @@ if (array_key_exists("erreur",$_GET)){
 <form action="../src/controleur/TraitementIns.php" method="POST" enctype="multipart/form-data">
    <center> <img src="../assets/images/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></center>
      <label for="nom"></label>
-        <input type="text" name="nom" required placeholder="Nom"><br><br>
+        <input type="text" class="form-control" name="nom" required placeholder="Nom"><br><br>
 
     <label for="prenom"></label>
     <input type="text" name="prenom" required placeholder="Prénom"><br><br>
@@ -107,19 +107,19 @@ if (array_key_exists("erreur",$_GET)){
 
 
     <div id="alumniFields" style="display:none;">
-        <label for="nom_promo">Nom de la promo :</label>
+        <label for="nom_promo"></label>
         <input type="text" name="nom_promo" placeholder="Promo"><br><br>
     </div>
 
 
     <div id="entrepriseFields" style="display:none;">
-        <label for="poste_entreprise">Poste dans l'entreprise :</label>
+        <label for="poste_entreprise"></label>
         <input type="text" name="poste_entreprise" placeholder="Poste"><br><br>
 
-        <label for="secteur_activite">Secteur d'activité :</label>
+        <label for="secteur_activite"></label>
         <input type="text" name="secteur_activite" placeholder="Secteur d'activite"><br><br>
     </div>
-    </center>
+
         <center><button type="submit">S'inscrire</button></center>
 </form>
 

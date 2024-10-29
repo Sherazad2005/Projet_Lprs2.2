@@ -1,13 +1,15 @@
 <?php
 
-class Forum
+
+
+class Reponse
 {
-    private $ifForum ;
-    private $titre ;
+
+    private $id_reponse;
     private $messages ;
-    private $date_messages ;
-    private $heure_messages ;
-    private $canal ;
+    private $date_messages;
+    private $heure_message;
+    private $ref_forum;
 
     public function __construct(array $donnee)
     {
@@ -25,35 +27,18 @@ class Forum
     /**
      * @return mixed
      */
-    public function getIfForum()
+    public function getIdReponse()
     {
-        return $this->ifForum;
+        return $this->id_reponse;
     }
 
     /**
-     * @param mixed $ifForum
+     * @param mixed $id_reponse
      */
-    public function setIfForum($ifForum)
+    public function setIdReponse($id_reponse)
     {
-        $this->ifForum = $ifForum;
+        $this->id_reponse = $id_reponse;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getTitre()
-    {
-        return $this->titre;
-    }
-
-    /**
-     * @param mixed $titre
-     */
-    public function setTitre($titre)
-    {
-        $this->titre = $titre;
-    }
-
 
     /**
      * @return mixed
@@ -90,52 +75,49 @@ class Forum
     /**
      * @return mixed
      */
-    public function getHeureMessages()
+    public function getHeureMessage()
     {
         return time();
     }
 
     /**
-     * @param mixed $heure_messages
+     * @param mixed $heure_message
      */
-    public function setHeureMessages($heure_messages)
+    public function setHeureMessage($heure_message)
     {
-        $this->heure_messages = $heure_messages;
+        $this->heure_message = $heure_message;
     }
 
     /**
      * @return mixed
      */
-    public function getCanal()
+    public function getRefForum()
     {
-        return $this->canal;
+        return $this->ref_forum;
     }
 
     /**
-     * @param mixed $canal
+     * @param mixed $ref_forum
      */
-    public function setCanal($canal)
+    public function setRefForum($ref_forum)
     {
-        $this->canal = $canal;
+        $this->ref_forum = $ref_forum;
     }
 
-    public function ajouterUnForum() {
+    public function ajouterUneReponse() {
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare(
-            'INSERT INTO forum (titre, messages, date_messages, heure_messages, canal) 
-                   VALUES (:titre, :messages, :date_messages, :heure_messages, :canal)');
+            'INSERT INTO reponse (messages, date_messages, heure_message,	ref_forum) 
+                   VALUES (:messages, :date_messages, :heure_messages, :ref_forum)');
 
         $req->execute([
-            'titre' => $this->getTitre(),
             'messages' => $this->getMessages(),
             'date_messages' => $this->getDateMessages(),
             'heure_messages' => $this->getHeureMessages(),
-            'canal' => $this->getCanal(),
+            'ref_forum' => $this->getRefForum(),
         ]);
 
         header("Location: ../../vue/PageForumEleve.php?success");
     }
-
-
 
 }
