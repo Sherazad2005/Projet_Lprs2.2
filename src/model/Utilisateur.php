@@ -248,7 +248,7 @@ class Utilisateur
             'role' => $this->getRole(),
         ]);
 
-        header("Location: ../../vue/inscription.php?success"); // Redirection après succès
+        header("Location: ../../vue/Connexion.php?success");
     }
     public function connexion(){
         $bdd = new Bdd();
@@ -265,7 +265,7 @@ class Utilisateur
             session_start();
 
             $_SESSION["utilisateur"] = $this;
-            header("Location: ../../vue/pageaccueil.php");
+            header("Location: ../../vue/PageAcceuilConnect.php");
         }else{
             header("Location: ../../vue/connexion.php");
         }

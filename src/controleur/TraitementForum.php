@@ -11,7 +11,7 @@ $user = new \Forum([
     "canal" =>$_POST['canal']
 ]);
 
-$user->ajouterUnForum($_POST);
+$user->ajouterUnForum();
 
 
 
