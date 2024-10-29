@@ -4,7 +4,7 @@ class Utilisateur
 {
 
 
-    private $idutilisateur;
+    private $id_utilisateur;
     private $nom;
     private $prenom;
     private $email;
@@ -25,17 +25,19 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getIdutilisateur()
+    public function getIdUtilisateur()
     {
-        return $this->idutilisateur;
+        return $this->id_utilisateur;
     }
+
     /**
-     * @param mixed $idutilisateur
+     * @param mixed $id_utilisateur
      */
-    public function setIdutilisateur($idutilisateur)
+    public function setIdUtilisateur($id_utilisateur)
     {
-        $this->idutilisateur = $idutilisateur;
+        $this->id_utilisateur = $id_utilisateur;
     }
+
     public function hydrate(array $donnee){
         foreach ($donnee as $key => $value){
             $method = 'set'.ucfirst($key);
@@ -273,16 +275,16 @@ class Utilisateur
 
     public function editer(){
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET nom=:nom,prenom=:prenom,role=:role WHERE idutilisateur=:idutilisateur');
+        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET id_utilisateur=:id_utilisateur,nom=:nom,prenom=:prenom,role=:role WHERE id_utilisateur=:id_utilisateur');
         $res = $req->execute(array(
-            "role" =>$this->getRole(),
-            "prenom" =>$this->getPrenom(),
+            "id_utilisateur" =>$this->getIdutilisateur(),
             "nom" =>$this->getNom(),
-            "idutilisateur" =>$this->getIdutilisateur(),
+            "prenom" =>$this->getPrenom(),
+            "role" =>$this->getRole(),
         ));
 
         if ($res){
-            header("Location: ../../vue/accueilid.php?success");
+            header("Location: ../../vue/accueil.php?success");
         }else{
             header("Location: ../../vue/edition.php?id_utilisateur=".$this->getIdutilisateur()."&erreur");
         }
