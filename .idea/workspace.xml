@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="501e8501-7dd7-47d5-9904-da20104293b0" name="Changes" comment="editer">
+    <list default="true" id="501e8501-7dd7-47d5-9904-da20104293b0" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/controleur/TraitementForum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementForum.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Forum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Forum.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Utilisateur.php" afterDir="false" />
@@ -13,6 +14,13 @@
       <change beforePath="$PROJECT_DIR$/vue/NewForum.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/NewForum.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue/PageForum.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/PageForumEleve.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue/pageaccueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/pageaccueil.php" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementConnexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementConnexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementEdit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementEdit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementForum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementForum.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Utilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/editer.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/editer.php" afterDir="false" />
+>>>>>>> 683a94af2356d2d0c7da51484a6ee7ca8fec0ebd
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +83,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730129339247</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="editer">
+      <option name="closed" value="true" />
+      <created>1730131817784</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730131817784</updated>
+    </task>
+    <task id="LOCAL-00003" summary="commit">
+      <option name="closed" value="true" />
+      <created>1730132670832</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730132670832</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,7 +118,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="editer,supprimer" />
+    <MESSAGE value="Forum2.1" />
     <MESSAGE value="editer" />
-    <option name="LAST_COMMIT_MESSAGE" value="editer" />
+    <MESSAGE value="Merge branch 'main' of https://github.com/Sherazad2005/Projet_Lprs2.2" />
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
 </project>
