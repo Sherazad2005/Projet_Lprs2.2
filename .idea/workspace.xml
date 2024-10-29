@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="501e8501-7dd7-47d5-9904-da20104293b0" name="Changes" comment="commit">
+      <change afterPath="$PROJECT_DIR$/src/controleur/TraitementSupp.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue/Supprimer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementConnexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementConnexion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementEdit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementEdit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementForum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementForum.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Utilisateur.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/editer.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/editer.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
