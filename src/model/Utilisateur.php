@@ -4,7 +4,7 @@ class Utilisateur
 {
 
 
-    private $idutilisateur;
+    private $id_utilisateur;
     private $nom;
     private $prenom;
     private $email;
@@ -25,17 +25,19 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getIdutilisateur()
+    public function getIdUtilisateur()
     {
-        return $this->idutilisateur;
+        return $this->id_utilisateur;
     }
+
     /**
-     * @param mixed $idutilisateur
+     * @param mixed $id_utilisateur
      */
-    public function setIdutilisateur($idutilisateur)
+    public function setIdUtilisateur($id_utilisateur)
     {
-        $this->idutilisateur = $idutilisateur;
+        $this->id_utilisateur = $id_utilisateur;
     }
+
     public function hydrate(array $donnee){
         foreach ($donnee as $key => $value){
             $method = 'set'.ucfirst($key);
@@ -248,7 +250,7 @@ class Utilisateur
             'role' => $this->getRole(),
         ]);
 
-        header("Location: ../../vue/inscription.php?success"); // Redirection après succès
+        header("Location: ../../vue/Connexion.php?success");
     }
     public function connexion(){
         $bdd = new Bdd();
@@ -265,7 +267,7 @@ class Utilisateur
             session_start();
 
             $_SESSION["utilisateur"] = $this;
-            header("Location: ../../vue/pageaccueil.php");
+            header("Location: ../../vue/PageAcceuilConnect.php");
         }else{
             header("Location: ../../vue/connexion.php");
         }
@@ -273,33 +275,33 @@ class Utilisateur
 
     public function editer(){
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET nom=:nom,prenom=:prenom,role=:role WHERE id_utilisateur=:id_utilisateur');
+        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET id_utilisateur=:id_utilisateur,nom=:nom,prenom=:prenom,role=:role WHERE id_utilisateur=:id_utilisateur');
         $res = $req->execute(array(
-            "role" =>$this->getRole(),
-            "prenom" =>$this->getPrenom(),
-            "nom" =>$this->getNom(),
             "id_utilisateur" =>$this->getIdutilisateur(),
+            "nom" =>$this->getNom(),
+            "prenom" =>$this->getPrenom(),
+            "role" =>$this->getRole(),
         ));
 
         if ($res){
-            header("Location: ../../vue/accueilid.php?success");
+            header("Location: ../../vue/accueil.php?success");
         }else{
-            header("Location: ../../vue/edition.php?id_utilisateur=".$this->getIdutilisateur()."&erreur");
+            header("Location: ../../vue/editer.php?id_utilisateur=".$this->getIdutilisateur()."&erreur");
         }
     }
-    public function supprimer(){
+    public function supprimer()
+    {
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare('DELETE FROM utilisateur WHERE id_utilisateur=:id_utilisateur');
         $res = $req->execute(array(
-            "id_utilisateur" =>$this->getIdutilisateur(),
+            "id_utilisateur" => $this->getIdUtilisateur(),
         ));
 
-        if ($res){
-            header("Location: ../../vue/accueilid.php?success");
-        }else{
+        if ($res) {
+            header("Location: ../../vue/accueil.php?success");
+        } else {
             header("Location: ../../vue/connexion.php?erreur");
         }
-        var_dump();
     }
 
     public function afficherNom()

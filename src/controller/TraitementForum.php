@@ -5,15 +5,17 @@ use model\Forum;
 include '../bdd/Bdd.php';
 include '../model/Forum.php';
 
-$user = new Forum([
+$utilisateur = new \Forum([
     "titre" =>$_POST['titre'],
     "messages" =>$_POST['messages'],
-    "date_messages" =>$_POST['date_messages'],
-    "heure_messages" =>$_POST['heure_messages'],
     "canal" =>$_POST['canal']
 ]);
 
-$user->ajouterForum($_POST);
+<<<<<<< HEAD
+$user->ajouterUnForum();
+=======
+$utilisateur->ajouterUnForum($_POST);
+>>>>>>> 683a94af2356d2d0c7da51484a6ee7ca8fec0ebd
 
 
 

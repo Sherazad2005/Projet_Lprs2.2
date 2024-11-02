@@ -5,7 +5,7 @@ include '../model/Utilisateur.php';
 require_once '../model/Utilisateur.php'; // Inclusion de la classe Utilisateur
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Traitement des données de base
+
     $data = [
         "nom" => htmlspecialchars($_POST["nom"]),
         "prenom" => htmlspecialchars($_POST["prenom"]),
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "role" => htmlspecialchars($_POST["role"])
     ];
 
-    // Traitement des données spécifiques en fonction du rôle
+
     if ($_POST["role"] == "eleve") {
         $data["classe"] = htmlspecialchars($_POST["classe"]);
         $data["nom_promo"] = htmlspecialchars($_POST["nom_promo"]);
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $data["secteur_activite"] = htmlspecialchars($_POST["secteur_activite"]);
     }
 
-    // Création de l'objet Utilisateur et inscription
+
     $utilisateur = new Utilisateur($data);
-    $utilisateur->inscription(); // Appel de la méthode inscription() pour sauvegarder les données
+    $utilisateur->inscription();
 }

@@ -4,19 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="501e8501-7dd7-47d5-9904-da20104293b0" name="Changes" comment="Création d'une entreprise">
+    <list default="true" id="501e8501-7dd7-47d5-9904-da20104293b0" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementConnexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/TraitementConnexion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementEdit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/TraitementEdit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementForum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/TraitementForum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementIns.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/TraitementIns.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controleur/uploads/cv/CV_ALT_sh.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/uploads/cv/CV_ALT_sh.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controleur/uploads/cv/istockphoto-1300845620-612x612.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/uploads/cv/istockphoto-1300845620-612x612.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/AnnuaireEleve.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/AnnuaireEleve.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue/Connexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/Connexion.php" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementForum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementForum.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Forum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Forum.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Utilisateur.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue/Inscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/Inscription.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue/NewForum.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/NewForum.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/PageForum.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/PageForumEleve.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/pageaccueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/pageaccueil.php" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementConnexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementConnexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementEdit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementEdit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controleur/TraitementForum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controleur/TraitementForum.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Utilisateur.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue/editer.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/editer.php" afterDir="false" />
+>>>>>>> 683a94af2356d2d0c7da51484a6ee7ca8fec0ebd
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,16 +32,12 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\wamp64\bin\php\php8.3.0\php.exe" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2nQuDevZrgzjvVMOSeC0bZQ17a1" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -46,21 +46,19 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/wamp64/www/DevProjet/PHP/CRUD&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PS-241.19416.23" />
-        <option value="bundled-php-predefined-ba97393d7c68-48a1a656d44e-com.jetbrains.php.sharedIndexes-PS-241.19416.23" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PS-241.14494.237" />
+        <option value="bundled-php-predefined-ba97393d7c68-8f0632a2a215-com.jetbrains.php.sharedIndexes-PS-241.14494.237" />
       </set>
     </attachedChunks>
   </component>
@@ -75,18 +73,7 @@
       <workItem from="1728917503622" duration="2979000" />
       <workItem from="1730060348593" duration="117000" />
       <workItem from="1730060625637" duration="9165000" />
-      <workItem from="1730119014030" duration="7268000" />
-      <workItem from="1730145379294" duration="2266000" />
-      <workItem from="1730189119949" duration="17000" />
-      <workItem from="1730189351888" duration="865000" />
-      <workItem from="1730190235596" duration="10640000" />
-      <workItem from="1730200975272" duration="122000" />
-      <workItem from="1730204988733" duration="1177000" />
-      <workItem from="1730278885161" duration="477000" />
-      <workItem from="1730322252982" duration="1197000" />
-      <workItem from="1730372006702" duration="49000" />
-      <workItem from="1730372365611" duration="565000" />
-      <workItem from="1730465218945" duration="226000" />
+      <workItem from="1730119014030" duration="21167000" />
     </task>
     <task id="LOCAL-00001" summary="Forum2.1">
       <option name="closed" value="true" />
@@ -96,15 +83,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730129339247</updated>
     </task>
-    <task id="LOCAL-00002" summary="Création d'une entreprise">
+    <task id="LOCAL-00002" summary="editer">
       <option name="closed" value="true" />
-      <created>1730200757330</created>
+      <created>1730131817784</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1730200757330</updated>
+      <updated>1730131817784</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="commit">
+      <option name="closed" value="true" />
+      <created>1730132670832</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730132670832</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,12 +118,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="editer,supprimer" />
+    <MESSAGE value="Forum2.1" />
     <MESSAGE value="editer" />
-    <MESSAGE value="Création d'une entreprise" />
-    <option name="LAST_COMMIT_MESSAGE" value="Création d'une entreprise" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <MESSAGE value="Merge branch 'main' of https://github.com/Sherazad2005/Projet_Lprs2.2" />
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
 </project>

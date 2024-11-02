@@ -3,9 +3,9 @@
 include '../bdd/Bdd.php';
 include '../model/Utilisateur.php';
 
-$utilisateur = new Utilisateur([
-    "email" =>$_POST['email'],
-    "mdp" =>$_POST['mdp'],
-]);
-$utilisateur->connexion();
 
+$utilisateur = new Utilisateur([
+    "id_utilisateur" =>$_POST['id_utilisateur'] ?? 0,
+    ]);
+
+$utilisateur->supprimer();
