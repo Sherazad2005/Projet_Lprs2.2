@@ -2,8 +2,8 @@
 session_start();
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM `emplois` ');
-$req->execute(array());
+$req = $bdd->getBdd()->prepare('SELECT * FROM `event` ');
+$req->execute();
 $res = $req->fetchAll();
 
 ?>
@@ -68,30 +68,32 @@ $res = $req->fetchAll();
         }
     </style>
     <meta charset="UTF-8">
-    <title>Opportunités emplois</title>
+    <title>participation_evenement</title>
 </head>
 <body>
 
 
 <table>
     <tr>
-        <th>Id_emplois</th>
-        <th>Titre</th>
-        <th>Entreprise</th>
-        <th>Description</th>
+        <th>Id_event</th>
+        <th>nom</th>
+        <th>date</th>
+        <th>inscrits</th>
+        <th>gerant</th>
     </tr>
     <?php
-    foreach ($res as $emplois){
+    foreach ($res as $event){
         ?>
         <tr>
-            <td><?=htmlspecialchars($emplois["id_emplois"]?? '') ?></td>
-            <td><?=htmlspecialchars($emplois["titre"] ??'') ?></td>
-            <td><?=htmlspecialchars($emplois["entreprise"]?? '')?></td>
-            <td><?=htmlspecialchars($emplois["descritpion"]?? '')?></td>
+            <td><?=htmlspecialchars($event["id_event"]?? '') ?></td>
+            <td><?=htmlspecialchars($event["nom"] ??'') ?></td>
+            <td><?=htmlspecialchars($event["date"]?? '')?></td>
+            <td><?=htmlspecialchars($event["inscrits"]?? '')?></td>
+            <td><?=htmlspecialchars($event["gerant"]?? '')?></td>
 
-            <td><a href="editer.php?id_emplois=<?=$emplois["id_emplois"]?>">Editer</a>
-                <a href="supprimer.php?id_emplois=<?=$emplois["id_emplois"]?>">Supprimer</a>
-                <a href="postuler.php?id_emplois=<?=$emplois["id_emplois"]?>">Postuler</a>
+            <td><a href="editer.php?id_event=<?=$event["id_event"]?>">Editer</a>
+                <a href="supprimer.php?id_event=<?=$event["id_event"]?>">Supprimer</a>
+                <a href="inscrire.php?id_event=<?=$event["id_event"]?>">S'inscrire</a>
             </td>
         </tr>
 

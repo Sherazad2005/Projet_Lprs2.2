@@ -6,7 +6,7 @@ $req->execute(array());
 $res = $req->fetchAll();
 
 ?>
-<!DOCTYPE html>2 2
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="icon" type="image/x-icon" href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lyceerobertschuman.com%2F&psig=AOvVaw1V4azkFzc1RTIFsSnyE7rn&ust=1710580549450000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCPDb56H39YQDFQAAAAAdAAAAABAI">
@@ -15,10 +15,8 @@ $res = $req->fetchAll();
             box-sizing: border-box;
         }
 
-        /* Create three unequal columns that floats next to each other */
-        .column {
+        {
             float: left;
-            /* Should be removed. Only for demonstration */
         }
 
         .left, .right {

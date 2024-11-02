@@ -1,14 +1,11 @@
 <?php
-// Assurez-vous d'inclure le modèle et de récupérer les données de l'utilisateur
-require_once '../model/Utilisateur.php'; // Modèle à adapter selon vos besoins
+require_once '../model/Utilisateur.php';
 
-// Exemple d'initialisation de l'utilisateur
-// En réalité, vous devriez récupérer l'utilisateur depuis la base de données
 $utilisateurData = [
     'id_utilisateur' => 1,
     'nom' => 'Jean Dupont',
     'email' => 'jean.dupont@example.com',
-    'photo' => 'https://via.placeholder.com/150' // Remplacez par le chemin de la photo de l'utilisateur
+    'photo' => 'https://via.placeholder.com/150'
 ];
 
 $utilisateur = new Utilisateur($utilisateurData);
@@ -23,13 +20,13 @@ $utilisateur = new Utilisateur($utilisateurData);
     <title>Profil Utilisateur</title>
     <style>
         #formulaireAjout {
-            display: none; /* Cacher le formulaire au départ */
-            opacity: 0; /* Initialement transparent */
-            transition: opacity 0.5s ease; /* Animation pour l'apparition */
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
         #formulaireAjout.show {
-            display: block; /* Afficher le formulaire */
-            opacity: 1; /* Rendre le formulaire visible */
+            display: block;
+            opacity: 1;
         }
     </style>
 </head>
@@ -44,14 +41,12 @@ $utilisateur = new Utilisateur($utilisateurData);
         </div>
         <div class="card-body">
             <p><strong>Email : </strong> <a href="mailto:<?php echo $utilisateur->getEmail(); ?>"><?php echo $utilisateur->getEmail(); ?></a></p>
-            <!-- Ajoutez d'autres informations utilisateur ici si nécessaire -->
         </div>
         <div class="card-footer text-center">
             <button id="ajouterEntrepriseBtn" class="btn btn-primary">Ajouter une Entreprise</button>
         </div>
     </div>
 
-    <!-- Formulaire pour ajouter une entreprise -->
     <div id="formulaireAjout" class="mt-4 card">
         <div class="card-header">
             <h5>Ajouter une Entreprise</h5>
@@ -91,11 +86,11 @@ $utilisateur = new Utilisateur($utilisateurData);
 <script>
     $(document).ready(function() {
         $('#ajouterEntrepriseBtn').click(function() {
-            $('#formulaireAjout').toggleClass('show'); // Toggle visibility avec animation
+            $('#formulaireAjout').toggleClass('show');
         });
 
         $('#annulerBtn').click(function() {
-            $('#formulaireAjout').removeClass('show'); // Cacher le formulaire si l'utilisateur clique sur Annuler
+            $('#formulaireAjout').removeClass('show');
         });
     });
 </script>
