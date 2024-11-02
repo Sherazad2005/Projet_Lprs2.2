@@ -105,7 +105,7 @@ $res = $req->fetchAll();
         <?php
     }
     ?>
-    <a href="../src/controleur/TraitementDeco.php">Deconnexion</a>
+    <a href="../src/controller/TraitementDeco.php">Deconnexion</a>
 </table>
 </body>
 </html>

@@ -64,7 +64,7 @@ if (array_key_exists("erreur",$_GET)){
 </head>
 <body>
 
-<form action="../src/controleur/TraitementIns.php" method="POST" enctype="multipart/form-data">
+<form action="../src/controller/TraitementIns.php" method="POST" enctype="multipart/form-data">
    <center> <img src="../assets/images/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></center>
      <label for="nom"></label>
         <input type="text" name="nom" required placeholder="Nom"><br><br>
@@ -84,7 +84,7 @@ if (array_key_exists("erreur",$_GET)){
         <option value="eleve">Élève</option>
         <option value="professeur">Professeur</option>
         <option value="alumni">Alumni</option>
-        <option value="entreprise">Entreprise</option>
+        <option value="Partenaire">Entreprise</option>
     </select><br><br>
 
 
@@ -112,7 +112,7 @@ if (array_key_exists("erreur",$_GET)){
     </div>
 
 
-    <div id="entrepriseFields" style="display:none;">
+    <div id="PartenaireFields" style="display:none;">
         <label for="poste_entreprise">Poste dans l'entreprise :</label>
         <input type="text" name="poste_entreprise" placeholder="Poste"><br><br>
 

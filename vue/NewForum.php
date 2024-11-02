@@ -35,7 +35,7 @@
 </head>
 <body>
 titre, messages, date_messages, heure_messages, canal
-<form action="../src/controleur/TraitementForum.php" method="POST" enctype="multipart/form-data">
+<form action="../src/controller/TraitementForum.php" method="POST" enctype="multipart/form-data">
     <CENTER><img src="../assets/images/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></CENTER>
     <CENTER> <label for="titre"></label>
         <input type="text" name="titre" required placeholder="titre"><br>
