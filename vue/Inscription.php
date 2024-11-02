@@ -58,7 +58,7 @@ if (array_key_exists("erreur",$_GET)){
             document.getElementById("eleveFields").style.display = (role === "eleve") ? "block" : "none";
             document.getElementById("profFields").style.display = (role === "professeur") ? "block" : "none";
             document.getElementById("alumniFields").style.display = (role === "alumni") ? "block" : "none";
-            document.getElementById("entrepriseFields").style.display = (role === "entreprise") ? "block" : "none";
+            document.getElementById("partenaireFields").style.display = (role === "partenaire") ? "block" : "none";
         }
     </script>
 </head>
@@ -84,7 +84,7 @@ if (array_key_exists("erreur",$_GET)){
         <option value="eleve">Élève</option>
         <option value="professeur">Professeur</option>
         <option value="alumni">Alumni</option>
-        <option value="entreprise">Entreprise</option>
+        <option value="partenaire">Partenaire</option>
     </select><br><br>
 
 
@@ -112,12 +112,12 @@ if (array_key_exists("erreur",$_GET)){
     </div>
 
 
-    <div id="entrepriseFields" style="display:none;">
+    <div id="partenaireFields" style="display:none;">
         <label for="poste_entreprise"></label>
         <input type="text" name="poste_entreprise" placeholder="Poste"><br><br>
 
-        <label for="secteur_activite"></label>
-        <input type="text" name="secteur_activite" placeholder="Secteur d'activite"><br><br>
+        <label for="motif_inscription"></label>
+        <input type="text" name="motif_inscription" placeholder="Motif d'inscription"><br><br>
     </div>
 
         <center><button type="submit">S'inscrire</button></center>
