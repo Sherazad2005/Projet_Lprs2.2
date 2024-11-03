@@ -1,18 +1,29 @@
 <?php
-if (array_key_exists("erreur",$_GET)){
-    echo "if y a une erreur.";
-    if ($_GET["erreur"] == 0){
-        echo "indentifiant deja utilisé";
+include '../src/bdd/Bdd.php';
+
+$bdd = new Bdd();
+$entreprises = [];
+try {
+$req = $bdd->getBdd()->prepare('SELECT id_entreprise,nom FROM `entreprise`');
+$req->execute();
+$entreprises = $req->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Erreur lors de la récupération des entreprises : " . $e->getMessage();
+}
+if (array_key_exists("erreur", $_GET)) {
+    if ($_GET["erreur"] == 0) {
+        echo "Identifiant déjà utilisé.";
     }
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Inscription</title>
-</head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
     <style>
         body {
             display: flex;
@@ -23,10 +34,8 @@ if (array_key_exists("erreur",$_GET)){
         }
 
         form {
-
             margin: 0 auto;
             width: 400px;
-
             padding: 1em;
             border: 1px solid #ccc;
             border-radius: 1em;
@@ -43,15 +52,12 @@ if (array_key_exists("erreur",$_GET)){
         }
 
         label {
-
             display: inline-block;
             width: 90px;
             text-align: right;
         }
     </style>
-
     <script>
-
         function afficherChampsSpecifiques() {
             const role = document.getElementById("role").value;
 
@@ -64,10 +70,11 @@ if (array_key_exists("erreur",$_GET)){
 </head>
 <body>
 
-<form action="../src/controleur/TraitementIns.php" method="POST" enctype="multipart/form-data">
-   <center> <img src="../assets/images/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></center>
-     <label for="nom"></label>
-        <input type="text" class="form-control" name="nom" required placeholder="Nom"><br><br>
+<form action="../src/controller/TraitementIns.php" method="POST" enctype="multipart/form-data">
+    <center><img src="../assets/images/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></center>
+
+    <label for="nom"></label>
+    <input type="text" class="form-control" name="nom" required placeholder="Nom"><br><br>
 
     <label for="prenom"></label>
     <input type="text" name="prenom" required placeholder="Prénom"><br><br>
@@ -76,7 +83,7 @@ if (array_key_exists("erreur",$_GET)){
     <input type="email" name="email" required placeholder="Email"><br><br>
 
     <label for="mdp"></label>
-    <input type="password" name="mdp" required placeholder="Mots de passe"><br><br>
+    <input type="password" name="mdp" required placeholder="Mot de passe"><br><br>
 
     <label for="role"></label>
     <select name="role" id="role" onchange="afficherChampsSpecifiques()" required>
@@ -86,7 +93,6 @@ if (array_key_exists("erreur",$_GET)){
         <option value="alumni">Alumni</option>
         <option value="partenaire">Partenaire</option>
     </select><br><br>
-
 
     <div id="eleveFields" style="display:none;">
         <label for="classe"></label>
@@ -99,28 +105,37 @@ if (array_key_exists("erreur",$_GET)){
         <input type="file" name="cv" accept=".pdf"><br><br>
     </div>
 
-
     <div id="profFields" style="display:none;">
         <label for="specialite_prof"></label>
         <input type="text" name="specialite_prof" placeholder="Spécialité du Professeur"><br><br>
     </div>
-
 
     <div id="alumniFields" style="display:none;">
         <label for="nom_promo"></label>
         <input type="text" name="nom_promo" placeholder="Promo"><br><br>
     </div>
 
-
     <div id="partenaireFields" style="display:none;">
-        <label for="poste_entreprise"></label>
-        <input type="text" name="poste_entreprise" placeholder="Poste"><br><br>
 
-        <label for="motif_inscription"></label>
-        <input type="text" name="motif_inscription" placeholder="Motif d'inscription"><br><br>
+            <label for="poste_entreprise"></label>
+            <input type="text" name="poste_entreprise" placeholder="Poste" required><br><br>
+
+            <label for="motif_inscription"></label>
+        <input type="text" name="motif_inscription" placeholder="Motif d'inscription" required><br><br>
+
+        <div id="selectEntreprise" style="display: block;">
+            <label for="entreprise">Sélectionnez l'Entreprise :</label>
+            <select name="entreprise" required>
+                <option value="">Choisir une entreprise</option>
+                <?php foreach ($entreprises as $entreprise) { ?>
+                    <option value="<?= $entreprise['id_entreprise'] ?>"><?= $entreprise['nom'] ?></option>
+                <?php } ?>
+            </select>
+        </div>
+
     </div>
 
-        <center><button type="submit">S'inscrire</button></center>
+    <center><button type="submit">S'inscrire</button></center>
 </form>
 
 </body>

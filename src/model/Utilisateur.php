@@ -11,16 +11,17 @@ class Utilisateur
     private $mdp;
     private $nom_promo;
     private $cv;
-    private $secteur_activite;
+    private $motif_inscription;
     private $classe;
     private $specialite_prof;
     private $poste_entreprise;
+    private $id_entreprise;
     private $role;
 
 
-    public function __construct(array $donnee)
+    public function __construct(array $data)
     {
-        $this->hydrate($donnee);
+        $this->hydrate($data);
     }
     /**
      * @return mixed
@@ -38,8 +39,8 @@ class Utilisateur
         $this->id_utilisateur = $id_utilisateur;
     }
 
-    public function hydrate(array $donnee){
-        foreach ($donnee as $key => $value){
+    public function hydrate(array $data){
+        foreach ($data as $key => $value){
             $method = 'set'.ucfirst($key);
             if(method_exists($this,$method)){
                 $this->$method($value);
@@ -77,6 +78,14 @@ class Utilisateur
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
+    }
+
+    public function getIdEntreprise() {
+        return $this->id_entreprise;
+    }
+
+    public function setIdEntreprise($id_entreprise) {
+        $this->id_entreprise = $id_entreprise;
     }
 
 
@@ -163,17 +172,17 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getSecteurActivite()
+    public function getMotifInscription()
     {
-        return $this->secteur_activite;
+        return $this->motif_inscription;
     }
 
     /**
-     * @param mixed $secteur_activite
+     * @param mixed $motif_inscription
      */
-    public function setSecteurActivite($secteur_activite)
+    public function setMotifInscription($motif_inscription)
     {
-        $this->secteur_activite = $secteur_activite;
+        $this->motif_inscription = $motif_inscription;
     }
 
     /**
@@ -233,8 +242,8 @@ class Utilisateur
     public function inscription() {
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare(
-            'INSERT INTO utilisateur (nom, prenom, email, mdp, nom_promo, cv, secteur_activite, classe, specialite_prof, poste_entreprise, role) 
-         VALUES (:nom, :prenom, :email, :mdp, :nom_promo, :cv, :secteur_activite, :classe, :specialite_prof, :poste_entreprise, :role)'
+            'INSERT INTO utilisateur (nom, prenom, email, mdp, nom_promo, cv, motif_inscription, classe, specialite_prof, poste_entreprise, role, id_entreprise) 
+         VALUES (:nom, :prenom, :email, :mdp, :nom_promo, :cv, :motif_inscription, :classe, :specialite_prof, :poste_entreprise, :role, :id_entreprise)'
         );
         $req->execute([
             'nom' => $this->getNom(),
@@ -243,14 +252,16 @@ class Utilisateur
             'mdp' => $this->getMdp(),
             'nom_promo' => $this->getNomPromo(),
             'cv' => $this->getCv(),
-            'secteur_activite' => $this->getSecteurActivite(),
+            'motif_inscription' => $this->getMotifInscription(),
             'classe' => $this->getClasse(),
             'specialite_prof' => $this->getSpecialiteProf(),
             'poste_entreprise' => $this->getPosteEntreprise(),
             'role' => $this->getRole(),
+            'id_entreprise' => $this->getIdEntreprise(),
+
         ]);
 
-        header("Location: ../../vue/Connexion.php?success");
+        header("Location: ../../vue/PageAcceuilConnect.php");
     }
     public function connexion(){
         $bdd = new Bdd();

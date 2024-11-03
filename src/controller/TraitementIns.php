@@ -2,8 +2,7 @@
 
 include '../bdd/Bdd.php';
 include '../model/Utilisateur.php';
-require_once '../model/Utilisateur.php'; // Inclusion de la classe Utilisateur
-
+require_once '../model/Utilisateur.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $data = [
@@ -31,11 +30,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } elseif ($_POST["role"] == "professeur") {
         $data["specialite_prof"] = htmlspecialchars($_POST["specialite_prof"]);
+
     } elseif ($_POST["role"] == "alumni") {
         $data["nom_promo"] = htmlspecialchars($_POST["nom_promo"]);
-    } elseif ($_POST["role"] == "entreprise") {
+
+    } elseif ($_POST["role"] == "partenaire") {
+        if (empty($_POST["poste_entreprise"]) || empty($_POST["motif_inscription"]) || empty($_POST['entreprise'])) {
+            echo "Tous les champs sont obligatoires.";
+            exit;
+        }
         $data["poste_entreprise"] = htmlspecialchars($_POST["poste_entreprise"]);
-        $data["secteur_activite"] = htmlspecialchars($_POST["secteur_activite"]);
+        $data["motif_inscription"] = htmlspecialchars($_POST["motif_inscription"]);
+        $data["id_entreprise"] = intval($_POST['entreprise']);
+
     }
 
 

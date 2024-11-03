@@ -69,7 +69,39 @@ $utilisateur = new Utilisateur($utilisateurData);
         </div>
     </div>
 
-    <div id="formulaireAjout" class="mt-4 card">
+    <div id="formulaireAjoutEntreprise" class="mt-4 card">
+        <div class="card-header">
+            <h5>Ajouter une Entreprise</h5>
+        </div>
+        <div class="card-body">
+            <form id="ajoutEntrepriseForm" action="../src/controller/EntrepriseController.php?action=ajouter" method="POST">
+                <div class="form-group">
+                    <label for="nomEntreprise">Nom de l'Entreprise</label>
+                    <input type="text" class="form-control" id="nomEntreprise" name="nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="adresseEntreprise">Adresse</label>
+                    <input type="text" class="form-control" id="adresseEntreprise" name="adresse" required>
+                </div>
+                <div class="form-group">
+                    <label for="cpEntreprise">Code Postal</label>
+                    <input type="text" class="form-control" id="cpEntreprise" name="cp" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailEntreprise">Email</label>
+                    <input type="email" class="form-control" id="emailEntreprise" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="gerantEntreprise">Gérant</label>
+                    <input type="text" class="form-control" id="gerantEntreprise" name="gerant" required>
+                </div>
+                <button type="submit" class="btn btn-success">Ajouter</button>
+                <button type="button" class="btn btn-secondary" id="annulerBtn">Annuler</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="formulaireAjoutOffre" class="mt-4 card">
         <div class="card-header">
             <h5>Ajouter une Entreprise</h5>
         </div>
@@ -114,6 +146,10 @@ $utilisateur = new Utilisateur($utilisateurData);
         $('#ajouterEntrepriseBtn').click(function() {
             $('#formulaireAjout').toggleClass('show');
         });
+        $(document).ready(function() {
+            $('#ajouterEntrepriseBtn').click(function() {
+                $('#formulaireAjout').toggleClass('show');
+            });
 
         $('#annulerBtn').click(function() {
             $('#formulaireAjout').removeClass('show');
