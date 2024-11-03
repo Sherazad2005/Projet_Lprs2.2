@@ -20,7 +20,7 @@ if (array_key_exists("erreur", $_POST)) {
 
     <input type="submit" name="ins" value="Confirmer"/><br>
     <a href="accueil.php">Retour</a>
-    
+
 </form>
 
 </body>

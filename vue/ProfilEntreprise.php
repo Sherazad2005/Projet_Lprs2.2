@@ -1,18 +1,9 @@
 <?php
-session_start();
-if (isset($_SESSION['notification'])): ?>
-    <div class="alert alert-<?php echo $_SESSION['notification'] === 'success' ? 'success' : 'danger'; ?>" role="alert">
-        <?php echo $_SESSION['notification'] === 'success' ? 'Opération réussie!' : 'Une erreur s\'est produite.'; ?>
-    </div>
-    <?php unset($_SESSION['notification']); ?>
-<?php endif;
-require_once '../src/model/Utilisateur.php';
-
+require_once '../model/Utilisateur.php';
 
 $utilisateurData = [
     'id_utilisateur' => 1,
-    'nom' => 'Jean',
-    'prenom' => 'Dupont',
+    'nom' => 'Jean Dupont',
     'email' => 'jean.dupont@example.com',
     'photo' => 'https://via.placeholder.com/150'
 ];
@@ -26,18 +17,8 @@ $utilisateur = new Utilisateur($utilisateurData);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Partenaire</title>
+    <title>Profil Utilisateur</title>
     <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .card {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        .card:hover {
-            transform: scale(1.05);
-        }
         #formulaireAjout {
             display: none;
             opacity: 0;
@@ -52,16 +33,13 @@ $utilisateur = new Utilisateur($utilisateurData);
 <body>
 <div class="container mt-5">
     <h2>Profil Utilisateur</h2>
-
     <div class="card">
         <div class="card-header text-center">
-            // img//
+            <img src="/uploads/istockphoto-1300845620-612x612.jpg" alt="Photo de Profil" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
             <h4><?php echo $utilisateur->getNom(); ?></h4>
             <h4><?php echo $utilisateur->getPrenom(); ?></h4>
         </div>
         <div class="card-body">
-            <p><strong>Nom : </strong></p>
-            <p><strong>Prénom : </strong></p>
             <p><strong>Email : </strong> <a href="mailto:<?php echo $utilisateur->getEmail(); ?>"><?php echo $utilisateur->getEmail(); ?></a></p>
         </div>
         <div class="card-footer text-center">
@@ -106,26 +84,22 @@ $utilisateur = new Utilisateur($utilisateurData);
             <h5>Ajouter une Entreprise</h5>
         </div>
         <div class="card-body">
-            <form id="ajoutEntrepriseForm" action="../src/controller/EntrepriseController.php?action=ajouter" method="POST">
+            <form>
                 <div class="form-group">
                     <label for="nomEntreprise">Nom de l'Entreprise</label>
-                    <input type="text" class="form-control" id="nomEntreprise" name="nom" required>
+                    <input type="text" class="form-control" id="nomEntreprise" required>
                 </div>
                 <div class="form-group">
                     <label for="adresseEntreprise">Adresse</label>
-                    <input type="text" class="form-control" id="adresseEntreprise" name="adresse" required>
+                    <input type="text" class="form-control" id="adresseEntreprise" required>
                 </div>
                 <div class="form-group">
                     <label for="cpEntreprise">Code Postal</label>
-                    <input type="text" class="form-control" id="cpEntreprise" name="cp" required>
+                    <input type="text" class="form-control" id="cpEntreprise" required>
                 </div>
                 <div class="form-group">
                     <label for="emailEntreprise">Email</label>
-                    <input type="email" class="form-control" id="emailEntreprise" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="gerantEntreprise">Gérant</label>
-                    <input type="text" class="form-control" id="gerantEntreprise" name="gerant" required>
+                    <input type="email" class="form-control" id="emailEntreprise" required>
                 </div>
                 <button type="submit" class="btn btn-success">Ajouter</button>
                 <button type="button" class="btn btn-secondary" id="annulerBtn">Annuler</button>
@@ -138,7 +112,7 @@ $utilisateur = new Utilisateur($utilisateurData);
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
