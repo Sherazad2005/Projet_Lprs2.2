@@ -51,7 +51,7 @@ if (array_key_exists("erreur", $_GET)) {
 
 </style>
 <body>
-<form action="../src/controller/TraitementConnexion.php" method="post">
+<form action="../src/controleur/TraitementConnexion.php" method="post">
 
     <CENTER><img src="../assets/images/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></CENTER>
 

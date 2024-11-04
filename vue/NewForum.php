@@ -1,3 +1,14 @@
+<?php
+
+if (array_key_exists("erreur", $_GET)) {
+    echo "if y a une erreur.";
+    if ($_GET["erreur"] == 0) {
+        echo "Forum deja soumis";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,6 +16,13 @@
     <title>Création Forum</title>
 </head>
 <style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
     form {
 
         margin: 0 auto;
@@ -37,8 +55,8 @@
 
 <form action="../src/controleur/TraitementForum.php" method="POST" enctype="multipart/form-data">
     <CENTER><img src="../assets/images/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></CENTER>
-    <CENTER> <label for="titre"></label>
-        <input type="text" name="titre" required placeholder="titre"><br>
+     <label for="titre"></label>
+        <input type="text" name="titre" required placeholder="titre"><br><br>
 
         <label for="messages"></label>
         <input type="text" name="messages" required placeholder="messages"><br>
@@ -50,7 +68,6 @@
                 <option value="entreprise/alumni">Entreprise-Alumni</option>
                 <option value="eleve/professeur">Eleve-Professeur</option>
             </select></BLOCKQUOTE><br><br>
-    </CENTER>
     <CENTER> <input type="submit" name="ins"/></CENTER><br>
     <CENTER> <a href="Inscription.php"> Crée </a></td></CENTER>
 </form>
