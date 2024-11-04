@@ -294,7 +294,7 @@ class Utilisateur
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET id_utilisateur=:id_utilisateur,nom=:nom,prenom=:prenom,role=:role WHERE id_utilisateur=:id_utilisateur');
         $res = $req->execute(array(
-            "id_utilisateur" =>$this->getIdutilisateur(),
+            "id_utilisateur" =>$this->getIdUtilisateur(),
             "nom" =>$this->getNom(),
             "prenom" =>$this->getPrenom(),
             "role" =>$this->getRole(),
@@ -303,7 +303,7 @@ class Utilisateur
         if ($res){
             header("Location: ../../vue/accueil.php?success");
         }else{
-            header("Location: ../../vue/editer.php?id_utilisateur=".$this->getIdutilisateur()."&erreur");
+            header("Location: ../../vue/editer.php?id_utilisateur=".$this->getIdUtilisateur()."&erreur");
         }
     }
     public function supprimer()
