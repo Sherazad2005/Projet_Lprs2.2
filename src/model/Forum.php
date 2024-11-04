@@ -123,13 +123,11 @@ class Forum
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare(
             'INSERT INTO forum (titre, messages, date_messages, heure_messages, canal) 
-                   VALUES (:titre, :messages, :date_messages, :heure_messages, :canal)');
+                   VALUES (:titre, :messages, CURRENT_DATE(), CURRENT_TIME(), :canal)');
 
         $req->execute([
             'titre' => $this->getTitre(),
             'messages' => $this->getMessages(),
-            'date_messages' => $this->getDateMessages(),
-            'heure_messages' => $this->getHeureMessages(),
             'canal' => $this->getCanal(),
         ]);
 
@@ -141,9 +139,19 @@ class Forum
         $statement = $this->bdd->prepare($query);
         $statement->execute();
 
-        // Retourner tous les résultats sous forme de tableau associatif
+
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function afficherPost() {
+        $bdd = new Bdd();
+        $req = $bdd->getBdd()->prepare(
+            'SELECT * FROM forum WHERE id_forum = :id_forum');
+        $req->execute(array(
+            'id_forum' =>$this->getIdForum()
+        ));
+
+    }
+
 
 
 
