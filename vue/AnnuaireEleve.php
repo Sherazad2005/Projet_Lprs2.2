@@ -73,7 +73,7 @@ $res = $req->fetchAll();
 
 <table>
     <tr>
-        <th>id</th>
+        <th>id Utilisateur</th>
         <th>Nom</th>
         <th>Prenom</th>
         <th>Email</th>
@@ -87,7 +87,8 @@ $res = $req->fetchAll();
     foreach ($res as $utilisateur){
         ?>
         <tr>
-            <td><?=$utilisateur["idutilisateur"] ?></td>
+
+            <td><?=$utilisateur["id_utilisateur"] ?></td>
             <td><?=$utilisateur["nom"] ?></td>
             <td><?=$utilisateur["prenom"]?></td>
             <td><?=$utilisateur["email"]?></td>
@@ -96,8 +97,8 @@ $res = $req->fetchAll();
             <td><?=$utilisateur["cv"]?></td>
             <td><?=$utilisateur["classe"]?></td>
             <td><?=$utilisateur["role"]?></td>
-            <td><a href="edition.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Editer</a>
-                / <a href="supprimer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Supprimer</a></td>
+            <td><a href="editer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Editer</a>
+                / <a href="Supprimer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Supprimer</a></td>
         </tr>
 
         <?php

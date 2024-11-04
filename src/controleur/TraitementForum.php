@@ -8,7 +8,11 @@ $utilisateur = new \Forum([
     "messages" =>$_POST['messages'],
     "canal" =>$_POST['canal']
 ]);
+$utilisateur->ajouterUnForum();
+
+
 $utilisateur->ajouterUnForum($_POST);
+
 
 
 

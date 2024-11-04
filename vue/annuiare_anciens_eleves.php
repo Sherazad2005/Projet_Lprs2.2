@@ -1,7 +1,7 @@
 <?php
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur`');
+$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE role = "alumni"');
 $req->execute();
 $res = $req->fetchAll();
 
@@ -80,6 +80,7 @@ $res = $req->fetchAll();
 
 <table>
     <tr>
+        <th>Id Utilisateur</th>
         <th>Nom</th>
         <th>Prenom</th>
         <th>Mail</th>
@@ -92,6 +93,7 @@ $res = $req->fetchAll();
     foreach ($res as $utilisateur){
     ?>
     <tr>
+        <td><?=$utilisateur["id_utilisateur"] ?></td>
         <td><?=$utilisateur["nom"] ?></td>
         <td><?=$utilisateur["prenom"] ?></td>
         <td><?=$utilisateur["email"] ?></td>
@@ -99,7 +101,7 @@ $res = $req->fetchAll();
         <td><?=$utilisateur["nom_promo"] ?></td>
         <td><?=$utilisateur["cv"] ?></td>
         <td><a href="editer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Editer</a>
-            / <a href="supprimer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Supprimer</a></td>
+            / <a href="Supprimer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Supprimer</a></td>
     </tr>
     <?php
     }
