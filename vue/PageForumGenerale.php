@@ -57,7 +57,7 @@ $res = $req->fetchAll();
     ?>
 </table>
 <form method="post" action="ajouterReponse.php">
-    <input type="hidden" name="ref_forum" value="ID_DU_FORUM"> <!-- Remplacer par l'ID du forum -->
+    <input type="hidden" name="ref_forum" value="ID_DU_FORUM">
     <textarea name="messages" placeholder="Écrivez votre réponse ici..." required></textarea>
     <button type="submit">Envoyer la réponse</button>
 </form>
