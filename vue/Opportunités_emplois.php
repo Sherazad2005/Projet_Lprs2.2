@@ -89,7 +89,7 @@ $res = $req->fetchAll();
             <td><?=htmlspecialchars($emplois["entreprise"]?? '')?></td>
             <td><?=htmlspecialchars($emplois["descritpion"]?? '')?></td>
 
-            <td><a href="editer.php?id_emplois=<?=$emplois["id_emplois"]?>">Editer</a>
+            <td><a href="editer_emplois.php?id_emplois=<?=$emplois["id_emplois"]?>">Editer</a>
                 <a href="supprimer.php?id_emplois=<?=$emplois["id_emplois"]?>">Supprimer</a>
                 <a href="postuler.php?id_emplois=<?=$emplois["id_emplois"]?>">Postuler</a>
             </td>

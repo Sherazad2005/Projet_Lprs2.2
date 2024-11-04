@@ -104,6 +104,23 @@ class Emplois
 
         header("Location: ../../vue/Opportunités_emplois.php?success");
     }
-    
+
+    public function editer()
+    {
+        $bdd = new Bdd();
+        $req = $bdd->getBdd()->prepare('UPDATE emplois SET titre=:titre,entreprise=:entreprise,description=:description WHERE id_emplois=:id_emplois');
+        $res = $req->execute([
+            "id_emplois" => $this->getIdEmplois(),
+            "titre" => $this->getTitre(),
+            "entreprise" => $this->getEntreprise(),
+            "description" => $this->getDescription(),
+        ]);
+
+        if ($res) {
+            header("Location: ../../vue/Opportunités_emplois.php?success");
+        } else {
+            header("Location: ../../vue/editer.php?id_emplois=" . $this->getIdEmplois() . "&erreur");
+        }
+    }
 
 }
