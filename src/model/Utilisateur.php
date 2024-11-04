@@ -275,18 +275,19 @@ class Utilisateur
         }
     }
 
-    public function editer(){
+    public function editer()
+    {
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET nom=:nom,prenom=:prenom,role=:role WHERE id_utilisateur=:id_utilisateur');
+        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET id_utilisateur=:id_utilisateur,nom=:nom,prenom=:prenom,role=:role WHERE id_utilisateur=:id_utilisateur');
         $res = $req->execute(array(
-            "role" =>$this->getRole(),
-            "prenom" =>$this->getPrenom(),
-            "nom" =>$this->getNom(),
-            "id_utilisateur" =>$this->getIdutilisateur(),
+            "id_utilisateur" => $this->getIdutilisateur(),
+            "nom" => $this->getNom(),
+            "prenom" => $this->getPrenom(),
+            "role" => $this->getRole(),
         ));
 
         if ($res) {
-            header("Location: ../../vue/AnnuaireEleve.php?success");
+            header("Location: ../../vue/accueil.php?success");
         } else {
             header("Location: ../../vue/editer.php?id_utilisateur=" . $this->getIdutilisateur() . "&erreur");
         }
@@ -301,9 +302,9 @@ class Utilisateur
         ));
 
         if ($res) {
-            header("Location: ../../vue/AnnuaireEleve.php?success");
+            header("Location: ../../vue/accueil.php?success");
         } else {
-            header("Location: ../../vue/Connexion.php?erreur");
+            header("Location: ../../vue/connexion.php?erreur");
         }
     }
 
