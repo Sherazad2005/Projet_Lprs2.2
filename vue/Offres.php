@@ -16,7 +16,6 @@ $offres = [
         'date' => '02-11-2024',
         'description' => 'Un poste stimulant pour un designer UX/UI créatif et innovant.'
     ]
-    // Ajoutez plus d'offres si nécessaire
 ];
 ?>
 
