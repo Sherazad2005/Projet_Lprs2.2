@@ -2,11 +2,11 @@
 include '../src/bdd/Bdd.php';
 
 $bdd = new Bdd();
-$entreprises = [];
+$idEntreprise = [];
 try {
 $req = $bdd->getBdd()->prepare('SELECT id_entreprise,nom FROM `entreprise`');
 $req->execute();
-$entreprises = $req->fetchAll(PDO::FETCH_ASSOC);
+$idEntreprise = $req->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Erreur lors de la récupération des entreprises : " . $e->getMessage();
 }
@@ -77,13 +77,13 @@ if (array_key_exists("erreur", $_GET)) {
     <input type="text" class="form-control" name="nom" required placeholder="Nom"><br><br>
 
     <label for="prenom"></label>
-    <input type="text" name="prenom" required placeholder="Prénom"><br><br>
+    <input type="text" class="form-control" name="prenom" required placeholder="Prénom"><br><br>
 
     <label for="email"></label>
-    <input type="email" name="email" required placeholder="Email"><br><br>
+    <input type="email" class="form-control" name="email" required placeholder="Email"><br><br>
 
     <label for="mdp"></label>
-    <input type="password" name="mdp" required placeholder="Mot de passe"><br><br>
+    <input type="password" class="form-control" name="mdp" required placeholder="Mot de passe"><br><br>
 
     <label for="role"></label>
     <select name="role" id="role" onchange="afficherChampsSpecifiques()" required>
@@ -125,10 +125,10 @@ if (array_key_exists("erreur", $_GET)) {
 
         <div id="selectEntreprise" style="display: block;">
             <label for="entreprise">Sélectionnez l'Entreprise :</label>
-            <select name="entreprise" required>
+            <select name="idEntreprise" required>
                 <option value="">Choisir une entreprise</option>
-                <?php foreach ($entreprises as $entreprise) { ?>
-                    <option value="<?= $entreprise['id_entreprise'] ?>"><?= $entreprise['nom'] ?></option>
+                <?php foreach ($idEntreprise as $idEntreprise) { ?>
+                    <option value="<?= $idEntreprise['id_entreprise'] ?>"><?= $idEntreprise['nom'] ?></option>
                 <?php } ?>
             </select>
         </div>

@@ -4,18 +4,18 @@ class Utilisateur
 {
 
 
-    private $id_utilisateur;
+    private $idUtilisateur;
     private $nom;
     private $prenom;
     private $email;
     private $mdp;
-    private $nom_promo;
+    private $nomPromo;
     private $cv;
-    private $motif_inscription;
+    private $motifInscription;
     private $classe;
-    private $specialite_prof;
-    private $poste_entreprise;
-    private $id_entreprise;
+    private $specialiteProf;
+    private $posteEntreprise;
+    private $idEntreprise;
     private $role;
 
 
@@ -23,22 +23,6 @@ class Utilisateur
     {
         $this->hydrate($data);
     }
-    /**
-     * @return mixed
-     */
-    public function getIdUtilisateur()
-    {
-        return $this->id_utilisateur;
-    }
-
-    /**
-     * @param mixed $id_utilisateur
-     */
-    public function setIdUtilisateur($id_utilisateur)
-    {
-        $this->id_utilisateur = $id_utilisateur;
-    }
-
     public function hydrate(array $data){
         foreach ($data as $key => $value){
             $method = 'set'.ucfirst($key);
@@ -46,6 +30,22 @@ class Utilisateur
                 $this->$method($value);
             }
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdUtilisateur()
+    {
+        return $this->idUtilisateur;
+    }
+
+    /**
+     * @param mixed $idUtilisateur
+     */
+    public function setIdUtilisateur($idUtilisateur)
+    {
+        $this->idUtilisateur = $idUtilisateur;
     }
 
     /**
@@ -80,29 +80,20 @@ class Utilisateur
         $this->prenom = $prenom;
     }
 
-    public function getIdEntreprise() {
-        return $this->id_entreprise;
-    }
-
-    public function setIdEntreprise($id_entreprise) {
-        $this->id_entreprise = $id_entreprise;
-    }
-
-
     /**
      * @return mixed
      */
-    public function getRole()
+    public function getEmail()
     {
-        return $this->role;
+        return $this->email;
     }
 
     /**
-     * @param mixed $role
+     * @param mixed $email
      */
-    public function setRole($role)
+    public function setEmail($email)
     {
-        $this->role = $role;
+        $this->email = $email;
     }
 
     /**
@@ -124,33 +115,17 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getNomPromo()
     {
-        return $this->nom_promo;
+        return $this->nomPromo;
     }
 
     /**
-     * @param mixed $nom_promo
+     * @param mixed $nomPromo
      */
-    public function setNomPromo($nom_promo)
+    public function setNomPromo($nomPromo)
     {
-        $this->nom_promo = $nom_promo;
+        $this->nomPromo = $nomPromo;
     }
 
     /**
@@ -174,15 +149,15 @@ class Utilisateur
      */
     public function getMotifInscription()
     {
-        return $this->motif_inscription;
+        return $this->motifInscription;
     }
 
     /**
-     * @param mixed $motif_inscription
+     * @param mixed $motifInscription
      */
-    public function setMotifInscription($motif_inscription)
+    public function setMotifInscription($motifInscription)
     {
-        $this->motif_inscription = $motif_inscription;
+        $this->motifInscription = $motifInscription;
     }
 
     /**
@@ -206,15 +181,15 @@ class Utilisateur
      */
     public function getSpecialiteProf()
     {
-        return $this->specialite_prof;
+        return $this->specialiteProf;
     }
 
     /**
-     * @param mixed $specialite_prof
+     * @param mixed $specialiteProf
      */
-    public function setSpecialiteProf($specialite_prof)
+    public function setSpecialiteProf($specialiteProf)
     {
-        $this->specialite_prof = $specialite_prof;
+        $this->specialiteProf = $specialiteProf;
     }
 
     /**
@@ -222,20 +197,51 @@ class Utilisateur
      */
     public function getPosteEntreprise()
     {
-        return $this->poste_entreprise;
+        return $this->posteEntreprise;
     }
 
     /**
-     * @param mixed $poste_entreprise
+     * @param mixed $posteEntreprise
      */
-    public function setPosteEntreprise($poste_entreprise)
+    public function setPosteEntreprise($posteEntreprise)
     {
-        $this->poste_entreprise = $poste_entreprise;
+        $this->posteEntreprise = $posteEntreprise;
     }
 
     /**
      * @return mixed
      */
+    public function getIdEntreprise()
+    {
+        return $this->idEntreprise;
+    }
+
+    /**
+     * @param mixed $idEntreprise
+     */
+    public function setIdEntreprise($idEntreprise)
+    {
+        $this->idEntreprise = $idEntreprise;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param mixed $role
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+
+
+
 
 
 
@@ -261,7 +267,7 @@ class Utilisateur
 
         ]);
 
-        header("Location: ../../vue/PageAcceuilConnect.php");
+      //  header("Location: ../../vue/PageAcceuilConnect.php");
     }
     public function connexion(){
         $bdd = new Bdd();

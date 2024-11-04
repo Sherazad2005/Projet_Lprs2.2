@@ -1,5 +1,4 @@
 <?php
-// Exemple de données pour les offres
 $offres = [
     [
         'id' => 1,
