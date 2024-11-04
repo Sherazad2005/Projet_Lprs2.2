@@ -3,15 +3,16 @@
 if (array_key_exists("erreur", $_GET)) {
     echo "if y a une erreur.";
     if ($_GET["erreur"] == 0) {
-        echo "indentifiant deja utilisé";
+        echo "événements deja inscrit";
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Connexion</title>
+    <title>Evénement</title>
 </head>
 <style>
     body {
@@ -48,25 +49,18 @@ if (array_key_exists("erreur", $_GET)) {
         width: 90px;
         text-align: right;
     }
-
 </style>
 <body>
-<form action="../src/controller/TraitementConnexion.php" method="post">
 
-    <CENTER><img src="../assets/images/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></CENTER>
+<form action="../src/controleur/TraitementEvent.php" method="POST" enctype="multipart/form-data">
+    <center><img src="../assets/images/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></center>
 
-    <CENTER><input type="email" name="email" placeholder="indentifiant"/></CENTER>
-    <br>
+    <CENTER> <input type="text" name="nom" placeholder="nom"/><br></CENTER><br>
+    <CENTER>  <input type="text" name="date" placeholder="date"/><br></CENTER><br>
+    <CENTER>  <input type="text" name="inscrits" placeholder="inscrits"/><br></CENTER><br>
+    <CENTER>  <input type="text" name="gerant" placeholder="gerant"/><br></CENTER><br>
 
-    <CENTER>
-
-        <input type="password" name="mdp" placeholder="mots de passe"/></CENTER>
-    <br><br>
-
-    <CENTER><input type="submit" name="ins"/><br><br></CENTER>
-
-    <CENTER><a href="Inscription.php">Vous n'avez pas de compte</a></td></CENTER>
-
+    <center><button type="submit">Valider</button></center>
 
 </form>
 

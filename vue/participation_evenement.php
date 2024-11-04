@@ -1,8 +1,9 @@
 <?php
+session_start();
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE role = "eleve"');
-$req->execute(array());
+$req = $bdd->getBdd()->prepare('SELECT * FROM `event` ');
+$req->execute();
 $res = $req->fetchAll();
 
 ?>
@@ -14,9 +15,9 @@ $res = $req->fetchAll();
         * {
             box-sizing: border-box;
         }
-
-        {
+        .column {
             float: left;
+
         }
 
         .left, .right {
@@ -67,44 +68,39 @@ $res = $req->fetchAll();
         }
     </style>
     <meta charset="UTF-8">
-    <title>Annuaire Eleve</title>
+    <title>participation_evenement</title>
 </head>
 <body>
 
+
 <table>
     <tr>
-        <th>id Utilisateur</th>
-        <th>Nom</th>
-        <th>Prenom</th>
-        <th>Email</th>
-        <th>Mots de passe</th>
-        <th>Nom promo</th>
-        <th>CV</th>
-        <th>Classe</th>
-        <th>Role</th>
+        <th>Id_event</th>
+        <th>nom</th>
+        <th>date</th>
+        <th>inscrits</th>
+        <th>gerant</th>
     </tr>
     <?php
-    foreach ($res as $utilisateur){
+    foreach ($res as $event){
         ?>
         <tr>
+            <td><?=htmlspecialchars($event["id_event"]?? '') ?></td>
+            <td><?=htmlspecialchars($event["nom"] ??'') ?></td>
+            <td><?=htmlspecialchars($event["date"]?? '')?></td>
+            <td><?=htmlspecialchars($event["inscrits"]?? '')?></td>
+            <td><?=htmlspecialchars($event["gerant"]?? '')?></td>
 
-            <td><?=$utilisateur["id_utilisateur"] ?></td>
-            <td><?=$utilisateur["nom"] ?></td>
-            <td><?=$utilisateur["prenom"]?></td>
-            <td><?=$utilisateur["email"]?></td>
-            <td><?=$utilisateur["mdp"]?></td>
-            <td><?=$utilisateur["nom_promo"]?></td>
-            <td><?=$utilisateur["cv"]?></td>
-            <td><?=$utilisateur["classe"]?></td>
-            <td><?=$utilisateur["role"]?></td>
-            <td><a href="editer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Editer</a>
-                / <a href="Supprimer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Supprimer</a></td>
+            <td><a href="editer.php?id_event=<?=$event["id_event"]?>">Editer</a>
+                <a href="supprimer.php?id_event=<?=$event["id_event"]?>">Supprimer</a>
+                <a href="inscrire.php?id_event=<?=$event["id_event"]?>">S'inscrire</a>
+            </td>
         </tr>
 
         <?php
     }
     ?>
-    <a href="../src/controller/TraitementDeco.php">Deconnexion</a>
 </table>
+<a href="../vue/accueil">Retour</a>
 </body>
 </html>

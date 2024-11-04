@@ -1,6 +1,8 @@
 <?php
 class Bdd
 {
+    private static $instance = null;
+    private $connection;
     private $bdd;
     private $serveur = "localhost";
     private $nomBdd = "projet_lprs";

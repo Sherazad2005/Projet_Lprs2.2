@@ -2,7 +2,7 @@
 
 class Forum
 {
-    private $ifForum ;
+    private $id_Forum ;
     private $titre ;
     private $messages ;
     private $date_messages ;
@@ -25,17 +25,17 @@ class Forum
     /**
      * @return mixed
      */
-    public function getIfForum()
+    public function getIdForum()
     {
-        return $this->ifForum;
+        return $this->id_Forum;
     }
 
     /**
-     * @param mixed $ifForum
+     * @param mixed $id_forum
      */
-    public function setIfForum($ifForum)
+    public function setIdForum($id_forum)
     {
-        $this->ifForum = $ifForum;
+        $this->ifForum = $id_forum;
     }
 
     /**
@@ -135,6 +135,16 @@ class Forum
 
         header("Location: ../../vue/PageForumEleve.php?success");
     }
+    public function getAllPosts() {
+        $query = "SELECT id_forum, titre, LEFT(contenu, 100) AS extrait, date_creation FROM posts ORDER BY date_creation DESC";
+
+        $statement = $this->bdd->prepare($query);
+        $statement->execute();
+
+        // Retourner tous les résultats sous forme de tableau associatif
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
 
 

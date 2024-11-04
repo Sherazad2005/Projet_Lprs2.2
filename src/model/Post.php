@@ -53,6 +53,9 @@ private $ref_forum;
         $this->ref_forum = $ref_forum;
     }
 
+    public function getDetails($postId)
+    {
+    }
 
 
 }

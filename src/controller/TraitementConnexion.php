@@ -8,4 +8,3 @@ $utilisateur = new Utilisateur([
     "mdp" =>$_POST['mdp'],
 ]);
 $utilisateur->connexion();
-

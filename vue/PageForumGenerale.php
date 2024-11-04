@@ -56,6 +56,11 @@ $res = $req->fetchAll();
     }
     ?>
 </table>
+<form method="post" action="ajouterReponse.php">
+    <input type="hidden" name="ref_forum" value="ID_DU_FORUM"> <!-- Remplacer par l'ID du forum -->
+    <textarea name="messages" placeholder="Écrivez votre réponse ici..." required></textarea>
+    <button type="submit">Envoyer la réponse</button>
+</form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>

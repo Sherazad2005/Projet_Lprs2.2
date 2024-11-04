@@ -52,7 +52,7 @@ $res = $req->fetch();
     }
 </style>
 <body>
-<form action="../src/controleur/TraitementEdit.php" method="post">
+<form action="../src/controller/TraitementEdit.php" method="post">
     <center> <img src="../assets/images/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></center>
 
     <center><input type="text" name="nom" placeholder="nom" value="<?= htmlspecialchars($res['nom'] ?? '') ?>"/><br><br>

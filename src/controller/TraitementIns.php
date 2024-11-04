@@ -2,7 +2,7 @@
 
 include '../bdd/Bdd.php';
 include '../model/Utilisateur.php';
-require_once '../model/Utilisateur.php'; // Inclusion de la classe Utilisateur
+require_once '../model/Utilisateur.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
