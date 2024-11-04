@@ -6,6 +6,7 @@ $req->execute(array());
 $res = $req->fetchAll();
 
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -50,17 +51,15 @@ $res = $req->fetchAll();
     <?php
     foreach ($res as $forum){
     ?>
-    <td><a href="PageReponse.php"><?=$forum["titre"] ?></a></td>
-        <td><?=$forum["messages"] ?></td>
+            <tr>
+        <td><a href="PageReponse.php"><?=$forum["titre"]?></a></td>
+        <td><?=$forum["messages"]?></td>
+            </tr>
         <?php
     }
     ?>
 </table>
-<form method="post" action="ajouterReponse.php">
-    <input type="hidden" name="ref_forum" value="ID_DU_FORUM">
-    <textarea name="messages" placeholder="Écrivez votre réponse ici..." required></textarea>
-    <button type="submit">Envoyer la réponse</button>
-</form>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>

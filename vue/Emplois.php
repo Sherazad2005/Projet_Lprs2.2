@@ -12,7 +12,7 @@ if (array_key_exists("erreur", $_GET)) {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Inscription</title>
+    <title>Emplois</title>
 </head>
 <style>
     body {
