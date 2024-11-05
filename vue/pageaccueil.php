@@ -33,6 +33,15 @@
 
                     </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Forums
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="PageForumGenerale.php">Forum générale</a></li>
+                        <li><a class="dropdown-item" href="PageForumAlumniEntreprise.php">Forums Eleve</a></li>
+                        <li><a class="dropdown-item" href="PageForumEleve.php">Forums Professionel</a></li>                    </ul>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="Offres.php">Offres</a>
                 </li>

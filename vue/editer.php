@@ -4,7 +4,7 @@ include '../src/bdd/Bdd.php';
 $bdd = new bdd();
 $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE id_utilisateur=:id_utilisateur');
 $req->execute(array(
-    "id_utilisateur" =>$_POST["id_utilisateur"] ?? 0
+    "id_utilisateur" =>$_GET["id_utilisateur"] ?? 0
 ));
 $res = $req->fetch();
 

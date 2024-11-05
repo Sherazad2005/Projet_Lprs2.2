@@ -1,19 +1,12 @@
 <?php
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM forum WHERE id_Forum = :id_Forum') ;
+$req = $bdd->getBdd()->prepare('SELECT * FROM forum, utilisateur WHERE id_Forum = :id_Forum and id_utilisateur = :id_utilisateur ') ;
 $req->execute(array(
-        'id_Forum' => $_GET['id_Forum']?? 0
-));
-$res = $req->fetch();
-?>
-<?php
-$bdd = new Bdd();
-$user = $bdd->getBdd()->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = :id_utilisateur') ;
-$user->execute(array(
+        'id_Forum' => $_GET['id_forum']?? 0,
     'id_utilisateur' => $_GET['id_utilisateur']?? 0
 ));
-$result = $user->fetch();
+$res = $req->fetch();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -25,7 +18,7 @@ $result = $user->fetch();
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-<h1>My forum</h1>
+<h1><?=$res["titre"]?></h1>
 <div id="wrapper">
     <div id="menu">
         <a class="item" href="pageaccueil.php">Home</a> -
@@ -36,6 +29,18 @@ $result = $user->fetch();
         <div id="content">
         </div>
     </div>
+    <table class="table table-success table-striped">
+        <tr>
+            <th>Titre</th>
+            <th>Sujet</th>
+        </tr>
+
+            <tr>
+                <td><?=$res["titre"]?></a></td>
+                <td><?=$res["messages"]?></td>
+            </tr>
+
+    </table>
 </div>
 </body>
 </html>
