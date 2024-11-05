@@ -4,32 +4,23 @@ class Utilisateur
 {
 
 
-    private $idUtilisateur;
+    private $id_utilisateur;
     private $nom;
     private $prenom;
     private $email;
     private $mdp;
-    private $nomPromo;
+    private $nom_promo;
     private $cv;
-    private $motifInscription;
+    private $secteur_activite;
     private $classe;
-    private $specialiteProf;
-    private $posteEntreprise;
-    private $idEntreprise;
+    private $specialite_prof;
+    private $poste_entreprise;
     private $role;
 
 
-    public function __construct(array $data)
+    public function __construct(array $donnee)
     {
-        $this->hydrate($data);
-    }
-    public function hydrate(array $data){
-        foreach ($data as $key => $value){
-            $method = 'set'.ucfirst($key);
-            if(method_exists($this,$method)){
-                $this->$method($value);
-            }
-        }
+        $this->hydrate($donnee);
     }
 
     /**
@@ -37,15 +28,25 @@ class Utilisateur
      */
     public function getIdUtilisateur()
     {
-        return $this->idUtilisateur;
+        return $this->id_utilisateur;
     }
 
     /**
-     * @param mixed $idUtilisateur
+     * @param mixed $id_utilisateur
      */
-    public function setIdUtilisateur($idUtilisateur)
+    public function setIdUtilisateur($id_utilisateur)
     {
-        $this->idUtilisateur = $idUtilisateur;
+        $this->id_utilisateur = $id_utilisateur;
+    }
+
+    public function hydrate(array $donnee)
+    {
+        foreach ($donnee as $key => $value) {
+            $method = 'set' . ucfirst($key);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
     }
 
     /**
@@ -80,20 +81,21 @@ class Utilisateur
         $this->prenom = $prenom;
     }
 
+
     /**
      * @return mixed
      */
-    public function getEmail()
+    public function getRole()
     {
-        return $this->email;
+        return $this->role;
     }
 
     /**
-     * @param mixed $email
+     * @param mixed $role
      */
-    public function setEmail($email)
+    public function setRole($role)
     {
-        $this->email = $email;
+        $this->role = $role;
     }
 
     /**
@@ -115,17 +117,33 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getNomPromo()
+    public function getEmail()
     {
-        return $this->nomPromo;
+        return $this->email;
     }
 
     /**
-     * @param mixed $nomPromo
+     * @param mixed $email
      */
-    public function setNomPromo($nomPromo)
+    public function setEmail($email)
     {
-        $this->nomPromo = $nomPromo;
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNomPromo()
+    {
+        return $this->nom_promo;
+    }
+
+    /**
+     * @param mixed $nom_promo
+     */
+    public function setNomPromo($nom_promo)
+    {
+        $this->nom_promo = $nom_promo;
     }
 
     /**
@@ -147,17 +165,17 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getMotifInscription()
+    public function getSecteurActivite()
     {
-        return $this->motifInscription;
+        return $this->secteur_activite;
     }
 
     /**
-     * @param mixed $motifInscription
+     * @param mixed $secteur_activite
      */
-    public function setMotifInscription($motifInscription)
+    public function setSecteurActivite($secteur_activite)
     {
-        $this->motifInscription = $motifInscription;
+        $this->secteur_activite = $secteur_activite;
     }
 
     /**
@@ -181,15 +199,15 @@ class Utilisateur
      */
     public function getSpecialiteProf()
     {
-        return $this->specialiteProf;
+        return $this->specialite_prof;
     }
 
     /**
-     * @param mixed $specialiteProf
+     * @param mixed $specialite_prof
      */
-    public function setSpecialiteProf($specialiteProf)
+    public function setSpecialiteProf($specialite_prof)
     {
-        $this->specialiteProf = $specialiteProf;
+        $this->specialite_prof = $specialite_prof;
     }
 
     /**
@@ -197,59 +215,28 @@ class Utilisateur
      */
     public function getPosteEntreprise()
     {
-        return $this->posteEntreprise;
+        return $this->poste_entreprise;
     }
 
     /**
-     * @param mixed $posteEntreprise
+     * @param mixed $poste_entreprise
      */
-    public function setPosteEntreprise($posteEntreprise)
+    public function setPosteEntreprise($poste_entreprise)
     {
-        $this->posteEntreprise = $posteEntreprise;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdEntreprise()
-    {
-        return $this->idEntreprise;
-    }
-
-    /**
-     * @param mixed $idEntreprise
-     */
-    public function setIdEntreprise($idEntreprise)
-    {
-        $this->idEntreprise = $idEntreprise;
+        $this->poste_entreprise = $poste_entreprise;
     }
 
     /**
      * @return mixed
      */
-    public function getRole()
+
+
+    public function inscription()
     {
-        return $this->role;
-    }
-
-    /**
-     * @param mixed $role
-     */
-    public function setRole($role)
-    {
-        $this->role = $role;
-    }
-
-
-
-
-
-
-    public function inscription() {
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare(
-            'INSERT INTO utilisateur (nom, prenom, email, mdp, nom_promo, cv, motif_inscription, classe, specialite_prof, poste_entreprise, role, id_entreprise) 
-         VALUES (:nom, :prenom, :email, :mdp, :nom_promo, :cv, :motif_inscription, :classe, :specialite_prof, :poste_entreprise, :role, :id_entreprise)'
+            'INSERT INTO utilisateur (nom, prenom, email, mdp, nom_promo, cv, secteur_activite, classe, specialite_prof, poste_entreprise, role) 
+         VALUES (:nom, :prenom, :email, :mdp, :nom_promo, :cv, :secteur_activite, :classe, :specialite_prof, :poste_entreprise, :role)'
         );
         $req->execute([
             'nom' => $this->getNom(),
@@ -258,53 +245,54 @@ class Utilisateur
             'mdp' => $this->getMdp(),
             'nom_promo' => $this->getNomPromo(),
             'cv' => $this->getCv(),
-            'motif_inscription' => $this->getMotifInscription(),
+            'secteur_activite' => $this->getSecteurActivite(),
             'classe' => $this->getClasse(),
             'specialite_prof' => $this->getSpecialiteProf(),
             'poste_entreprise' => $this->getPosteEntreprise(),
             'role' => $this->getRole(),
-            'id_entreprise' => $this->getIdEntreprise(),
-
         ]);
 
-        header("Location: ../../vue/PageAcceuilConnect.php");
+        header("Location: ../../vue/Connexion.php?success");
     }
+
     public function connexion(){
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE email = :email');
-        $req->execute(["email" => $this->getEmail()]);
+        $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE email=:email and mdp=:mdp');
+        $req->execute(array(
+            "email" =>$this->getEmail(),
+            "mdp" =>$this->getMdp(),
+        ));
         $res = $req->fetch();
-
-        if ($res && password_verify($this->getMdp(), $res["mdp"])) {+
+        if (is_array($res)){
             $this->setNom($res["nom"]);
             $this->setPrenom($res["prenom"]);
-            $this->setRole($res["role"]);
             session_start();
+
             $_SESSION["utilisateur"] = $this;
-            header("Location: ../../vue/PageAcceuilConnect.php");
-            exit();  // Pour s'assurer que le reste du script ne s'exécute pas
-        }  else {
-          //  header("Location: ../../vue/connexion.php");
-            exit();  // Pour s'assurer que le reste du script
+            header("Location: ../../vue/pageaccueil.php");
+        }else{
+            header("Location: ../../vue/connexion.php");
         }
     }
 
-        public function editer(){
+    public function editer()
+    {
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET id_utilisateur=:id_utilisateur,nom=:nom,prenom=:prenom,role=:role WHERE id_utilisateur=:id_utilisateur');
+        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET nom=:nom,prenom=:prenom,role=:role WHERE id_utilisateur=:id_utilisateur');
         $res = $req->execute(array(
-            "id_utilisateur" =>$this->getIdUtilisateur(),
-            "nom" =>$this->getNom(),
-            "prenom" =>$this->getPrenom(),
-            "role" =>$this->getRole(),
+            "id_utilisateur" => $this->getIdutilisateur(),
+            "nom" => $this->getNom(),
+            "prenom" => $this->getPrenom(),
+            "role" => $this->getRole(),
         ));
 
-        if ($res){
-            header("Location: ../../vue/accueil.php?success");
-        }else{
-            header("Location: ../../vue/editer.php?id_utilisateur=".$this->getIdUtilisateur()."&erreur");
+        if ($res) {
+            header("Location: ../../vue/pageaccueil.php?success");
+        } else {
+            header("Location: ../../vue/editer.php?id_utilisateur=" . $this->getIdutilisateur() . "&erreur");
         }
     }
+
     public function supprimer()
     {
         $bdd = new Bdd();
@@ -325,7 +313,7 @@ class Utilisateur
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare('SELECT nom FROM `utilisateur` WHERE nom=:nom');
         $req->execute(array(
-            "nom" =>$this->getNom()
+            "nom" => $this->getNom()
 
         ));
     }

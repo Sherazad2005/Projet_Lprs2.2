@@ -4,7 +4,7 @@ include '../src/bdd/Bdd.php';
 $bdd = new bdd();
 $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE id_utilisateur=:id_utilisateur');
 $req->execute(array(
-    "id_utilisateur" =>$_POST["id_utilisateur"] ?? 0
+    "id_utilisateur" =>$_GET["id_utilisateur"] ?? 0
 ));
 $res = $req->fetch();
 
@@ -68,10 +68,10 @@ $res = $req->fetch();
         <label for="role">Sélectionner un rôle</label>
         <select name="role" id="role" onchange="afficherChampsSpecifiques()">
             <option value="">Sélectionner un rôle</option>
-            <option value="<?= htmlspecialchars(trim($res['eleve'] ?? '')) ?>">Élève</option>
-            <option value="<?= htmlspecialchars(trim($res['professeur'] ?? '')) ?>">Professeur</option>
-            <option value="<?= htmlspecialchars(trim($res['alumni'] ?? '')) ?>">Alumni</option>
-            <option value="<?= htmlspecialchars(trim($res['entreprise'] ?? '')) ?>">Entreprise</option>
+            <option value="eleve">Élève</option>
+            <option value="professeur">Professeur</option>
+            <option value="alumni">Alumni</option>
+            <option value="partenaire">Partenaire</option>
         </select><br><br>
 
         <div id="eleveFields" style="display:none;">

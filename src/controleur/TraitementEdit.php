@@ -4,7 +4,7 @@ include '../bdd/Bdd.php';
 include '../model/Utilisateur.php';
 
 $utilisateur = new Utilisateur([
-    "id_utilisateur" =>$_POST['id_utilisateur'],
+    "idUtilisateur" =>$_POST['id_utilisateur'],
     "nom" =>$_POST['nom'],
     "prenom" =>$_POST['prenom'],
     "mdp" =>$_POST['mdp'],

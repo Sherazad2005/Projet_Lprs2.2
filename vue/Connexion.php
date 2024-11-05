@@ -60,7 +60,7 @@ if (array_key_exists("erreur", $_GET)) {
 
     <CENTER><img src="../assets/img/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></CENTER>
 
-    <CENTER><input type="email" name="email" placeholder="Email"/></CENTER>
+    <CENTER><input type="email" name="email" placeholder="indentifiant"/></CENTER>
     <br>
 
     <CENTER>
@@ -68,7 +68,7 @@ if (array_key_exists("erreur", $_GET)) {
         <input type="password" name="mdp" placeholder="mots de passe"/></CENTER>
     <br><br>
 
-    <center><button type="submit">Connexion</button></center>
+    <CENTER><input type="submit" name="ins"/><br><br></CENTER>
 
     <CENTER><a href="Inscription.php">Vous n'avez pas de compte</a></td></CENTER>
 
