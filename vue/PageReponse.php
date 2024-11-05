@@ -1,37 +1,42 @@
 <?php
-// Inclure les classes nécessaires
-require_once '../src/bdd/Bdd.php';
-require_once '../src/model/Post.php';
-
-// Vérifier si un ID de post est passé dans l'URL
-if (isset($_GET['id'])) {
-    $postId = $_GET['id'];
-
-    // Créer une instance de la classe Post et récupérer les détails du post
-    $post = new Post();
-    $details = $post->getDetails($postId); // Méthode pour obtenir les détails du post avec son ID
-} else {
-    echo "Aucun post sélectionné.";
-    exit;
-}
+include '../src/bdd/Bdd.php';
+$bdd = new Bdd();
+$req = $bdd->getBdd()->prepare('SELECT * FROM forum WHERE id_Forum = :id_Forum') ;
+$req->execute(array(
+        'id_Forum' => $_GET['id_Forum']?? 0
+));
+$res = $req->fetch();
 ?>
-
+<?php
+$bdd = new Bdd();
+$user = $bdd->getBdd()->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = :id_utilisateur') ;
+$user->execute(array(
+    'id_utilisateur' => $_GET['id_utilisateur']?? 0
+));
+$result = $user->fetch();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Détails du Post</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="A short description." />
+<meta name="keywords" content="put, keywords, here" />
+<title>PHP-MySQL forum</title>
+<link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-<?php if ($details): ?>
-    <h1><?php echo htmlspecialchars($details['titre']); ?></h1>
-    <p><?php echo htmlspecialchars($details['contenu']); ?></p>
-    <p><em>Posté le : <?php echo htmlspecialchars($details['date_creation']); ?></em></p>
-    <!-- Autres informations ou réponses liées au post peuvent être ajoutées ici -->
-<?php else: ?>
-    <p>Post non trouvé.</p>
-<?php endif; ?>
+<h1>My forum</h1>
+<div id="wrapper">
+    <div id="menu">
+        <a class="item" href="pageaccueil.php">Home</a> -
+        <a class="item" href="NewForum.php">Crée une nouvelle discussion</nouve></a> -
+        <div id="userbar">
+            <div id="userbar">Hello Example. Not you? Log out.</div>
+        </div>
+        <div id="content">
+        </div>
+    </div>
+</div>
 </body>
 </html>
-
 
