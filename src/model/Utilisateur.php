@@ -267,30 +267,29 @@ class Utilisateur
 
         ]);
 
-      //  header("Location: ../../vue/PageAcceuilConnect.php");
+        header("Location: ../../vue/PageAcceuilConnect.php");
     }
     public function connexion(){
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE email=:email and mdp=:mdp');
-        $req->execute(array(
-            "email" =>$this->getEmail(),
-            "mdp" =>$this->getMdp(),
-        ));
+        $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE email = :email');
+        $req->execute(["email" => $this->getEmail()]);
         $res = $req->fetch();
-        if (is_array($res)){
+
+        if ($res && password_verify($this->getMdp(), $res["mdp"])) {+
             $this->setNom($res["nom"]);
             $this->setPrenom($res["prenom"]);
             $this->setRole($res["role"]);
             session_start();
-
             $_SESSION["utilisateur"] = $this;
             header("Location: ../../vue/PageAcceuilConnect.php");
-        }else{
-            header("Location: ../../vue/connexion.php");
+            exit();  // Pour s'assurer que le reste du script ne s'exécute pas
+        }  else {
+          //  header("Location: ../../vue/connexion.php");
+            exit();  // Pour s'assurer que le reste du script
         }
     }
 
-    public function editer(){
+        public function editer(){
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET id_utilisateur=:id_utilisateur,nom=:nom,prenom=:prenom,role=:role WHERE id_utilisateur=:id_utilisateur');
         $res = $req->execute(array(

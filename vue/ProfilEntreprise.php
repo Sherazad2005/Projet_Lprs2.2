@@ -1,5 +1,5 @@
 <?php
-require_once '../model/Utilisateur.php';
+require_once '../src/model/Utilisateur.php';
 
 $utilisateurData = [
     'id_utilisateur' => 1,
@@ -81,24 +81,36 @@ $utilisateur = new Utilisateur($utilisateurData);
 
     <div id="formulaireAjoutOffre" class="mt-4 card">
         <div class="card-header">
-            <h5>Ajouter une Entreprise</h5>
+            <h5>Ajouter une Offre</h5>
         </div>
         <div class="card-body">
             <form>
                 <div class="form-group">
-                    <label for="nomEntreprise">Nom de l'Entreprise</label>
+                    <label for="nomEntreprise">Titre de l'offre</label>
                     <input type="text" class="form-control" id="nomEntreprise" required>
                 </div>
                 <div class="form-group">
-                    <label for="adresseEntreprise">Adresse</label>
+                    <label for="adresseEntreprise">Description de l’offre</label>
                     <input type="text" class="form-control" id="adresseEntreprise" required>
                 </div>
                 <div class="form-group">
-                    <label for="cpEntreprise">Code Postal</label>
+                    <label for="cpEntreprise">Missions liées</label>
                     <input type="text" class="form-control" id="cpEntreprise" required>
                 </div>
                 <div class="form-group">
-                    <label for="emailEntreprise">Email</label>
+                    <label for="emailEntreprise">Salaire </label>
+                    <input type="email" class="form-control" id="emailEntreprise" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailEntreprise">Type d’offre</label>
+                    <input type="email" class="form-control" id="emailEntreprise" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailEntreprise">Cible de l’offre</label>
+                    <input type="email" class="form-control" id="emailEntreprise" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailEntreprise">État de l’offre</label>
                     <input type="email" class="form-control" id="emailEntreprise" required>
                 </div>
                 <button type="submit" class="btn btn-success">Ajouter</button>
