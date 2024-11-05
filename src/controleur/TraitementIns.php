@@ -4,7 +4,6 @@ include '../bdd/Bdd.php';
 include '../model/Utilisateur.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    var_dump($_POST);
     $data = [
         "nom" => htmlspecialchars($_POST["nom"]),
         "prenom" => htmlspecialchars($_POST["prenom"]),
@@ -12,17 +11,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "mdp" => password_hash($_POST["mdp"], PASSWORD_DEFAULT),
         "role" => htmlspecialchars($_POST["role"]),
         "classe" => null,
-        "nom_promo" => null,
+        "nomPromo" => null,
         "cv" => null,
-        "specialite_prof" => null,
-        "poste_entreprise" => null,
+        "specialiteProf" => null,
+        "posteEntreprise" => null,
         "motifInscription" => null,
         "idEntreprise" => null
     ];
 
+
     if ($_POST["role"] == "eleve") {
         $data["classe"] = htmlspecialchars($_POST["classe"]);
-        $data["nom_promo"] = htmlspecialchars($_POST["nom_promo"]);
+        $data["nomPromo"] = htmlspecialchars($_POST["nomPromo_el"]);
 
 
         if (isset($_FILES["cv"]) && $_FILES["cv"]["error"] == 0) {
@@ -36,21 +36,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     } elseif ($_POST["role"] == "professeur") {
-        $data["specialite_prof"] = htmlspecialchars($_POST["specialite_prof"]);
+        $data["specialiteProf"] = htmlspecialchars($_POST["specialiteProf"]);
 
     } elseif ($_POST["role"] == "alumni") {
-        $data["nom_promo"] = htmlspecialchars($_POST["nom_promo"]);
+        $data["nomPromo"] = htmlspecialchars($_POST["nomPromo_al"]);
 
     } elseif ($_POST["role"] == "partenaire") {
-        if (empty($_POST["poste_entreprise"]) || empty($_POST["motif_inscription"]) || empty($_POST['idEntreprise'])) {
+        if (empty($_POST["posteEntreprise"]) || empty($_POST["motifInscription"]) || empty($_POST['idEntreprise'])) {
             echo "Tous les champs sont obligatoires.";
             exit;
         }
-        $data["poste_entreprise"] = htmlspecialchars($_POST["poste_entreprise"]);
-        $data["motif_inscription"] = htmlspecialchars($_POST["motif_inscription"]);
+        $data["posteEntreprise"] = htmlspecialchars($_POST["posteEntreprise"]);
+        $data["motifInscription"] = htmlspecialchars($_POST["motifInscription"]);
         $data["idEntreprise"] = intval($_POST['idEntreprise']);
     }
+    var_dump($data);
     $utilisateur = new Utilisateur($data);
-    var_dump($utilisateur);
+    var_dump($data);
     $utilisateur->inscription();
 }

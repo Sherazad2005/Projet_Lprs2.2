@@ -278,8 +278,7 @@ class Utilisateur
     public function editer()
     {
         $bdd = new Bdd();
-        //var_dump($this);die();
-        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET nom=:nom,prenom=:prenom,role=:role WHERE id_utilisateur=:id_utilisateur');
+        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET id_utilisateur=:id_utilisateur,nom=:nom,prenom=:prenom,role=:role WHERE id_utilisateur=:id_utilisateur');
         $res = $req->execute(array(
             "id_utilisateur" => $this->getIdutilisateur(),
             "nom" => $this->getNom(),
@@ -288,7 +287,7 @@ class Utilisateur
         ));
 
         if ($res) {
-            header("Location: ../../vue/pageaccueil.php?success");
+            header("Location: ../../vue/accueil.php?success");
         } else {
             header("Location: ../../vue/editer.php?id_utilisateur=" . $this->getIdutilisateur() . "&erreur");
         }

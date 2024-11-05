@@ -55,7 +55,7 @@ if (array_key_exists("erreur", $_GET)) {
 
     <CENTER><img src="../assets/images/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></CENTER>
 
-    <CENTER><input type="email" name="email" placeholder="email"/></CENTER>
+    <CENTER><input type="email" name="email" placeholder="indentifiant"/></CENTER>
     <br>
 
     <CENTER>
