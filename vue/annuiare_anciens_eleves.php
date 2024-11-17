@@ -1,8 +1,9 @@
 <?php
+session_start();
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE role = "alumni"');
-$req->execute();
+$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` ');
+$req->execute(array());
 $res = $req->fetchAll();
 
 ?>
@@ -76,13 +77,6 @@ $res = $req->fetchAll();
 </head>
 <body>
 
-<div class="search-container">
-    <form action="//127.0.0.1:8000">
-        <input type="text" placeholder="Search.." name="search">
-        <button type="submit">Submit</button>
-    </form>
-</div><br>
-
 <table>
     <tr>
         <th>Id Utilisateur</th>
@@ -98,13 +92,13 @@ $res = $req->fetchAll();
     foreach ($res as $utilisateur){
     ?>
     <tr>
-        <td><?=$utilisateur["id_utilisateur"] ?></td>
-        <td><?=$utilisateur["nom"] ?></td>
-        <td><?=$utilisateur["prenom"] ?></td>
-        <td><?=$utilisateur["email"] ?></td>
-        <td><?=$utilisateur["classe"] ?></td>
-        <td><?=$utilisateur["nom_promo"] ?></td>
-        <td><?=$utilisateur["cv"] ?></td>
+        <td><?=htmlspecialchars($utilisateur["id_utilisateur"]?? '' )?></td>
+        <td><?=htmlspecialchars($utilisateur["nom"]?? '') ?></td>
+        <td><?=htmlspecialchars($utilisateur["prenom"]?? '') ?></td>
+        <td><?=htmlspecialchars($utilisateur["email"]?? '') ?></td>
+        <td><?=htmlspecialchars($utilisateur["classe"]?? '') ?></td>
+        <td><?=htmlspecialchars($utilisateur["nom_promo"]?? '') ?></td>
+        <td><?=htmlspecialchars($utilisateur["cv"]?? '') ?></td>
         <td><a href="editer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Editer</a>
             / <a href="Supprimer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Supprimer</a></td>
     </tr>

@@ -20,7 +20,7 @@ if (array_key_exists("erreur", $_POST)) {
 </head>
 <body>
 
-<form action="../src/controller/TraitementSupp.php" method="post">
+<form action="../src/controleur/TraitementSupp.php" method="post">
     Voulez-vous supprimer réellement le compte d'id <?=$_POST["id_utilisateur"] ?? 0?><br>
     <input type="number" name="id_utilisateur" value="<?=$_POST["id_utilisateur"] ?? 0?>"/><br>
 
