@@ -16,7 +16,7 @@ $res = $req->fetchAll();
             box-sizing: border-box;
         }
 
-{
+        {
             float: left;
         }
 
@@ -69,6 +69,8 @@ $res = $req->fetchAll();
     </style>
     <meta charset="UTF-8">
     <title>Annuaire des anciens eleves</title>
+    <h1></h1><br>
+    <h2>Accès aux élèves actuel !</h2><br>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
@@ -90,45 +92,27 @@ $res = $req->fetchAll();
 
     <?php
     foreach ($res as $utilisateur){
-    ?>
-    <tr>
-        <td><?=htmlspecialchars($utilisateur["id_utilisateur"]?? '' )?></td>
-        <td><?=htmlspecialchars($utilisateur["nom"]?? '') ?></td>
-        <td><?=htmlspecialchars($utilisateur["prenom"]?? '') ?></td>
-        <td><?=htmlspecialchars($utilisateur["email"]?? '') ?></td>
-        <td><?=htmlspecialchars($utilisateur["classe"]?? '') ?></td>
-        <td><?=htmlspecialchars($utilisateur["nom_promo"]?? '') ?></td>
-        <td><?=htmlspecialchars($utilisateur["cv"]?? '') ?></td>
-        <td><a href="editer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Editer</a>
-            / <a href="Supprimer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Supprimer</a></td>
-    </tr>
-    <?php
+        ?>
+        <tr>
+            <td><?=htmlspecialchars($utilisateur["id_utilisateur"]?? '' )?></td>
+            <td><?=htmlspecialchars($utilisateur["nom"]?? '') ?></td>
+            <td><?=htmlspecialchars($utilisateur["prenom"]?? '') ?></td>
+            <td><?=htmlspecialchars($utilisateur["email"]?? '') ?></td>
+            <td><?=htmlspecialchars($utilisateur["classe"]?? '') ?></td>
+            <td><?=htmlspecialchars($utilisateur["nom_promo"]?? '') ?></td>
+            <td><?=htmlspecialchars($utilisateur["cv"]?? '') ?></td>
+        </tr>
+        <?php
     }
     ?>
+    <center><div class="search-box">
+        <form action="recherche.php" method="GET">
+            <input type="text" name="search" placeholder="Entrez un titre, un lieu..." required>
+            <button type="submit"><i class="fas fa-search"></i> Recherche</button>
+        </form>
+    </div></center> <br>
 </table>
 <br>
 <a href="../vue/accueil">Retour</a>
-<!-- Footer -->
-<footer class="text-center text-lg-start bg-body-tertiary text-muted">
-    <!-- Section: Social media -->
-
-    <!-- Section: Social media -->
-
-    <!-- Section: Links  -->
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-            <!-- Grid row -->
-            <div class="row mt-3">
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <!-- Content -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Projet LPRS
-                    </h6>
-
-                </div>
-</footer>
-<!-- Footer -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
 </body>
 </html>

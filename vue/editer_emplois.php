@@ -2,11 +2,10 @@
 include '../src/bdd/Bdd.php';
 
 $bdd = new bdd();
-
-$id_emplois = $_GET['id_emplois'] ?? 0;
-$req = $bdd->getBdd()->prepare('SELECT * FROM `emplois` WHERE id_emplois = :id_emplois');
-$req->execute(['id_emplois' => $id_emplois]);
-$res = $req->fetch();
+$req = $bdd->getBdd()->prepare('SELECT * FROM `emplois` WHERE id_emplois=:id_emplois');
+$req->execute(array(
+    "id_emplois" =>$_GET["id_emplois"] ?? 0
+));
 
 ?>
 <!DOCTYPE html>
@@ -63,7 +62,7 @@ $res = $req->fetch();
     <center><input type="text" name="titre" placeholder="titre" value="<?= htmlspecialchars($res['titre'] ?? '') ?>"/><br><br>
         <input type="text" name="entreprise" placeholder="entreprise" value="<?= htmlspecialchars($res['entreprise'] ?? '') ?>"/><br><br>
         <input type="text" name="description" placeholder="description" value="<?= htmlspecialchars($res['description'] ?? '') ?>"/>
-    </center>
+    </center><input type="hidden" name="id_emplois" placeholder="id_emplois" value="<?= htmlspecialchars($res['id_emplois'] ?? '') ?>"/><br><br>
         <center><input type="submit" name="ins"/><br></center>
 
 
