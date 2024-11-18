@@ -266,9 +266,20 @@ class Utilisateur
         if (is_array($res)){
             $this->setNom($res["nom"]);
             $this->setPrenom($res["prenom"]);
+            $this->setCv($res["cv"]);
+            $this->setIdUtilisateur($res["id_utilisateur"]);
+            $this->setClasse($res["classe"]);
+            $this->setEmail($res["email"]);
+            $this->setNomPromo($res["nom_promo"]);
+            $this->setPosteEntreprise($res["poste_entreprise"]);
+            $this->setRole($res["role"]);
+            $this->setSecteurActivite($res["secteur_activite"]);
+            $this->setSpecialiteProf($res["specialite_prof"]);
+
             session_start();
 
             $_SESSION["utilisateur"] = $this;
+
             header("Location: ../../vue/pageaccueil.php");
         }else{
             header("Location: ../../vue/connexion.php");
