@@ -1,8 +1,9 @@
 <?php
+session_start();
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE role = "alumni"');
-$req->execute();
+$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` ');
+$req->execute(array());
 $res = $req->fetchAll();
 
 ?>
@@ -68,15 +69,13 @@ $res = $req->fetchAll();
     </style>
     <meta charset="UTF-8">
     <title>Annuaire des anciens eleves</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css">
 </head>
 <body>
-
-<div class="search-container">
-    <form action="//127.0.0.1:8000">
-        <input type="text" placeholder="Search.." name="search">
-        <button type="submit">Submit</button>
-    </form>
-</div><br>
 
 <table>
     <tr>
@@ -93,13 +92,13 @@ $res = $req->fetchAll();
     foreach ($res as $utilisateur){
     ?>
     <tr>
-        <td><?=$utilisateur["id_utilisateur"] ?></td>
-        <td><?=$utilisateur["nom"] ?></td>
-        <td><?=$utilisateur["prenom"] ?></td>
-        <td><?=$utilisateur["email"] ?></td>
-        <td><?=$utilisateur["classe"] ?></td>
-        <td><?=$utilisateur["nom_promo"] ?></td>
-        <td><?=$utilisateur["cv"] ?></td>
+        <td><?=htmlspecialchars($utilisateur["id_utilisateur"]?? '' )?></td>
+        <td><?=htmlspecialchars($utilisateur["nom"]?? '') ?></td>
+        <td><?=htmlspecialchars($utilisateur["prenom"]?? '') ?></td>
+        <td><?=htmlspecialchars($utilisateur["email"]?? '') ?></td>
+        <td><?=htmlspecialchars($utilisateur["classe"]?? '') ?></td>
+        <td><?=htmlspecialchars($utilisateur["nom_promo"]?? '') ?></td>
+        <td><?=htmlspecialchars($utilisateur["cv"]?? '') ?></td>
         <td><a href="editer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Editer</a>
             / <a href="Supprimer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Supprimer</a></td>
     </tr>
@@ -109,5 +108,27 @@ $res = $req->fetchAll();
 </table>
 <br>
 <a href="../vue/accueil">Retour</a>
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+    <!-- Section: Social media -->
+
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <i class="fas fa-gem me-3"></i>Projet LPRS
+                    </h6>
+
+                </div>
+</footer>
+<!-- Footer -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
 </body>
 </html>

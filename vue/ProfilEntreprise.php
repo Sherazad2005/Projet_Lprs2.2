@@ -1,11 +1,20 @@
 <?php
 require_once '../src/model/Utilisateur.php';
+session_start();
 
 $utilisateurData = [
-    'id_utilisateur' => 1,
-    'nom' => 'Jean Dupont',
-    'email' => 'jean.dupont@example.com',
-    'photo' => 'https://via.placeholder.com/150'
+    'id_utilisateur' => $_SESSION['utilisateur']['id_utilisateur'],
+    'nom' => $_SESSION['utilisateur']['nom'],
+    'prenom' => $_SESSION['utilisateur']['prenom'],
+    'email' => $_SESSION['utilisateur']['email'],
+    'role' => $_SESSION['utilisateur']['role'],
+    'nom_promo' => $_SESSION['utilisateur']['nom_promo'],
+    'classe' => $_SESSION['utilisateur']['classe'],
+    'specialite_prof' => $_SESSION['utilisateur']['specialite_prof'],
+    'poste_entreprise' => $_SESSION['utilisateur']['poste_entreprise'],
+    'secteur_activite' => $_SESSION['utilisateur']['secteur_activite'],
+    'motif_inscription' => $_SESSION['utilisateur']['motif_inscription'],
+    'id_entreprise' => $_SESSION['utilisateur']['id_entreprise']
 ];
 
 $utilisateur = new Utilisateur($utilisateurData);
@@ -29,8 +38,131 @@ $utilisateur = new Utilisateur($utilisateurData);
             opacity: 1;
         }
     </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css">
 </head>
 <body>
+<!-- Navbar -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button
+                    data-mdb-collapse-init
+                    class="navbar-toggler"
+                    type="button"
+                    data-mdb-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                    <img
+                            src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+                            height="15"
+                            alt="MDB Logo"
+                            loading="lazy"
+                    />
+                </a>
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="pageaccueil.php">Acceuil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AnnuaireEleve.php">Annuaire</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PageForumAlumniEntreprise.php">Forum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Offres.php">Offres</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <!-- Icon -->
+
+                <!-- Notifications -->
+                <div class="dropdown">
+                    <a
+                            data-mdb-dropdown-init
+                            class="link-secondary me-3 dropdown-toggle hidden-arrow"
+                            href="#"
+                            id="navbarDropdownMenuLink"
+                            role="button"
+                            aria-expanded="false"
+                    >
+                        <i class="fas fa-bell"></i>
+                        <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                    </a>
+                    <ul
+                            class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="navbarDropdownMenuLink"
+                    >
+                        <li>
+                            <a class="dropdown-item" href="#">Some news</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Another news</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Avatar -->
+                <div class="dropdown">
+                    <a
+                            data-mdb-dropdown-init
+                            class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                            href="#"
+                            id="navbarDropdownMenuAvatar"
+                            role="button"
+                            aria-expanded="false"
+                    >
+                        <img
+                                src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                                class="rounded-circle"
+                                height="25"
+                                alt="Black and White Portrait of a Man"
+                                loading="lazy"
+                        />
+                    </a>
+                    <ul
+                            class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="navbarDropdownMenuAvatar"
+                    >
+                        <li>
+                            <a class="dropdown-item" href="ProfilEntreprise.php">Mon Profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+
+</header>
+<!-- Navbar -->
 <div class="container mt-5">
     <h2>Profil Utilisateur</h2>
     <div class="card">
@@ -120,9 +252,30 @@ $utilisateur = new Utilisateur($utilisateurData);
     </div>
 
     <div class="mt-3">
-        <a href="../../vue/accueilid.php" class="btn btn-secondary">Retour</a>
+        <a href="../../vue/pageacceuil.php" class="btn btn-secondary">Retour</a>
     </div>
 </div>
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+    <!-- Section: Social media -->
+
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <i class="fas fa-gem me-3"></i>Projet LPRS
+                    </h6>
+
+                </div>
+</footer>
+<!-- Footer -->
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
