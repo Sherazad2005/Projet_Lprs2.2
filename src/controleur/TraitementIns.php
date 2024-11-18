@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "role" => htmlspecialchars($_POST["role"]),
         "classe" => null,
         "nomPromo" => null,
+        "secteurActivite" => null,
         "cv" => null,
         "specialiteProf" => null,
         "posteEntreprise" => null,
@@ -40,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     } elseif ($_POST["role"] == "alumni") {
         $data["nomPromo"] = htmlspecialchars($_POST["nomPromo_al"]);
+        $data["secteurActivite"] = htmlspecialchars($_POST["secteur_activite"]);
 
     } elseif ($_POST["role"] == "partenaire") {
         if (empty($_POST["posteEntreprise"]) || empty($_POST["motifInscription"]) || empty($_POST['idEntreprise'])) {
