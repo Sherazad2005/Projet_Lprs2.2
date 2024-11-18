@@ -1,12 +1,15 @@
 <?php
 
+use model\event;
+
 include '../bdd/Bdd.php';
 include '../model/Event.php';
 
-$event = new \model\event([
+$event = new event([
+    "idEvent" =>$_POST['id_event'],
     "nom" =>$_POST['nom'],
     "date" =>$_POST['date'],
     "inscrits" =>$_POST['inscrits'],
     "gerant" =>$_POST['gerant'],
 ]);
-$event->ajouterUnEvent();
+$event->editer_event();

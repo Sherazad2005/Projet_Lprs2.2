@@ -1,4 +1,4 @@
-<?php
+  <?php
 session_start();
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();

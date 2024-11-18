@@ -122,4 +122,18 @@ class Emplois
         }
     }
 
+    public function supprimer_emplois()
+    {
+        $bdd = new Bdd();
+        $req = $bdd->getBdd()->prepare('DELETE FROM emplois WHERE id_emplois=:id_emplois');
+        $res = $req->execute(array(
+            "id_emplois" => $this->getIdEmplois(),
+        ));
+
+        if ($res) {
+            header("Location: ../../vue/Opportunités_emplois.php");
+        } else {
+            header("Location: ../../vue/supprimer_emplois.php?erreur");
+        }
+    }
 }

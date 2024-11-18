@@ -121,4 +121,38 @@ private $gerant;
 
         header("Location: ../../vue/participation_evenement.php?success");
     }
+
+    public function editer_event()
+    {
+        $bdd = new Bdd();
+        $req = $bdd->getBdd()->prepare('UPDATE event SET nom=:nom,date=:date,inscrits=:inscrits,gerant=:gerant WHERE id_event=:id_event');
+        $res = $req->execute(array(
+            "id_event" => $this->getIdEvent(),
+            "nom" => $this->getNom(),
+            "date" => $this->getDate(),
+            "inscrits" => $this->getInscrits(),
+            "gerant" => $this->getGerant(),
+        ));
+
+        if ($res) {
+            header("Location: ../../vue/participation_evenement.php.");
+        } else {
+            header("Location: ../../vue/editer_event.php?id_event=" . $this->getIdEvent() . "&erreur");
+        }
+    }
+
+    public function supprimer_event()
+    {
+        $bdd = new Bdd();
+        $req = $bdd->getBdd()->prepare('DELETE FROM event WHERE id_event=:id_event');
+        $res = $req->execute(array(
+            "id_event" => $this->getIdEvent(),
+        ));
+
+        if ($res) {
+            header("Location: ../../vue/participation_evenement.php");
+        } else {
+            header("Location: ../../vue/connexion.php?erreur");
+        }
+    }
 }

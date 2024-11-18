@@ -20,13 +20,13 @@ if (array_key_exists("erreur", $_POST)) {
 </head>
 <body>
 
-<form action="../src/controleur/TraitementSupp.php" method="post">
+<form action="../src/controleur/TraitementSupp_emplois.php" method="post">
     <br>
-    Voulez-vous supprimer réellement le compte d'id ?<?=$_GET["id_utilisateur"]?><br>
-    <input type="number" name="id_utilisateur" value="<?=$_GET["id_utilisateur"]?>"/><br><br>
+    Voulez-vous supprimer réellement le compte d'id ?<?=$_GET["id_emplois"]?><br>
+    <input type="number" name="id_emplois" value="<?=$_GET["id_emplois"]?>"/><br><br>
 
     <input type="submit" name="ins" value="Confirmer"/><br><br>
-    <a href="AnnuaireEleve.php">Retour</a>
+    <a href=".php">Retour</a>
 
 </form>
 <!-- Footer -->
