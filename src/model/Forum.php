@@ -8,6 +8,7 @@ class Forum
     private $date_messages ;
     private $heure_messages ;
     private $canal ;
+    private $ref_utilisateur ;
 
     public function __construct(array $donnee)
     {
@@ -31,12 +32,14 @@ class Forum
     }
 
     /**
-     * @param mixed $id_forum
+     * @param mixed $id_Forum
      */
-    public function setIdForum($id_forum)
+    public function setIdForum($id_Forum)
     {
-        $this->ifForum = $id_forum;
+        $this->id_Forum = $id_Forum;
     }
+
+
 
     /**
      * @return mixed
@@ -118,6 +121,24 @@ class Forum
     {
         $this->canal = $canal;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRefUtilisateur()
+    {
+        return $this->ref_utilisateur;
+    }
+
+    /**
+     * @param mixed $ref_utilisateur
+     */
+    public function setRefUtilisateur($ref_utilisateur)
+    {
+        $this->ref_utilisateur = $ref_utilisateur;
+    }
+
+
 
     public function ajouterUnForum() {
         $bdd = new Bdd();

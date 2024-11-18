@@ -49,30 +49,14 @@ $res = $req->fetchAll();
     </tr>
     <?php
     foreach ($res as $forum){
-        if ($forum->canal == "generale"){
         ?>
-        <td><a href="PageReponse.php"><?=$forum["titre"] ?></a></td>
-        <td><?=$forum["messages"] ?></td>
-        <?php
-        }
-    }
-    ?>
-</table>
-<table class="table table-success table-striped">
-    <tr>
-        <th>Titre</th>
-        <th>Sujet</th>
-    </tr>
-    <?php
-    foreach ($res as $forum){
-        if ($forum->canal == "entreprise/alumni"){
-            ?>
             <td><a href="PageReponse.php"><?=$forum["titre"] ?></a></td>
             <td><?=$forum["messages"] ?></td>
-            <?php
-        }
+        <?php
+
     }
     ?>
+
 </table>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 

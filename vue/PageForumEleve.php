@@ -50,9 +50,20 @@ $res = $req->fetchAll();
     <?php
     foreach ($res as $forum){
         ?>
-        <td><a href="PageReponse.php"><?=$forum["titre"] ?></a></td>
-        <td><?=$forum["messages"] ?></td>
+        <td><a href="PageReponse.php?id=<?= $forum['id_forum'] ?>"> <?= htmlspecialchars($forum["titre"]) ?></a></td>
+        <td><?= htmlspecialchars($forum["messages"]) ?></td>
         <?php
+    }
+    ?>
+
+    <?php
+    foreach ($res as $forum){
+        if ($forum->canal == "generale"){
+            ?>
+            <td><a href="PageReponse.php"><?=$forum["titre"] ?></a></td>
+            <td><?=$forum["messages"] ?></td>
+            <?php
+        }
     }
     ?>
 </table>
