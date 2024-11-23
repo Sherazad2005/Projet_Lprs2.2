@@ -252,18 +252,23 @@ class Utilisateur
             'role' => $this->getRole(),
         ]);
 
-       // header("Location: ../../vue/Connexion.php?success");
+        header("Location: ../../vue/Connexion.php?success");
     }
 
     public function connexion(){
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE email=:email and mdp=:mdp');
+
+        $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE email = :email');
         $req->execute(array(
-            "email" =>$this->getEmail(),
-            "mdp" =>$this->getMdp(),
+            "email" => $this->getEmail()
         ));
+
         $res = $req->fetch();
-        if (is_array($res)){
+
+
+        if (is_array($res) && password_verify($this->getMdp(), $res["mdp"])) {
+
+
             $this->setNom($res["nom"]);
             $this->setPrenom($res["prenom"]);
             $this->setCv($res["cv"]);
@@ -276,15 +281,20 @@ class Utilisateur
             $this->setSecteurActivite($res["secteur_activite"]);
             $this->setSpecialiteProf($res["specialite_prof"]);
 
-            session_start();
 
+            session_start();
             $_SESSION["utilisateur"] = $this;
 
             header("Location: ../../vue/pageaccueil.php");
-        }else{
+            exit();
+
+        } else {
+
             header("Location: ../../vue/connexion.php");
+            exit();
         }
     }
+
 
     public function editer()
     {
