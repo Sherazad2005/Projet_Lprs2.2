@@ -77,6 +77,11 @@ var_dump($_SESSION);
     </script>
 </head>
 <body>
+<?php if (isset($_GET['erreur']) && $_GET['erreur'] == 1): ?>
+    <div id="notification" class="alert alert-danger text-center" role="alert">
+        Email ou Mot de Passe Incorrect.
+    </div>
+<?php endif; ?>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
         <div class="container-fluid">
@@ -99,7 +104,7 @@ var_dump($_SESSION);
 
             <a class="btn btn-dark me-3 dropdown-toggle hidden-arrow" href="#" onclick="afficherFormulaireDeconnexion()">Déconnection</a>
             <div class="dropdown">
-                <a class="navbar-brand mt-2 mt-lg-0" href="TraitementProfil.php">
+                <a class="navbar-brand mt-2 mt-lg-0" href="../src/controleur/TraitementProfil.php">
                     <img
                             src="../assets/img/istockphoto-1300845620-612x612.jpg"
                             class="img-fluid rounded"

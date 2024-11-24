@@ -3,7 +3,7 @@ session_start();
 var_dump($_SESSION);
 // Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['role'])) {
-    header('Location: login.php'); // Rediriger si pas de connexion
+    header('../vue/pageacceuil.php?erreur=1'); // Rediriger si pas de connexion
     exit;
 }
 

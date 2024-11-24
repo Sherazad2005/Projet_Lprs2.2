@@ -51,9 +51,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $data["motifInscription"] = htmlspecialchars($_POST["motif_inscription"]);
             $data["idEntreprise"] = intval($_POST['id_entreprise']);
         }
+        $_SESSION['user_data'] = $data;
 
         $utilisateur = new Utilisateur($data);
         $utilisateur->inscription();
+
+
 
     } catch (Exception $e) {
 

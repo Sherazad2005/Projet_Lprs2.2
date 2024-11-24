@@ -290,47 +290,69 @@ class Utilisateur
         header("Location: ../../vue/page_ouverture.php?success=1");
     }
 
-    public function connexion(){
-        $bdd = new Bdd();
+    public function connexion() {
+        try {
+            // Connexion à la base de données
+            $bdd = new Bdd();
 
-        $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE email = :email');
-        $req->execute(array(
-            "email" => $this->getEmail()
-        ));
+            // Préparation de la requête SQL
+            $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE email = :email');
 
-        $res = $req->fetch();
+            // Exécution de la requête
+            $req->execute(array(
+                "email" => $this->getEmail()
+            ));
 
+            // Récupérer le résultat
+            $res = $req->fetch();
 
-        if (is_array($res) && password_verify($this->getMdp(), $res["mdp"])) {
+            // Vérifier si un utilisateur a été trouvé et que le mot de passe est correct
+            if ($res && is_array($res) && password_verify($this->getMdp(), $res["mdp"])) {
+                // Démarrage de la session
+                session_start();
 
+                // Fonction pour stocker seulement les données non nulles dans la session
+                $this->storeUserInSession($res);
 
-            $this->setNom($res["nom"]);
-            $this->setPrenom($res["prenom"]);
-            $this->setCv($res["cv"]);
-            $this->setMotifInscription($res["motif_inscription"]);
-            $this->setIdUtilisateur($res["id_utilisateur"]);
-            $this->setClasse($res["classe"]);
-            $this->setEmail($res["email"]);
-            $this->setNomPromo($res["nom_promo"]);
-            $this->setPosteEntreprise($res["poste_entreprise"]);
-            $this->setRole($res["role"]);
-            $this->setIdEntreprise($res["id_entreprise"]);
-            $this->setSecteurActivite($res["secteur_activite"]);
-            $this->setSpecialiteProf($res["specialite_prof"]);
-
-
-            session_start();
-            $_SESSION["utilisateur"] = $this;
-
-            header("Location: ../../vue/pageaccueil.php");
-            exit();
-
-        } else {
-
-            header("Location: ../../vue/page_ouverture.php?erreur=1");
+                // Redirection vers la page d'accueil
+                header("Location: ../../vue/pageaccueil.php");
+                exit();
+            } else {
+                // Si l'utilisateur n'est pas trouvé ou le mot de passe est incorrect
+                header("Location: ../../vue/page_ouverture.php?erreur=1");
+                exit();
+            }
+        } catch (Exception $e) {
+            // Gérer les erreurs (ex: problèmes de connexion à la BDD)
+            echo "Une erreur s'est produite : " . $e->getMessage();
             exit();
         }
     }
+
+    private function storeUserInSession($userData) {
+        // Créer un tableau pour stocker les données utilisateur
+        $userSessionData = [];
+
+        // Stocker les données utilisateur uniquement si elles ne sont pas nulles
+        if (!is_null($userData["id_utilisateur"])) $userSessionData["utilisateur_id"] = $userData["id_utilisateur"];
+        if (!is_null($userData["nom"])) $userSessionData["utilisateur_nom"] = $userData["nom"];
+        if (!is_null($userData["prenom"])) $userSessionData["utilisateur_prenom"] = $userData["prenom"];
+        if (!is_null($userData["email"])) $userSessionData["utilisateur_email"] = $userData["email"];
+        if (!is_null($userData["role"])) $userSessionData["utilisateur_role"] = $userData["role"];
+        if (!is_null($userData["nom_promo"])) $userSessionData["utilisateur_nom_promo"] = $userData["nom_promo"];
+        if (!is_null($userData["classe"])) $userSessionData["utilisateur_classe"] = $userData["classe"];
+        if (!is_null($userData["cv"])) $userSessionData["utilisateur_cv"] = $userData["cv"];
+        if (!is_null($userData["motif_inscription"])) $userSessionData["utilisateur_motif_inscription"] = $userData["motif_inscription"];
+        if (!is_null($userData["poste_entreprise"])) $userSessionData["utilisateur_poste_entreprise"] = $userData["poste_entreprise"];
+        if (!is_null($userData["secteur_activite"])) $userSessionData["utilisateur_secteur_activite"] = $userData["secteur_activite"];
+        if (!is_null($userData["specialite_prof"])) $userSessionData["utilisateur_specialite_prof"] = $userData["specialite_prof"];
+        if (!is_null($userData["id_entreprise"])) $userSessionData["utilisateur_id_entreprise"] = $userData["id_entreprise"];
+
+        // Stocker les données dans la session
+        $_SESSION["utilisateur"] = $userSessionData;
+    }
+
+
 
 
     public function editer()
