@@ -251,8 +251,7 @@ class Utilisateur
             'poste_entreprise' => $this->getPosteEntreprise(),
             'role' => $this->getRole(),
         ]);
-
-        header("Location: ../../vue/Connexion.php?success");
+        header("Location: ../../vue/page_ouverture.php?success=1");
     }
 
     public function connexion(){

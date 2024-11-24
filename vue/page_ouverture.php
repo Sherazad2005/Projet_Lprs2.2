@@ -1,5 +1,4 @@
 <?php
-// Connexion à la base de données et récupération des entreprises
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
 
@@ -95,9 +94,22 @@ try {
             document.getElementById("alumniFields").style.display = (role === "alumni") ? "block" : "none";
             document.getElementById("partenaireFields").style.display = (role === "partenaire") ? "block" : "none";
         }
+        document.addEventListener('DOMContentLoaded', function () {
+            const notification = document.getElementById('notification');
+            if (notification) {
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 5000); // 5000 ms = 5 secondes
+            }
+        });
     </script>
 </head>
 <body>
+<?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+    <div id="notification" class="alert alert-success text-center" role="alert">
+        Inscription enregistrée. Veuillez attendre un mail de confirmation.
+    </div>
+<?php endif; ?>
 
 <div id="content">
     <!-- Contenu principal de la page -->
@@ -159,7 +171,7 @@ try {
     </form>
 </div>
 
-<!-- Formulaire d'inscription (initialement caché) -->
+
 <div id="inscriptionForm" class="form-container">
     <form action="../src/controleur/TraitementIns.php" method="POST" enctype="multipart/form-data">
         <h2>Bienvenue</h2>

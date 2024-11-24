@@ -59,6 +59,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch (Exception $e) {
 
         $_SESSION['error_message'] = $e->getMessage();
-        header("Location: ../../vue/Inscription.php");
     }
 }
