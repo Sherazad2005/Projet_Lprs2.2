@@ -77,10 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if ($success === true) {
         $_SESSION['notification'] = 'success';
-        header('Location: ../../vue/ProfilEntreprise.php');
+        header('Location: ../../vue/profil_partenaire.php');
     } else {
         $_SESSION['notification'] = 'error';
-        header('Location: ../../vue/ProfilEntreprise.php');
+        header('Location: ../../vue/profil_partenaire.php');
     }
 
     exit();

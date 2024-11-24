@@ -111,6 +111,12 @@ try {
     </div>
 <?php endif; ?>
 
+<?php if (isset($_GET['erreur']) && $_GET['erreur'] == 1): ?>
+    <div id="notification" class="alert alert-danger text-center" role="alert">
+        Email ou Mot de Passe Incorrect.
+    </div>
+<?php endif; ?>
+
 <div id="content">
     <!-- Contenu principal de la page -->
     <div class="container mt-5">
@@ -222,13 +228,13 @@ try {
 
         <div id="partenaireFields">
             <div class="form-group">
-                <input type="text" name="posteEntreprise" class="form-control" placeholder="Poste">
+                <input type="text" name="poste_entreprise" class="form-control" placeholder="Poste">
             </div>
             <div class="form-group">
-                <input type="text" name="motifInscription" class="form-control" placeholder="Motif d'inscription">
+                <input type="text" name="motif_inscription" class="form-control" placeholder="Motif d'inscription">
             </div>
             <div class="form-group">
-                <select name="idEntreprise" class="form-control">
+                <select name="id_entreprise" class="form-control">
                     <option value="">Sélectionner une entreprise</option>
                     <?php foreach ($entreprises as $entreprise) : ?>
                         <option value="<?= htmlspecialchars($entreprise['id_entreprise']) ?>">

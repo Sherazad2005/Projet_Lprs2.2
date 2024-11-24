@@ -1,3 +1,8 @@
+<?php
+require_once '../src/model/Utilisateur.php';
+session_start();
+var_dump($_SESSION);
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -94,7 +99,7 @@
 
             <a class="btn btn-dark me-3 dropdown-toggle hidden-arrow" href="#" onclick="afficherFormulaireDeconnexion()">Déconnection</a>
             <div class="dropdown">
-                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                <a class="navbar-brand mt-2 mt-lg-0" href="TraitementProfil.php">
                     <img
                             src="../assets/img/istockphoto-1300845620-612x612.jpg"
                             class="img-fluid rounded"

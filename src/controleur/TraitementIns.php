@@ -5,6 +5,8 @@ include '../model/Utilisateur.php';
 
 session_start();
 
+var_dump($_SESSION);
+var_dump($_POST);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         $data = [
@@ -45,12 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $data["secteurActivite"] = htmlspecialchars($_POST["secteur_activite"]);
 
         } elseif ($_POST["role"] == "partenaire") {
-            if (empty($_POST["posteEntreprise"]) || empty($_POST["motifInscription"]) || empty($_POST['idEntreprise'])) {
-                throw new Exception("Tous les champs sont obligatoires pour un partenaire.");
-            }
-            $data["posteEntreprise"] = htmlspecialchars($_POST["posteEntreprise"]);
-            $data["motifInscription"] = htmlspecialchars($_POST["motifInscription"]);
-            $data["idEntreprise"] = intval($_POST['idEntreprise']);
+            $data["posteEntreprise"] = htmlspecialchars($_POST["poste_entreprise"]);
+            $data["motifInscription"] = htmlspecialchars($_POST["motif_inscription"]);
+            $data["idEntreprise"] = intval($_POST['id_entreprise']);
         }
 
         $utilisateur = new Utilisateur($data);

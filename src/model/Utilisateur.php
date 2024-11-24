@@ -11,6 +11,8 @@ class Utilisateur
     private $mdp;
     private $nom_promo;
     private $cv;
+    private $motif_inscription;
+    private $id_entreprise;
     private $secteur_activite;
     private $classe;
     private $specialite_prof;
@@ -63,6 +65,38 @@ class Utilisateur
     public function setNom($nom)
     {
         $this->nom = $nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMotifInscription()
+    {
+        return $this->motif_inscription;
+    }
+
+    /**
+     * @param mixed $motif_inscription
+     */
+    public function setMotifInscription($motif_inscription)
+    {
+        $this->motif_inscription = $motif_inscription;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdEntreprise()
+    {
+        return $this->id_entreprise;
+    }
+
+    /**
+     * @param mixed $id_entreprise
+     */
+    public function setIdEntreprise($id_entreprise)
+    {
+        $this->id_entreprise = $id_entreprise;
     }
 
     /**
@@ -235,8 +269,8 @@ class Utilisateur
     {
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare(
-            'INSERT INTO utilisateur (nom, prenom, email, mdp, nom_promo, cv, secteur_activite, classe, specialite_prof, poste_entreprise, role) 
-         VALUES (:nom, :prenom, :email, :mdp, :nom_promo, :cv, :secteur_activite, :classe, :specialite_prof, :poste_entreprise, :role)'
+            'INSERT INTO utilisateur (nom, prenom, email, mdp, nom_promo, cv, motif_inscription, secteur_activite, classe, specialite_prof, poste_entreprise, role, id_entreprise) 
+         VALUES (:nom, :prenom, :email, :mdp, :nom_promo, :cv, :motif_inscription, :secteur_activite, :classe, :specialite_prof, :poste_entreprise, :role, :id_entreprise)'
         );
         $req->execute([
             'nom' => $this->getNom(),
@@ -245,11 +279,13 @@ class Utilisateur
             'mdp' => $this->getMdp(),
             'nom_promo' => $this->getNomPromo(),
             'cv' => $this->getCv(),
+            'motif_inscription' => $this->getMotifInscription(),
             'secteur_activite' => $this->getSecteurActivite(),
             'classe' => $this->getClasse(),
             'specialite_prof' => $this->getSpecialiteProf(),
             'poste_entreprise' => $this->getPosteEntreprise(),
             'role' => $this->getRole(),
+            'id_entreprise' => $this->getIdEntreprise()
         ]);
         header("Location: ../../vue/page_ouverture.php?success=1");
     }
@@ -271,12 +307,14 @@ class Utilisateur
             $this->setNom($res["nom"]);
             $this->setPrenom($res["prenom"]);
             $this->setCv($res["cv"]);
+            $this->setMotifInscription($res["motif_inscription"]);
             $this->setIdUtilisateur($res["id_utilisateur"]);
             $this->setClasse($res["classe"]);
             $this->setEmail($res["email"]);
             $this->setNomPromo($res["nom_promo"]);
             $this->setPosteEntreprise($res["poste_entreprise"]);
             $this->setRole($res["role"]);
+            $this->setIdEntreprise($res["id_entreprise"]);
             $this->setSecteurActivite($res["secteur_activite"]);
             $this->setSpecialiteProf($res["specialite_prof"]);
 
@@ -289,7 +327,7 @@ class Utilisateur
 
         } else {
 
-            header("Location: ../../vue/connexion.php");
+            header("Location: ../../vue/page_ouverture.php?erreur=1");
             exit();
         }
     }
