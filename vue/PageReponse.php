@@ -1,7 +1,7 @@
 <?php
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM forum, utilisateur WHERE id_Forum = :id_Forum and id_utilisateur = :id_utilisateur ') ;
+$req = $bdd->getBdd()->prepare('SELECT * FROM forum WHERE id_Forum = :id_Forum ') ;
 $req->execute(array(
         'id_Forum' => $_GET['id_forum']?? 0,
     'id_utilisateur' => $_GET['id_utilisateur']?? 0

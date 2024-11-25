@@ -1,11 +1,7 @@
 <?php
-<<<<<<< HEAD
 
-=======
 require_once '../src/model/Utilisateur.php';
 session_start();
-var_dump($_SESSION);
->>>>>>> 0c47390fec6366c382407bdb20a33fb406080595
 ?>
 <!doctype html>
 <html lang="en">

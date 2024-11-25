@@ -56,6 +56,23 @@ if (array_key_exists("erreur", $_GET)) {
     }
 </style>
 </head>
+<script>
+    function afficherChampsSpecifiques() {
+        document.getElementById("Generale").style.display = "none";
+        document.getElementById("Entreprise-Alumni").style.display = "none";
+        document.getElementById("Eleve-professeur").style.display = "none";
+
+        const canal = document.getElementById("canal").value;
+        if (canal === "Generale") {
+            document.getElementById("Generale").style.display = "block";
+        } else if (canal === "Entreprise-Alumni") {
+            document.getElementById("Entreprise-Alumni").style.display = "block";
+
+        } else if (canal === "Eleve-professeur") {
+            document.getElementById("Eleve-professeur").style.display = "block";
+        }
+    }
+</script>
 <body>
 
 <form action="../src/controleur/TraitementForum.php" method="POST" enctype="multipart/form-data">
@@ -64,38 +81,17 @@ if (array_key_exists("erreur", $_GET)) {
         <input type="text" name="titre" required placeholder="titre"><br><br>
 
         <label for="messages"></label>
-        <input type="text" name="messages" required placeholder="messages"><br>
+        <input type="text" name="messages" required placeholder="messages"><br><br>
 
-        <BLOCKQUOTE> <label for="canal-select"></label>
-            <select name="canal" id="canal-select">
-                <option value="">--Canal--</option>
+         <label for="canal"></label>
+            <select name="canal" id="canal" onchange="afficherChampsSpecifiques()" required>
+                <option value="canal">Canal </option>
                 <option value="generale">Generale</option>
                 <option value="entreprise/alumni">Entreprise-Alumni</option>
                 <option value="eleve/professeur">Eleve-Professeur</option>
-            </select></BLOCKQUOTE><br><br>
+            </select><br><br>
     <CENTER> <input type="submit" name="ins"/></CENTER><br>
     <CENTER> <a href="Inscription.php"> Crée </a></td></CENTER>
 </form>
-<!-- Footer -->
-<footer class="text-center text-lg-start bg-body-tertiary text-muted">
-    <!-- Section: Social media -->
-
-    <!-- Section: Social media -->
-
-    <!-- Section: Links  -->
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-            <!-- Grid row -->
-            <div class="row mt-3">
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <!-- Content -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Projet LPRS
-                    </h6>
-
-                </div>
-</footer>
-<!-- Footer -->
 </body>
 </html>
