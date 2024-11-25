@@ -8,6 +8,7 @@ $req->execute(array(
 ));
 $res = $req->fetch();
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -18,14 +19,11 @@ $res = $req->fetch();
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-<h1><?=$res["titre"]?></h1>
+
 <div id="wrapper">
     <div id="menu">
-        <a class="item" href="pageaccueil.php">Home</a> -
-        <a class="item" href="NewForum.php">Crée une nouvelle discussion</nouve></a> -
-        <div id="userbar">
-            <div id="userbar">Hello Example. Not you? Log out.</div>
-        </div>
+        <a class="item" href="pageaccueil.php">Page_accueil</a><br><br>
+        <a class="item" href="NewForum.php">Crée une nouvelle discussion</nouve></a><br><br>
         <div id="content">
         </div>
     </div>
@@ -36,8 +34,8 @@ $res = $req->fetch();
         </tr>
 
             <tr>
-                <td><?=$res["titre"]?></a></td>
-                <td><?=$res["messages"]?></td>
+                <td><?= htmlspecialchars(trim($res['titre'] ?? '')) ?></td>
+                <td><?= htmlspecialchars(trim($res['messages'] ?? '')) ?></td>
             </tr>
 
     </table>
