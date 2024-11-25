@@ -1,5 +1,7 @@
 <?php
 include '../src/bdd/Bdd.php';
+include '../src/model/Utilisateur.php';
+session_start();
 
 $bdd = new Bdd();
 $idEntreprise = [];
@@ -15,6 +17,11 @@ if (array_key_exists("erreur", $_GET)) {
         echo "Identifiant déjà utilisé.";
     }
 }
+if (isset($_SESSION['error_message'])) {
+    echo 'Erreur : Cette email est déjà utilisé';
+    unset($_SESSION['error_message']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -89,6 +96,7 @@ if (array_key_exists("erreur", $_GET)) {
             }else if(role ==="alumni"){
                 document.getElementById("alumniFields").style.display= "block";
                 document.getElementById("nomPromo_al").required = true;
+                document.getElementById("secteurActivite").required = true;
 
 
             }else if(role ==="partenaire"){
@@ -148,7 +156,8 @@ if (array_key_exists("erreur", $_GET)) {
 
     <div id="alumniFields" style="display:none;">
         <label for="nomPromo"></label>
-        <input type="text" name="nomPromo_al" id="nomPromo_al" placeholder="Promo"><br><br>
+        <input type="text" name="nomPromo_al" id="nomPromo_al" placeholder="Promo"><br>
+        <br><input type="text" name="secteur_activite" id="secteur_activite" placeholder="Secteur d'activité"><br><br>
     </div>
 
     <div id="partenaireFields" style="display:none;">
