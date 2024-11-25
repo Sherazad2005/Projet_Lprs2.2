@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
 $req = $bdd->getBdd()->prepare('SELECT * FROM `forum` WHERE canal ="generale"');
@@ -49,11 +50,14 @@ $res = $req->fetchAll();
     </div>
 </nav>
 <table class="table table-success table-striped">
+    <a href="NewForum.php" class="btn btn-outline-nouveau" role="button" aria-pressed="true">Nouveau</a>
+    <button type="button" class="btn btn-primary">Primary</button>
     <tr>
         <th>Titre</th>
         <th>Sujet</th>
     </tr>
     <?php
+    session_start();
     foreach ($res as $forum){
     ?>
             <tr>
@@ -66,27 +70,23 @@ $res = $req->fetchAll();
 </table>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<!-- Footer -->
+
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">
-    <!-- Section: Social media -->
 
-    <!-- Section: Social media -->
-
-    <!-- Section: Links  -->
     <section class="">
         <div class="container text-center text-md-start mt-5">
-            <!-- Grid row -->
+
             <div class="row mt-3">
-                <!-- Grid column -->
+
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <!-- Content -->
+
                     <h6 class="text-uppercase fw-bold mb-4">
                         <i class="fas fa-gem me-3"></i>Projet LPRS
                     </h6>
 
                 </div>
 </footer>
-<!-- Footer -->
+
 </body>
 </html>
 

@@ -45,12 +45,12 @@ $utilisateur = new Utilisateur($utilisateurData);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css">
 </head>
 <body>
-<!-- Navbar -->
+
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
-        <!-- Container wrapper -->
+
         <div class="container-fluid">
-            <!-- Toggle button -->
+
             <button
                     data-mdb-collapse-init
                     class="navbar-toggler"
@@ -63,9 +63,9 @@ $utilisateur = new Utilisateur($utilisateurData);
                 <i class="fas fa-bars"></i>
             </button>
 
-            <!-- Collapsible wrapper -->
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Navbar brand -->
+
                 <a class="navbar-brand mt-2 mt-lg-0" href="#">
                     <img
                             src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
@@ -89,15 +89,10 @@ $utilisateur = new Utilisateur($utilisateurData);
                         <a class="nav-link" href="Offres.php">Offres</a>
                     </li>
                 </ul>
-                <!-- Left links -->
             </div>
-            <!-- Collapsible wrapper -->
 
-            <!-- Right elements -->
             <div class="d-flex align-items-center">
-                <!-- Icon -->
 
-                <!-- Notifications -->
                 <div class="dropdown">
                     <a
                             data-mdb-dropdown-init
@@ -156,13 +151,13 @@ $utilisateur = new Utilisateur($utilisateurData);
                     </ul>
                 </div>
             </div>
-            <!-- Right elements -->
+
         </div>
-        <!-- Container wrapper -->
+
     </nav>
 
 </header>
-<!-- Navbar -->
+
 <div class="container mt-5">
     <h2>Profil Utilisateur</h2>
     <div class="card">
@@ -255,20 +250,16 @@ $utilisateur = new Utilisateur($utilisateurData);
         <a href="../../vue/pageacceuil.php" class="btn btn-secondary">Retour</a>
     </div>
 </div>
-<!-- Footer -->
+
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">
-    <!-- Section: Social media -->
 
-    <!-- Section: Social media -->
-
-    <!-- Section: Links  -->
     <section class="">
         <div class="container text-center text-md-start mt-5">
-            <!-- Grid row -->
+
             <div class="row mt-3">
-                <!-- Grid column -->
+
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <!-- Content -->
+
                     <h6 class="text-uppercase fw-bold mb-4">
                         <i class="fas fa-gem me-3"></i>Projet LPRS
                     </h6>

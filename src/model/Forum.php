@@ -143,13 +143,14 @@ class Forum
     public function ajouterUnForum() {
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare(
-            'INSERT INTO forum (titre, messages, date_messages, heure_messages, canal) 
-                   VALUES (:titre, :messages, CURRENT_DATE(), CURRENT_TIME(), :canal)');
+            'INSERT INTO forum (titre, messages, date_messages, heure_messages, canal, ref_utilisateur)
+                    VALUES (:titre, :messages, CURRENT_DATE(), CURRENT_TIME(), :canal, :ref_utilisateur)');
 
         $req->execute([
             'titre' => $this->getTitre(),
             'messages' => $this->getMessages(),
             'canal' => $this->getCanal(),
+            'ref_utilisateur' => $_SESSION[""]
         ]);
 
         header("Location: ../../vue/PageForumEleve.php?success");
@@ -172,9 +173,5 @@ class Forum
         ));
 
     }
-
-
-
-
 
 }
