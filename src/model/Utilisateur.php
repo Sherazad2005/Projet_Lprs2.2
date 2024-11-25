@@ -261,7 +261,6 @@ class Utilisateur
         $req->execute(array(
             "email" =>$this->getEmail(),
             "mdp" =>$this->getMdp(),
-
         ));
         $res = $req->fetch();
         if (is_array($res)){

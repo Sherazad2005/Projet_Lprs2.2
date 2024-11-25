@@ -3,15 +3,12 @@
 include '../bdd/Bdd.php';
 include '../model/Forum.php';
 
-$utilisateur = new \Forum([
+$forum = new \Forum([
     "titre" =>$_POST['titre'],
     "messages" =>$_POST['messages'],
     "canal" =>$_POST['canal']
 ]);
-$utilisateur->ajouterUnForum();
-
-
-$utilisateur->ajouterUnForum($_POST);
+$forum->ajouterUnForum();
 
 
 

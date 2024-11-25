@@ -7,6 +7,5 @@ $utilisateur = new Utilisateur([
     "email" =>$_POST['email'],
     "mdp" =>$_POST['mdp'],
 ]);
-var_dump($utilisateur);
 
 $utilisateur->connexion();
