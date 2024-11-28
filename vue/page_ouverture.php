@@ -117,6 +117,18 @@ try {
     </div>
 <?php endif; ?>
 
+<?php if (isset($_GET['erreur']) && $_GET['erreur'] == 2): ?>
+    <div id="notification" class="alert alert-danger text-center" role="alert">
+        Désoler votre Inscription à ete rejetée.
+    </div>
+<?php endif; ?>
+
+<?php if (isset($_GET['erreur']) && $_GET['erreur'] == 3): ?>
+    <div id="notification" class="alert alert-warning text-center" role="alert">
+        Désoler votre compte n'est pas encore validé, veuillez att le mail de validation.
+    </div>
+<?php endif; ?>
+
 <div id="content">
     <!-- Contenu principal de la page -->
     <div class="container mt-5">

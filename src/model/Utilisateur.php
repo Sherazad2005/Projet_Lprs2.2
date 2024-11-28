@@ -300,7 +300,7 @@ class Utilisateur
 
             // Exécution de la requête
             $req->execute(array(
-                "email" => $this->getEmail()
+                "email" => $this->getEmail() // Utilisation de la méthode pour obtenir l'email
             ));
 
             // Récupérer le résultat
@@ -311,21 +311,27 @@ class Utilisateur
                 // Démarrage de la session
                 session_start();
 
-                // Fonction pour stocker seulement les données non nulles dans la session
-                $this->storeUserInSession($res);
-
-                // Redirection vers la page d'accueil
-                header("Location: ../../vue/pageaccueil.php");
-                exit();
+                if ($res['validated'] == 1) {
+                    $_SESSION['user'] = $res;
+                    header("Location: page_accueil.php");
+                    exit;
+                } elseif ($res['validated'] == 0) {
+                    $_SESSION['error'] = 'Votre compte n\'est pas encore validé.';
+                    header("Location: ../../vue/page_ouverture.php?erreur=3");
+                    exit;
+                } else {
+                    $_SESSION['error'] = 'Votre compte a été rejeté.';
+                    header("Location: ../../vue/page_ouverture.php?erreur=2");
+                    exit;
+                }
             } else {
-                // Si l'utilisateur n'est pas trouvé ou le mot de passe est incorrect
+                $_SESSION['error'] = 'Email ou mot de passe incorrect';
                 header("Location: ../../vue/page_ouverture.php?erreur=1");
-                exit();
+                exit;
             }
-        } catch (Exception $e) {
-            // Gérer les erreurs (ex: problèmes de connexion à la BDD)
-            echo "Une erreur s'est produite : " . $e->getMessage();
-            exit();
+        } catch (PDOException $e) {
+            echo "Erreur : " . $e->getMessage();
+            exit;
         }
     }
 

@@ -1,7 +1,18 @@
 <?php
+require_once '../src/bdd/Bdd.php';
 require_once '../src/model/Utilisateur.php';
 session_start();
+
+function ListeUtilisateurEnatt($bdd) {
+    $req = $bdd->getBdd()->prepare("SELECT * FROM utilisateur WHERE validated = 0");
+    $req->execute();
+    return $req->fetchAll(PDO::FETCH_ASSOC);
+}
+
+$bdd = new Bdd();
+$utilisateuratt = ListeUtilisateurEnatt($bdd);
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -76,9 +87,15 @@ session_start();
     </script>
 </head>
 <body>
+
+<?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+    <div id="notification" class="alert alert-success text-center" role="alert">
+        L'utilisateur a été validé avec succès.
+    </div>
+<?php endif; ?>
 <?php if (isset($_GET['erreur']) && $_GET['erreur'] == 1): ?>
     <div id="notification" class="alert alert-danger text-center" role="alert">
-        Email ou Mot de Passe Incorrect.
+        Une erreur s'est produite lors de la validation de l'utilisateur.
     </div>
 <?php endif; ?>
 <header>
@@ -130,22 +147,42 @@ session_start();
     </nav>
 </header>
 
-
-
-<div id="content">
-    <div class="container mt-5">
-        <h1>Bienvenue sur le site LPRS</h1>
-        <p class="lead">Explorez les ressources pour les étudiants, alumni et entreprises partenaires.</p>
-    </div>
+<div class="container mt-5">
+    <h1>Validation des utilisateurs</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Rôle</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($utilisateuratt as $row): ?>
+            <tr>
+                <td><?= $row['id_utilisateur'] ?></td>
+                <td><?= $row['nom'] ?></td>
+                <td><?= $row['prenom'] ?></td>
+                <td><?= $row['email'] ?></td>
+                <td><?= $row['role'] ?></td>
+                <td>
+                    <form action="../src/model/Validation.php" method="POST">
+                        <input type="hidden" name="id_utilisateur" value="<?= $row['id_utilisateur'] ?>">
+                        <button type="submit" name="action" value="Valider" class="btn btn-success">Valider</button>
+                        <button type="submit" name="action" value="Rejeter" class="btn btn-danger">Rejeter</button>
+                    </form>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
 </div>
 
-
-
-<footer class="text-center text-lg-start bg-body-tertiary text-muted mt-5">
-    <section class="py-4">
-        <div class="container text-center">
-            <p> 2024 Projet LPRS.</p>
-        </div>
-    </section>
+<footer class="text-center mt-5">
+    <p>2024 Projet LPRS.</p>
 </footer>
 </body>
+</html>
