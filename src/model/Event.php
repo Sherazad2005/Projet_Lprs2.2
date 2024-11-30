@@ -119,7 +119,7 @@ private $gerant;
             'gerant'=> $this->getGerant(),
         ]);
 
-        header("Location: ../../vue/participation_evenement.php?success");
+        header("Location: ../../vue/participation_evenement_alumni.php?success");
     }
 
     public function editer_event()
@@ -135,7 +135,7 @@ private $gerant;
         ));
 
         if ($res) {
-            header("Location: ../../vue/participation_evenement.php.");
+            header("Location: ../../vue/participation_evenement_alumni.php.");
         } else {
             header("Location: ../../vue/editer_event.php?id_event=" . $this->getIdEvent() . "&erreur");
         }
@@ -150,7 +150,7 @@ private $gerant;
         ));
 
         if ($res) {
-            header("Location: ../../vue/participation_evenement.php");
+            header("Location: ../../vue/participation_evenement_alumni.php");
         } else {
             header("Location: ../../vue/connexion.php?erreur");
         }

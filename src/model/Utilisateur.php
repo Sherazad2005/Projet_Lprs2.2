@@ -298,7 +298,7 @@ class Utilisateur
         ));
 
         if ($res) {
-            header("Location: ../../vue/annuiare_anciens_eleves.php?success");
+            header("Location: ../../vue/annuiare_anciens_eleves_alumni.php?success");
         } else {
             header("Location: ../../vue/editer.php?id_utilisateur=" . $this->getIdutilisateur() . "&erreur");
         }
@@ -313,7 +313,7 @@ class Utilisateur
         ));
 
         if ($res) {
-            header("Location: ../../vue/annuiare_anciens_eleves.php?success");
+            header("Location: ../../vue/annuiare_anciens_eleves_alumni.php?success");
         } else {
             header("Location: ../../vue/connexion.php?erreur");
         }
