@@ -134,8 +134,8 @@ if (array_key_exists("erreur", $_GET)) {
         <label for="classe"></label>
         <input type="text" name="classe" id="classe" placeholder="Classe" required><br><br>
 
-        <label for="nomPromo"></label>
-        <input type="text"  name="nomPromo_el" id="nomPromo_el" placeholder="Promo" required><br><br>
+        <label for="nom_promo"></label>
+        <input type="text"  name="nom_promo" id="nomPromo_el" placeholder="Promo" required><br><br>
 
         <label for="cv">CV (PDF) :</label>
         <input type="file" name="cv" id="cv" accept=".pdf" required><br><br>
@@ -148,7 +148,7 @@ if (array_key_exists("erreur", $_GET)) {
 
     <div id="alumniFields" style="display:none;">
         <label for="nomPromo"></label>
-        <input type="text" name="nomPromo_al" id="nomPromo_al" placeholder="Promo"><br><br>
+        <input type="text" name="nomPromo_el" id="nomPromo_el" placeholder="Promo"><br><br>
     </div>
 
     <div id="partenaireFields" style="display:none;">

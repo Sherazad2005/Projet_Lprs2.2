@@ -252,7 +252,7 @@ class Utilisateur
             'role' => $this->getRole(),
         ]);
 
-        header("Location: ../../vue/Connexion.php?success");
+        header("Location: ../../vue/page_ouverture.php?success");
     }
 
     public function connexion(){
