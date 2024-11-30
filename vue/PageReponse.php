@@ -1,12 +1,11 @@
 <?php
+session_start();
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM forum WHERE id_Forum = :id_Forum ') ;
-$req->execute(array(
-        'id_Forum' => $_GET['id_forum']?? 0,
-    'id_utilisateur' => $_GET['id_utilisateur']?? 0
-));
-$res = $req->fetch();
+$req = $bdd->getBdd()->prepare('SELECT * FROM `forum` ');
+$req->execute(array());
+$res = $req->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -27,18 +26,24 @@ $res = $req->fetch();
         <div id="content">
         </div>
     </div>
-    <table class="table table-success table-striped">
+    <table>
         <tr>
             <th>Titre</th>
-            <th>Sujet</th>
+            <th>Messages</th>
         </tr>
-
+        <?php
+        foreach ($res as $forum){
+        ?>
             <tr>
-                <td><?= htmlspecialchars(trim($res['titre'] ?? '')) ?></td>
-                <td><?= htmlspecialchars(trim($res['messages'] ?? '')) ?></td>
+                <td><?= htmlspecialchars(trim($forum['titre'] ?? '')) ?></td>
+                <td><?= htmlspecialchars(trim($forum['messages'] ?? '')) ?></td>
             </tr>
 
+            <?php
+        }
+        ?>
     </table>
+    <a href="" >Répondre</a>
 </div>
 </body>
 </html>

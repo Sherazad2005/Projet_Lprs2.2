@@ -57,19 +57,16 @@ if (array_key_exists("erreur", $_GET)) {
 </style>
 </head>
 <script>
-    function afficherChampsSpecifiques() {
-        document.getElementById("Generale").style.display = "none";
-        document.getElementById("Entreprise-Alumni").style.display = "none";
-        document.getElementById("Eleve-professeur").style.display = "none";
-
+    function updateFormAction() {
         const canal = document.getElementById("canal").value;
-        if (canal === "Generale") {
-            document.getElementById("Generale").style.display = "block";
-        } else if (canal === "Entreprise-Alumni") {
-            document.getElementById("Entreprise-Alumni").style.display = "block";
+        const form = document.getElementById("newForm");
 
-        } else if (canal === "Eleve-professeur") {
-            document.getElementById("Eleve-professeur").style.display = "block";
+        if (canal === "generale") {
+            form.action = "PageForumGenerale.php";
+        } else if (canal === "entreprise/alumni") {
+            form.action = "PageForumAlumniEntreprise.php";
+        } else if (canal === "eleve/professeur") {
+            form.action = "PageForumEleve.php";
         }
     }
 </script>
@@ -84,8 +81,8 @@ if (array_key_exists("erreur", $_GET)) {
         <input type="text" name="messages" required placeholder="messages"><br><br>
 
          <label for="canal"></label>
-            <select name="canal" id="canal" onchange="afficherChampsSpecifiques()" required>
-                <option value="canal">Canal </option>
+            <select name="canal" id="canal" onchange="updateFormAction()" required>
+                <option value="">Canal </option>
                 <option value="generale">Generale</option>
                 <option value="entreprise/alumni">Entreprise-Alumni</option>
                 <option value="eleve/professeur">Eleve-Professeur</option>

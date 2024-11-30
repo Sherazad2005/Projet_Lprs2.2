@@ -51,7 +51,7 @@ $res = $req->fetchAll();
 <table class="table table-success table-striped">
     <tr>
         <th>Titre</th>
-        <th>Sujet</th>
+        <th>Messages</th>
     </tr>
     <?php
     foreach ($res as $forum){

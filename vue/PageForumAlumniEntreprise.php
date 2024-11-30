@@ -1,7 +1,7 @@
 <?php
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM `forum` WHERE canal ="generale" OR "entreprise/alumni"');
+$req = $bdd->getBdd()->prepare('SELECT * FROM `forum` WHERE canal ="entreprise/alumni"');
 $req->execute(array());
 $res = $req->fetchAll();
 
@@ -50,7 +50,7 @@ $res = $req->fetchAll();
 <table class="table table-success table-striped">
     <tr>
         <th>Titre</th>
-        <th>Sujet</th>
+        <th>Messages</th>
     </tr>
     <?php
     foreach ($res as $forum){
