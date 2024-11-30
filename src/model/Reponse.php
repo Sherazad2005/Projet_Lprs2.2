@@ -10,6 +10,7 @@ class Reponse
     private $date_messages;
     private $heure_message;
     private $ref_forum;
+    private $ref_utilisateur ;
 
     public function __construct(array $donnee)
     {
@@ -104,17 +105,33 @@ class Reponse
         $this->ref_forum = $ref_forum;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getRefUtilisateur()
+    {
+        return $this->ref_utilisateur;
+    }
+
+    /**
+     * @param mixed $ref_utilisateur
+     */
+    public function setRefUtilisateur($ref_utilisateur)
+    {
+        $this->ref_utilisateur = $ref_utilisateur;
+    }
+
+
     public function ajouterUneReponse() {
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare(
-            'INSERT INTO reponse (messages, date_messages, heure_message,	ref_forum) 
-                   VALUES (:messages, :date_messages, :heure_messages, :ref_forum)');
+            'INSERT INTO reponse (messages, date_messages, heure_message,	ref_forum, ref_utilisateur) 
+                    VALUES (:messages, CURRENT_DATE(), CURRENT_TIME(), :ref_forum, :ref_utilisateur)');
 
         $req->execute([
             'messages' => $this->getMessages(),
-            'date_messages' => $this->getDateMessages(),
-            'heure_messages' => $this->getHeureMessages(),
-            'ref_forum' => $this->getRefForum(),
+            'ref_forum' => $_SESSION[""],
+            'ref_utilisateur' => $_SESSION[""]
         ]);
 
         header("Location: ../../vue/PageForumEleve.php?success");

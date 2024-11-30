@@ -11,8 +11,6 @@ class Utilisateur
     private $mdp;
     private $nom_promo;
     private $cv;
-    private $motif_inscription;
-    private $id_entreprise;
     private $secteur_activite;
     private $classe;
     private $specialite_prof;
@@ -65,38 +63,6 @@ class Utilisateur
     public function setNom($nom)
     {
         $this->nom = $nom;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMotifInscription()
-    {
-        return $this->motif_inscription;
-    }
-
-    /**
-     * @param mixed $motif_inscription
-     */
-    public function setMotifInscription($motif_inscription)
-    {
-        $this->motif_inscription = $motif_inscription;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdEntreprise()
-    {
-        return $this->id_entreprise;
-    }
-
-    /**
-     * @param mixed $id_entreprise
-     */
-    public function setIdEntreprise($id_entreprise)
-    {
-        $this->id_entreprise = $id_entreprise;
     }
 
     /**
@@ -269,8 +235,8 @@ class Utilisateur
     {
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare(
-            'INSERT INTO utilisateur (nom, prenom, email, mdp, nom_promo, cv, motif_inscription, secteur_activite, classe, specialite_prof, poste_entreprise, role, id_entreprise) 
-         VALUES (:nom, :prenom, :email, :mdp, :nom_promo, :cv, :motif_inscription, :secteur_activite, :classe, :specialite_prof, :poste_entreprise, :role, :id_entreprise)'
+            'INSERT INTO utilisateur (nom, prenom, email, mdp, nom_promo, cv, secteur_activite, classe, specialite_prof, poste_entreprise, role) 
+         VALUES (:nom, :prenom, :email, :mdp, :nom_promo, :cv, :secteur_activite, :classe, :specialite_prof, :poste_entreprise, :role)'
         );
         $req->execute([
             'nom' => $this->getNom(),
@@ -279,81 +245,46 @@ class Utilisateur
             'mdp' => $this->getMdp(),
             'nom_promo' => $this->getNomPromo(),
             'cv' => $this->getCv(),
-            'motif_inscription' => $this->getMotifInscription(),
             'secteur_activite' => $this->getSecteurActivite(),
             'classe' => $this->getClasse(),
             'specialite_prof' => $this->getSpecialiteProf(),
             'poste_entreprise' => $this->getPosteEntreprise(),
             'role' => $this->getRole(),
-            'id_entreprise' => $this->getIdEntreprise()
         ]);
-        header("Location: ../../vue/page_ouverture.php?success=1");
+
+        header("Location: ../../vue/Connexion.php?success");
     }
 
-    public function connexion() {
-        try {
-            // Connexion à la base de données
-            $bdd = new Bdd();
+    public function connexion(){
+        $bdd = new Bdd();
+        $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE email=:email and mdp=:mdp');
+        $req->execute(array(
+            "email" =>$this->getEmail(),
+            "mdp" =>$this->getMdp(),
+        ));
+        $res = $req->fetch();
+        if (is_array($res)){
+            $this->setNom($res["nom"]);
+            $this->setPrenom($res["prenom"]);
+            $this->setCv($res["cv"]);
+            $this->setIdUtilisateur($res["id_utilisateur"]);
+            $this->setClasse($res["classe"]);
+            $this->setEmail($res["email"]);
+            $this->setNomPromo($res["nom_promo"]);
+            $this->setPosteEntreprise($res["poste_entreprise"]);
+            $this->setRole($res["role"]);
+            $this->setSecteurActivite($res["secteur_activite"]);
+            $this->setSpecialiteProf($res["specialite_prof"]);
 
-            // Préparation de la requête SQL
-            $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE email = :email');
+            session_start();
 
-            // Exécution de la requête
-            $req->execute(array(
-                "email" => $this->getEmail()
-            ));
+            $_SESSION["utilisateur"] = $this;
 
-            // Récupérer le résultat
-            $res = $req->fetch();
-
-            // Vérifier si un utilisateur a été trouvé et que le mot de passe est correct
-            if ($res && is_array($res) && password_verify($this->getMdp(), $res["mdp"])) {
-                // Démarrage de la session
-                session_start();
-
-                // Fonction pour stocker seulement les données non nulles dans la session
-                $this->storeUserInSession($res);
-
-                // Redirection vers la page d'accueil
-                header("Location: ../../vue/pageaccueil.php");
-                exit();
-            } else {
-                // Si l'utilisateur n'est pas trouvé ou le mot de passe est incorrect
-                header("Location: ../../vue/page_ouverture.php?erreur=1");
-                exit();
-            }
-        } catch (Exception $e) {
-            // Gérer les erreurs (ex: problèmes de connexion à la BDD)
-            echo "Une erreur s'est produite : " . $e->getMessage();
-            exit();
+            header("Location: ../../vue/pageaccueil.php");
+        }else{
+            header("Location: ../../vue/connexion.php");
         }
     }
-
-    private function storeUserInSession($userData) {
-        // Créer un tableau pour stocker les données utilisateur
-        $userSessionData = [];
-
-        // Stocker les données utilisateur uniquement si elles ne sont pas nulles
-        if (!is_null($userData["id_utilisateur"])) $userSessionData["utilisateur_id"] = $userData["id_utilisateur"];
-        if (!is_null($userData["nom"])) $userSessionData["utilisateur_nom"] = $userData["nom"];
-        if (!is_null($userData["prenom"])) $userSessionData["utilisateur_prenom"] = $userData["prenom"];
-        if (!is_null($userData["email"])) $userSessionData["utilisateur_email"] = $userData["email"];
-        if (!is_null($userData["role"])) $userSessionData["utilisateur_role"] = $userData["role"];
-        if (!is_null($userData["nom_promo"])) $userSessionData["utilisateur_nom_promo"] = $userData["nom_promo"];
-        if (!is_null($userData["classe"])) $userSessionData["utilisateur_classe"] = $userData["classe"];
-        if (!is_null($userData["cv"])) $userSessionData["utilisateur_cv"] = $userData["cv"];
-        if (!is_null($userData["motif_inscription"])) $userSessionData["utilisateur_motif_inscription"] = $userData["motif_inscription"];
-        if (!is_null($userData["poste_entreprise"])) $userSessionData["utilisateur_poste_entreprise"] = $userData["poste_entreprise"];
-        if (!is_null($userData["secteur_activite"])) $userSessionData["utilisateur_secteur_activite"] = $userData["secteur_activite"];
-        if (!is_null($userData["specialite_prof"])) $userSessionData["utilisateur_specialite_prof"] = $userData["specialite_prof"];
-        if (!is_null($userData["id_entreprise"])) $userSessionData["utilisateur_id_entreprise"] = $userData["id_entreprise"];
-
-        // Stocker les données dans la session
-        $_SESSION["utilisateur"] = $userSessionData;
-    }
-
-
-
 
     public function editer()
     {
