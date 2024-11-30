@@ -2,10 +2,10 @@
 include '../src/bdd/Bdd.php';
 
 
-$ref_emplois = $_GET['id_emplois'] ?? null;
+$ref_event = $_GET['id_event'] ?? null;
 
-if (!$ref_emplois) {
-    die("ID de l'emploi manquant.");
+if (!$ref_event) {
+    die("ID de l'événement manquant.");
 }
 
 $bdd = new Bdd();
@@ -13,14 +13,14 @@ $bdd = new Bdd();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $req = $bdd->getBdd()->prepare(
-            'INSERT INTO postuler (ref_utilisateur, ref_emplois) VALUES (NULL, :ref_emplois)'
+            'INSERT INTO inscrire (ref_utilisateur, ref_event) VALUES (NULL, :ref_event)'
         );
         $req->execute([
-            ':ref_emplois' => $ref_emplois,
+            ':ref_event' => $ref_event,
         ]);
 
-        echo "<p>Votre candidature a été enregistrée avec succès pour l'emploi ID : $ref_emplois !</p>";
-        echo '<a href="Opportunités_emplois_alumni.php">Retour à la liste des emplois</a>';
+        echo "<p>Votre candidature a été enregistrée avec succès pour l'événement ID : $ref_event !</p>";
+        echo '<a href="participation_evenement_alumni.php">Retour à la liste des événements</a>';
         exit;
     } catch (PDOException $e) {
         die("Erreur lors de l'enregistrement de votre candidature : " . $e->getMessage());
@@ -58,10 +58,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 <div class="confirmation">
-    <h1>Êtes-vous sûr de vouloir postuler pour cet emploi ?</h1>
+    <h1>Êtes-vous sûr de vouloir participer à cet événement ?</h1>
     <form method="post">
-        <button type="submit">Oui, je postule</button>
-        <a href="Opportunités_emplois_alumni.php">Non, retour</a>
+        <button type="submit">Oui, je veux participer</button>
+        <a href="participation_evenement_alumni.php">Non, retour</a>
     </form>
 </div>
 </body>

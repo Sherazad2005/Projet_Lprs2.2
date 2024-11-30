@@ -318,7 +318,6 @@ class Utilisateur
             header("Location: ../../vue/connexion.php?erreur");
         }
     }
-
     public function afficherNom()
     {
         $bdd = new Bdd();

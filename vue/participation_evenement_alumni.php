@@ -99,7 +99,7 @@ $res = $req->fetchAll();
 
             <td><a href="editer_event.php?id_event=<?=$event["id_event"]?>">Editer</a>
                 <a href="supprimer_event.php?id_event=<?=$event["id_event"]?>">Supprimer</a>
-                <a href="inscrire_event.php?id_event=<?=$event["id_event"]?>">S'inscrire</a>
+                <a href="inscrire.php?id_event=<?=$event["id_event"]?>">S'inscrire</a>
             </td>
         </tr>
 
