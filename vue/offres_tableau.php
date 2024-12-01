@@ -2,23 +2,22 @@
 session_start();
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM `event` ');
-$req->execute();
+$req = $bdd->getBdd()->prepare('SELECT * FROM `offres` ');
+$req->execute(array());
 $res = $req->fetchAll();
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" type="image/x-icon" href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lyceerobertschuman.com%2F&psig=AOvVaw1V4azkFzc1RTIFsSnyE7rn&ust=1710580549450000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCPDb56H39YQDFQAAAAAdAAAAABAI">
     <style>
         * {
             box-sizing: border-box;
         }
-        .column {
-            float: left;
 
+        {
+            float: left;
         }
 
         .left, .right {
@@ -69,44 +68,47 @@ $res = $req->fetchAll();
         }
     </style>
     <meta charset="UTF-8">
-    <title>participation_evenement</title>
+    <title>Annuaire des anciens eleves</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
+
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <!-- MDB CSS -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css">
 </head>
 <body>
 
-
 <table>
     <tr>
-        <th>Id_event</th>
-        <th>nom</th>
-        <th>date</th>
-        <th>inscrits</th>
-        <th>gerant</th>
+        <th>Id</th>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Missions</th>
+        <th>Type</th>
+        <th>Salaire</th>
+        <th>Visibilite</th>
+        <th>Etat</th>
     </tr>
+
     <?php
-    foreach ($res as $event){
+    foreach ($res as $offres){
         ?>
         <tr>
-            <td><?=htmlspecialchars($event["id_event"]?? '') ?></td>
-            <td><?=htmlspecialchars($event["nom"] ??'') ?></td>
-            <td><?=htmlspecialchars($event["date"]?? '')?></td>
-            <td><?=htmlspecialchars($event["inscrits"]?? '')?></td>
-            <td><?=htmlspecialchars($event["gerant"]?? '')?></td>
-
-            <td><a href="editer_event.php?id_event=<?=$event["id_event"]?>">Editer</a>
-                <a href="supprimer_event.php?id_event=<?=$event["id_event"]?>">Supprimer</a>
-                <a href="inscrire.php?id_event=<?=$event["id_event"]?>">S'inscrire</a>
-            </td>
+            <td><?=htmlspecialchars($offres["id_offre"]?? '' )?></td>
+            <td><?=htmlspecialchars($offres["titre"]?? '') ?></td>
+            <td><?=htmlspecialchars($offres["description"]?? '') ?></td>
+            <td><?=htmlspecialchars($offres["missions"]?? '') ?></td>
+            <td><?=htmlspecialchars($offres["type"]?? '') ?></td>
+            <td><?=htmlspecialchars($offres["salaire"]?? '') ?></td>
+            <td><?=htmlspecialchars($offres["visibilite"]?? '') ?></td>
+            <td><?=htmlspecialchars($offres["etat"]?? '') ?></td>
+            <td><a href="editer_offre.php?id_offre=<?=$offres["id_offre"]?>">Editer</a>
+                / <a href="supprimer_offre.php?id_offre=<?=$offres["id_offre"]?>">Supprimer</a></td>
         </tr>
-
         <?php
     }
     ?>
 </table>
+<br>
 <a href="../vue/pageaccueil.php">Retour</a>
 
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">
@@ -124,5 +126,7 @@ $res = $req->fetchAll();
 
                 </div>
 </footer>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
 </body>
 </html>

@@ -13,24 +13,22 @@ if (array_key_exists("erreur", $_POST)) {
     <meta charset="UTF-8">
     <title>Supprimer un profil</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css">
 </head>
 <body>
 
-<form action="../src/controleur/TraitementSupp_emplois.php" method="post">
+<form action="../src/controleur/TraitementSupp_offre.php" method="post">
     <br>
-    Voulez-vous supprimer réellement le compte d'id ?<?=$_GET["id_emplois"]?><br>
-    <input type="number" name="id_emplois" value="<?=$_GET["id_emplois"]?>"/><br><br>
+    Voulez-vous supprimer réellement le compte d'id ?<?=$_GET["id_offre"]?><br>
+    <input type="number" name="id_offre" value="<?=$_GET["id_offre"]?>"/><br><br>
 
     <input type="submit" name="ins" value="Confirmer"/><br><br>
-    <a href="Opportunités_emplois_alumni.php">Retour</a>
+    <a href="offres_tableau.php">Retour</a>
 
 </form>
-
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">
+
     <section class="">
         <div class="container text-center text-md-start mt-5">
             <div class="row mt-3">

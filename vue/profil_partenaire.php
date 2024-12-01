@@ -33,23 +33,20 @@ $utilisateur = new Utilisateur($utilisateurData);
 
         form input, form select, form label, form button {
             width: 100%;
-            margin-bottom: 1rem; /* Espacement vertical entre les champs */
+            margin-bottom: 1rem;
         }
-        /* Style pour les titres h1 */
         h1 {
-            font-size: 2rem;  /* Taille plus grande pour h1 */
-            color: #302b2b;   /* Couleur bleue */
+            font-size: 2rem;
+            color: #302b2b;
             font-family: 'Arial Black';
-            font-weight: bold;  /* Texte en gras */
+            font-weight: bold;
         }
 
-        /* Flou pour l'arrière-plan */
         .blurred {
             filter: blur(5px);
             transition: filter 0.3s ease;
         }
 
-        /* Modale centrée */
         #deconnexionForm {
             display: none;
             position: fixed;
@@ -65,7 +62,6 @@ $utilisateur = new Utilisateur($utilisateurData);
             text-align: center;
         }
 
-        /* Ombre pour désactiver les clics à l'extérieur */
         #overlay {
             display: none;
             position: fixed;
@@ -78,14 +74,12 @@ $utilisateur = new Utilisateur($utilisateurData);
         }
     </style>
     <script>
-        // Afficher la fenêtre de déconnexion avec flou de l'arrière-plan
         function afficherFormulaireDeconnexion() {
             document.getElementById("content").classList.add("blurred");
             document.getElementById("overlay").style.display = "block";
             document.getElementById("deconnexionForm").style.display = "block";
         }
 
-        // Masquer la fenêtre de déconnexion et retirer le flou
         function fermerFormulaireDeconnexion() {
             document.getElementById("content").classList.remove("blurred");
             document.getElementById("overlay").style.display = "none";

@@ -104,7 +104,7 @@ $res = $req->fetchAll();
     }
     ?>
 </table>
-<a href="../vue/accueil">Retour</a>
+<a href="../vue/pageaccueil.php">Retour</a>
 
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">
 
