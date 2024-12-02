@@ -60,10 +60,11 @@ if (array_key_exists("erreur", $_GET)) {
 <form action="../src/controleur/TraitementEvent.php" method="POST" enctype="multipart/form-data">
     <center><img src="../assets/img/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></center>
 
-    <CENTER> <input type="text" name="nom" placeholder="nom"/><br></CENTER><br>
-    <CENTER>  <input type="text" name="date" placeholder="date"/><br></CENTER><br>
-    <CENTER>  <input type="text" name="inscrits" placeholder="inscrits"/><br></CENTER><br>
-    <CENTER>  <input type="text" name="gerant" placeholder="gerant"/><br></CENTER><br>
+    <CENTER> <input type="text" name="titre" placeholder="titre"/><br></CENTER><br>
+    <CENTER>  <input type="text" name="description" placeholder="description"/><br></CENTER><br>
+    <CENTER>  <input type="text" name="lieu" placeholder="lieu"/><br></CENTER><br>
+    <CENTER>  <input type="text" name="elements_requis" placeholder="elements_requis"/><br></CENTER><br>
+    <CENTER>  <input type="text" name="nombre_de_places" placeholder="nombre_de_places"/><br></CENTER><br>
 
     <center><button type="submit">Valider</button></center>
 

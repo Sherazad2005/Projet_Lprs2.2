@@ -4,9 +4,10 @@ include '../bdd/Bdd.php';
 include '../model/Evenement.php';
 
 $event = new \model\event([
-    "nom" =>$_POST['nom'],
-    "date" =>$_POST['date'],
-    "inscrits" =>$_POST['inscrits'],
-    "gerant" =>$_POST['gerant'],
+    "titre" =>$_POST['titre'],
+    "description" =>$_POST['description'],
+    "lieu" =>$_POST['lieu'],
+    "elements_requis" =>$_POST['elements_requis'],
+    "nombre_de_places" =>$_POST['nombre_de_places'],
 ]);
 $event->ajouterUnEvent();
