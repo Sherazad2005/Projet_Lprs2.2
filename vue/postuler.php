@@ -3,109 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forum</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Forum - Réponses</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
+            background-color: #f8f9fa;
         }
-        header {
-            background-color: #203586;
-            color: white;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1rem;
-        }
-        .search-bar {
-            display: flex;
-            align-items: center;
-        }
-        .search-bar input {
-            padding: 0.5rem;
-            border: none;
-            border-radius: 4px;
-        }
-        .main-content {
-            max-width: 1200px;
+        .forum-container {
             margin: 2rem auto;
+            max-width: 800px;
+        }
+        .question-card {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        .response-card {
+            background: #ffffff;
             padding: 1rem;
-            background: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
         }
-        .category {
-            margin-bottom: 2rem;
+        .response-card .author {
+            font-weight: bold;
+            color: #007bff;
         }
-        .category h2 {
-            color: #203586;
-            margin-bottom: 0.5rem;
+        .response-card .timestamp {
+            font-size: 0.9rem;
+            color: #6c757d;
         }
-        .topic-list {
-            list-style: none;
-            padding: 0;
-        }
-        .topic-list li {
-            padding: 1rem;
-            border-bottom: 1px solid #ddd;
-        }
-        .topic-list li:last-child {
-            border-bottom: none;
-        }
-        .topic-list a {
-            text-decoration: none;
-            color: #333;
-        }
-        .topic-list a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background: #203586;
-            color: white;
-            margin-top: 2rem;
+        .response-form textarea {
+            resize: none;
         }
     </style>
 </head>
 <body>
-<header>
-    <div>
-        <a href="pageaccueil.php">Accueil</a>
-        <a href="#">Catégories</a>
-        <a href="#">Derniers messages</a>
+
+<div class="forum-container">
+    <!-- Question Section -->
+    <div class="question-card">
+        <h3>Comment apprendre à coder en Python ?</h3>
+        <p>Je suis débutant et j'aimerais savoir par où commencer pour apprendre Python. Des conseils ?</p>
+        <p class="text-muted">Posté par <strong>JohnDoe</strong> le 25 novembre 2024</p>
     </div>
-    <div class="search-bar">
-        <input type="text" placeholder="Rechercher...">
+
+    <!-- Responses Section -->
+    <div class="responses">
+        <h4>Réponses (3)</h4>
+
+        <!-- Response 1 -->
+        <div class="response-card">
+            <p class="author">Alice</p>
+            <p>C’est une excellente question ! Je recommande de commencer avec des tutoriels comme Codecademy ou de suivre des cours sur Udemy. Pratiquez beaucoup en essayant de créer des petits projets.</p>
+            <p class="timestamp">Répondu le 25 novembre 2024 à 10:00</p>
+        </div>
+
+        <!-- Response 2 -->
+        <div class="response-card">
+            <p class="author">Bob</p>
+            <p>Vous devriez également lire la documentation officielle de Python et rejoindre des forums comme Stack Overflow ou Reddit pour poser vos questions.</p>
+            <p class="timestamp">Répondu le 25 novembre 2024 à 10:30</p>
+        </div>
+
+        <!-- Response 3 -->
+        <div class="response-card">
+            <p class="author">Charlie</p>
+            <p>Python est très accessible ! Essayez d'installer Anaconda si vous voulez un environnement simple pour débuter avec Python et des bibliothèques comme NumPy ou pandas.</p>
+            <p class="timestamp">Répondu le 25 novembre 2024 à 11:00</p>
+        </div>
     </div>
-</header>
-<main class="main-content">
-    <div class="category">
-        <h2>Catégorie : Discussions générales</h2>
-        <ul class="topic-list">
-            <li><a href="#">Sujet 1 : Bienvenue sur notre forum</a></li>
-            <li><a href="#">Sujet 2 : Présentez-vous ici</a></li>
-            <li><a href="#">Sujet 3 : Discussion libre</a></li>
-        </ul>
+
+    <!-- Add a Response Form -->
+    <div class="response-form mt-4">
+        <h4>Ajouter une réponse</h4>
+        <form action="submit_response.php" method="POST">
+            <div class="mb-3">
+                <label for="response-text" class="form-label">Votre réponse</label>
+                <textarea class="form-control" id="response-text" name="response" rows="4" placeholder="Rédigez votre réponse ici..." required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="author-name" class="form-label">Votre nom</label>
+                <input type="text" class="form-control" id="author-name" name="author" placeholder="Entrez votre nom" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Publier</button>
+        </form>
     </div>
-    <div class="category">
-        <h2>Catégorie : Problèmes techniques</h2>
-        <ul class="topic-list">
-            <li><a href="#">Sujet 1 : Problème de connexion</a></li>
-            <li><a href="#">Sujet 2 : Rapport de bug</a></li>
-            <li><a href="#">Sujet 3 : Suggestions d'amélioration</a></li>
-        </ul>
-    </div>
-</main>
-<footer>
-    <p>&copy; 2024 Forum - Tous droits réservés</p>
-</footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
