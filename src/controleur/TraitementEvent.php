@@ -1,7 +1,7 @@
 <?php
 
 include '../bdd/Bdd.php';
-include '../model/Event.php';
+include '../model/Evenement.php';
 
 $event = new \model\event([
     "nom" =>$_POST['nom'],

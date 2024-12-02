@@ -3,7 +3,7 @@
 use model\Event;
 
 include '../bdd/Bdd.php';
-include '../model/Event.php';
+include '../model/Evenement.php';
 
 
 $event = new Event([
