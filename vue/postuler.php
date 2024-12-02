@@ -78,7 +78,7 @@
 <body>
 <header>
     <div>
-        <a href="pageaccueil.php">Accueil</a>
+        <a href="pageacceuil.php">Accueil</a>
         <a href="#">Catégories</a>
         <a href="#">Derniers messages</a>
     </div>

@@ -1,22 +1,19 @@
 <?php
-$offres = [
-    [
-        'id' => 1,
-        'titre' => 'Développeur Web',
-        'entreprise' => 'Tech Solutions',
-        'lieu' => 'Paris, France',
-        'date' => '01-11-2024',
-        'description' => 'Nous recherchons un développeur web passionné pour rejoindre notre équipe.'
-    ],
-    [
-        'id' => 2,
-        'titre' => 'Designer UX/UI',
-        'entreprise' => 'Creative Minds',
-        'lieu' => 'Lyon, France',
-        'date' => '02-11-2024',
-        'description' => 'Un poste stimulant pour un designer UX/UI créatif et innovant.'
-    ]
-];
+require_once '../src/bdd/Bdd.php';
+require_once '../src/model/Utilisateur.php';
+session_start();
+
+$bdd = new Bdd();
+
+$offres = [];
+try {
+    $req = $bdd->getBdd()->prepare('SELECT * FROM offre');
+    $req->execute();
+    $offres = $req->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Erreur lors de la récupération des offres : " . $e->getMessage();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -44,13 +41,15 @@ $offres = [
     <!-- MDB CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css">
 </head>
+
+
 <body>
 <div class="container mt-5">
     <h2 class="mb-4">Offres d'Emploi</h2>
     <div class="row">
         <?php foreach ($offres as $offre): ?>
             <div class="col-md-4 mb-4">
-                <div class="card h-100" onclick="window.location.href='offre.php?id=<?php echo $offre['id']; ?>'">
+                <div class="card h-100" onclick="window.location.href='offre.php?id=<?php echo $offre['id_entreprise']; ?>'">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo htmlspecialchars($offre['titre']); ?></h5>
                         <h6 class="card-subtitle mb-2 text-muted"><?php echo htmlspecialchars($offre['entreprise']); ?></h6>
@@ -73,17 +72,8 @@ $offres = [
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<footer class="text-center text-lg-start bg-body-tertiary text-muted">
-
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-            <div class="row mt-3">
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Projet LPRS
-                    </h6>
-
-                </div>
+<footer class="text-center mt-5">
+    <p>2024 Projet LPRS.</p>
 </footer>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<?php
+ <?php
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
 

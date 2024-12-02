@@ -313,7 +313,7 @@ class Utilisateur
 
                 if ($res['validated'] == 1) {
                     $_SESSION['user'] = $res;
-                    header("Location: page_accueil.php");
+                    header("Location: ../../vue/pageacceuil.php");
                     exit;
                 } elseif ($res['validated'] == 0) {
                     $_SESSION['error'] = 'Votre compte n\'est pas encore validé.';
@@ -388,7 +388,7 @@ class Utilisateur
         ));
 
         if ($res) {
-            header("Location: ../../vue/annuiare_anciens_eleves.php?success");
+            header("Location: ../../vue/liste_utilisateur.php?success");
         } else {
             header("Location: ../../vue/connexion.php?erreur");
         }
