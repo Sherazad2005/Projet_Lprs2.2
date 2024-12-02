@@ -61,10 +61,11 @@ $res = $req->fetch();
 <form action="../src/controleur/TraitementEdit_event.php" method="post">
     <center> <img src="../assets/img/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></center>
 
-    <center><input type="text" name="nom" placeholder="nom" value="<?= htmlspecialchars($res['nom'] ?? '') ?>"/><br><br>
-        <input type="text" name="date" placeholder="date" value="<?= htmlspecialchars($res['date'] ?? '') ?>"/><br><br>
-        <input type="text" name="inscrits" placeholder="inscrits" value="<?= htmlspecialchars($res['inscrits'] ?? '') ?>"/>
-        <input type="text" name="gerant" placeholder="gerant" value="<?= htmlspecialchars($res['gerant'] ?? '') ?>"/>
+    <center><input type="text" name="titre" placeholder="titre" value="<?= htmlspecialchars($res['titre'] ?? '') ?>"/><br><br>
+        <input type="text" name="description" placeholder="description" value="<?= htmlspecialchars($res['description'] ?? '') ?>"/><br><br>
+        <input type="text" name="lieu" placeholder="lieu" value="<?= htmlspecialchars($res['lieu'] ?? '') ?>"/><br><br>
+        <input type="text" name="elements_requis" placeholder="elements_requis" value="<?= htmlspecialchars($res['elements_requis'] ?? '') ?>"/><br><br>
+        <input type="text" name="nombre_de_places" placeholder="nombre_de_places" value="<?= htmlspecialchars($res['nombre_de_places'] ?? '') ?>"/><br><br>
     </center><input type="hidden" name="id_event" placeholder="id_event" value="<?= htmlspecialchars($res['id_event'] ?? '') ?>"/><br><br>
     <center><input type="submit" name="ins"/><br></center>
 

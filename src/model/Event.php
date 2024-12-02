@@ -4,13 +4,14 @@ namespace model;
 
 use Bdd;
 
-class event
+class Event
 {
 private $id_event;
-private $nom;
-private $date;
-private $inscrits;
-private $gerant;
+private $titre;
+private $description;
+private $lieu;
+private $elements_requis;
+private $nombre_de_places;
 
     public function __construct(array $donnee)
     {
@@ -45,78 +46,95 @@ private $gerant;
     /**
      * @return mixed
      */
-    public function getNom()
+    public function getTitre()
     {
-        return $this->nom;
+        return $this->titre;
     }
 
     /**
-     * @param mixed $nom
+     * @param mixed $titre
      */
-    public function setNom($nom)
+    public function setTitre($titre)
     {
-        $this->nom = $nom;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * @param mixed $date
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
+        $this->titre = $titre;
     }
 
     /**
      * @return mixed
      */
-    public function getInscrits()
+    public function getDescription()
     {
-        return $this->inscrits;
+        return $this->description;
     }
 
     /**
-     * @param mixed $inscrits
+     * @param mixed $description
      */
-    public function setInscrits($inscrits)
+    public function setDescription($description)
     {
-        $this->inscrits = $inscrits;
+        $this->description = $description;
     }
 
     /**
      * @return mixed
      */
-    public function getGerant()
+    public function getLieu()
     {
-        return $this->gerant;
+        return $this->lieu;
     }
 
     /**
-     * @param mixed $gerant
+     * @param mixed $lieu
      */
-    public function setGerant($gerant)
+    public function setLieu($lieu)
     {
-        $this->gerant = $gerant;
+        $this->lieu = $lieu;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getElementsRequis()
+    {
+        return $this->elements_requis;
+    }
+
+    /**
+     * @param mixed $elements_requis
+     */
+    public function setElementsRequis($elements_requis)
+    {
+        $this->elements_requis = $elements_requis;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNombreDePlaces()
+    {
+        return $this->nombre_de_places;
+    }
+
+    /**
+     * @param mixed $nombre_de_places
+     */
+    public function setNombreDePlaces($nombre_de_places)
+    {
+        $this->nombre_de_places = $nombre_de_places;
     }
 
     public function ajouterUnEvent() {
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare(
-            'INSERT INTO event (nom, date, inscrits, gerant) VALUES (:nom, :date, :inscrits, :gerant)'
+            'INSERT INTO event (titre, description, lieu, elements_requis, nombre_de_places) VALUES (:titre, :description, :lieu, :elements_requis, :nombre_de_places)'
         );
 
         $req->execute([
-            'nom'=> $this->getNom(),
-            'date'=> $this->getDate(),
-            'inscrits'=> $this->getInscrits(),
-            'gerant'=> $this->getGerant(),
+            'titre'=> $this->getTitre(),
+            'description'=> $this->getDescription(),
+            'lieu'=> $this->getLieu(),
+            'elements_requis'=> $this->getElementsRequis(),
+            'nombre_de_places'=> $this->getNombreDePlaces(),
         ]);
 
         header("Location: ../../vue/participation_evenement_alumni.php?success");
@@ -125,13 +143,14 @@ private $gerant;
     public function editer_event()
     {
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('UPDATE event SET nom=:nom,date=:date,inscrits=:inscrits,gerant=:gerant WHERE id_event=:id_event');
+        $req = $bdd->getBdd()->prepare('UPDATE event SET titre=:titre,description=:description,lieu=:lieu,elements_requis=:elements_requis,nombre_de_places=:nombre_de_places WHERE id_event=:id_event');
         $res = $req->execute(array(
-            "id_event" => $this->getIdEvent(),
-            "nom" => $this->getNom(),
-            "date" => $this->getDate(),
-            "inscrits" => $this->getInscrits(),
-            "gerant" => $this->getGerant(),
+            'id_event'=> $this->getIdEvent(),
+            'titre'=> $this->getTitre(),
+            'description'=> $this->getDescription(),
+            'lieu'=> $this->getLieu(),
+            'elements_requis'=> $this->getElementsRequis(),
+            'nombre_de_places'=> $this->getNombreDePlaces(),
         ));
 
         if ($res) {
