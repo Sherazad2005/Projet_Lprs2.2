@@ -102,7 +102,7 @@ $utilisateur = new Utilisateur($utilisateurData);
             </a>
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="pageaccueil.php" role="button">Accueil</a></li>
+                <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="pageacceuil.php" role="button">Accueil</a></li>
                 <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="AnnuaireEleve.php" role="button">Annuaire</a></li>
                 <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="PageForumAlumniEntreprise.php" role="button">Forum</a></li>
                 <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="Offres.php" role="button">Offres</a></li>

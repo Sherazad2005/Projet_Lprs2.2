@@ -1,6 +1,7 @@
 <?php
 require_once '../src/model/Utilisateur.php';
 session_start();
+var_dump($_SESSION);
 ?>
 <!doctype html>
 <html lang="en">
@@ -77,9 +78,9 @@ session_start();
 </head>
 <body>
 <?php if (isset($_GET['erreur']) && $_GET['erreur'] == 1): ?>
-<div id="notification" class="alert alert-danger text-center" role="alert">
-    Email ou Mot de Passe Incorrect.
-</div>
+    <div id="notification" class="alert alert-danger text-center" role="alert">
+        Email ou Mot de Passe Incorrect.
+    </div>
 <?php endif; ?>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">

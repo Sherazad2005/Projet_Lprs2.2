@@ -3,7 +3,7 @@
 use model\event;
 
 include '../bdd/Bdd.php';
-include '../model/Event.php';
+include '../model/Evenement.php';
 
 $event = new event([
     "idEvent" =>$_POST['id_event'],

@@ -11,83 +11,58 @@ if (array_key_exists("erreur", $_GET)) {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Connexion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css">
-</head>
+    <title>Connexion</title>
 <style>
     body {
+        background-color: #f8f9fa;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        margin: 0;
+        min-height: 100vh;
     }
-
-    form {
-
-        margin: 0 auto;
-        width: 400px;
-
-        padding: 1em;
-        border: 1px solid #ccc;
-        border-radius: 1em;
+    .form-container {
+        background: #fff;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
     }
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    .form-container h2 {
+        margin-bottom: 1.5rem;
     }
-
-    form li + li {
-        margin-top: 1em;
+    .hidden {
+        display: none;
     }
-
-    label {
-
-        display: inline-block;
-        width: 90px;
-        text-align: right;
-    }
-
 </style>
+</head>
 <body>
-<form action="../src/controleur/TraitementConnexion.php" method="post">
+<div class="form-container">
+    <center>
+        <img src="../assets/img/50-Lycee-Robert-Schuman.jpg" alt="Logo" height="100">
+        <h2 class="mt-3">Connexion</h2>
+    </center>
+    <form action="../src/controleur/TraitementConnexion.php" method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">Identifiant</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Entrez votre identifiant" required>
+        </div>
+        <div class="mb-3">
+            <label for="mdp" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Entrez votre mot de passe" required>
+        </div>
+        <div class="d-grid gap-2">
+            <button type="submit" name="ins" class="btn btn-primary">Se connecter</button>
+        </div>
+        <div class="text-center mt-3">
+            <a href="Inscription.php">Vous n'avez pas de compte ? Inscrivez-vous</a>
+        </div>
+    </form>
+</div>
 
-    <CENTER><img src="../assets/img/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></CENTER>
-
-    <CENTER><input type="email" name="email" placeholder="indentifiant"/></CENTER>
-    <br>
-
-    <CENTER>
-
-        <input type="password" name="mdp" placeholder="mots de passe"/></CENTER>
-    <br><br>
-
-    <CENTER><input type="submit" name="ins"/><br><br></CENTER>
-
-    <CENTER><a href="Inscription.php">Vous n'avez pas de compte</a></td></CENTER>
-
-
-</form>
-
-<footer class="text-center text-lg-start bg-body-tertiary text-muted">
-
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-
-            <div class="row mt-3">
-
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3">Projet LPRS</i>
-                    </h6>
-
-                </div>
-</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

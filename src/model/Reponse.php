@@ -1,13 +1,14 @@
+
 <?php
 
-
-
+session_start();
+var_dump($_SESSION);
 class Reponse
 {
 
     private $id_reponse;
-    private $messages ;
-    private $date_messages;
+    private $message ;
+    private $date_message;
     private $heure_message;
     private $ref_forum;
     private $ref_utilisateur ;
@@ -44,33 +45,33 @@ class Reponse
     /**
      * @return mixed
      */
-    public function getMessages()
+    public function getMessage()
     {
-        return $this->messages;
+        return $this->message;
     }
 
     /**
-     * @param mixed $messages
+     * @param mixed $message
      */
-    public function setMessages($messages)
+    public function setMessage($message)
     {
-        $this->messages = $messages;
+        $this->message = $message;
     }
 
     /**
      * @return mixed
      */
-    public function getDateMessages()
+    public function getDateMessage()
     {
         return  date("d/m/Y");
     }
 
     /**
-     * @param mixed $date_messages
+     * @param mixed $date_message
      */
-    public function setDateMessages($date_messages)
+    public function setDateMessage($date_message)
     {
-        $this->date_messages = $date_messages;
+        $this->date_message = $date_message;
     }
 
     /**
@@ -122,16 +123,16 @@ class Reponse
     }
 
 
-    public function ajouterUneReponse() {
+    public function ajouterUneReponse($id_forum) {
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare(
-            'INSERT INTO reponse (messages, date_messages, heure_message,	ref_forum, ref_utilisateur) 
-                    VALUES (:messages, CURRENT_DATE(), CURRENT_TIME(), :ref_forum, :ref_utilisateur)');
+            'INSERT INTO reponse (message, date_message, heure_message,	ref_forum, ref_utilisateur) 
+                    VALUES (:message, CURRENT_DATE(), CURRENT_TIME(), :ref_forum, :ref_utilisateur)');
 
         $req->execute([
-            'messages' => $this->getMessages(),
-            'ref_forum' => $_SESSION[""],
-            'ref_utilisateur' => $_SESSION[""]
+            'message' => $this->getMessage(),
+            'ref_forum' => $id_forum,
+            'ref_utilisateur' => $_SESSION['id_utilisateur']
         ]);
 
         header("Location: ../../vue/PageForumEleve.php?success");

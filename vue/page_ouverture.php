@@ -1,4 +1,4 @@
-<?php
+ <?php
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
 
@@ -114,6 +114,18 @@ try {
 <?php if (isset($_GET['erreur']) && $_GET['erreur'] == 1): ?>
     <div id="notification" class="alert alert-danger text-center" role="alert">
         Email ou Mot de Passe Incorrect.
+    </div>
+<?php endif; ?>
+
+<?php if (isset($_GET['erreur']) && $_GET['erreur'] == 2): ?>
+    <div id="notification" class="alert alert-danger text-center" role="alert">
+        Désoler votre Inscription à ete rejetée.
+    </div>
+<?php endif; ?>
+
+<?php if (isset($_GET['erreur']) && $_GET['erreur'] == 3): ?>
+    <div id="notification" class="alert alert-warning text-center" role="alert">
+        Désoler votre compte n'est pas encore validé, veuillez att le mail de validation.
     </div>
 <?php endif; ?>
 
