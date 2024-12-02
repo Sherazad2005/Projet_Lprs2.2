@@ -16,6 +16,7 @@ class Utilisateur
     private $specialite_prof;
     private $poste_entreprise;
     private $role;
+    private $ref_emplois;
 
 
     public function __construct(array $donnee)
@@ -229,6 +230,24 @@ class Utilisateur
     /**
      * @return mixed
      */
+    public function getRefEmplois()
+    {
+        return $this->ref_emplois;
+    }
+
+    /**
+     * @param mixed $ref_emplois
+     */
+    public function setRefEmplois($ref_emplois)
+    {
+        $this->ref_emplois = $ref_emplois;
+    }
+
+    /**
+     * @return mixed
+     */
+
+
 
 
     public function inscription()
@@ -264,17 +283,18 @@ class Utilisateur
         ));
         $res = $req->fetch();
         if (is_array($res)){
-            $this->setNom($res["nom"]);
-            $this->setPrenom($res["prenom"]);
-            $this->setCv($res["cv"]);
-            $this->setIdUtilisateur($res["id_utilisateur"]);
-            $this->setClasse($res["classe"]);
-            $this->setEmail($res["email"]);
-            $this->setNomPromo($res["nom_promo"]);
-            $this->setPosteEntreprise($res["poste_entreprise"]);
-            $this->setRole($res["role"]);
-            $this->setSecteurActivite($res["secteur_activite"]);
-            $this->setSpecialiteProf($res["specialite_prof"]);
+            $_SESSION['id_utilisateur']= $res['id_utilisateur'];
+            $_SESSION['nom']= $res['nom'];
+            $_SESSION['prenom']= $res['prenom'];
+            $_SESSION['email']= $res['email'];
+            $_SESSION['cv']= $res['cv'];
+            $_SESSION['classe']= $res['classe'];
+           $_SESSION['nom_promo']= $res['nom_promo'];
+           $_SESSION['poste_entreprise']= $res['id_utilisateur'];
+           $_SESSION['role']= $res['role'];
+           $_SESSION['secteur_activite']= $res['secteur_activite'];
+           $_SESSION['specialite_prof']= $res['id_utilisateur'];
+           $_SESSION['ref_emplois']= $res['ref_emplois'];
 
             session_start();
 

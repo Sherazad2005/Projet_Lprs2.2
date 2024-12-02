@@ -51,7 +51,6 @@ $res = $req->fetchAll();
 </nav>
 <table class="table table-success table-striped">
     <a href="NewForum.php" class="btn btn-outline-nouveau" role="button" aria-pressed="true">Nouveau</a>
-    <button type="button" class="btn btn-primary">Primary</button>
     <tr>
         <th>Titre</th>
         <th>Messages</th>

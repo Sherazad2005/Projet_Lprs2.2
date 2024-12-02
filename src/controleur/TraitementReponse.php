@@ -4,6 +4,6 @@ include '../bdd/Bdd.php';
 include '../model/Reponse.php';
 
 $utilisateur = new \Reponse([
-    "messages" =>$_POST['messages'],
+    "message" =>$_POST['message'],
 ]);
-$utilisateur->ajouterUneReponse();
+$utilisateur->ajouterUneReponse($_POST['id_forum']);

@@ -5,6 +5,7 @@ $req = $bdd->getBdd()->prepare('SELECT * FROM `forum` WHERE canal ="eleve/profes
 $req->execute(array());
 $res = $req->fetchAll();
 
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -56,7 +57,7 @@ $res = $req->fetchAll();
     foreach ($res as $forum){
         ?>
         <tr></tr>
-        <td><a href="PageReponse.php?id=<?= $forum['id_forum'] ?>"> <?= htmlspecialchars($forum["titre"]) ?></a></td>
+        <td><a href="PageReponse.php?id_forum=<?= $forum['id_forum'] ?>"> <?= htmlspecialchars($forum["titre"]) ?></a></td>
         <td><?= htmlspecialchars($forum["messages"]) ?></td>
         </tr>
         <?php
