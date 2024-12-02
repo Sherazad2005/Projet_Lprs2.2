@@ -54,7 +54,7 @@ $res = $req->fetchAll();
     <button type="button" class="btn btn-primary">Primary</button>
     <tr>
         <th>Titre</th>
-        <th>Sujet</th>
+        <th>Messages</th>
     </tr>
     <?php
     session_start();

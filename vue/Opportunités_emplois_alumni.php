@@ -2,7 +2,7 @@
 session_start();
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` ');
+$req = $bdd->getBdd()->prepare('SELECT * FROM `emplois` ');
 $req->execute(array());
 $res = $req->fetchAll();
 
@@ -15,9 +15,9 @@ $res = $req->fetchAll();
         * {
             box-sizing: border-box;
         }
-
-{
+        .column {
             float: left;
+
         }
 
         .left, .right {
@@ -68,46 +68,43 @@ $res = $req->fetchAll();
         }
     </style>
     <meta charset="UTF-8">
-    <title>Annuaire des anciens eleves</title>
+    <title>Opportunités emplois</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-
+    <!-- MDB CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css">
 </head>
 <body>
 
+
 <table>
     <tr>
-        <th>Id Utilisateur</th>
-        <th>Nom</th>
-        <th>Prenom</th>
-        <th>Mail</th>
-        <th>Classe</th>
-        <th>Promotion</th>
-        <th>CV</th>
+        <th>Id_emplois</th>
+        <th>Titre</th>
+        <th>Entreprise</th>
+        <th>Description</th>
     </tr>
+    <?php
+    foreach ($res as $emplois){
+        ?>
+        <tr>
+            <td><?=htmlspecialchars($emplois["id_emplois"]?? '') ?></td>
+            <td><?=htmlspecialchars($emplois["titre"] ??'') ?></td>
+            <td><?=htmlspecialchars($emplois["entreprise"]?? '')?></td>
+            <td><?=htmlspecialchars($emplois["descritpion"]?? '')?></td>
 
-    <?php
-    foreach ($res as $utilisateur){
-    ?>
-    <tr>
-        <td><?=htmlspecialchars($utilisateur["id_utilisateur"]?? '' )?></td>
-        <td><?=htmlspecialchars($utilisateur["nom"]?? '') ?></td>
-        <td><?=htmlspecialchars($utilisateur["prenom"]?? '') ?></td>
-        <td><?=htmlspecialchars($utilisateur["email"]?? '') ?></td>
-        <td><?=htmlspecialchars($utilisateur["classe"]?? '') ?></td>
-        <td><?=htmlspecialchars($utilisateur["nom_promo"]?? '') ?></td>
-        <td><?=htmlspecialchars($utilisateur["cv"]?? '') ?></td>
-        <td><a href="editer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Editer</a>
-            / <a href="Supprimer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Supprimer</a></td>
-    </tr>
-    <?php
+            <td><a href="editer_emplois.php?id_emplois=<?=$emplois["id_emplois"]?>">Editer</a>
+                <a href="supprimer_emplois.php?id_emplois=<?=$emplois["id_emplois"]?>">Supprimer</a>
+                <a href="postuler.php?id_emplois=<?=$emplois["id_emplois"]?>">Postuler</a>
+            </td>
+        </tr>
+
+        <?php
     }
     ?>
 </table>
-<br>
-<a href="../vue/accueil">Retour</a>
+<a href="../vue/pageaccueil.php">Retour</a>
 
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">
 
@@ -124,7 +121,6 @@ $res = $req->fetchAll();
 
                 </div>
 </footer>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+<!-- Footer -->
 </body>
 </html>

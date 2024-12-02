@@ -99,7 +99,7 @@ $res = $req->fetchAll();
 
             <td><a href="editer_event.php?id_event=<?=$event["id_event"]?>">Editer</a>
                 <a href="supprimer_event.php?id_event=<?=$event["id_event"]?>">Supprimer</a>
-                <a href="inscrire_event.php?id_event=<?=$event["id_event"]?>">S'inscrire</a>
+                <a href="inscrire.php?id_event=<?=$event["id_event"]?>">S'inscrire</a>
             </td>
         </tr>
 
@@ -107,7 +107,7 @@ $res = $req->fetchAll();
     }
     ?>
 </table>
-<a href="../vue/accueil">Retour</a>
+<a href="../vue/pageaccueil.php">Retour</a>
 
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">
 
@@ -124,6 +124,5 @@ $res = $req->fetchAll();
 
                 </div>
 </footer>
-<!-- Footer -->
 </body>
 </html>

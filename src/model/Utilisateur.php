@@ -252,7 +252,7 @@ class Utilisateur
             'role' => $this->getRole(),
         ]);
 
-        header("Location: ../../vue/Connexion.php?success");
+        header("Location: ../../vue/page_ouverture.php?success");
     }
 
     public function connexion(){
@@ -298,7 +298,7 @@ class Utilisateur
         ));
 
         if ($res) {
-            header("Location: ../../vue/annuiare_anciens_eleves.php?success");
+            header("Location: ../../vue/annuiare_anciens_eleves_alumni.php?success");
         } else {
             header("Location: ../../vue/editer.php?id_utilisateur=" . $this->getIdutilisateur() . "&erreur");
         }
@@ -313,12 +313,11 @@ class Utilisateur
         ));
 
         if ($res) {
-            header("Location: ../../vue/annuiare_anciens_eleves.php?success");
+            header("Location: ../../vue/annuiare_anciens_eleves_alumni.php?success");
         } else {
             header("Location: ../../vue/connexion.php?erreur");
         }
     }
-
     public function afficherNom()
     {
         $bdd = new Bdd();

@@ -64,9 +64,9 @@ if (array_key_exists("erreur", $_GET)) {
 
 
     <CENTER><a href="">Accès aux profils des anciens élèves !</a></td></CENTER><br>
-    <CENTER><a href="Acces_eleves_actuel.php">Accès aux profils des étudiants actuel !</a></td></CENTER><br>
+    <CENTER><a href="Acces_eleves_actuel_Professeur.php">Accès aux profils des étudiants actuel !</a></td></CENTER><br>
     <CENTER><a href="">Publication d'évènements !</a></td></CENTER><br>
-    <CENTER><a href="acces_offre.php">Accès à la section des offres !</a></td></CENTER><br>
+    <CENTER><a href="acces_offre_professeur.php">Accès à la section des offres !</a></td></CENTER><br>
 
 </form>
 </body>

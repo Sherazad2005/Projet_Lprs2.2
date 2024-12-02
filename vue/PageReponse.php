@@ -5,6 +5,7 @@ include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
 
 
+
 $id_forum = $_GET['id_forum'] ?? 0;
 if (!is_numeric($id_forum)) {
     $id_forum = 0;
@@ -27,11 +28,17 @@ if (isset($_SESSION['id_utilisateur'])) {
 } else {
     echo "Aucun utilisateur connecté.";
 }
+
+$req = $bdd->getBdd()->prepare('SELECT * FROM `forum` ');
+$req->execute(array());
+$res = $req->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -91,8 +98,44 @@ if (isset($_SESSION['id_utilisateur'])) {
         </div>
         <button type="submit" name="ins" class="btn btn-primary">Envoyer</button>
     </form>
-</div>
 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="A short description." />
+<meta name="keywords" content="put, keywords, here" />
+<title>PHP-MySQL forum</title>
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+
+<div id="wrapper">
+    <div id="menu">
+        <a class="item" href="pageaccueil.php">Page_accueil</a><br><br>
+        <a class="item" href="NewForum.php">Crée une nouvelle discussion</nouve></a><br><br>
+        <div id="content">
+        </div>
+    </div>
+    <table>
+        <tr>
+            <th>Titre</th>
+            <th>Messages</th>
+        </tr>
+        <?php
+        foreach ($res as $forum){
+        ?>
+            <tr>
+                <td><?= htmlspecialchars(trim($forum['titre'] ?? '')) ?></td>
+                <td><?= htmlspecialchars(trim($forum['messages'] ?? '')) ?></td>
+            </tr>
+
+            <?php
+        }
+        ?>
+    </table>
+    <a href="" >Répondre</a>
+
+</div>
+</body>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoYzVrNHz/jnxil2+9EJk52/KnwNs9ktazFfGdvWZd6EGdt" crossorigin="anonymous"></script>
 </body>
 </html>
