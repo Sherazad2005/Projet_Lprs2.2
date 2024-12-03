@@ -2,129 +2,108 @@
 session_start();
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` ');
-$req->execute(array());
+$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur`');
+$req->execute();
 $res = $req->fetchAll();
-
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <link rel="icon" type="image/x-icon" href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lyceerobertschuman.com%2F&psig=AOvVaw1V4azkFzc1RTIFsSnyE7rn&ust=1710580549450000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCPDb56H39YQDFQAAAAAdAAAAABAI">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annuaire des Anciens Élèves</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * {
-            box-sizing: border-box;
+        body {
+            background-color: #f8f9fa;
         }
-
-{
-            float: left;
-        }
-
-        .left, .right {
-            height: 130px;
-            width: 15%;
-            border: 1px solid black;
-        ;
-            padding: 1px;
-            text-align: center;
-        }
-
-        .middle {
-            background-color: #203586;
-            height: 180px;
-            width: 70%;
-            padding: 20px;
-            text-align: center;
-            font-size: 30px;
-            color: black;
-
+        .table-container {
+            margin: 20px auto;
+            max-width: 90%;
+            background: #ffffff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
         table {
-            table-layout: fixed;
-            width: 100%;
-            border-collapse: collapse;
-            border: 3px solid #203586;
+            margin: 0;
         }
-
-        thead th:nth-child(1) {
-            width: 30%;
+        footer {
+            background: #203586;
+            color: white;
+            padding: 15px 0;
         }
-
-        thead th:nth-child(2) {
-            width: 20%;
+        footer h6 {
+            font-size: 1.2rem;
+            color: white;
         }
-
-        thead th:nth-child(3) {
-            width: 15%;
+        .edit-btn, .delete-btn {
+            text-decoration: none;
+            margin: 0 5px;
         }
-
-        thead th:nth-child(4) {
-            width: 35%;
+        .edit-btn:hover, .delete-btn:hover {
+            text-decoration: underline;
         }
-
-        th,
-        td {
-            padding: 20px;
+        .edit-btn {
+            color: #0d6efd;
+        }
+        .delete-btn {
+            color: #dc3545;
         }
     </style>
-    <meta charset="UTF-8">
-    <title>Annuaire des anciens eleves</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css">
 </head>
 <body>
+<div class="container">
+    <div class="text-center py-5">
+        <h1 class="text-primary">Annuaire des Anciens Élèves</h1>
+    </div>
+    <div class="table-container p-4">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Mot de Passe</th>
+                <th>Nom Promo</th>
+                <th>CV</th>
+                <th>Classe</th>
+                <th>Rôle</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($res as $utilisateur): ?>
+                <tr>
+                    <td><?= htmlspecialchars($utilisateur["id_utilisateur"]) ?></td>
+                    <td><?= htmlspecialchars($utilisateur["nom"]) ?></td>
+                    <td><?= htmlspecialchars($utilisateur["prenom"]) ?></td>
+                    <td><?= htmlspecialchars($utilisateur["email"]) ?></td>
+                    <td><?= htmlspecialchars($utilisateur["mdp"]) ?></td>
+                    <td><?= htmlspecialchars($utilisateur["nom_promo"]) ?></td>
+                    <td><?= htmlspecialchars($utilisateur["cv"]) ?></td>
+                    <td><?= htmlspecialchars($utilisateur["classe"]) ?></td>
+                    <td><?= htmlspecialchars($utilisateur["role"]) ?></td>
+                    <td>
+                        <a href="editer.php?id_utilisateur=<?= $utilisateur["id_utilisateur"] ?>" class="edit-btn">Éditer</a>
+                        <a href="Supprimer.php?id_utilisateur=<?= $utilisateur["id_utilisateur"] ?>" class="delete-btn">Supprimer</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center mt-4">
+        <a href="../src/controleur/TraitementDeco.php" class="btn btn-outline-danger">Déconnexion</a>
+    </div>
+</div>
 
-<table>
-    <tr>
-        <th>Id Utilisateur</th>
-        <th>Nom</th>
-        <th>Prenom</th>
-        <th>Mail</th>
-        <th>Classe</th>
-        <th>Promotion</th>
-        <th>CV</th>
-    </tr>
-
-    <?php
-    foreach ($res as $utilisateur){
-    ?>
-    <tr>
-        <td><?=htmlspecialchars($utilisateur["id_utilisateur"]?? '' )?></td>
-        <td><?=htmlspecialchars($utilisateur["nom"]?? '') ?></td>
-        <td><?=htmlspecialchars($utilisateur["prenom"]?? '') ?></td>
-        <td><?=htmlspecialchars($utilisateur["email"]?? '') ?></td>
-        <td><?=htmlspecialchars($utilisateur["classe"]?? '') ?></td>
-        <td><?=htmlspecialchars($utilisateur["nom_promo"]?? '') ?></td>
-        <td><?=htmlspecialchars($utilisateur["cv"]?? '') ?></td>
-        <td><a href="editer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Editer</a>
-            / <a href="Supprimer.php?id_utilisateur=<?=$utilisateur["id_utilisateur"]?>">Supprimer</a></td>
-    </tr>
-    <?php
-    }
-    ?>
-</table>
-<br>
-<a href="../vue/pageaccueil.php">Retour</a>
-
-<footer class="text-center text-lg-start bg-body-tertiary text-muted">
-
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-
-            <div class="row mt-3">
-
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Projet LPRS
-                    </h6>
-
-                </div>
+<footer class="text-center">
+    <h6>Projet LPRS</h6>
+    <p class="mb-0">Une initiative du Lycée Robert Schuman.</p>
 </footer>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

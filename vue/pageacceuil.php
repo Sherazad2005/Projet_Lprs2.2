@@ -26,13 +26,12 @@ var_dump($_SESSION);
             font-weight: bold;  /* Texte en gras */
         }
 
-        /* Flou pour l'arrière-plan */
+
         .blurred {
             filter: blur(5px);
             transition: filter 0.3s ease;
         }
 
-        /* Modale centrée */
         #deconnexionForm {
             display: none;
             position: fixed;
@@ -48,7 +47,7 @@ var_dump($_SESSION);
             text-align: center;
         }
 
-        /* Ombre pour désactiver les clics à l'extérieur */
+
         #overlay {
             display: none;
             position: fixed;
@@ -61,14 +60,13 @@ var_dump($_SESSION);
         }
     </style>
     <script>
-        // Afficher la fenêtre de déconnexion avec flou de l'arrière-plan
+
         function afficherFormulaireDeconnexion() {
             document.getElementById("content").classList.add("blurred");
             document.getElementById("overlay").style.display = "block";
             document.getElementById("deconnexionForm").style.display = "block";
         }
 
-        // Masquer la fenêtre de déconnexion et retirer le flou
         function fermerFormulaireDeconnexion() {
             document.getElementById("content").classList.remove("blurred");
             document.getElementById("overlay").style.display = "none";

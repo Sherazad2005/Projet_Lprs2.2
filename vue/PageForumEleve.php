@@ -11,82 +11,103 @@ $res = $req->fetchAll();
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Forum général</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <!-- MDB CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum Général</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar-brand img {
+            width: 50px;
+            height: auto;
+        }
+        .forum-header {
+            margin: 20px 0;
+            text-align: center;
+            color: #203586;
+        }
+        .forum-header h1 {
+            font-size: 2.5rem;
+        }
+        .btn-nouveau {
+            background-color: #203586;
+            color: white;
+            border: none;
+        }
+        .btn-nouveau:hover {
+            background-color: #1a2c6b;
+        }
+        .table-container {
+            background: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+        }
+        footer {
+            background: #203586;
+            color: white;
+            padding: 20px;
+        }
+        footer h6 {
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#" ><span class="text-warning"><img src="../assets/img/logoLprs.png" alt="Logo" width="40" height="24"></span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+        <a class="navbar-brand" href="#"><img src="../assets/img/logoLprs.png" alt="Logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="Offres.php">Offres</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true"></a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="#">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="Offres.php">Offres</a></li>
             </ul>
-            <form class="d-flex" role="search">
+            <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Recherche</button>
+                <button class="btn btn-outline-primary" type="submit">Recherche</button>
             </form>
         </div>
     </div>
 </nav>
-<table class="table table-success table-striped">
-    <tr>
-        <th>Titre</th>
-        <th>Messages</th>
-    </tr>
-    <?php
-    foreach ($res as $forum){
-        ?>
-        <tr></tr>
-        <td><a href="PageReponse.php?id_forum=<?= $forum['id_forum'] ?>"> <?= htmlspecialchars($forum["titre"]) ?></a></td>
-        <td><?= htmlspecialchars($forum["messages"]) ?></td>
-        </tr>
-        <?php
-    }
-    ?>
-
-</table>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<!-- Footer -->
-<footer class="text-center text-lg-start bg-body-tertiary text-muted">
-    <!-- Section: Social media -->
-
-    <!-- Section: Social media -->
-
-    <!-- Section: Links  -->
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-            <!-- Grid row -->
-            <div class="row mt-3">
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <!-- Content -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Projet LPRS
-                    </h6>
-
-                </div>
+<body>
+<div class="container">
+    <div class="forum-header">
+        <h1>Forum Elève</h1>
+        <p class="text-muted">Partagez et discutez ici.</p>
+    </div>
+    <div class="text-end mb-3">
+        <a href="NewForum.php" class="btn btn-nouveau">+ Nouveau Sujet</a>
+    </div>
+    <div class="table-container">
+        <table class="table table-striped">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">Titre</th>
+                <th scope="col">Messages</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($res as $forum): ?>
+                <tr>
+                    <td><a href="PageReponse.php?id_forum=<?= $forum['id_forum'] ?>"><?= htmlspecialchars($forum["titre"]) ?></a></td>
+                    <td><?= htmlspecialchars($forum["messages"]) ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+<footer class="text-center">
+    <h6 class="text-uppercase fw-bold">Projet LPRS</h6>
+    <p>Une plateforme pour la communication et le partage.</p>
 </footer>
-<!-- Footer -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
