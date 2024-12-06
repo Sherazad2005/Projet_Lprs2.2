@@ -98,7 +98,7 @@ if (array_key_exists("erreur", $_GET)) {
 
 <form action="../src/controleur/TraitementIns.php" method="POST" enctype="multipart/form-data">
     <center><img src="../assets/img/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br>
-
+        <h2 class="mt-3">Inscription</h2>
     <label for="nom"></label>
     <input type="text" class="form-control" name="nom" required placeholder="Nom"><br>
 
