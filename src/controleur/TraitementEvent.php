@@ -1,9 +1,11 @@
 <?php
 
-include '../bdd/Bdd.php';
-include '../model/Evenement.php';
+use model\Event;
 
-$event = new \model\event([
+include '../bdd/Bdd.php';
+include '../model/Event.php';
+
+$event = new event([
     "titre" =>$_POST['titre'],
     "description" =>$_POST['description'],
     "lieu" =>$_POST['lieu'],
