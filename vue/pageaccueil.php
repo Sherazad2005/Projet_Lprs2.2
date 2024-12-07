@@ -163,6 +163,19 @@ session_start();
         Soyez à jour avec les dernières informations.</p>
 </section>
 
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+            <h1>Entreprises Partenaires</h1>
+            <p class="lead">Publiez vos offres, recherchez des talents parmi nos alumni, et collaborez avec notre établissement.</p>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="../assets/img/Capture%20d'écran%202024-11-23%20191950.png" alt="Mountain" class="img-fluid rounded shadow" style="max-height: 300px;">
+
+        </div>
+    </div>
+</div>
+<br>
 <footer class="text-center text-lg-start">
     <div class="container p-4">
         <h6 class="text-uppercase fw-bold">Projet LPRS</h6>
@@ -170,6 +183,8 @@ session_start();
         <p>&copy; 2024 Projet LPRS. Tous droits réservés.</p>
     </div>
 </footer>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

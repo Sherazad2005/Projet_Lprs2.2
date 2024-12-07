@@ -98,6 +98,7 @@ $res = $req->fetchAll();
         <a href="../src/controleur/TraitementDeco.php" class="btn btn-outline-danger">Déconnexion</a>
     </div>
 </div>
+<br>
 
 <footer class="text-center">
     <h6>Projet LPRS</h6>

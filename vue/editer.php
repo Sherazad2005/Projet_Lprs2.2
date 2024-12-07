@@ -22,104 +22,86 @@ $res = $req->fetch();
 </head>
 <style>
     body {
+        background-color: #f8f9fa;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        margin: 0;
+        min-height: 100vh;
     }
-
-    form {
-
-        margin: 0 auto;
-        width: 500px;
-
-        padding: 1em;
-        border: 1px solid #ccc;
-        border-radius: 1em;
+    .form-container {
+        background: #fff;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
     }
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    .form-container h2 {
+        margin-bottom: 1.5rem;
     }
-
-    form li + li {
-        margin-top: 1em;
-    }
-
-    label {
-
-        display: inline-block;
-        width: 90px;
-        text-align: right;
+    .hidden {
+        display: none;
     }
 </style>
 <body>
+<div class="form-container">
 <form action="../src/controleur/TraitementEdit.php" method="post">
-    <center> <img src="../assets/img/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></center>
-
-    <center><input type="text" name="nom" placeholder="nom" value="<?= htmlspecialchars($res['nom'] ?? '') ?>"/><br><br>
-    <input type="text" name="prenom" placeholder="prenom" value="<?= htmlspecialchars($res['prenom'] ?? '') ?>"/><br><br>
-    <input type="password" name="mdp" placeholder="mdp" value="<?= htmlspecialchars($res['mdp'] ?? '') ?>"/>
-    <input type="hidden" name="id_utilisateur" placeholder="id_utilisateur" value="<?= htmlspecialchars($res['id_utilisateur'] ?? '') ?>"/><br><br>
+    <center> <img src="../assets/img/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br>
+    <h2 class="mt-3">Edition profil</h2></center>
+    <label for="nom"></label>
+    <input class="form-control" type="text" name="nom" placeholder="nom" value="<?= htmlspecialchars($res['nom'] ?? '') ?>"/>
+    <label for="prenom"></label>
+    <input class="form-control" type="text" name="prenom" placeholder="prenom" value="<?= htmlspecialchars($res['prenom'] ?? '') ?>"/>
+    <label for="mdp"></label>
+    <input class="form-control" type="password" name="mdp" placeholder="mdp" value="<?= htmlspecialchars($res['mdp'] ?? '') ?>"/>
+    <label for="id_utilisateur"></label>
+    <input class="form-control" type="hidden" name="id_utilisateur" placeholder="id_utilisateur" value="<?= htmlspecialchars($res['id_utilisateur'] ?? '') ?>"/>
 
         <label for="role">Sélectionner un rôle</label>
-        <select name="role" id="role" onchange="afficherChampsSpecifiques()">
-            <option value="">Sélectionner un rôle</option>
+        <select class="form-control" name="role" id="role" onchange="afficherChampsSpecifiques()">
             <option value="eleve">Élève</option>
             <option value="professeur">Professeur</option>
             <option value="alumni">Alumni</option>
             <option value="partenaire">Partenaire</option>
-        </select><br><br>
+        </select>
 
         <div id="eleveFields" style="display:none;">
             <label for="classe">Classe :</label>
-            <input type="text" name="classe" placeholder="classe" value="<?= htmlspecialchars(trim($res['classe'] ?? '')) ?>"><br><br>
+            <input type="text" name="classe" placeholder="classe" value="<?= htmlspecialchars(trim($res['classe'] ?? '')) ?>">
 
             <label for="nom_promo">Nom de la promo :</label>
-            <input type="text" name="nom_promo" placeholder="nom_promo" value="<?= htmlspecialchars(trim($res['nom_promo'] ?? '')) ?>"><br><br>
+            <input type="text" name="nom_promo" placeholder="nom_promo" value="<?= htmlspecialchars(trim($res['nom_promo'] ?? '')) ?>">
 
             <label for="cv">CV (PDF) :</label>
-            <input type="file" name="cv" accept=".pdf"><br><br>
+            <input type="file" name="cv" accept=".pdf">
         </div>
 
         <div id="profFields" style="display:none;">
             <label for="specialite_prof">Spécialité du Professeur :</label>
-            <input type="text" name="specialite_prof" placeholder="Spécialité du Professeur" value="<?= htmlspecialchars(trim($res['specialite_prof'] ?? '')) ?>"><br><br>
+            <input type="text" name="specialite_prof" placeholder="Spécialité du Professeur" value="<?= htmlspecialchars(trim($res['specialite_prof'] ?? '')) ?>">
         </div>
 
         <div id="alumniFields" style="display:none;">
             <label for="nom_promo">Nom de la promo :</label>
-            <input type="text" name="nom_promo" placeholder="Promo" value="<?= htmlspecialchars(trim($res['nom_promo'] ?? '')) ?>"><br><br>
+            <input type="text" name="nom_promo" placeholder="Promo" value="<?= htmlspecialchars(trim($res['nom_promo'] ?? '')) ?>">
         </div>
 
         <div id="entrepriseFields" style="display:none;">
             <label for="poste_entreprise">Poste dans l'entreprise :</label>
-            <input type="text" name="poste_entreprise" placeholder="Poste" value="<?= htmlspecialchars(trim($res['poste_entreprise'] ?? '')) ?>"><br><br>
+            <input type="text" name="poste_entreprise" placeholder="Poste" value="<?= htmlspecialchars(trim($res['poste_entreprise'] ?? '')) ?>">
 
             <label for="secteur_activite">Secteur d'activité :</label>
-            <input type="text" name="secteur_activite" placeholder="Secteur d'activité" value="<?= htmlspecialchars(trim($res['secteur_activite'] ?? '')) ?>"><br><br>
+            <input type="text" name="secteur_activite" placeholder="Secteur d'activité" value="<?= htmlspecialchars(trim($res['secteur_activite'] ?? '')) ?>">
         </div>
+    <br>
 
 
-        <center><input type="submit" name="ins"/><br></center>
-
-
+    <div class="d-grid gap-2">
+        <input type="submit" name="ins" class="btn btn-primary"/><br></div>
+    </center>
 </form>
-
-<footer class="text-center text-lg-start bg-body-tertiary text-muted">
-
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Projet LPRS
-                    </h6>
-
-                </div>
-</footer>
-<!-- Footer -->
+</div>
 </body>
 </html>
+
+

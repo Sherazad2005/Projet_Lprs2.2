@@ -1,4 +1,5 @@
 <?php
+var_dump($_POST);
 session_start();
 include '../src/bdd/Bdd.php';
 
@@ -34,8 +35,25 @@ $res = $req->fetchAll(PDO::FETCH_ASSOC);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Réponses</title>
     <style>
+
         body {
             background-color: #f8f9fa;
+        }
+        .navbar {
+            border-bottom: 2px solid #203586;
+        }
+        .navbar-brand img {
+            width: 40px;
+            height: auto;
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            height: 500px;
+        }
+
+        section {
+            padding: 60px 0;
         }
         .forum-container {
             margin: 2rem auto;
@@ -59,6 +77,43 @@ $res = $req->fetchAll(PDO::FETCH_ASSOC);
     </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="../assets/img/logoLprs.png" alt="Logo"> Projet LPRS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" href="#">Accueil</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
+                    <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="Inscription.php">Inscription</a></li>
+                        <li><a class="dropdown-item" href="Connexion.php">Connexion</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="forumDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">Forums</a>
+                    <ul class="dropdown-menu" aria-labelledby="forumDropdown">
+                        <li><a class="dropdown-item" href="PageForumGenerale.php">Forum général</a></li>
+                        <li><a class="dropdown-item" href="PageForumAlumniEntreprise.php">Forum professionnel</a></li>
+                        <li><a class="dropdown-item" href="PageForumEleve.php">Forum élève</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="Offres.php">Offres</a></li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Recherche</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
 <div class="forum-container">
 
     <?php if (!empty($res)): ?>
