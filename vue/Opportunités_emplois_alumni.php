@@ -81,6 +81,7 @@ $res = $req->fetchAll();
 <table>
     <tr>
         <th>Id_emplois</th>
+        <th>Id_utilisateur</th>
         <th>Titre</th>
         <th>Entreprise</th>
         <th>Description</th>
@@ -90,6 +91,7 @@ $res = $req->fetchAll();
         ?>
         <tr>
             <td><?=htmlspecialchars($emplois["id_emplois"]?? '') ?></td>
+            <td><?=htmlspecialchars($emplois["id_utilisateur"]?? '') ?></td>
             <td><?=htmlspecialchars($emplois["titre"] ??'') ?></td>
             <td><?=htmlspecialchars($emplois["entreprise"]?? '')?></td>
             <td><?=htmlspecialchars($emplois["descritpion"]?? '')?></td>

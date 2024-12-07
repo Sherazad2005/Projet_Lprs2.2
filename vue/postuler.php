@@ -1,25 +1,32 @@
 <?php
 include '../src/bdd/Bdd.php';
+include '../src/model/Utilisateur.php';
 
 
 $ref_emplois = $_GET['id_emplois'] ?? null;
+$ref_utilisateur = $_GET['id_utilisateur'] ?? null;
 
 if (!$ref_emplois) {
     die("ID de l'emploi manquant.");
 }
 
+if (!$ref_utilisateur) {
+    die("ID de l'utilisateur manquant.");
+}
 $bdd = new Bdd();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $req = $bdd->getBdd()->prepare(
-            'INSERT INTO postuler (ref_utilisateur, ref_emplois) VALUES (NULL, :ref_emplois)'
+            'INSERT INTO postuler (ref_utilisateur, ref_emplois) VALUES (:ref_utilisateur, :ref_emplois)'
         );
         $req->execute([
             ':ref_emplois' => $ref_emplois,
+            ':ref_utilisateur' => $ref_emplois,
         ]);
 
         echo "<p>Votre candidature a été enregistrée avec succès pour l'emploi ID : $ref_emplois !</p>";
+        echo "<p>Votre candidature a été enregistrée avec succès pour l'emploi ID : $ref_utilisateur !</p>";
         echo '<a href="Opportunités_emplois_alumni.php">Retour à la liste des emplois</a>';
         exit;
     } catch (PDOException $e) {

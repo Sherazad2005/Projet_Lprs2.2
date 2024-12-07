@@ -1,5 +1,4 @@
 <?php
-include '../src/model/Utilisateur.php';
 session_start();
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
@@ -11,7 +10,6 @@ $res = $req->fetchAll();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" type="image/x-icon" href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lyceerobertschuman.com%2F&psig=AOvVaw1V4azkFzc1RTIFsSnyE7rn&ust=1710580549450000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCPDb56H39YQDFQAAAAAdAAAAABAI">
     <style>
         body {
@@ -51,7 +49,7 @@ $res = $req->fetchAll();
         }
     </style>
     <meta charset="UTF-8">
-    <title>participation_evenement</title>
+    <title>Opportunités emplois</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
@@ -81,15 +79,15 @@ $res = $req->fetchAll();
         ?>
         <tr>
             <td><?=htmlspecialchars($event["id_event"]?? '') ?></td>
-            <td><?=htmlspecialchars($event["titre"]??'')?></td>
-            <td><?=htmlspecialchars($event["description"]?? '')?></td>
+            <td><?=htmlspecialchars($event["titre"] ??'') ?></td>
+            <td><?=htmlspecialchars($event["descritpion"]?? '')?></td>
             <td><?=htmlspecialchars($event["lieu"]?? '')?></td>
             <td><?=htmlspecialchars($event["elements_requis"]?? '')?></td>
             <td><?=htmlspecialchars($event["nombre_de_places"]?? '')?></td>
 
-            <td><a href="editer_event.php?id_event=<?=htmlspecialchars($event['id_event'])?>">Editer</a>
-                <a href="supprimer_event.php?id_event=<?=htmlspecialchars($event['id_event'])?>">Supprimer</a>
-                <a href="inscrire.php?id_event=<?=htmlspecialchars($event['id_event'])?>">S'inscrire</a>
+            <td><a href="editer_event.php?id_event=<?=$event["id_event"]?>">Editer</a>
+                <a href="supprimer_event.php?id_event=<?=$event["id_event"]?>">Supprimer</a>
+                <a href="postuler.php?id_event=<?=$event["id_event"]?>">Postuler</a>
             </td>
         </tr>
 
@@ -108,5 +106,6 @@ $res = $req->fetchAll();
     <h6>Projet LPRS</h6>
     <p class="mb-0">Une initiative du Lycée Robert Schuman.</p>
 </footer>
+<!-- Footer -->
 </body>
 </html>
