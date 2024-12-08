@@ -148,3 +148,4 @@ var_dump($_SESSION);
     </section>
 </footer>
 </body>
+</html>

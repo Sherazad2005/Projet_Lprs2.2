@@ -39,40 +39,103 @@ session_start();
         }
 
         section {
-            padding: 60px 0;
+            background-color: #f1f5f8;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+            url('../assets/img/hero-bg.jpg') no-repeat center center/cover;
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+        }
+
+        .hero .btn {
+            padding: 10px 30px;
+            font-size: 1rem;
+            border-radius: 50px;
+            background-color: #6583f1;
+            color: #333;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .hero .btn:hover {
+            background-color: #6583f1;
+        }
+
+        
+        .features {
+            padding: 60px 0;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #203586;
+        }
+
+        .features .feature {
+            margin-bottom: 20px;
+        }
+
+        .features .feature i {
+            font-size: 2rem;
+            color: #6583f1;
+            margin-bottom: 15px;
+        }
+
+        .features p {
+            font-size: 1rem;
+            color: #666;
+        }
+
 
         footer {
             background-color: #203586;
-            color: white;
-            padding: 20px;
+            color: #fff;
+            padding: 30px 0;
         }
 
         footer h6 {
-            font-size: 1.2rem;
-            font-weight: bold;
+            font-size: 1.25rem;
+            margin-bottom: 15px;
         }
 
         footer p {
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
-        .btn-primary {
-            background-color: #203586;
-            border: none;
+        footer a {
+            color: #ffdd57;
+            text-decoration: none;
         }
 
-        .btn-primary:hover {
-            background-color: #1a2c6b;
-        }
-
-        .card-body {
-            background-color: #f1f5f8;
+        footer a:hover {
+            color: #ffc107;
+            text-decoration: underline;
         }
     </style>
 </head>
 
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><img src="../assets/img/logoLprs.png" alt="Logo"> Projet LPRS</a>
@@ -82,7 +145,7 @@ session_start();
         </button>
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" href="#">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link active" href="pageaccueil.php">Accueil</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
@@ -91,20 +154,11 @@ session_start();
                         <li><a class="dropdown-item" href="Connexion.php">Connexion</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="forumDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">Forums</a>
-                    <ul class="dropdown-menu" aria-labelledby="forumDropdown">
-                        <li><a class="dropdown-item" href="PageForumGenerale.php">Forum général</a></li>
-                        <li><a class="dropdown-item" href="PageForumAlumniEntreprise.php">Forum professionnel</a></li>
-                        <li><a class="dropdown-item" href="PageForumEleve.php">Forum élève</a></li>
-                    </ul>
-                </li>
                 <li class="nav-item"><a class="nav-link" href="Offres.php">Offres</a></li>
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit">Recherche</button>
+                <button class="btn btn-primary" type="submit">Recherche</button>
             </form>
         </div>
     </div>
@@ -125,14 +179,14 @@ session_start();
             </div>
         </div>
         <div class="carousel-item">
-            <img src="../assets/img/img2.jpeg" class="d-block w-100" alt="Image 2">
+            <img src="../assets/img/img2.jpg" class="d-block w-100" alt="Image 2">
             <div class="carousel-caption">
                 <h5>Des forums pour échanger</h5>
                 <p>Participez à des discussions enrichissantes.</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="../assets/img/img3.jpeg" class="d-block w-100" alt="Image 3">
+            <img src="../assets/img/img3.gif" class="d-block w-100" alt="Image 3">
             <div class="carousel-caption">
                 <h5>Des opportunités professionnelles</h5>
                 <p>Découvrez les offres adaptées à vos compétences.</p>
@@ -150,17 +204,27 @@ session_start();
 </div>
 
 
-<section class="container my-5">
-    <h2>À propos de nous</h2>
-    <p>Le Projet LPRS offre une plateforme d'échange pour les étudiants, les professionnels et les alumni. Notre
-        objectif est de créer un espace interactif et inclusif où les utilisateurs peuvent partager leurs idées et
-        opportunités.</p>
-</section>
-
-<section class="container my-5">
-    <h2>Dernières nouvelles</h2>
-    <p>Consultez les actualités récentes de nos forums et des offres professionnelles disponibles sur notre plateforme.
-        Soyez à jour avec les dernières informations.</p>
+<section id="features" class="features">
+    <div class="container">
+        <h2>Pourquoi nous choisir ?</h2>
+        <div class="row">
+            <div class="col-md-4 feature">
+                <i class="fas fa-users"></i>
+                <h5>Communauté dynamique</h5>
+                <p>Participez à des échanges enrichissants avec nos forums interactifs.</p>
+            </div>
+            <div class="col-md-4 feature">
+                <i class="fas fa-briefcase"></i>
+                <h5>Opportunités professionnelles</h5>
+                <p>Trouvez des offres d'emploi adaptées à vos compétences.</p>
+            </div>
+            <div class="col-md-4 feature">
+                <i class="fas fa-graduation-cap"></i>
+                <h5>Événements éducatifs</h5>
+                <p>Participez à des webinaires et des conférences pour booster vos compétences.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
 <div class="container mt-5">
