@@ -6,12 +6,12 @@ use Bdd;
 
 class Event
 {
-private $id_event;
-private $titre;
-private $description;
-private $lieu;
-private $elements_requis;
-private $nombre_de_places;
+    private $id_event;
+    private $titre;
+    private $description;
+    private $lieu;
+    private $elementsrequis;
+    private $nombreplaces;
 
     public function __construct(array $donnee)
     {
@@ -94,47 +94,47 @@ private $nombre_de_places;
     /**
      * @return mixed
      */
-    public function getElementsRequis()
+    public function getElementsrequis()
     {
-        return $this->elements_requis;
+        return $this->elementsrequis;
     }
 
     /**
-     * @param mixed $elements_requis
+     * @param mixed $elementsrequis
      */
-    public function setElementsRequis($elements_requis)
+    public function setElementsrequis($elementsrequis)
     {
-        $this->elements_requis = $elements_requis;
+        $this->elementsrequis = $elementsrequis;
     }
 
     /**
      * @return mixed
      */
-    public function getNombreDePlaces()
+    public function getNombreplaces()
     {
-        return $this->nombre_de_places;
+        return $this->nombreplaces;
     }
 
     /**
-     * @param mixed $nombre_de_places
+     * @param mixed $nombreplaces
      */
-    public function setNombreDePlaces($nombre_de_places)
+    public function setNombreplaces($nombreplaces)
     {
-        $this->nombre_de_places = $nombre_de_places;
+        $this->nombreplaces = $nombreplaces;
     }
 
     public function ajouterUnEvent() {
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare(
-            'INSERT INTO event (titre, description, lieu, elements_requis, nombre_de_places) VALUES (:titre, :description, :lieu, :elements_requis, :nombre_de_places)'
+            'INSERT INTO event (titre, description, lieu, elementsrequis, nombreplaces) VALUES (:titre, :description, :lieu, :elementsrequis, :nombreplaces)'
         );
 
         $req->execute([
-            'titre'=> $this->getTitre(),
-            'description'=> $this->getDescription(),
-            'lieu'=> $this->getLieu(),
-            'elements_requis'=> $this->getElementsRequis(),
-            'nombre_de_places'=> $this->getNombreDePlaces(),
+            'titre' => $this->getTitre(),
+            'description' => $this->getDescription(),
+            'lieu' => $this->getLieu(),
+            'elementsrequis' => $this->getElementsRequis(),
+            'nombreplaces' => $this->getNombreplaces(),
         ]);
 
         header("Location: ../../vue/participation_evenement_alumni.php?success");
@@ -143,14 +143,14 @@ private $nombre_de_places;
     public function editer_event()
     {
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('UPDATE event SET titre=:titre,description=:description,lieu=:lieu,elements_requis=:elements_requis,nombre_de_places=:nombre_de_places WHERE id_event=:id_event');
+        $req = $bdd->getBdd()->prepare('UPDATE event SET titre=:titre,description=:description,lieu=:lieu,elementsrequis=:elementsrequis,nombreplaces=:nombreplaces WHERE id_event=:id_event');
         $res = $req->execute(array(
             'id_event'=> $this->getIdEvent(),
             'titre'=> $this->getTitre(),
             'description'=> $this->getDescription(),
             'lieu'=> $this->getLieu(),
-            'elements_requis'=> $this->getElementsRequis(),
-            'nombre_de_places'=> $this->getNombreDePlaces(),
+            'elementsrequis'=> $this->getElementsRequis(),
+            'nombreplaces'=> $this->getNombreplaces(),
         ));
 
         if ($res) {
@@ -174,4 +174,4 @@ private $nombre_de_places;
             header("Location: ../../vue/connexion.php?erreur");
         }
     }
-}
+    }

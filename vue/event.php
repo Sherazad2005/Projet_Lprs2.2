@@ -3,7 +3,7 @@
 if (array_key_exists("erreur", $_GET)) {
     echo "if y a une erreur.";
     if ($_GET["erreur"] == 0) {
-        echo "événements deja inscrit";
+        echo "event deja inscrit";
     }
 }
 
@@ -12,7 +12,7 @@ if (array_key_exists("erreur", $_GET)) {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Evénement</title>
+    <title>Emplois</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
@@ -63,8 +63,8 @@ if (array_key_exists("erreur", $_GET)) {
     <CENTER> <input type="text" name="titre" placeholder="titre"/><br></CENTER><br>
     <CENTER>  <input type="text" name="description" placeholder="description"/><br></CENTER><br>
     <CENTER>  <input type="text" name="lieu" placeholder="lieu"/><br></CENTER><br>
-    <CENTER>  <input type="text" name="elements_requis" placeholder="elements_requis"/><br></CENTER><br>
-    <CENTER>  <input type="text" name="nombre_de_places" placeholder="nombre_de_places"/><br></CENTER><br>
+    <CENTER>  <input type="text" name="elementsrequis" placeholder="elementsrequis"/><br></CENTER><br>
+    <CENTER>  <input type="text" name="nombreplaces" placeholder="nombreplaces"/><br></CENTER><br>
 
     <center><button type="submit">Valider</button></center>
 
@@ -74,7 +74,9 @@ if (array_key_exists("erreur", $_GET)) {
     <section class="">
         <div class="container text-center text-md-start mt-5">
             <div class="row mt-3">
+
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
                     <h6 class="text-uppercase fw-bold mb-4">
                         <i class="fas fa-gem me-3"></i>Projet LPRS
                     </h6>

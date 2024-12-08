@@ -1,7 +1,7 @@
 <?php
 include '../src/bdd/Bdd.php';
 
-
+$ref_utilisateur = $_GET['id_utilisateur'] ?? null;
 $ref_event = $_GET['id_event'] ?? null;
 
 if (!$ref_event) {
@@ -13,9 +13,10 @@ $bdd = new Bdd();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $req = $bdd->getBdd()->prepare(
-            'INSERT INTO inscrire (ref_utilisateur, ref_event) VALUES (NULL, :ref_event)'
+            'INSERT INTO inscrire (ref_utilisateur, ref_event) VALUES (:ref_utilisateur, :ref_event)'
         );
         $req->execute([
+            ':ref_utilisateur' => $ref_utilisateur,
             ':ref_event' => $ref_event,
         ]);
 

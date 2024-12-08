@@ -81,11 +81,11 @@ $res = $req->fetchAll();
 <table>
     <tr>
         <th>Id_event</th>
-        <th>Titre</th>
-        <th>Description</th>
-        <th>Lieu</th>
-        <th>Elements_requis</th>
-        <th>Nombre_de_places</th>
+        <th>titre</th>
+        <th>description</th>
+        <th>lieu</th>
+        <th>elementsrrequis</th>
+        <th>nombreplaces</th>
     </tr>
     <?php
     foreach ($res as $event){
@@ -93,14 +93,14 @@ $res = $req->fetchAll();
         <tr>
             <td><?=htmlspecialchars($event["id_event"]?? '') ?></td>
             <td><?=htmlspecialchars($event["titre"] ??'') ?></td>
-            <td><?=htmlspecialchars($event["descritpion"]?? '')?></td>
+            <td><?=htmlspecialchars($event["description"]?? '')?></td>
             <td><?=htmlspecialchars($event["lieu"]?? '')?></td>
-            <td><?=htmlspecialchars($event["elements_requis"]?? '')?></td>
-            <td><?=htmlspecialchars($event["nombre_de_places"]?? '')?></td>
+            <td><?=htmlspecialchars($event["elementsrrequis"]?? '')?></td>
+            <td><?=htmlspecialchars($event["nombreplaces"]?? '')?></td>
 
             <td><a href="editer_event.php?id_event=<?=$event["id_event"]?>">Editer</a>
                 <a href="supprimer_event.php?id_event=<?=$event["id_event"]?>">Supprimer</a>
-                <a href="postuler.php?id_event=<?=$event["id_event"]?>">Postuler</a>
+                <a href="inscrire.php?id_event=<?=$event["id_event"]?>">S'inscrire</a>
             </td>
         </tr>
 
