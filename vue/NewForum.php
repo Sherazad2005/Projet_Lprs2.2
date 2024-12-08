@@ -22,37 +22,25 @@ if (array_key_exists("erreur", $_GET)) {
 </head>
 <style>
     body {
+        background-color: #f8f9fa;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        margin: 0;
+        min-height: 100vh;
     }
-    form {
-
-        margin: 0 auto;
-        width: 400px;
-
-        padding: 1em;
-        border: 1px solid #ccc;
-        border-radius: 1em;
+    .form-container {
+        background: #fff;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
     }
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    .form-container h2 {
+        margin-bottom: 1.5rem;
     }
-
-    form li + li {
-        margin-top: 1em;
-    }
-
-    label {
-
-        display: inline-block;
-        width: 90px;
-        text-align: right;
+    .hidden {
+        display: none;
     }
 </style>
 </head>
@@ -71,24 +59,30 @@ if (array_key_exists("erreur", $_GET)) {
     }
 </script>
 <body>
-
+<div class="form-container">
 <form action="../src/controleur/TraitementForum.php" method="POST" enctype="multipart/form-data">
-    <CENTER><img src="../assets/img/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></CENTER>
-     <label for="titre"></label>
-        <input type="text" name="titre" required placeholder="titre"><br><br>
-
-        <label for="messages"></label>
-        <input type="text" name="messages" required placeholder="messages"><br><br>
-
-         <label for="canal"></label>
-            <select name="canal" id="canal" onchange="updateFormAction()" required>
+    <CENTER><img src="../assets/img/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br>
+        <h2 class="mt-3">Création forum</h2></center>
+    <div class="mb-3">
+        <label for="titre" class="form-label"></label>
+        <input type="text" name="titre" class="form-control" required placeholder="titre"></div>
+    <div class="mb-3">
+        <label for="messages" class="form-label"></label>
+        <input type="text" name="messages" class="form-control" required placeholder="messages">
+    </div>
+    <div class="mb-3">
+         <label for="canal" class="form-label"></label>
+            <select name="canal" id="canal" class="form-control" onchange="updateFormAction()" required>
                 <option value="">Canal </option>
                 <option value="generale">Generale</option>
                 <option value="entreprise/alumni">Entreprise-Alumni</option>
                 <option value="eleve/professeur">Eleve-Professeur</option>
-            </select><br><br>
-    <CENTER> <input type="submit" name="ins"/></CENTER><br>
-    <CENTER> <a href="Inscription.php"> Crée </a></td></CENTER>
+            </select></div>
+    <br>
+
+    <div class="d-grid gap-2">
+        <input type="submit" name="ins" class="btn btn-primary"/> </div>
 </form>
+</div>
 </body>
 </html>

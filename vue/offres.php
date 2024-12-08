@@ -21,69 +21,65 @@ if (array_key_exists("erreur", $_GET)) {
 </head>
 <style>
     body {
+        background-color: #f8f9fa;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        margin: 0;
+        min-height: 100vh;
     }
-
-    form {
-
-        margin: 0 auto;
-        width: 400px;
-
-        padding: 1em;
-        border: 1px solid #ccc;
-        border-radius: 1em;
+    .form-container {
+        background: #fff;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
     }
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    .form-container h2 {
+        margin-bottom: 1.5rem;
     }
-
-    form li + li {
-        margin-top: 1em;
-    }
-
-    label {
-
-        display: inline-block;
-        width: 90px;
-        text-align: right;
+    .hidden {
+        display: none;
     }
 </style>
 <body>
-
+<div class="form-container">
 <form action="../src/controleur/TraitementOffres.php" method="POST" enctype="multipart/form-data">
     <center><img src="../assets/img/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></center>
-
-    <CENTER> <input type="text" name="titre" placeholder="titre"/><br></CENTER><br>
-    <CENTER> <input type="text" name="description" placeholder="description"/><br></CENTER><br>
-    <CENTER> <input type="text" name="missions" placeholder="missions"/><br></CENTER><br>
-    <CENTER> <input type="text" name="type" placeholder="type"/><br></CENTER><br>
-    <CENTER> <input type="number" name="salaire" placeholder="salaire"/><br></CENTER><br>
-    <CENTER>  <input type="text" name="visibilite" placeholder="visibilite"/><br></CENTER><br>
-    <CENTER>  <input type="text" name="etat" placeholder="etat"/><br></CENTER><br>
-
-    <center><button type="submit">Valider</button></center>
+    <div class="mb-3">
+        <label for="titre" class="form-label"></label>
+     <input class="form-control" type="text" name="titre" placeholder="titre"/>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label"></label>
+     <input class="form-control" type="text" name="description" placeholder="description"/>
+    </div>
+    <div class="mb-3">
+        <label for="missions" class="form-label"></label>
+     <input class="form-control" type="text" name="missions" placeholder="missions"/>
+    </div>
+    <div class="mb-3">
+        <label for="type" class="form-label"></label>
+     <input class="form-control" type="text" name="type" placeholder="type"/>
+    </div>
+    <div class="mb-3">
+        <label for="salaire" class="form-label"></label>
+     <input class="form-control" type="number" name="salaire" placeholder="salaire"/>
+    </div>
+    <div class="mb-3">
+        <label for="visibilite" class="form-label"></label>
+        <input class="form-control" type="text" name="visibilite" placeholder="visibilite"/>
+    </div>
+    <div class="mb-3">
+        <label for="etat" class="form-label"></label>
+        <input class="form-control" type="text" name="etat" placeholder="etat"/>
+    </div>
+    <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary">Valider</button></div>
 
 </form>
-<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+</div>
 
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-            <div class="row mt-3">
-
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Projet LPRS
-                    </h6>
-
-                </div>
 </footer>
 
 </body>

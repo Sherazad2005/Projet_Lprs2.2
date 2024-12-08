@@ -172,7 +172,7 @@ try {
         </div>
     </div>
 </div>
-<!-- Formulaire de connexion (initialement caché) -->
+
 <div id="connexionForm" class="form-container">
     <form action="../src/controleur/TraitementConnexion.php" method="POST">
         <h2>Connexion</h2>

@@ -12,59 +12,40 @@ $res = $req->fetchAll();
 <head>
     <link rel="icon" type="image/x-icon" href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lyceerobertschuman.com%2F&psig=AOvVaw1V4azkFzc1RTIFsSnyE7rn&ust=1710580549450000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCPDb56H39YQDFQAAAAAdAAAAABAI">
     <style>
-        * {
-            box-sizing: border-box;
+        body {
+            background-color: #f8f9fa;
         }
-        .column {
-            float: left;
-
-        }
-
-        .left, .right {
-            height: 130px;
-            width: 15%;
-            border: 1px solid black;
-        ;
-            padding: 1px;
-            text-align: center;
-        }
-
-        .middle {
-            background-color: #203586;
-            height: 180px;
-            width: 70%;
-            padding: 20px;
-            text-align: center;
-            font-size: 30px;
-            color: black;
-
+        .table-container {
+            margin: 20px auto;
+            max-width: 90%;
+            background: #ffffff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
         table {
-            table-layout: fixed;
-            width: 100%;
-            border-collapse: collapse;
-            border: 3px solid #203586;
+            margin: 0;
         }
-
-        thead th:nth-child(1) {
-            width: 30%;
+        footer {
+            background: #203586;
+            color: white;
+            padding: 15px 0;
         }
-
-        thead th:nth-child(2) {
-            width: 20%;
+        footer h6 {
+            font-size: 1.2rem;
+            color: white;
         }
-
-        thead th:nth-child(3) {
-            width: 15%;
+        .edit-btn, .delete-btn {
+            text-decoration: none;
+            margin: 0 5px;
         }
-
-        thead th:nth-child(4) {
-            width: 35%;
+        .edit-btn:hover, .delete-btn:hover {
+            text-decoration: underline;
         }
-
-        th,
-        td {
-            padding: 20px;
+        .edit-btn {
+            color: #0d6efd;
+        }
+        .delete-btn {
+            color: #dc3545;
         }
     </style>
     <meta charset="UTF-8">
@@ -77,8 +58,14 @@ $res = $req->fetchAll();
 </head>
 <body>
 
+<div class="container">
+    <div class="text-center py-5">
+        <h1 class="text-primary">Participation Evenement</h1>
+    </div>
+    <div class="table-container p-4">
 
-<table>
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
     <tr>
         <th>Id_event</th>
         <th>titre</th>
@@ -107,23 +94,17 @@ $res = $req->fetchAll();
         <?php
     }
     ?>
+    </thead>
 </table>
-<a href="../vue/pageaccueil.php">Retour</a>
-
-<footer class="text-center text-lg-start bg-body-tertiary text-muted">
-
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-
-            <div class="row mt-3">
-
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Projet LPRS
-                    </h6>
-
-                </div>
+    </div>
+</div>
+<div class="text-center mt-4">
+    <a href="pageaccueil.php" class="btn btn-outline-danger">Retour</a>
+</div>
+<br>
+<footer class="text-center">
+    <h6>Projet LPRS</h6>
+    <p class="mb-0">Une initiative du Lycée Robert Schuman.</p>
 </footer>
 <!-- Footer -->
 </body>

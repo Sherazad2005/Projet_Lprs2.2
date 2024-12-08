@@ -19,7 +19,9 @@ if (array_key_exists("erreur", $_GET)) {
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+    <title>Inscription</title>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -47,7 +49,7 @@ if (array_key_exists("erreur", $_GET)) {
         }
     </style>
     <script>
-        function afficherChampsSpecifiques() {
+        function afficherChampsSpecifiqueqs() {
             document.getElementById("eleveFields").style.display = "none";
             document.getElementById("classe").required = false;
             document.getElementById("nomPromo_el").required = false;
@@ -111,8 +113,8 @@ if (array_key_exists("erreur", $_GET)) {
     <label for="mdp"></label>
     <input type="password" class="form-control" name="mdp" required placeholder="Mot de passe"><br>
 
-    <label for="role"></label>
-    <select name="role" id="role" onchange="afficherChampsSpecifiques()" required>
+    <label for="role" class="form-label"></label>
+    <select class="form-control" name="role" id="role" onchange="afficherChampsSpecifiques()" required>
         <option value="eleve">Élève</option>
         <option value="professeur">Professeur</option>
         <option value="alumni">Alumni</option>
