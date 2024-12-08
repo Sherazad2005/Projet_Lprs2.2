@@ -21,66 +21,48 @@ if (array_key_exists("erreur", $_GET)) {
 </head>
 <style>
     body {
+        background-color: #f8f9fa;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        margin: 0;
+        min-height: 100vh;
     }
-
-    form {
-
-        margin: 0 auto;
-        width: 400px;
-
-        padding: 1em;
-        border: 1px solid #ccc;
-        border-radius: 1em;
+    .form-container {
+        background: #fff;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
     }
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    .form-container h2 {
+        margin-bottom: 1.5rem;
     }
-
-    form li + li {
-        margin-top: 1em;
-    }
-
-    label {
-
-        display: inline-block;
-        width: 90px;
-        text-align: right;
+    .hidden {
+        display: none;
     }
 </style>
 <body>
+<div class="form-container">
+    <form action="../src/controleur/TraitementEmplois.php" method="POST" enctype="multipart/form-data">
+        <CENTER><img src="../assets/img/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br>
+            <h2 class="mt-3">Emplois</h2></center>
+        <div class="mb-3">
+            <label for="titre" class="form-label"></label>
+            <input type="text" name="titre" class="form-control" required placeholder="titre"></div>
+        <div class="mb-3">
+            <label for="entreprise" class="form-label"></label>
+            <input type="text" name="entreprise" class="form-control" required placeholder="entreprise">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label"></label>
+            <input type="text" name="description" class="form-control" required placeholder="description">
+        </div>
+        <br>
 
-<form action="../src/controleur/TraitementEmplois.php" method="POST" enctype="multipart/form-data">
-    <center><img src="../assets/img/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></center>
-
-    <CENTER> <input type="text" name="titre" placeholder="titre"/><br></CENTER><br>
-    <CENTER>  <input type="text" name="entreprise" placeholder="entreprise"/><br></CENTER><br>
-    <CENTER>  <input type="text" name="description" placeholder="description"/><br></CENTER><br>
-
-    <center><button type="submit">Valider</button></center>
-
-</form>
-<footer class="text-center text-lg-start bg-body-tertiary text-muted">
-
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-            <div class="row mt-3">
-
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Projet LPRS
-                    </h6>
-
-                </div>
-</footer>
-
+        <div class="d-grid gap-2">
+            <input type="submit" name="ins" class="btn btn-primary"/> </div>
+    </form>
+</div>
 </body>
 </html>

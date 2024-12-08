@@ -8,121 +8,101 @@ $res = $req->fetchAll();
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <link rel="icon" type="image/x-icon" href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lyceerobertschuman.com%2F&psig=AOvVaw1V4azkFzc1RTIFsSnyE7rn&ust=1710580549450000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCPDb56H39YQDFQAAAAAdAAAAABAI">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportunités emplois</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * {
-            box-sizing: border-box;
+        body {
+            background-color: #f8f9fa;
         }
-        .column {
-            float: left;
-
-        }
-
-        .left, .right {
-            height: 130px;
-            width: 15%;
-            border: 1px solid black;
-        ;
-            padding: 1px;
-            text-align: center;
-        }
-
-        .middle {
-            background-color: #203586;
-            height: 180px;
-            width: 70%;
-            padding: 20px;
-            text-align: center;
-            font-size: 30px;
-            color: black;
-
+        .table-container {
+            margin: 20px auto;
+            max-width: 90%;
+            background: #ffffff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
         table {
-            table-layout: fixed;
-            width: 100%;
-            border-collapse: collapse;
-            border: 3px solid #203586;
+            margin: 0;
+        }
+        footer {
+            background: #203586;
+            color: white;
+            padding: 15px 0;
+        }
+        footer h6 {
+            font-size: 1.2rem;
+            color: white;
+        }
+        .edit-btn, .delete-btn, .post-btn:hover {
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .edit-btn:hover, .delete-btn:hover, .post-btn:hover {
+            text-decoration: underline;
+        }
+        .edit-btn {
+            color: #0d6efd;
+        }
+        .delete-btn {
+            color: #dc3545;
         }
 
-        thead th:nth-child(1) {
-            width: 30%;
-        }
-
-        thead th:nth-child(2) {
-            width: 20%;
-        }
-
-        thead th:nth-child(3) {
-            width: 15%;
-        }
-
-        thead th:nth-child(4) {
-            width: 35%;
-        }
-
-        th,
-        td {
-            padding: 20px;
+        .post-btn{
+            color: #efd005;
         }
     </style>
-    <meta charset="UTF-8">
-    <title>Opportunités emplois</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <!-- MDB CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css">
 </head>
 <body>
-
-
-<table>
-    <tr>
+<div class="container">
+    <div class="text-center py-5">
+        <h1 class="text-primary">Opportunités emplois</h1>
+    </div>
+    <div class="table-container p-4">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+            <tr>
         <th>Id_emplois</th>
         <th>Id_utilisateur</th>
         <th>Titre</th>
         <th>Entreprise</th>
         <th>Description</th>
+        <th>Actions</th>
     </tr>
-    <?php
-    foreach ($res as $emplois){
-        ?>
+   </thead>
+   <tbody>
+    <?php foreach ($res as $emplois): ?>
         <tr>
-            <td><?=htmlspecialchars($emplois["id_emplois"]?? '') ?></td>
-            <td><?=htmlspecialchars($emplois["id_utilisateur"]?? '') ?></td>
-            <td><?=htmlspecialchars($emplois["titre"] ??'') ?></td>
-            <td><?=htmlspecialchars($emplois["entreprise"]?? '')?></td>
-            <td><?=htmlspecialchars($emplois["descritpion"]?? '')?></td>
-
-            <td><a href="editer_emplois.php?id_emplois=<?=$emplois["id_emplois"]?>">Editer</a>
-                <a href="supprimer_emplois.php?id_emplois=<?=$emplois["id_emplois"]?>">Supprimer</a>
-                <a href="postuler.php?id_emplois=<?=$emplois["id_emplois"]?>">Postuler</a>
+            <td><?=htmlspecialchars($emplois["id_emplois"]) ?></td>
+            <td><?=htmlspecialchars($emplois["id_utilisateur"]) ?></td>
+            <td><?=htmlspecialchars($emplois["titre"]) ?></td>
+            <td><?=htmlspecialchars($emplois["entreprise"])?></td>
+            <td><?=htmlspecialchars($emplois["description"])?></td>
+            <td>
+                <a href="editer_emplois.php?id_emplois=<?=$emplois["id_emplois"]?>" class="edit-btn">Editer</a>
+                <a href="supprimer_emplois.php?id_emplois=<?=$emplois["id_emplois"]?>" class="delete-btn">Supprimer</a>
+                <a href="postuler.php?id_emplois=<?=$emplois["id_emplois"]?>" class="post-btn">Postuler</a>
             </td>
         </tr>
+    <?php endforeach; ?>
+   </tbody>
+        </table>
+    </div>
+    <div class="text-center mt-4">
+        <a href="../src/controleur/TraitementDeco.php" class="btn btn-outline-danger">Déconnexion</a>
+    </div>
+</div>
+<br>
 
-        <?php
-    }
-    ?>
-</table>
-<a href="../vue/pageaccueil.php">Retour</a>
-
-<footer class="text-center text-lg-start bg-body-tertiary text-muted">
-
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-
-            <div class="row mt-3">
-
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Projet LPRS
-                    </h6>
-
-                </div>
+<footer class="text-center">
+    <h6>Projet LPRS</h6>
+    <p class="mb-0">Une initiative du Lycée Robert Schuman.</p>
 </footer>
-<!-- Footer -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
