@@ -307,7 +307,7 @@ class Utilisateur
             'id_entreprise' => $this->getIdEntreprise()
         ]);
 
-        header("Location: ../../vue/page_ouverture.php?success");
+        header("Location: ../../vue/PageAcceuilConnect.php?success");
     }
 
     public function connexion(){
@@ -318,8 +318,7 @@ class Utilisateur
             "mdp" =>$this->getMdp(),
         ));
         $res = $req->fetch();
-        if ($res && is_array($res) && password_verify($this->getMdp(), $res["mdp"])) {
-            if ($res['validated'] == 1) {
+        if (is_array($res)){
 
                 $_SESSION['id_utilisateur']= $res['id_utilisateur'];
             $_SESSION['nom']= $res['nom'];
@@ -338,19 +337,9 @@ class Utilisateur
             session_start();
 
             $_SESSION["utilisateur"] = $this;
-
-                header("Location: ../../vue/pageacceuil.php");
-                exit;
-            } elseif ($res['validated'] == 0) {
-                header("Location: ../../vue/page_ouverture.php?erreur=3");
-                exit;
-            } else {
-                header("Location: ../../vue/page_ouverture.php?erreur=2");
-                exit;
-            }
-        } else {
-            header("Location: ../../vue/page_ouverture.php?erreur=1");
-            exit;
+            header("Location: ../../vue/PageAcceuilConnect.php");
+        }else{
+            header("Location: ../../vue/Connexion.php");
         }
     }
 

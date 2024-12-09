@@ -61,32 +61,32 @@ try {
     </style>
 
     <script>
-        // Fonction pour afficher le formulaire de connexion et flouter l'arrière-plan
+
         function afficherFormulaireConnexion() {
             document.getElementById("content").classList.add("blurred");
             document.getElementById("connexionForm").style.display = "block";
         }
 
-        // Fonction pour fermer le formulaire de connexion et enlever le flou
+
         function fermerFormulaireConnexion() {
             document.getElementById("content").classList.remove("blurred");
             document.getElementById("connexionForm").style.display = "none";
         }
 
-        // Fonction pour afficher le formulaire et flouter l'arrière-plan
+
         function afficherFormulaire() {
             document.getElementById("content").classList.add("blurred");
             document.getElementById("inscriptionForm").style.display = "block";
             form.classList.add("fadeIn");
         }
 
-        // Fonction pour fermer le formulaire et enlever le flou
+
         function fermerFormulaire() {
             document.getElementById("content").classList.remove("blurred");
             document.getElementById("inscriptionForm").style.display = "none";
         }
 
-        // Fonction pour afficher les champs spécifiques en fonction du rôle sélectionné
+
         function afficherChampsSpecifiques() {
             const role = document.getElementById("role").value;
             document.getElementById("eleveFields").style.display = (role === "eleve") ? "block" : "none";
@@ -99,7 +99,7 @@ try {
             if (notification) {
                 setTimeout(() => {
                     notification.style.display = 'none';
-                }, 5000); // 5000 ms = 5 secondes
+                }, 5000);
             }
         });
     </script>
@@ -264,7 +264,6 @@ try {
     </form>
 </div>
 
-<!-- Footer -->
 <footer class="text-center text-lg-start bg-body-tertiary text-muted mt-5">
     <section class="py-4">
         <div class="container text-center">

@@ -23,6 +23,32 @@ $utilisateuratt = ListeUtilisateurEnatt($bdd);
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css">
     <style>
+        .navbar {
+            border-bottom: 2px solid #203586;
+        }
+
+        .navbar-brand img {
+            width: 40px;
+            height: auto;
+        }
+
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            height: 500px;
+        }
+
+        section {
+            background-color: #f1f5f8;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
         form input, form select, form label, form button {
             width: 100%;
@@ -30,19 +56,19 @@ $utilisateuratt = ListeUtilisateurEnatt($bdd);
         }
         /* Style pour les titres h1 */
         h1 {
-            font-size: 2rem;  /* Taille plus grande pour h1 */
-            color: #302b2b;   /* Couleur bleue */
+            font-size: 2rem;
+            color: #203586;
             font-family: 'Arial Black';
-            font-weight: bold;  /* Texte en gras */
+            font-weight: bold;
         }
 
-        /* Flou pour l'arrière-plan */
+
         .blurred {
             filter: blur(5px);
             transition: filter 0.3s ease;
         }
 
-        /* Modale centrée */
+
         #deconnexionForm {
             display: none;
             position: fixed;
@@ -52,7 +78,7 @@ $utilisateuratt = ListeUtilisateurEnatt($bdd);
             background-color: white;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgb(32, 53, 134);
             z-index: 1000;
             width: 300px;
             text-align: center;
@@ -66,19 +92,23 @@ $utilisateuratt = ListeUtilisateurEnatt($bdd);
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgb(101, 131, 241);
             z-index: 999;
+
+            body {
+                background-color: #f8f9fa;
+                font-family: 'Roboto', sans-serif;
+            }
+
         }
     </style>
     <script>
-        // Afficher la fenêtre de déconnexion avec flou de l'arrière-plan
         function afficherFormulaireDeconnexion() {
             document.getElementById("content").classList.add("blurred");
             document.getElementById("overlay").style.display = "block";
             document.getElementById("deconnexionForm").style.display = "block";
         }
 
-        // Masquer la fenêtre de déconnexion et retirer le flou
         function fermerFormulaireDeconnexion() {
             document.getElementById("content").classList.remove("blurred");
             document.getElementById("overlay").style.display = "none";
@@ -99,51 +129,47 @@ $utilisateuratt = ListeUtilisateurEnatt($bdd);
     </div>
 <?php endif; ?>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                <img
-                        src="../assets/img/_6b0231d1-ab09-4387-9783-e6f072408b6d.jpg"
-                        class="img-fluid rounded"
-                        style="height: 50px; width: auto; object-fit: contain;"
-                        alt="LPRS"
-                        loading="lazy"
-                />
-            </a>
-
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="pageacceuil.php" role="button">Accueil</a></li>
-                <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="AnnuaireEleve.php" role="button">Annuaire</a></li>
-                <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="PageForumAlumniEntreprise.php" role="button">Forum</a></li>
-                <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="Offres.php" role="button">Offres</a></li>
-            </ul>
-
-            <a class="btn btn-dark me-3 dropdown-toggle hidden-arrow" href="#" onclick="afficherFormulaireDeconnexion()">Déconnection</a>
-            <div class="dropdown">
-                <a class="navbar-brand mt-2 mt-lg-0" href="../src/controleur/TraitementProfil.php">
-                    <img
-                            src="../assets/img/istockphoto-1300845620-612x612.jpg"
-                            class="img-fluid rounded"
-                            style="height: 50px; width: auto; object-fit: contain;"
-                            alt="LPRS"
-                            loading="lazy"
-                    />
-                </a>
+            <a class="navbar-brand" href="PageAcceuilConnect.php"><img src="../assets/img/logoLprs.png" alt="Logo"> Projet LPRS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="PageAcceuilConnect.php">Accueil</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
+                        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="deconnexion.php">Déconnexion</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="forumDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">Forums</a>
+                        <ul class="dropdown-menu" aria-labelledby="forumDropdown">
+                            <li><a class="dropdown-item" href="PageForumGenerale.php">Forum général</a></li>
+                            <li><a class="dropdown-item" href="PageForumAlumniEntreprise.php">Forum professionnel</a></li>
+                            <li><a class="dropdown-item" href="PageForumEleve.php">Forum élève</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="Offres.php">Offres</a></li>
+                </ul>
+                <a class="btn btn-dark me-3 dropdown-toggle hidden-arrow" href="#" onclick="afficherFormulaireDeconnexion()">Déconnection</a>
+                <div class="dropdown">
+                    <a class="navbar-brand mt-2 mt-lg-0" href="../src/controleur/TraitementProfil.php">
+                        <img
+                                src="../assets/img/istockphoto-1300845620-612x612.jpg"
+                                class="img-fluid rounded"
+                                style="height: 50px; width: auto; object-fit: contain;"
+                                alt="LPRS"
+                                loading="lazy"
+                        />
+                    </a>
+                </div>
             </div>
-        </div>
-        <div id="overlay"></div>
-
-        <div id="deconnexionForm">
-            <h2>Voulez-vous vous déconnecter ?</h2>
-            <div class="mt-3">
-                <!-- Formulaire pour redirection -->
-                <form action="page_ouverture.php" method="GET">
-                    <button type="submit" class="btn btn-dark">Se déconnecter</button>
-                </form>
-                <!-- Bouton pour annuler -->
-                <button class="btn btn-secondary mt-2" onclick="fermerFormulaireDeconnexion()">Annuler</button>
-            </div>
-        </div>
     </nav>
 </header>
 
