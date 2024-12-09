@@ -1,20 +1,19 @@
 <?php
-var_dump($_SESSION);
-    $role = $_SESSION['role'];
-    switch ($role) {
-        case 'eleve':
-            header('Location: profil_eleve.php');
-            break;
-        case 'professeur':
-            header('Location: profil_professeur.php');
-            break;
-        case 'alumni':
-            header('Location: profil_alumni.php');
-            break;
-        case $_SESSION['partenaire']:
-            header('Location: ../../vue/profil_partenaire.php');
-            break;
-        default:
-            echo "Rôle non reconnu.";
-            exit;
+require_once '../model/Utilisateur.php';
+session_start();
+    $role = $_SESSION['utilisateur']->getRole();
+    if ($role == 'eleve') {
+        header('Location: ../../vue/profil_eleve.php');
+    }
+
+if ($role == 'partenaire') {
+    header('Location: ../../vue/profil_partenaire.php');
+}
+
+if ($role == 'alumni') {
+    header('Location: ../../vue/profil_alumni.php');
+}
+
+if ($role == 'professeur') {
+    header('Location: ../../vue/profil_professeur.php');
 }

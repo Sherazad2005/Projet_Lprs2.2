@@ -312,32 +312,33 @@ class Utilisateur
 
     public function connexion(){
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE email=:email and mdp=:mdp');
+        $req = $bdd->getBdd()->prepare('SELECT u.*, e.nom AS nom_entreprise FROM utilisateur u LEFT JOIN entreprise e ON u.id_entreprise = e.id_entreprise WHERE u.email = :email');
         $req->execute(array(
             "email" =>$this->getEmail(),
-            "mdp" =>$this->getMdp(),
         ));
         $res = $req->fetch();
         if ($res && is_array($res) && password_verify($this->getMdp(), $res["mdp"])) {
             if ($res['validated'] == 1) {
+                $this->setIdUtilisateur($res["id_utilisateur"]);
+                $this->setNom($res["nom"]);
+                $this->setPrenom($res["prenom"]);
+                $this->setEmail($res["email"]);
+                $this->setRole($res["role"]);
+                $this->setCv($res["cv"]);
+                $this->setClasse($res["classe"]);
+                $this->setSpecialiteProf($res["specialite_prof"]);
+                $this->setPosteEntreprise($res["poste_entreprise"]);
+                $this->setRefEmplois($res["ref_emplois"]);
+                $this->setMotifInscription($res["motif_inscription"]);
+                $this->setSecteurActivite($res["secteur_activite"]);
+                $this->setNomPromo($res["nom_promo"]);
+                $this->setIdEntreprise($res["id_entreprise"]);
 
-                $_SESSION['id_utilisateur']= $res['id_utilisateur'];
-            $_SESSION['nom']= $res['nom'];
-            $_SESSION['prenom']= $res['prenom'];
-            $_SESSION['email']= $res['email'];
-            $_SESSION['cv']= $res['cv'];
-            $_SESSION['classe']= $res['classe'];
-           $_SESSION['nom_promo']= $res['nom_promo'];
-           $_SESSION['poste_entreprise']= $res['id_utilisateur'];
-           $_SESSION['role']= $res['role'];
-           $_SESSION['secteur_activite']= $res['secteur_activite'];
-           $_SESSION['specialite_prof']= $res['specialite_prof'];
-           $_SESSION['id_entreprise']= $res['id_entreprise'];
-           $_SESSION['ref_emplois']= $res['ref_emplois'];
 
-            session_start();
+                session_start();
 
-            $_SESSION["utilisateur"] = $this;
+                $_SESSION["utilisateur"] = $this;
+                $_SESSION['nom_entreprise'] = $res['nom_entreprise'];
 
                 header("Location: ../../vue/pageacceuil.php");
                 exit;
@@ -360,16 +361,16 @@ class Utilisateur
     public function editer()
     {
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET nom=:nom,prenom=:prenom,role=:role WHERE id_utilisateur=:id_utilisateur');
+        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET nom=:nom,prenom=:prenom,email=:email WHERE id_utilisateur=:id_utilisateur');
         $res = $req->execute(array(
             "id_utilisateur" => $this->getIdutilisateur(),
             "nom" => $this->getNom(),
             "prenom" => $this->getPrenom(),
-            "role" => $this->getRole(),
+            "email" => $this->getEmail(),
         ));
 
         if ($res) {
-            header("Location: ../../vue/annuiare_anciens_eleves_alumni.php?success");
+            header("Location: ../../vue/liste_utilisateur.php?success");
         } else {
             header("Location: ../../vue/editer.php?id_utilisateur=" . $this->getIdutilisateur() . "&erreur");
         }

@@ -1,23 +1,10 @@
 <?php
-require_once '../src/model/Utilisateur.php';
 session_start();
+var_dump($_SESSION);
 
-$utilisateurData = [
-    'id_utilisateur' => $_SESSION['utilisateur']['id_utilisateur'],
-    'nom' => $_SESSION['utilisateur']['nom'],
-    'prenom' => $_SESSION['utilisateur']['prenom'],
-    'email' => $_SESSION['utilisateur']['email'],
-    'role' => $_SESSION['utilisateur']['role'],
-    'nom_promo' => $_SESSION['utilisateur']['nom_promo'],
-    'classe' => $_SESSION['utilisateur']['classe'],
-    'specialite_prof' => $_SESSION['utilisateur']['specialite_prof'],
-    'poste_entreprise' => $_SESSION['utilisateur']['poste_entreprise'],
-    'secteur_activite' => $_SESSION['utilisateur']['secteur_activite'],
-    'motif_inscription' => $_SESSION['utilisateur']['motif_inscription'],
-    'id_entreprise' => $_SESSION['utilisateur']['id_entreprise']
-];
+$utilisateur = (Utilisateur::class) $_SESSION['utilisateur'];
+echo $utilisateur['nom'];
 
-$utilisateur = new Utilisateur($utilisateurData);
 ?>
 
 <!doctype html>
@@ -126,22 +113,30 @@ $utilisateur = new Utilisateur($utilisateurData);
 
 
 
-
 <div class="container mt-5">
-    <h2>Profil Utilisateur</h2>
+    <h2>Profil Partenaire</h2>
     <div class="card">
         <div class="card-header text-center">
-            <img src="/uploads/istockphoto-1300845620-612x612.jpg" alt="Photo de Profil" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
-            <h4><?php echo $utilisateur->getNom(); ?></h4>
-            <h4><?php echo $utilisateur->getPrenom(); ?></h4>
+            <h4>
+                <?php
+                // Affichez nom et prénom si définis
+                echo htmlspecialchars($utilisateur['nom'] ?? 'Nom non renseigné') . ' ' .
+                    htmlspecialchars($utilisateur['prenom'] ?? 'Prénom non renseigné');
+                ?>
+            </h4>
         </div>
         <div class="card-body">
-            <p><strong>Email : </strong> <a href="mailto:<?php echo $utilisateur->getEmail(); ?>"><?php echo $utilisateur->getEmail(); ?></a></p>
+            <p><strong>Email : </strong><?php echo htmlspecialchars($utilisateur['email'] ?? 'Non renseigné'); ?></p>
+            <p><strong>Rôle : </strong><?php echo htmlspecialchars($utilisateur['role'] ?? 'Non renseigné'); ?></p>
+            <p><strong>Nom Entreprise : </strong><?php echo htmlspecialchars($_SESSION['nom_entreprise'] ?? 'Non renseigné'); ?></p>
+            <p><strong>Poste Entreprise : </strong><?php echo htmlspecialchars($utilisateur['poste_entreprise'] ?? 'Non renseigné'); ?></p>
         </div>
         <div class="card-footer text-center">
-            <button id="ajouterEntrepriseBtn" class="btn btn-primary">Ajouter une Entreprise</button>
+            <a href="deconnexion.php" class="btn btn-danger">Déconnexion</a>
         </div>
     </div>
+</div>
+
 
     <div id="formulaireAjoutEntreprise" class="mt-4 card">
         <div class="card-header">
@@ -175,51 +170,10 @@ $utilisateur = new Utilisateur($utilisateurData);
         </div>
     </div>
 
-    <div id="formulaireAjoutOffre" class="mt-4 card">
-        <div class="card-header">
-            <h5>Ajouter une Offre</h5>
-        </div>
-        <div class="card-body">
-            <form>
-                <div class="form-group">
-                    <label for="nomEntreprise">Titre de l'offre</label>
-                    <input type="text" class="form-control" id="nomEntreprise" required>
-                </div>
-                <div class="form-group">
-                    <label for="adresseEntreprise">Description de l’offre</label>
-                    <input type="text" class="form-control" id="adresseEntreprise" required>
-                </div>
-                <div class="form-group">
-                    <label for="cpEntreprise">Missions liées</label>
-                    <input type="text" class="form-control" id="cpEntreprise" required>
-                </div>
-                <div class="form-group">
-                    <label for="emailEntreprise">Salaire </label>
-                    <input type="email" class="form-control" id="emailEntreprise" required>
-                </div>
-                <div class="form-group">
-                    <label for="emailEntreprise">Type d’offre</label>
-                    <input type="email" class="form-control" id="emailEntreprise" required>
-                </div>
-                <div class="form-group">
-                    <label for="emailEntreprise">Cible de l’offre</label>
-                    <input type="email" class="form-control" id="emailEntreprise" required>
-                </div>
-                <div class="form-group">
-                    <label for="emailEntreprise">État de l’offre</label>
-                    <input type="email" class="form-control" id="emailEntreprise" required>
-                </div>
-                <button type="submit" class="btn btn-success">Ajouter</button>
-                <button type="button" class="btn btn-secondary" id="annulerBtn">Annuler</button>
-            </form>
-        </div>
-    </div>
 
     <div class="mt-3">
         <a href="../../vue/pageacceuil.php" class="btn btn-secondary">Retour</a>
     </div>
-
-
 
 
 </div><footer class="text-center text-lg-start bg-body-tertiary text-muted mt-5">
