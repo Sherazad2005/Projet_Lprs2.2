@@ -133,6 +133,20 @@ session_start();
         }
     </style>
 </head>
+<script>
+
+    function afficherFormulaireDeconnexion() {
+        document.getElementById("content").classList.add("blurred");
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("deconnexionForm").style.display = "block";
+    }
+
+    function fermerFormulaireDeconnexion() {
+        document.getElementById("content").classList.remove("blurred");
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("deconnexionForm").style.display = "none";
+    }
+</script>
 
 <body>
 
@@ -160,6 +174,7 @@ session_start();
                 <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
                 <button class="btn btn-primary" type="submit">Recherche</button>
             </form>
+
         </div>
     </div>
 </nav>

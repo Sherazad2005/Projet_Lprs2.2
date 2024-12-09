@@ -2,7 +2,7 @@
 session_start();
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur`');
+$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE  role ="alumni" ');
 $req->execute();
 $res = $req->fetchAll();
 ?>

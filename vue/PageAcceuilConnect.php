@@ -132,20 +132,97 @@ session_start();
             text-decoration: underline;
         }
     </style>
+    <script>
+
+        function afficherFormulaireDeconnexion() {
+            document.getElementById("content").classList.add("blurred");
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("deconnexionForm").style.display = "block";
+        }
+
+        function fermerFormulaireDeconnexion() {
+            document.getElementById("content").classList.remove("blurred");
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("deconnexionForm").style.display = "none";
+        }
+
+
+            function afficherFormulaireConnexion() {
+            document.getElementById("content").classList.add("blurred");
+            document.getElementById("connexionForm").style.display = "block";
+        }
+
+
+            function fermerFormulaireConnexion() {
+            document.getElementById("content").classList.remove("blurred");
+            document.getElementById("connexionForm").style.display = "none";
+        }
+
+
+            function afficherFormulaire() {
+            document.getElementById("content").classList.add("blurred");
+            document.getElementById("inscriptionForm").style.display = "block";
+            form.classList.add("fadeIn");
+        }
+
+
+            function fermerFormulaire() {
+            document.getElementById("content").classList.remove("blurred");
+            document.getElementById("inscriptionForm").style.display = "none";
+        }
+
+
+            function afficherChampsSpecifiques() {
+            const role = document.getElementById("role").value;
+            document.getElementById("eleveFields").style.display = (role === "eleve") ? "block" : "none";
+            document.getElementById("profFields").style.display = (role === "professeur") ? "block" : "none";
+            document.getElementById("alumniFields").style.display = (role === "alumni") ? "block" : "none";
+            document.getElementById("partenaireFields").style.display = (role === "partenaire") ? "block" : "none";
+        }
+            document.addEventListener('DOMContentLoaded', function () {
+            const notification = document.getElementById('notification');
+            if (notification) {
+            setTimeout(() => {
+            notification.style.display = 'none';
+        }, 5000);
+        }
+        });
+    </script>
 </head>
-
 <body>
+<?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+    <div id="notification" class="alert alert-success text-center" role="alert">
+        Inscription enregistrée. Veuillez attendre un mail de confirmation.
+    </div>
+<?php endif; ?>
 
+<?php if (isset($_GET['erreur']) && $_GET['erreur'] == 1): ?>
+    <div id="notification" class="alert alert-danger text-center" role="alert">
+        Email ou Mot de Passe Incorrect.
+    </div>
+<?php endif; ?>
+
+<?php if (isset($_GET['erreur']) && $_GET['erreur'] == 2): ?>
+    <div id="notification" class="alert alert-danger text-center" role="alert">
+        Désoler votre Inscription à ete rejetée.
+    </div>
+<?php endif; ?>
+
+<?php if (isset($_GET['erreur']) && $_GET['erreur'] == 3): ?>
+    <div id="notification" class="alert alert-warning text-center" role="alert">
+        Désoler votre compte n'est pas encore validé, veuillez att le mail de validation.
+    </div>
+<?php endif; ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="../assets/img/logoLprs.png" alt="Logo"> Projet LPRS</a>
+        <a class="navbar-brand" href="PageAcceuilConnect.php"><img src="../assets/img/logoLprs.png" alt="Logo"> Projet LPRS</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
                 aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" href="pageaccueil.php">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link active" href="PageAcceuilConnect.php">Accueil</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
@@ -164,10 +241,17 @@ session_start();
                 </li>
                 <li class="nav-item"><a class="nav-link" href="Offres.php">Offres</a></li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
-                <button class="btn btn-primary" type="submit">Recherche</button>
-            </form>
+            <a class="btn btn-dark me-3 dropdown-toggle hidden-arrow" href="#" onclick="afficherFormulaireDeconnexion()">Déconnection</a>
+            <div class="dropdown">
+                <a class="navbar-brand mt-2 mt-lg-0" href="../src/controleur/TraitementProfil.php">
+                    <img
+                            src="../assets/img/istockphoto-1300845620-612x612.jpg"
+                            class="img-fluid rounded"
+                            style="height: 50px; width: auto; object-fit: contain;"
+                            alt="LPRS"
+                            loading="lazy"
+                    />
+                </a>
         </div>
     </div>
 </nav>
