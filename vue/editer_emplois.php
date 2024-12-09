@@ -14,7 +14,7 @@ $res = $req->fetch();
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Edition d'un profil</title>
+    <title>Edition de l'emplois</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
@@ -23,51 +23,46 @@ $res = $req->fetch();
 </head>
 <style>
     body {
+        background-color: #f8f9fa;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        margin: 0;
+        min-height: 100vh;
     }
-
-    form {
-
-        margin: 0 auto;
-        width: 500px;
-
-        padding: 1em;
-        border: 1px solid #ccc;
-        border-radius: 1em;
+    .form-container {
+        background: #fff;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
     }
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    .form-container h2 {
+        margin-bottom: 1.5rem;
     }
-
-    form li + li {
-        margin-top: 1em;
-    }
-
-    label {
-
-        display: inline-block;
-        width: 90px;
-        text-align: right;
+    .hidden {
+        display: none;
     }
 </style>
 <body>
+<div class="form-container">
 <form action="../src/controleur/TraitementEdit_emplois.php" method="post">
     <center> <img src="../assets/img/50-Lycee-Robert-Schuman.jpg" alt="Mountain" height="100"><br><br><br></center>
 
-    <center><input type="text" name="titre" placeholder="titre" value="<?= htmlspecialchars($res['titre'] ?? '') ?>"/><br><br>
-        <input type="text" name="entreprise" placeholder="entreprise" value="<?= htmlspecialchars($res['entreprise'] ?? '') ?>"/><br><br>
-        <input type="text" name="description" placeholder="description" value="<?= htmlspecialchars($res['description'] ?? '') ?>"/>
-    </center><input type="hidden" name="id_emplois" placeholder="id_emplois" value="<?= htmlspecialchars($res['id_emplois'] ?? '') ?>"/><br><br>
-        <center><input type="submit" name="ins"/><br></center>
+    <center><h2 class="mt-3">Edition emplois</h2></center>
 
+    <center><label for="titre"></label>
+    <input class="form-control" type="text" name="titre" placeholder="titre" value="<?= htmlspecialchars($res['titre'] ?? '') ?>"/>
+    <label for="entreprise"></label>
+    <input class="form-control" type="text" name="entreprise" placeholder="entreprise" value="<?= htmlspecialchars($res['entreprise'] ?? '') ?>"/>
+    <label for="description"></label>
+    <input class="form-control" type="text" name="description" placeholder="description" value="<?= htmlspecialchars($res['description'] ?? '') ?>"/>
+    <label for="id_emplois"></label>
+    <input class="form-control" type="hidden" name="id_emplois" placeholder="id_emplois" value="<?= htmlspecialchars($res['id_emplois'] ?? '') ?>"/></center>
 
+    <center><div class="d-grid gap-2">
+        <input type="submit" name="ins" class="btn btn-primary"/><br></div>
+    </center>
 </form>
 
 </body>

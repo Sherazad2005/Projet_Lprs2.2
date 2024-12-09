@@ -55,8 +55,12 @@ $res = $req->fetchAll();
 <div class="container">
     <div class="text-center py-5">
         <h1 class="text-primary">Annuaire des Élèves</h1>
-
     </div>
+    <center><form action="../src/controleur/recherche.php" method="GET">
+            <label for="nom">Nom de l'élève :</label>
+            <input type="text" id="nom" name="nom" placeholder="Entrez un nom" required>
+            <button type="submit">Rechercher</button>
+        </form></center><br>
     <div class="table-container p-4">
         <table class="table table-striped table-hover">
             <thead class="table-dark">

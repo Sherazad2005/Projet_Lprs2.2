@@ -80,11 +80,11 @@ if (array_key_exists("erreur", $_GET)) {
         <div class="container-fluid">
             <a class="navbar-brand mt-2 mt-lg-0" href="#">
                 <img
-                        src="../assets/img/_6b0231d1-ab09-4387-9783-e6f072408b6d.jpg"
-                        class="img-fluid rounded"
-                        style="height: 50px; object-fit: contain;"
-                        alt="LPRS"
-                        loading="lazy"
+                    src="../assets/img/_6b0231d1-ab09-4387-9783-e6f072408b6d.jpg"
+                    class="img-fluid rounded"
+                    style="height: 50px; object-fit: contain;"
+                    alt="LPRS"
+                    loading="lazy"
                 />
             </a>
             <button class="btn btn-dark me-3" onclick="afficherFormulaire('deconnexionForm')">Déconnexion</button>
@@ -97,21 +97,23 @@ if (array_key_exists("erreur", $_GET)) {
     <div class="row align-items-center">
         <div class="col-md-6 text-center text-md-start">
 
-            <a class="btn btn-dark btn-lg mb-3 mx-4" href="annuiare_anciens_eleves_alumni.php" style="width: 200px; height: 60px;">
-                Accès aux profils des anciens élèves
+            <a class="btn btn-dark btn-lg mb-3 mx-4" href="profil_partenaire.php" style="width: 200px; height: 60px;">
+                profil_entreprise
             </a>
 
-            <a class="btn btn-dark btn-lg mb-3 mx-4" href="AnnuaireEleve.php" style="width: 200px; height: 60px;">
-                Accès aux profils des étudiants
+            <a class="btn btn-dark btn-lg mb-3 mx-4" href="offres.php" style="width: 200px; height: 60px;">
+                Publier une offre
+            </a>
+
+            <a class="btn btn-dark btn-lg mb-3 mx-4" href="annuiare_anciens_eleves_alumni.php" style="width: 200px; height: 60px;">
+                Accès aux profils des alumnis
             </a>
 
             <a class="btn btn-dark btn-lg mb-3 mx-4" href="event.php" style="width: 200px; height: 60px;">
                 Publier un événement
             </a>
 
-            <a class="btn btn-dark btn-lg mb-3 mx-4" href="offres_tableau.php" style="width: 200px; height: 60px;">
-                Accès aux offres
-            </a>
+
         </div>
     </div>
 </div>

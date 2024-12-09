@@ -2,7 +2,7 @@
 session_start();
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur`');
+$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE role = "alumni"');
 $req->execute();
 $res = $req->fetchAll();
 ?>
@@ -53,10 +53,16 @@ $res = $req->fetchAll();
     </style>
 </head>
 <body>
+
 <div class="container">
     <div class="text-center py-5">
         <h1 class="text-primary">Annuaire des Anciens Élèves</h1>
     </div>
+    <center><form action="../src/controleur/recherche.php" method="GET">
+            <label for="nom">Nom de l'élève :</label>
+            <input type="text" id="nom" name="nom" placeholder="Entrez un nom" required>
+            <button type="submit">Rechercher</button>
+        </form></center><br>
     <div class="table-container p-4">
         <table class="table table-striped table-hover">
             <thead class="table-dark">
@@ -66,10 +72,8 @@ $res = $req->fetchAll();
                 <th>Prénom</th>
                 <th>Email</th>
                 <th>Mot de Passe</th>
-                <th>Nom Promo</th>
-                <th>CV</th>
-                <th>Classe</th>
                 <th>Rôle</th>
+                <th>Secteur d'activité</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -81,10 +85,8 @@ $res = $req->fetchAll();
                     <td><?= htmlspecialchars($utilisateur["prenom"]) ?></td>
                     <td><?= htmlspecialchars($utilisateur["email"]) ?></td>
                     <td><?= htmlspecialchars($utilisateur["mdp"]) ?></td>
-                    <td><?= htmlspecialchars($utilisateur["nom_promo"]) ?></td>
-                    <td><?= htmlspecialchars($utilisateur["cv"]) ?></td>
-                    <td><?= htmlspecialchars($utilisateur["classe"]) ?></td>
                     <td><?= htmlspecialchars($utilisateur["role"]) ?></td>
+                    <td><?= htmlspecialchars($utilisateur["secteur_activite"]) ?></td>
                     <td>
                         <a href="editer.php?id_utilisateur=<?= $utilisateur["id_utilisateur"] ?>" class="edit-btn">Éditer</a>
                         <a href="Supprimer.php?id_utilisateur=<?= $utilisateur["id_utilisateur"] ?>" class="delete-btn">Supprimer</a>

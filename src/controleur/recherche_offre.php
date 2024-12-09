@@ -45,7 +45,7 @@ if (isset($_GET['titre']) && !empty($_GET['titre'])) {
         echo "</tbody>";
         echo "</table>";
     } else {
-        echo "<p style='text-align: center;'>Aucun élève trouvé pour le nom '" . htmlspecialchars($titre) . "'.</p>";
+        echo "<p style='text-align: center;'>Aucun offre trouvé pour '" . htmlspecialchars($titre) . "'.</p>";
     }
 }
 ?>
