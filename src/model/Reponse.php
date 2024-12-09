@@ -135,7 +135,7 @@ class Reponse
             'ref_utilisateur' => $_SESSION['id_utilisateur']
         ]);
 
-        header("Location: ../../vue/PageForumEleve.php?success");
+        header("Location: ../../vue/PageReponse.php?success");
     }
 
 }

@@ -49,46 +49,22 @@ if (array_key_exists("erreur", $_GET)) {
         }
     </style>
     <script>
-        function afficherChampsSpecifiqueqs() {
-            document.getElementById("eleveFields").style.display = "none";
-            document.getElementById("classe").required = false;
-            document.getElementById("nomPromo_el").required = false;
-            document.getElementById("cv").required = false;
-
-            document.getElementById("profFields").style.display =  "none";
-            document.getElementById("specialiteProf").required = false;
-
-            document.getElementById("alumniFields").style.display = "none";
-            document.getElementById("nomPromo_al").required = false;
-
-            document.getElementById("partenaireFields").style.display = "none";
-            document.getElementById("posteEntreprise").required = false;
-            document.getElementById("motifInscription").required = false;
-            document.getElementById("idEntreprise").required = false;
-
-
+        function afficherChampsSpecifiques() {
             const role = document.getElementById("role").value;
-            if(role ==="eleve"){
-                document.getElementById("eleveFields").style.display= "block";
-                document.getElementById("classe").required = true;
-                document.getElementById("nomPromo_el").required = true;
-                document.getElementById("cv").required = true;
-            }else if(role ==="professeur"){
-                document.getElementById("profFields").style.display= "block";
-                document.getElementById("specialiteProf").required = true;
-
-            }else if(role ==="alumni"){
-                document.getElementById("alumniFields").style.display= "block";
-                document.getElementById("nomPromo_al").required = true;
-
-
-            }else if(role ==="partenaire"){
-                document.getElementById("partenaireFields").style.display= "block";
-                document.getElementById("posteEntreprise").required = true;
-                document.getElementById("motifInscription").required = true;
-                document.getElementById("idEntreprise").required = true;
-            }
+            document.getElementById("eleveFields").style.display = (role === "eleve") ? "block" : "none";
+            document.getElementById("profFields").style.display = (role === "professeur") ? "block" : "none";
+            document.getElementById("alumniFields").style.display = (role === "alumni") ? "block" : "none";
+            document.getElementById("partenaireFields").style.display = (role === "partenaire") ? "block" : "none";
         }
+        document.addEventListener('DOMContentLoaded', function () {
+            const notification = document.getElementById('notification');
+            if (notification) {
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 5000);
+            }
+        });
+
 
     </script>
 </head>
@@ -162,6 +138,13 @@ if (array_key_exists("erreur", $_GET)) {
 
     </div>
         <button type="submit" name="ins" class="btn btn-primary">S'inscrire</button></center>
+    <div id="inscriptionForm" class="form-container">
+                </div>
+            </div>
+
+
+        </form>
+    </div>
 </div>
 </form>
 </div>

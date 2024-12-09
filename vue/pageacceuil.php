@@ -2,6 +2,7 @@
 require_once '../src/model/Utilisateur.php';
 session_start();
 var_dump($_SESSION);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -119,7 +120,7 @@ var_dump($_SESSION);
             <h2>Voulez-vous vous déconnecter ?</h2>
             <div class="mt-3">
                 <!-- Formulaire pour redirection -->
-                <form action="page_ouverture.php" method="GET">
+                <form action="../src/controleur/traitement_deco.php" method="GET">
                     <button type="submit" class="btn btn-dark">Se déconnecter</button>
                 </form>
                 <!-- Bouton pour annuler -->
