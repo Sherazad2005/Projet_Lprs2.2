@@ -81,6 +81,11 @@ var_dump($_SESSION);
         Email ou Mot de Passe Incorrect.
     </div>
 <?php endif; ?>
+<?php if (isset($_GET['succes']) && $_GET['succes'] == 1): ?>
+    <div id="notification" class="alert alert-success text-center" role="alert">
+        Entreprise ajouter avec succes.
+    </div>
+<?php endif; ?>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
         <div class="container-fluid">

@@ -1,5 +1,4 @@
 <?php
-require_once  'C:\wamp64\www\DevProjet\PHP\Projet_Lprs2.2\src\bdd\Bdd.php';
 
 class EntrepriseModel {
     private $id_entreprise;
@@ -74,16 +73,25 @@ class EntrepriseModel {
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare(
             'INSERT INTO entreprise (nom, gerant, adresse, cp, email) 
-             VALUES (:nom, :gerant, :adresse, :cp, :email)'
+         VALUES (:nom, :gerant, :adresse, :cp, :email)'
         );
-        return $req->execute([
+        $result = $req->execute([
             'nom' => $this->getNom(),
             'gerant' => $this->getGerant(),
             'adresse' => $this->getAdresse(),
             'cp' => $this->getCp(),
             'email' => $this->getEmail(),
         ]);
+
+        // Redirection après exécution
+        if ($result) {
+            header("Location: ../../vue/pageacceuil.php?succes=1");
+            exit; // Stoppe le script après redirection
+        } else {
+            throw new Exception("Échec de l'ajout de l'entreprise.");
+        }
     }
+
 
     public function editerEntreprise() {
         $bdd = new Bdd();
