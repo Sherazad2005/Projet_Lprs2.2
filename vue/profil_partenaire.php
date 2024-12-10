@@ -1,6 +1,5 @@
 <?php
 session_start();
-var_dump($_SESSION);
 
 $utilisateur = (Utilisateur::class) $_SESSION['utilisateur'];
 echo $utilisateur['nom'];
@@ -119,7 +118,6 @@ echo $utilisateur['nom'];
         <div class="card-header text-center">
             <h4>
                 <?php
-                // Affichez nom et prénom si définis
                 echo htmlspecialchars($utilisateur['nom'] ?? 'Nom non renseigné') . ' ' .
                     htmlspecialchars($utilisateur['prenom'] ?? 'Prénom non renseigné');
                 ?>
@@ -143,7 +141,7 @@ echo $utilisateur['nom'];
             <h5>Ajouter une Entreprise</h5>
         </div>
         <div class="card-body">
-            <form id="ajoutEntrepriseForm" action="../src/controller/EntrepriseController.php?action=ajouter" method="POST">
+            <form id="ajoutEntrepriseForm" action="../src/controleur/EntrepriseController.php" method="POST">
                 <div class="form-group">
                     <label for="nomEntreprise">Nom de l'Entreprise</label>
                     <input type="text" class="form-control" id="nomEntreprise" name="nom" required>

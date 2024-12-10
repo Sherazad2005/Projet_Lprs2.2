@@ -307,7 +307,7 @@ class Utilisateur
             'id_entreprise' => $this->getIdEntreprise()
         ]);
 
-        header("Location: ../../vue/page_ouverture.php?success");
+        header("Location: ../../vue/page_ouverture.php?success=1");
     }
 
     public function connexion(){
