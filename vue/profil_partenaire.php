@@ -1,6 +1,13 @@
 <?php
-require_once '../src/model/Utilisateur.php';
 session_start();
+
+// Vérifiez si l'utilisateur est connecté
+if (!isset($_SESSION["utilisateur"])) {
+    header("Location: ../../vue/page_ouverture.php?erreur=4"); // Redirection si non connecté
+    exit;
+}
+
+$utilisateur = $_SESSION["utilisateur"];
 ?>
 <!doctype html>
 <html lang="en">
@@ -130,6 +137,26 @@ session_start();
     </nav>
 </header>
 
+<div class="container mt-5">
+    <h2 class="text-center">Profil Utilisateur</h2>
+    <div class="card">
+        <div class="card-header">
+            <h4><?php echo htmlspecialchars($utilisateur['prenom'] . ' ' . $utilisateur['nom']); ?></h4>
+        </div>
+        <div class="card-body">
+            <p><strong>Email :</strong> <?php echo htmlspecialchars($utilisateur['email']); ?></p>
+            <p><strong>Rôle :</strong> <?php echo htmlspecialchars($utilisateur['role']); ?></p>
+            <p><strong>Nom de l'entreprise :</strong> <?php echo htmlspecialchars($utilisateur['nom_entreprise'] ?? 'Non renseigné'); ?></p>
+            <p><strong>Poste dans l'entreprise :</strong> <?php echo htmlspecialchars($utilisateur['poste_entreprise'] ?? 'Non renseigné'); ?></p>
+            <p><strong>Classe :</strong> <?php echo htmlspecialchars($utilisateur['classe'] ?? 'Non renseigné'); ?></p>
+            <p><strong>Spécialité :</strong> <?php echo htmlspecialchars($utilisateur['specialite_prof'] ?? 'Non renseigné'); ?></p>
+            <p><strong>Secteur d'activité :</strong> <?php echo htmlspecialchars($utilisateur['secteur_activite'] ?? 'Non renseigné'); ?></p>
+        </div>
+        <div class="card-footer text-center">
+            <a href="deconnexion.php" class="btn btn-danger">Déconnexion</a>
+        </div>
+    </div>
+</div>
 
 <div id="formulaireAjoutEntreprise" class="mt-4 card">
         <div class="card-header">

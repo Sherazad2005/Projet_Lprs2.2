@@ -310,35 +310,38 @@ class Utilisateur
         header("Location: ../../vue/page_ouverture.php?success=1");
     }
 
-    public function connexion(){
+    public function connexion() {
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('SELECT u.*, e.nom AS nom_entreprise FROM utilisateur u LEFT JOIN entreprise e ON u.id_entreprise = e.id_entreprise WHERE u.email = :email');
-        $req->execute(array(
-            "email" =>$this->getEmail(),
-        ));
+        $req = $bdd->getBdd()->prepare(
+            'SELECT u.*, e.nom AS nom_entreprise 
+         FROM utilisateur u 
+         LEFT JOIN entreprise e ON u.id_entreprise = e.id_entreprise 
+         WHERE u.email = :email'
+        );
+        $req->execute(array("email" => $this->getEmail()));
         $res = $req->fetch();
+
         if ($res && is_array($res) && password_verify($this->getMdp(), $res["mdp"])) {
             if ($res['validated'] == 1) {
-                $this->setIdUtilisateur($res["id_utilisateur"]);
-                $this->setNom($res["nom"]);
-                $this->setPrenom($res["prenom"]);
-                $this->setEmail($res["email"]);
-                $this->setRole($res["role"]);
-                $this->setCv($res["cv"]);
-                $this->setClasse($res["classe"]);
-                $this->setSpecialiteProf($res["specialite_prof"]);
-                $this->setPosteEntreprise($res["poste_entreprise"]);
-                $this->setRefEmplois($res["ref_emplois"]);
-                $this->setMotifInscription($res["motif_inscription"]);
-                $this->setSecteurActivite($res["secteur_activite"]);
-                $this->setNomPromo($res["nom_promo"]);
-                $this->setIdEntreprise($res["id_entreprise"]);
-
-
+                // Stocker les informations utilisateur dans la session
                 session_start();
-
-                $_SESSION["utilisateur"] = $this;
-                $_SESSION['nom_entreprise'] = $res['nom_entreprise'];
+                $_SESSION["utilisateur"] = [
+                    "id_utilisateur" => $res["id_utilisateur"],
+                    "nom" => $res["nom"],
+                    "prenom" => $res["prenom"],
+                    "email" => $res["email"],
+                    "role" => $res["role"],
+                    "cv" => $res["cv"],
+                    "classe" => $res["classe"],
+                    "specialite_prof" => $res["specialite_prof"],
+                    "poste_entreprise" => $res["poste_entreprise"],
+                    "ref_emplois" => $res["ref_emplois"],
+                    "motif_inscription" => $res["motif_inscription"],
+                    "secteur_activite" => $res["secteur_activite"],
+                    "nom_promo" => $res["nom_promo"],
+                    "id_entreprise" => $res["id_entreprise"],
+                    "nom_entreprise" => $res["nom_entreprise"]
+                ];
 
                 header("Location: ../../vue/pageacceuil.php");
                 exit;
@@ -354,6 +357,7 @@ class Utilisateur
             exit;
         }
     }
+
 
 
 
