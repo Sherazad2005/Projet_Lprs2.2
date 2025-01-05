@@ -1,11 +1,14 @@
 <?php
 session_start();
 
-$utilisateur = (Utilisateur::class) $_SESSION['utilisateur'];
-echo $utilisateur['nom'];
+// Vérifiez si l'utilisateur est connecté
+if (!isset($_SESSION["utilisateur"])) {
+    header("Location: ../../vue/page_ouverture.php?erreur=4"); // Redirection si non connecté
+    exit;
+}
 
+$utilisateur = $_SESSION["utilisateur"];
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,20 +22,23 @@ echo $utilisateur['nom'];
 
         form input, form select, form label, form button {
             width: 100%;
-            margin-bottom: 1rem;
+            margin-bottom: 1rem; /* Espacement vertical entre les champs */
         }
+        /* Style pour les titres h1 */
         h1 {
-            font-size: 2rem;
-            color: #302b2b;
+            font-size: 2rem;  /* Taille plus grande pour h1 */
+            color: #302b2b;   /* Couleur bleue */
             font-family: 'Arial Black';
-            font-weight: bold;
+            font-weight: bold;  /* Texte en gras */
         }
 
+        /* Flou pour l'arrière-plan */
         .blurred {
             filter: blur(5px);
             transition: filter 0.3s ease;
         }
 
+        /* Modale centrée */
         #deconnexionForm {
             display: none;
             position: fixed;
@@ -48,6 +54,7 @@ echo $utilisateur['nom'];
             text-align: center;
         }
 
+        /* Ombre pour désactiver les clics à l'extérieur */
         #overlay {
             display: none;
             position: fixed;
@@ -60,12 +67,14 @@ echo $utilisateur['nom'];
         }
     </style>
     <script>
+        // Afficher la fenêtre de déconnexion avec flou de l'arrière-plan
         function afficherFormulaireDeconnexion() {
             document.getElementById("content").classList.add("blurred");
             document.getElementById("overlay").style.display = "block";
             document.getElementById("deconnexionForm").style.display = "block";
         }
 
+        // Masquer la fenêtre de déconnexion et retirer le flou
         function fermerFormulaireDeconnexion() {
             document.getElementById("content").classList.remove("blurred");
             document.getElementById("overlay").style.display = "none";
@@ -74,6 +83,11 @@ echo $utilisateur['nom'];
     </script>
 </head>
 <body>
+<?php if (isset($_GET['erreur']) && $_GET['erreur'] == 1): ?>
+    <div id="notification" class="alert alert-danger text-center" role="alert">
+        Email ou Mot de Passe Incorrect.
+    </div>
+<?php endif; ?>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
         <div class="container-fluid">
@@ -96,7 +110,7 @@ echo $utilisateur['nom'];
 
             <a class="btn btn-dark me-3 dropdown-toggle hidden-arrow" href="#" onclick="afficherFormulaireDeconnexion()">Déconnection</a>
             <div class="dropdown">
-                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                <a class="navbar-brand mt-2 mt-lg-0" href="../src/controleur/TraitementProfil.php">
                     <img
                             src="../assets/img/istockphoto-1300845620-612x612.jpg"
                             class="img-fluid rounded"
@@ -107,27 +121,36 @@ echo $utilisateur['nom'];
                 </a>
             </div>
         </div>
+        <div id="overlay"></div>
+
+        <div id="deconnexionForm">
+            <h2>Voulez-vous vous déconnecter ?</h2>
+            <div class="mt-3">
+                <!-- Formulaire pour redirection -->
+                <form action="page_ouverture.php" method="GET">
+                    <button type="submit" class="btn btn-dark">Se déconnecter</button>
+                </form>
+                <!-- Bouton pour annuler -->
+                <button class="btn btn-secondary mt-2" onclick="fermerFormulaireDeconnexion()">Annuler</button>
+            </div>
+        </div>
     </nav>
 </header>
 
-
-
 <div class="container mt-5">
-    <h2>Profil Partenaire</h2>
+    <h2 class="text-center">Profil Utilisateur</h2>
     <div class="card">
-        <div class="card-header text-center">
-            <h4>
-                <?php
-                echo htmlspecialchars($utilisateur['nom'] ?? 'Nom non renseigné') . ' ' .
-                    htmlspecialchars($utilisateur['prenom'] ?? 'Prénom non renseigné');
-                ?>
-            </h4>
+        <div class="card-header">
+            <h4><?php echo htmlspecialchars($utilisateur['prenom'] . ' ' . $utilisateur['nom']); ?></h4>
         </div>
         <div class="card-body">
-            <p><strong>Email : </strong><?php echo htmlspecialchars($utilisateur['email'] ?? 'Non renseigné'); ?></p>
-            <p><strong>Rôle : </strong><?php echo htmlspecialchars($utilisateur['role'] ?? 'Non renseigné'); ?></p>
-            <p><strong>Nom Entreprise : </strong><?php echo htmlspecialchars($_SESSION['nom_entreprise'] ?? 'Non renseigné'); ?></p>
-            <p><strong>Poste Entreprise : </strong><?php echo htmlspecialchars($utilisateur['poste_entreprise'] ?? 'Non renseigné'); ?></p>
+            <p><strong>Email :</strong> <?php echo htmlspecialchars($utilisateur['email']); ?></p>
+            <p><strong>Rôle :</strong> <?php echo htmlspecialchars($utilisateur['role']); ?></p>
+            <p><strong>Nom de l'entreprise :</strong> <?php echo htmlspecialchars($utilisateur['nom_entreprise'] ?? 'Non renseigné'); ?></p>
+            <p><strong>Poste dans l'entreprise :</strong> <?php echo htmlspecialchars($utilisateur['poste_entreprise'] ?? 'Non renseigné'); ?></p>
+            <p><strong>Classe :</strong> <?php echo htmlspecialchars($utilisateur['classe'] ?? 'Non renseigné'); ?></p>
+            <p><strong>Spécialité :</strong> <?php echo htmlspecialchars($utilisateur['specialite_prof'] ?? 'Non renseigné'); ?></p>
+            <p><strong>Secteur d'activité :</strong> <?php echo htmlspecialchars($utilisateur['secteur_activite'] ?? 'Non renseigné'); ?></p>
         </div>
         <div class="card-footer text-center">
             <a href="deconnexion.php" class="btn btn-danger">Déconnexion</a>
@@ -135,8 +158,7 @@ echo $utilisateur['nom'];
     </div>
 </div>
 
-
-    <div id="formulaireAjoutEntreprise" class="mt-4 card">
+<div id="formulaireAjoutEntreprise" class="mt-4 card">
         <div class="card-header">
             <h5>Ajouter une Entreprise</h5>
         </div>
