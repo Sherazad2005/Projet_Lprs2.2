@@ -122,6 +122,10 @@ try {
             <a class="btn btn-dark btn-lg mb-3 mx-4" href="liste_entreprise.php" style="width: 200px; height: 60px;">
                 Liste Entreprise
             </a>
+
+            <a class="btn btn-dark btn-lg mb-3 mx-4" href="Messages.php" style="width: 200px; height: 60px;">
+                Messages des utilisateurs
+            </a>
         </div>
     </div>
 </div>

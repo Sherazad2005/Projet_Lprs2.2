@@ -94,9 +94,7 @@ $res = $req->fetchAll();
             </tbody>
         </table>
     </div>
-    <div class="text-center mt-4">
-        <a href="../src/controleur/TraitementDeco.php" class="btn btn-outline-danger">Déconnexion</a>
-    </div>
+
 </div>
 <br>
 

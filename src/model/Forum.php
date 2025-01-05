@@ -153,7 +153,7 @@ class Forum
             'ref_utilisateur' => $_SESSION[""]
         ]);
 
-        header("Location: ../../vue/PageForumEleve.php?success");
+        header("Location: ../../vue/NewForum.php?success");
     }
     public function getAllPosts() {
         $query = "SELECT id_forum, titre, LEFT(contenu, 100) AS extrait, date_creation FROM posts ORDER BY date_creation DESC";

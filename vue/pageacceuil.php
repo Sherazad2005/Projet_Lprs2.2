@@ -1,7 +1,5 @@
 <?php
 require_once '../src/model/Utilisateur.php';
-session_start();
-var_dump($_SESSION);
 
 ?>
 <!doctype html>

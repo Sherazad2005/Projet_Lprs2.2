@@ -1,9 +1,9 @@
 <?php
-
+session_start();
+var_dump($_SESSION);
 include '../bdd/Bdd.php';
 include '../model/Utilisateur.php';
 
-session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "mdp" => password_hash($_POST["mdp"], PASSWORD_DEFAULT),
             "role" => htmlspecialchars($_POST["role"]),
             "classe" => null,
-            "nom_promo" => null,
+            "nomPromo" => null,
             "secteurActivite" => null,
             "cv" => null,
             "specialiteProf" => null,
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($_POST["role"] == "eleve") {
             $data["classe"] = htmlspecialchars($_POST["classe"]);
-            $data["nom_promo"] = htmlspecialchars($_POST["nom_promo"]);
+            $data["nomPromo"] = htmlspecialchars($_POST["nomPromo_el"]);
 
             if (isset($_FILES["cv"]) && $_FILES["cv"]["error"] == 0) {
                 $cvDir = "uploads/cv/";
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $data["specialiteProf"] = htmlspecialchars($_POST["specialiteProf"]);
 
         } elseif ($_POST["role"] == "alumni") {
-            $data["nomPromo_el"] = htmlspecialchars($_POST["nomPromo_el"]);
+            $data["nomPromo"] = htmlspecialchars($_POST["nomPromo"]);
             $data["secteurActivite"] = htmlspecialchars($_POST["secteur_activite"]);
 
         } elseif ($_POST["role"] == "partenaire") {

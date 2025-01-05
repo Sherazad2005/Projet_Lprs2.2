@@ -80,15 +80,15 @@ $res = $req->fetchAll();
             <tbody>
             <?php foreach ($res as $utilisateur): ?>
                 <tr>
-                    <td><?= htmlspecialchars($utilisateur["id_utilisateur"]) ?></td>
-                    <td><?= htmlspecialchars($utilisateur["nom"]) ?></td>
-                    <td><?= htmlspecialchars($utilisateur["prenom"]) ?></td>
-                    <td><?= htmlspecialchars($utilisateur["email"]) ?></td>
-                    <td><?= htmlspecialchars($utilisateur["mdp"]) ?></td>
-                    <td><?= htmlspecialchars($utilisateur["nom_promo"]) ?></td>
-                    <td><?= htmlspecialchars($utilisateur["cv"]) ?></td>
-                    <td><?= htmlspecialchars($utilisateur["classe"]) ?></td>
-                    <td><?= htmlspecialchars($utilisateur["role"]) ?></td>
+                    <td><?= htmlspecialchars($utilisateur["id_utilisateur"] ?? '') ?></td>
+                    <td><?= htmlspecialchars($utilisateur["nom"]?? '') ?></td>
+                    <td><?= htmlspecialchars($utilisateur["prenom"]?? '') ?></td>
+                    <td><?= htmlspecialchars($utilisateur["email"]?? '') ?></td>
+                    <td><?= htmlspecialchars($utilisateur["mdp"]?? '') ?></td>
+                    <td><?= htmlspecialchars($utilisateur["nom_promo"]?? '') ?></td>
+                    <td><?= htmlspecialchars($utilisateur["cv"]?? '') ?></td>
+                    <td><?= htmlspecialchars($utilisateur["classe"]?? '') ?></td>
+                    <td><?= htmlspecialchars($utilisateur["role"]?? '') ?></td>
                     <td>
                         <a href="editer.php?id_utilisateur=<?= $utilisateur["id_utilisateur"] ?>" class="edit-btn">Éditer</a>
                         <a href="Supprimer.php?id_utilisateur=<?= $utilisateur["id_utilisateur"] ?>" class="delete-btn">Supprimer</a>
@@ -98,9 +98,7 @@ $res = $req->fetchAll();
             </tbody>
         </table>
     </div>
-    <div class="text-center mt-4">
-        <a href="../src/controleur/TraitementDeco.php" class="btn btn-outline-danger">Déconnexion</a>
-    </div>
+
 </div>
 <br>
 <footer class="text-center">

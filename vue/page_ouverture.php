@@ -107,7 +107,7 @@ try {
 <body>
 <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
     <div id="notification" class="alert alert-success text-center" role="alert">
-        Inscription enregistrée. Veuillez attendre un mail de confirmation.
+        Enregistrée. Veuillez attendre un mail de confirmation.
     </div>
 <?php endif; ?>
 
@@ -182,6 +182,11 @@ try {
         <div class="form-group">
             <input type="password" class="form-control" name="mdp" required placeholder="Mot de passe">
         </div>
+
+        <div class="text-center mt-3">
+            <a href="OubliMDP.php">Oubli de mot de passe?</a>
+        </div>
+
         <div class="form-group">
             <button type="submit" class="btn btn-dark">Se connecter</button>
             <button type="button" class="btn btn-secondary" onclick="fermerFormulaireConnexion()">Fermer</button>
@@ -235,6 +240,16 @@ try {
         <div id="alumniFields">
             <div class="form-group">
                 <input type="text" name="secteur_activite" class="form-control" placeholder="Secteur d'activité">
+            </div>
+            <div class="form-group">
+                <select name="id_entreprise" class="form-control">
+                    <option value="">Sélectionner une entreprise</option>
+                    <?php foreach ($entreprises as $entreprise) : ?>
+                        <option value="<?= htmlspecialchars($entreprise['id_entreprise']) ?>">
+                            <?= htmlspecialchars($entreprise['nom']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
         </div>
 

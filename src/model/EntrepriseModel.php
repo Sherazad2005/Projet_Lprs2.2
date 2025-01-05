@@ -1,5 +1,4 @@
 <?php
-require_once  'C:\wamp64\www\DevProjet\PHP\Projet_Lprs2.2\src\bdd\Bdd.php';
 
 class EntrepriseModel {
     private $id_entreprise;
@@ -7,7 +6,8 @@ class EntrepriseModel {
     private $gerant;
     private $adresse;
     private $cp;
-    private $email;
+    private $adresseWeb;
+
 
     public function __construct(array $donnee) {
         $this->hydrate($donnee);
@@ -58,37 +58,42 @@ class EntrepriseModel {
         $this->cp = $cp;
     }
 
-    public function getEmail() {
-        return $this->email;
+    /**
+     * @return mixed
+     */
+    public function getAdresseWeb()
+    {
+        return $this->adresseWeb;
     }
 
-    public function setEmail($email) {
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $this->email = $email;
-        } else {
-            throw new Exception("Format d'email invalide.");
-        }
+    /**
+     * @param mixed $adresseWeb
+     */
+    public function setAdresseWeb($adresseWeb)
+    {
+        $this->adresseWeb = $adresseWeb;
     }
 
     public function ajouterEntreprise() {
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare(
-            'INSERT INTO entreprise (nom, gerant, adresse, cp, email) 
-             VALUES (:nom, :gerant, :adresse, :cp, :email)'
+            'INSERT INTO entreprise (nom, gerant, adresse, cp, adresseWeb) 
+             VALUES (:nom, :gerant, :adresse, :cp, :adresseWeb)'
         );
-        return $req->execute([
+       $req->execute([
             'nom' => $this->getNom(),
             'gerant' => $this->getGerant(),
             'adresse' => $this->getAdresse(),
             'cp' => $this->getCp(),
-            'email' => $this->getEmail(),
+            'adresseWeb' => $this->getAdresseWeb(),
         ]);
+        header("Location: ../../vue/NewEntreprise.php?success");
     }
 
     public function editerEntreprise() {
         $bdd = new Bdd();
         $req = $bdd->getBdd()->prepare(
-            'UPDATE entreprise SET nom=:nom, gerant=:gerant, adresse=:adresse, cp=:cp, email=:email 
+            'UPDATE entreprise SET nom=:nom, gerant=:gerant, adresse=:adresse, cp=:cp, adresseWeb=:adresseWeb 
              WHERE id_entreprise=:id_entreprise'
         );
         return $req->execute([
@@ -96,7 +101,7 @@ class EntrepriseModel {
             'gerant' => $this->getGerant(),
             'adresse' => $this->getAdresse(),
             'cp' => $this->getCp(),
-            'email' => $this->getEmail(),
+            'adresseWeb' => $this->getAdresseWeb(),
             'id_entreprise' => $this->getIdEntreprise()
         ]);
     }

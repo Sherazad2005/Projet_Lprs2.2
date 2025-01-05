@@ -282,8 +282,6 @@ class Utilisateur
      */
 
 
-
-
     public function inscription()
     {
         $bdd = new Bdd();
@@ -310,52 +308,77 @@ class Utilisateur
         header("Location: ../../vue/page_ouverture.php?success=1");
     }
 
-    public function connexion(){
+    public function connexion()
+    {
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('SELECT u.*, e.nom AS nom_entreprise FROM utilisateur u LEFT JOIN entreprise e ON u.id_entreprise = e.id_entreprise WHERE u.email = :email');
-        $req->execute(array(
-            "email" =>$this->getEmail(),
-        ));
+        $req = $bdd->getBdd()->prepare('SELECT u.*, e.nom AS nom_entreprise 
+                                    FROM utilisateur u 
+                                    LEFT JOIN entreprise e ON u.id_entreprise = e.id_entreprise 
+                                    WHERE u.email = :email');
+        $req->execute(array("email" => $this->getEmail()));
         $res = $req->fetch();
-        if ($res && is_array($res) && password_verify($this->getMdp(), $res["mdp"])) {
-            if ($res['validated'] == 1) {
-                $this->setIdUtilisateur($res["id_utilisateur"]);
-                $this->setNom($res["nom"]);
-                $this->setPrenom($res["prenom"]);
-                $this->setEmail($res["email"]);
-                $this->setRole($res["role"]);
-                $this->setCv($res["cv"]);
-                $this->setClasse($res["classe"]);
-                $this->setSpecialiteProf($res["specialite_prof"]);
-                $this->setPosteEntreprise($res["poste_entreprise"]);
-                $this->setRefEmplois($res["ref_emplois"]);
-                $this->setMotifInscription($res["motif_inscription"]);
-                $this->setSecteurActivite($res["secteur_activite"]);
-                $this->setNomPromo($res["nom_promo"]);
-                $this->setIdEntreprise($res["id_entreprise"]);
 
+        if ($res && is_array($res)) {
+            // Vérification du mot de passe
+            if (password_verify($this->getMdp(), $res["mdp"])) {
+                // Vérification de la validation du compte
+                if ($res['validated'] == 1) {
+                    // Récupération des informations de l'utilisateur
+                    $this->setIdUtilisateur($res["id_utilisateur"]);
+                    $this->setNom($res["nom"]);
+                    $this->setPrenom($res["prenom"]);
+                    $this->setEmail($res["email"]);
+                    $this->setRole($res["role"]);
+                    $this->setCv($res["cv"]);
+                    $this->setClasse($res["classe"]);
+                    $this->setSpecialiteProf($res["specialite_prof"]);
+                    $this->setPosteEntreprise($res["poste_entreprise"]);
+                    $this->setRefEmplois($res["ref_emplois"]);
+                    $this->setMotifInscription($res["motif_inscription"]);
+                    $this->setSecteurActivite($res["secteur_activite"]);
+                    $this->setNomPromo($res["nom_promo"]);
+                    $this->setIdEntreprise($res["id_entreprise"]);
 
-                session_start();
+                    // Démarrage de la session
+                    session_start();
+                    $_SESSION["utilisateur"] = $this;
+                    $_SESSION['nom_entreprise'] = $res['nom_entreprise'];
 
-                $_SESSION["utilisateur"] = $this;
-                $_SESSION['nom_entreprise'] = $res['nom_entreprise'];
-
-                header("Location: ../../vue/pageacceuil.php");
-                exit;
-            } elseif ($res['validated'] == 0) {
-                header("Location: ../../vue/page_ouverture.php?erreur=3");
-                exit;
+                    // Redirection en fonction du rôle
+                    switch ($this->getRole()) {
+                        case 'alumni':
+                            header("Location: ../../vue/alumni.php");
+                            break;
+                        case 'professeur':
+                            header("Location: ../../vue/professeur.php");
+                            break;
+                        case 'partenaire':
+                            header("Location: ../../vue/entreprise.php");
+                            break;
+                        case 'eleve':
+                            header("Location: ../../vue/etudiants.php");
+                            break;
+                        default:
+                            header("Location: ../../vue/pageacceuil.php");
+                            break;
+                    }
+                    exit; // Arrêt du script après la redirection
+                } else {
+                    // Compte non validé
+                    header("Location: ../../vue/page_ouverture.php?erreur=3");
+                    exit;
+                }
             } else {
+                // Mot de passe incorrect
                 header("Location: ../../vue/page_ouverture.php?erreur=2");
                 exit;
             }
         } else {
+            // Utilisateur non trouvé
             header("Location: ../../vue/page_ouverture.php?erreur=1");
             exit;
         }
     }
-
-
 
 
     public function editer()
@@ -370,7 +393,7 @@ class Utilisateur
         ));
 
         if ($res) {
-            header("Location: ../../vue/liste_utilisateur.php?success");
+            header("Location: ../../vue/editer.php?success");
         } else {
             header("Location: ../../vue/editer.php?id_utilisateur=" . $this->getIdutilisateur() . "&erreur");
         }
@@ -390,6 +413,7 @@ class Utilisateur
             header("Location: ../../vue/connexion.php?erreur");
         }
     }
+
     public function afficherNom()
     {
         $bdd = new Bdd();
@@ -400,4 +424,20 @@ class Utilisateur
         ));
     }
 
+    public function oubliemdp()
+    {
+        $bdd = new Bdd();
+        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET mdp = :mdp WHERE email = :email');
+        $res = $req->execute(array(
+            "email" => $this->getEmail(),
+            "mdp" => $this->getMdp(), // Stockage du mot de passe en texte clair
+        ));
+
+        if ($res) {
+            header("Location: ../../vue/page_ouverture.php?success=1");
+        } else {
+            header("Location: ../../vue/OubliMDP.php?erreur=1");
+        }
+    }
 }
+?>
