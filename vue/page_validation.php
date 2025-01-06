@@ -123,6 +123,11 @@ $utilisateuratt = ListeUtilisateurEnatt($bdd);
         L'utilisateur a été validé avec succès.
     </div>
 <?php endif; ?>
+<?php if (isset($_GET['success']) && $_GET['success'] == 2): ?>
+    <div id="notification" class="alert alert-danger text-center" role="alert">
+        L'utilisateur a été Rejeté avec succès.
+    </div>
+<?php endif; ?>
 <?php if (isset($_GET['erreur']) && $_GET['erreur'] == 1): ?>
     <div id="notification" class="alert alert-danger text-center" role="alert">
         Une erreur s'est produite lors de la validation de l'utilisateur.
@@ -157,7 +162,7 @@ $utilisateuratt = ListeUtilisateurEnatt($bdd);
                     </li>
                     <li class="nav-item"><a class="nav-link" href="Offres.php">Offres</a></li>
                 </ul>
-                <a class="btn btn-dark me-3 dropdown-toggle hidden-arrow" href="#" onclick="afficherFormulaireDeconnexion()">Déconnection</a>
+                <a class="btn btn-primary mx-2" href="#" onclick="afficherFormulaireDeconnexion()">Déconnection</a>
                 <div class="dropdown">
                     <a class="navbar-brand mt-2 mt-lg-0" href="../src/controleur/TraitementProfil.php">
                         <img

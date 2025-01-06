@@ -34,7 +34,7 @@
 <div class="form-container">
     <center>
         <img src="../assets/img/50-Lycee-Robert-Schuman.jpg" alt="Logo" height="100">
-        <h2 class="mt-3">Réinitialisation du mot de passe</h2>
+        <h2 class="mt-3">Réinitialisation Mot de passe</h2>
     </center>
     <form action="../src/controleur/TraitementOubliMDP.php" method="post">
         <div class="mb-3">

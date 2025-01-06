@@ -105,7 +105,7 @@ try {
     </script>
 </head>
 <body>
-<?php if (isset($_GET['success']) && $_GET['succes'] == 1): ?>
+<?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
     <div id="notification" class="alert alert-success text-center" role="alert">
         Enregistrée. Veuillez attendre un mail de confirmation.
     </div>
@@ -136,8 +136,8 @@ try {
             <div class="col-md-6 text-center text-md-start">
                 <h1>LPRS</h1>
                 <p class="lead">Bienvenue sur le site des anciens élèves du lycée Robert Schuman. Découvrez nos formations, nos anciens élèves, et les opportunités professionnelles.</p>
-                <a class="btn btn-dark me-3 dropdown-toggle hidden-arrow" href="#" onclick="afficherFormulaireConnexion()">Connexion</a>
-                <button class="btn btn-dark me-3 dropdown-toggle hidden-arrow" onclick="afficherFormulaire()">Inscription</button>
+                <a class="btn btn-primary mx-2" href="#" onclick="afficherFormulaireConnexion()">Connexion</a>
+                <button class="btn btn-primary mx-2" onclick="afficherFormulaire()">Inscription</button>
             </div>
             <div class="col-md-6 text-center">
                 <img src="../assets/img/façade-lycée-étoiles-1030x686.jpg" alt="Mountain" class="img-fluid rounded shadow" style="max-height: 300px;">
@@ -183,8 +183,8 @@ try {
             <input type="password" class="form-control" name="mdp" required placeholder="Mot de passe">
         </div>
 
-        <div class="text-center mt-3">
-            <a href="OubliMDP.php">Oubli de mot de passe?</a>
+        <div class="form-group">
+            <button href="OubliMDP.php">Oubli de mot de passe?</button>
         </div>
 
         <div class="form-group">
@@ -205,10 +205,23 @@ try {
             <input type="text" class="form-control" name="prenom" required placeholder="Prénom">
         </div>
         <div class="form-group">
-            <input type="email" class="form-control" name="email" required placeholder="Email">
+            <input type="email"
+                   class="form-control"
+                   name="email"
+                   required
+                   placeholder="Email"
+                   pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(fr|com)$"
+                   title="L'email doit se terminer par .fr ou .com">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" name="mdp" required placeholder="Mot de passe">
+            <input type="password"
+                   class="form-control"
+                   name="mdp"
+                   required
+                   placeholder="Mot de passe"
+                   minlength="8"
+                   pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
+                   title="Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial.">
         </div>
         <div class="form-group">
             <select name="role" id="role" class="form-control" onchange="afficherChampsSpecifiques()" required>

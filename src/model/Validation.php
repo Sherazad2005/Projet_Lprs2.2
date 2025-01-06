@@ -5,14 +5,25 @@ $bdd = new Bdd();
 
 function Valider($bdd, $id_utilisateur) {
     $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET validated = 1 WHERE id_utilisateur = ?');
-    return $req->execute(array($id_utilisateur)); // Retourne vrai ou faux
+    $result = $req->execute(array($id_utilisateur));
+    if (!$result) {
+        // Afficher un message d'erreur si l'exécution échoue
+        var_dump($req->errorInfo());
+        return false;
+    }
+    return true;
 }
 
 function Rejeter($bdd, $id_utilisateur) {
     $req = $bdd->getBdd()->prepare('DELETE FROM utilisateur WHERE id_utilisateur = ?');
-    return $req->execute(array($id_utilisateur)); // Retourne vrai ou faux
+    $result = $req->execute(array($id_utilisateur));
+    if (!$result) {
+        // Afficher un message d'erreur si l'exécution échoue
+        var_dump($req->errorInfo());
+        return false;
+    }
+    return true;
 }
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Vérification de la présence des paramètres nécessaires
     if (isset($_POST['id_utilisateur']) && isset($_POST['action'])) {
@@ -24,12 +35,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($action === 'Valider') {
             $action_reussie = Valider($bdd, $id_utilisateur);
         } elseif ($action === 'Rejeter') {
-            $action_reussie = Rejeter($bdd, $id_utilisateur);
+            $action_reussie1 = Rejeter($bdd, $id_utilisateur);
         }
 
         // Redirection avec un message de succès ou d'erreur
         if ($action_reussie) {
-            header('Location: page_validation.php?success=1');
+            header('Location: ../../vue/page_validation.php?success=1');
+        }
+        elseif ($action_reussie1) {
+            header('Location: ../../vue/page_validation.php?success=2');
         } else {
             header('Location: page_validation.php?error=erreur=1');
         }
