@@ -1,6 +1,16 @@
 <?php
+require_once '../src/bdd/Bdd.php';
 require_once '../src/model/Utilisateur.php';
+session_start();
 
+function ListeEvent($bdd) {
+    $req = $bdd->getBdd()->prepare("SELECT * FROM event");
+    $req->execute();
+    return $req->fetchAll(PDO::FETCH_ASSOC);
+}
+
+$bdd = new Bdd();
+$listeevent = ListeEvent($bdd);
 ?>
 <!doctype html>
 <html lang="en">
@@ -19,10 +29,13 @@ require_once '../src/model/Utilisateur.php';
         }
         /* Style pour les titres h1 */
         h1 {
-            font-size: 2rem;  /* Taille plus grande pour h1 */
-            color: #302b2b;   /* Couleur bleue */
-            font-family: 'Arial Black';
-            font-weight: bold;  /* Texte en gras */
+            color: #000000;   /* Couleur bleue */
+            font-family: 'Arial';
+            font-weight: bolder;  /* Texte en gras */
+        }
+
+        h2 {
+            font-weight: bolder;
         }
 
 
@@ -61,13 +74,11 @@ require_once '../src/model/Utilisateur.php';
     <script>
 
         function afficherFormulaireDeconnexion() {
-            document.getElementById("content").classList.add("blurred");
             document.getElementById("overlay").style.display = "block";
             document.getElementById("deconnexionForm").style.display = "block";
         }
 
         function fermerFormulaireDeconnexion() {
-            document.getElementById("content").classList.remove("blurred");
             document.getElementById("overlay").style.display = "none";
             document.getElementById("deconnexionForm").style.display = "none";
         }
@@ -89,7 +100,7 @@ require_once '../src/model/Utilisateur.php';
         <div class="container-fluid">
             <a class="navbar-brand mt-2 mt-lg-0" href="#">
                 <img
-                        src="../assets/img/_6b0231d1-ab09-4387-9783-e6f072408b6d.jpg"
+                        src="../assets/img/logoLprs.png"
                         class="img-fluid rounded"
                         style="height: 50px; width: auto; object-fit: contain;"
                         alt="LPRS"
@@ -98,13 +109,18 @@ require_once '../src/model/Utilisateur.php';
             </a>
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="pageacceuil.php" role="button">Accueil</a></li>
-                <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="AnnuaireEleve.php" role="button">Annuaire</a></li>
-                <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="PageForumAlumniEntreprise.php" role="button">Forum</a></li>
-                <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="Offres.php" role="button">Offres</a></li>
+                <li class="nav-item"><a class="btn btn-primary mx-2" data-mdb-ripple-init href="pageacceuil.php" role="button">Accueil</a></li>
+                <li class="nav-item"><a class="btn btn-primary mx-2" data-mdb-ripple-init href="AnnuaireEleve.php" role="button">Annuaire</a></li>
+                <li class="nav-item"><a class="btn btn-primary mx-2" data-mdb-ripple-init href="PageForumAlumniEntreprise.php" role="button">Forum</a></li>
+                <li class="nav-item"><a class="btn btn-primary mx-2" data-mdb-ripple-init href="Offres.php" role="button">Offres</a></li>
+                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'gestionnaire'): ?>
+                    <li class="nav-item">
+                        <a class="btn btn-success mx-2" href="gestion.php" role="button">Gestion</a>
+                    </li>
+                <?php endif; ?>
             </ul>
 
-            <a class="btn btn-dark me-3 dropdown-toggle hidden-arrow" href="#" onclick="afficherFormulaireDeconnexion()">Déconnection</a>
+            <a class="btn btn-primary mx-2" href="#" onclick="afficherFormulaireDeconnexion()">Déconnection</a>
             <div class="dropdown">
                 <a class="navbar-brand mt-2 mt-lg-0" href="../src/controleur/TraitementProfil.php">
                     <img
@@ -135,11 +151,50 @@ require_once '../src/model/Utilisateur.php';
 
 
 
-<div id="content">
-    <div class="container mt-5">
-        <h1>Bienvenue sur le site LPRS</h1>
-        <p class="lead">Explorez les ressources pour les étudiants, alumni et entreprises partenaires.</p>
+<!-- Section "Alumni et Etudiants" -->
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+            <h1 class="section-title">Événements Importants</h1>
+            <?php if (!empty($listeevent)): ?>
+                <ul class="list-unstyled">
+                    <?php foreach ($listeevent as $evenement): ?>
+                        <li class="mb-3">
+                            <strong><?= htmlspecialchars($evenement['Titre']) ?></strong><br>
+                            <?= htmlspecialchars($evenement['Description']) ?><br>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p>Aucun événement à venir pour le moment.</p>
+            <?php endif; ?>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="../assets/img/service-communaute.jpg" alt="Mountain" class="img-fluid rounded shadow" style="max-height: 300px;">
+        </div>
     </div>
+</div>
+
+<!-- Section "Entreprises Partenaires" -->
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+            <h1>Entreprises Partenaires</h1>
+            <p class="lead">
+            <h2>Description</h2>
+                Le lycée privé Robert Schuman, fondé en 1920, propose des formations professionnelles et technologiques adaptées au monde moderne. Il accueille environ 450 élèves dans un cadre éducatif exigeant.
+
+            <h2>Mission</h2>
+                Former des élèves sur le plan académique, professionnel et humain en valorisant des qualités comme la rigueur, l’assiduité, et le respect, tout en favorisant des liens avec le monde professionnel.
+
+            <h2>Vision</h2>
+                Devenir un acteur de référence dans la formation technique et industrielle, en connectant élèves, alumni et entreprises pour bâtir un réseau éducatif et professionnel solide.</p>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="../assets/img/dugnylyrschumanadm.jpg" alt="Mountain" class="img-fluid rounded shadow" style="max-height: 300px;">
+        </div>
+    </div>
+</div>
 </div>
 
 

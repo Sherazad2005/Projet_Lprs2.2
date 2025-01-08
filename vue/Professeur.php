@@ -98,7 +98,7 @@ if (array_key_exists("erreur", $_GET)) {
         <div class="container-fluid">
             <a class="navbar-brand mt-2 mt-lg-0" href="#">
                 <img
-                        src="../assets/img/_6b0231d1-ab09-4387-9783-e6f072408b6d.jpg"
+                        src="../assets/img/logoLprs.png"
                         class="img-fluid rounded"
                         style="height: 50px; object-fit: contain;"
                         alt="LPRS"
@@ -106,7 +106,7 @@ if (array_key_exists("erreur", $_GET)) {
                 />
             </a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="btn btn-dark mx-2" href="Contact.php">Contact</a></li>
+                <li class="nav-item"><a class="btn btn-primary mx-2" href="Contact.php">Contact</a></li>
             </ul>
 
             <button class="btn btn-dark me-3" onclick="afficherFormulaire('deconnexionForm')">Déconnexion</button>

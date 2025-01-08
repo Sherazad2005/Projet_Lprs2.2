@@ -93,7 +93,7 @@ $utilisateur = $_SESSION["utilisateur"];
         <div class="container-fluid">
             <a class="navbar-brand mt-2 mt-lg-0" href="#">
                 <img
-                        src="../assets/img/_6b0231d1-ab09-4387-9783-e6f072408b6d.jpg"
+                        src="../assets/img/logoLprs.png"
                         class="img-fluid rounded"
                         style="height: 50px; width: auto; object-fit: contain;"
                         alt="LPRS"
@@ -102,13 +102,13 @@ $utilisateur = $_SESSION["utilisateur"];
             </a>
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="pageacceuil.php" role="button">Accueil</a></li>
-                <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="AnnuaireEleve.php" role="button">Annuaire</a></li>
-                <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="PageForumAlumniEntreprise.php" role="button">Forum</a></li>
-                <li class="nav-item"><a class="btn btn-dark mx-2" data-mdb-ripple-init href="Offres.php" role="button">Offres</a></li>
+                <li class="nav-item"><a class="btn btn-primary mx-2" data-mdb-ripple-init href="pageacceuil.php" role="button">Accueil</a></li>
+                <li class="nav-item"><a class="btn btn-primary mx-2" data-mdb-ripple-init href="AnnuaireEleve.php" role="button">Annuaire</a></li>
+                <li class="nav-item"><a class="btn btn-primary mx-2" data-mdb-ripple-init href="PageForumAlumniEntreprise.php" role="button">Forum</a></li>
+                <li class="nav-item"><a class="btn btn-primary mx-2" data-mdb-ripple-init href="Offres.php" role="button">Offres</a></li>
             </ul>
 
-            <a class="btn btn-dark me-3 dropdown-toggle hidden-arrow" href="#" onclick="afficherFormulaireDeconnexion()">Déconnection</a>
+            <a class="btn btn-primary mx-2" href="#" onclick="afficherFormulaireDeconnexion()">Déconnection</a>
             <div class="dropdown">
                 <a class="navbar-brand mt-2 mt-lg-0" href="../src/controleur/TraitementProfil.php">
                     <img
@@ -138,7 +138,7 @@ $utilisateur = $_SESSION["utilisateur"];
 </header>
 
 <div class="container mt-5">
-    <h2 class="text-center">Profil Utilisateur</h2>
+    <h2 class="text-center">Profil Partenaire</h2>
     <div class="card">
         <div class="card-header">
             <h4><?php echo htmlspecialchars($utilisateur['prenom'] . ' ' . $utilisateur['nom']); ?></h4>

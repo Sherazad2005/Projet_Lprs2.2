@@ -241,7 +241,7 @@ session_start();
                 </li>
                 <li class="nav-item"><a class="nav-link" href="Offres.php">Offres</a></li>
             </ul>
-            <a class="btn btn-dark me-3 dropdown-toggle hidden-arrow" href="#" onclick="afficherFormulaireDeconnexion()">Déconnection</a>
+            <a class="btn btn-primary mx-2" href="#" onclick="afficherFormulaireDeconnexion()">Déconnection</a>
             <div class="dropdown">
                 <a class="navbar-brand mt-2 mt-lg-0" href="../src/controleur/TraitementProfil.php">
                     <img
