@@ -95,7 +95,7 @@ $utilisateuratt = ListeUtilisateurEnatt($bdd);
             background: rgb(101, 131, 241);
             z-index: 999;
 
-            body {
+            & body {
                 background-color: #f8f9fa;
                 font-family: 'Roboto', sans-serif;
             }

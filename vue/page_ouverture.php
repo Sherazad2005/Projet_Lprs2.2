@@ -105,7 +105,7 @@ try {
     </script>
 </head>
 <body>
-<?php if (isset($_GET['success']) && $_GET['succes'] == 1): ?>
+<?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
     <div id="notification" class="alert alert-success text-center" role="alert">
         Enregistrée. Veuillez attendre un mail de confirmation.
     </div>

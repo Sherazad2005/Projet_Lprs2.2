@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Redirection avec un message de succès ou d'erreur
         if ($action_reussie) {
-            header('Location: page_validation.php?success=1');
+            header("Location: ../../vue/page_validation.php?success");
         } else {
             header('Location: page_validation.php?error=erreur=1');
         }
