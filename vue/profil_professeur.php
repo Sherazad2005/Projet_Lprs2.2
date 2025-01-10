@@ -1,9 +1,8 @@
 <?php
 session_start();
 
-// Vérifiez si l'utilisateur est connecté
 if (!isset($_SESSION["utilisateur"])) {
-    header("Location: ../../vue/page_ouverture.php?erreur=4"); // Redirection si non connecté
+    header("Location: ../../vue/page_ouverture.php?erreur=4");
     exit;
 }
 
@@ -22,23 +21,23 @@ $utilisateur = $_SESSION["utilisateur"];
 
         form input, form select, form label, form button {
             width: 100%;
-            margin-bottom: 1rem; /* Espacement vertical entre les champs */
-        }
-        /* Style pour les titres h1 */
-        h1 {
-            font-size: 2rem;  /* Taille plus grande pour h1 */
-            color: #302b2b;   /* Couleur bleue */
-            font-family: 'Arial Black';
-            font-weight: bold;  /* Texte en gras */
+            margin-bottom: 1rem;
         }
 
-        /* Flou pour l'arrière-plan */
+        h1 {
+            font-size: 2rem;
+            color: #302b2b;
+            font-family: 'Arial Black';
+            font-weight: bold;
+        }
+
+
         .blurred {
             filter: blur(5px);
             transition: filter 0.3s ease;
         }
 
-        /* Modale centrée */
+
         #deconnexionForm {
             display: none;
             position: fixed;
@@ -54,7 +53,7 @@ $utilisateur = $_SESSION["utilisateur"];
             text-align: center;
         }
 
-        /* Ombre pour désactiver les clics à l'extérieur */
+
         #overlay {
             display: none;
             position: fixed;

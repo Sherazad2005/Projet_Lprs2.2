@@ -25,14 +25,13 @@ try {
 
         form input, form select, form label, form button {
             width: 100%;
-            margin-bottom: 1rem; /* Espacement vertical entre les champs */
+            margin-bottom: 1rem;
         }
-        /* Style pour les titres h1 */
         h1,h2 {
-            font-size: 3rem;  /* Taille plus grande pour h1 */
-            color: #302b2b;   /* Couleur bleue */
+            font-size: 3rem;
+            color: #302b2b;
             font-family: 'Arial Black';
-            font-weight: bold;  /* Texte en gras */
+            font-weight: bold;
         }
 
         .blurred {
@@ -49,12 +48,11 @@ try {
             background-color: white;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgb(5, 5, 5);
             z-index: 1000;
             width: 400px;
         }
 
-        /* Champs spécifiques aux rôles */
         #eleveFields, #profFields, #alumniFields, #partenaireFields {
             display: none;
         }
@@ -130,7 +128,6 @@ try {
 <?php endif; ?>
 
 <div id="content">
-    <!-- Contenu principal de la page -->
     <div class="container mt-5">
         <div class="row align-items-center">
             <div class="col-md-6 text-center text-md-start">
@@ -187,6 +184,7 @@ try {
             <button href="OubliMDP.php">Oubli de mot de passe?</button>
         </div>
 
+
         <div class="form-group">
             <button type="submit" class="btn btn-dark">Se connecter</button>
             <button type="button" class="btn btn-secondary" onclick="fermerFormulaireConnexion()">Fermer</button>
@@ -221,7 +219,7 @@ try {
                    placeholder="Mot de passe"
                    minlength="8"
                    pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
-                   title="Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial.">
+                   title="Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial."
         </div>
         <div class="form-group">
             <select name="role" id="role" class="form-control" onchange="afficherChampsSpecifiques()" required>

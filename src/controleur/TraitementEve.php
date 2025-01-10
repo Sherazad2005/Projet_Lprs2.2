@@ -5,7 +5,6 @@ session_start();
 
 if (!isset($_SESSION['utilisateur'])) {
     header('Location: ../../vue/page_ouverture.php?erreur=4');
-    exit;
 }
 
 

@@ -116,32 +116,36 @@ if (array_key_exists("erreur", $_GET)) {
 </header>
 
 <div id="content" class="container">
-    <center><h2>Bienvenue sur votre espace !</h2></center><br><br>
+    <center><h2>Bienvenue sur votre espace !</h2></center>
     <div class="row align-items-center">
         <div class="col-md-6 text-center">
 
-            <a class="btn btn-dark btn-lg mb-3" href="annuiare_anciens_eleves_alumni.php" style="width: 200px; height: 60px;">
+            <a class="btn btn-dark btn-lg mb-3" href="annuiare_anciens_eleves.php" style="width: 200px; height: 60px;">
                 Annuaire des anciens élèves
-            </a>
-
-            <a class="btn btn-dark btn-lg mb-3" href="NewForum.php" style="width: 200px; height: 60px;">
-                Créer une discussion
             </a>
 
             <a class="btn btn-dark btn-lg mb-3" href="PageForumAlumniEntreprise.php" style="width: 200px; height: 60px;">
                 Accéder au forum
             </a>
 
-            <a class="btn btn-dark btn-lg mb-3" href="Opportunités_emplois_alumni.php" style="width: 200px; height: 60px;">
+            <a class="btn btn-dark btn-lg mb-3" href="Opportunités_emplois.php" style="width: 200px; height: 60px;">
                 Opportunités d'emplois
             </a>
 
-            <a class="btn btn-dark btn-lg mb-3" href="participation_evenement_alumni.php" style="width: 200px; height: 60px;">
+            <a class="btn btn-dark btn-lg mb-3" href="participation_evenement.php" style="width: 200px; height: 60px;">
                 Liste des événements
             </a>
 
             <a class="btn btn-dark btn-lg mb-3" href="NewEntreprise.php" style="width: 200px; height: 60px;">
                 Créer une fiche Entreprise
+            </a>
+
+            <a class="btn btn-dark btn-lg mb-3" href="listeEntreprise.php" style="width: 200px; height: 60px;">
+                Liste des entreprises
+            </a>
+
+            <a class="btn btn-dark btn-lg mb-3" href="PageForumGenerale.php" style="width: 200px; height: 60px;">
+                Forum générale
             </a>
 
         </div>

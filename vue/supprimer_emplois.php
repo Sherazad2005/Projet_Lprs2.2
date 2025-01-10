@@ -26,7 +26,7 @@ if (array_key_exists("erreur", $_POST)) {
     <input type="number" name="id_emplois" value="<?=$_GET["id_emplois"]?>"/><br><br>
 
     <input type="submit" name="ins" value="Confirmer"/><br><br>
-    <a href="Opportunités_emplois_alumni.php">Retour</a>
+    <a href="Opportunités_emplois_prof.php">Retour</a>
 
 </form>
 

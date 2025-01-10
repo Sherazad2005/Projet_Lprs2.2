@@ -38,18 +38,12 @@ $res = $req->fetchAll();
                 font-size: 1.2rem;
                 color: white;
             }
-            .edit-btn, .delete-btn, .post-btn:hover {
+            .post-btn:hover {
                 text-decoration: none;
                 margin: 0 5px;
             }
-            .edit-btn:hover, .delete-btn:hover, .post-btn:hover {
+            .post-btn:hover {
                 text-decoration: underline;
-            }
-            .edit-btn {
-                color: #0d6efd;
-            }
-            .delete-btn {
-                color: #dc3545;
             }
 
             .post-btn{
@@ -85,8 +79,6 @@ $res = $req->fetchAll();
             <td><?=htmlspecialchars($event["elementsrrequis"]?? '')?></td>
             <td><?=htmlspecialchars($event["nombreplaces"]?? '')?></td>
             <td>
-                <a href="editer_event.php?id_event=<?=$event["id_event"]?>" class="edit-btn">Editer</a>
-                <a href="supprimer_event.php?id_event=<?=$event["id_event"]?>" class="delete-btn">Supprimer</a>
                 <a href="inscrire.php?id_event=<?=$event["id_event"]?>" class="post-btn">S'inscrire</a>
             </td>
         </tr>

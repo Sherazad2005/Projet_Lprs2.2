@@ -14,4 +14,4 @@ $event = new event([
     "elementsrequis" =>$_POST['elementsrequis'],
     "nombreplaces" =>$_POST['nombreplaces'],
 ]);
-$event->editer_event1();
+$event->editer_event();

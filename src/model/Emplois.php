@@ -102,7 +102,7 @@ class Emplois
             'description' => $this->getDescription(),
         ]);
 
-        header("Location: ../../vue/Opportunités_emplois_alumni.php?success");
+        header("Location: ../../vue/Opportunités_emplois_prof.php?success");
     }
 
     public function editer_emplois()
@@ -116,7 +116,7 @@ class Emplois
             "description" => $this->getDescription(),
         ));
         if ($res) {
-            header("Location: ../../vue/Opportunités_emplois_alumni.php?success");
+            header("Location: ../../vue/Opportunités_emplois_prof.php?success");
         } else {
             header("Location: ../../vue/editer.php?id_emplois=" . $this->getIdEmplois() . "&erreur");
         }
@@ -131,7 +131,7 @@ class Emplois
         ));
 
         if ($res) {
-            header("Location: ../../vue/Opportunités_emplois_alumni.php");
+            header("Location: ../../vue/Opportunités_emplois_prof.php");
         } else {
             header("Location: ../../vue/supprimer_emplois.php?erreur");
         }

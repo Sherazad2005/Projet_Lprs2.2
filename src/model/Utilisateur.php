@@ -304,10 +304,12 @@ class Utilisateur
             'role' => $this->getRole(),
             'id_entreprise' => $this->getIdEntreprise()
         ]);
-
-        header("Location: ../../vue/page_ouverture.php?success=1");
+        if ($req) {
+            header("Location: ../../vue/page_ouverture.php");
+        } else {
+            header("Location: ../../vue/Contact.php?id_utilisateur=" . $this->getIdutilisateur() . "&erreur");
+        }
     }
-
     public function connexion()
     {
         $bdd = new Bdd();
@@ -393,6 +395,23 @@ class Utilisateur
         ));
 
         if ($res) {
+            header("Location: ../../vue/liste_utilisateur.php?success");
+        } else {
+            header("Location: ../../vue/editer.php?id_utilisateur=" . $this->getIdutilisateur() . "&erreur");
+        }
+    }
+    public function editer1()
+    {
+        $bdd = new Bdd();
+        $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET nom=:nom,prenom=:prenom,email=:email WHERE id_utilisateur=:id_utilisateur');
+        $res = $req->execute(array(
+            "id_utilisateur" => $this->getIdutilisateur(),
+            "nom" => $this->getNom(),
+            "prenom" => $this->getPrenom(),
+            "email" => $this->getEmail(),
+        ));
+
+        if ($res) {
             header("Location: ../../vue/editer.php?success");
         } else {
             header("Location: ../../vue/editer.php?id_utilisateur=" . $this->getIdutilisateur() . "&erreur");
@@ -408,7 +427,22 @@ class Utilisateur
         ));
 
         if ($res) {
-            header("Location: ../../vue/annuiare_anciens_eleves_alumni.php?success");
+            header("Location: ../../vue/liste_utilisateur.php?success");
+        } else {
+            header("Location: ../../vue/connexion.php?erreur");
+        }
+    }
+
+    public function supprimer1()
+    {
+        $bdd = new Bdd();
+        $req = $bdd->getBdd()->prepare('DELETE FROM utilisateur WHERE id_utilisateur=:id_utilisateur');
+        $res = $req->execute(array(
+            "id_utilisateur" => $this->getIdUtilisateur(),
+        ));
+
+        if ($res) {
+            header("Location: ../../vue/annuiare_anciens_eleves_prof.php?success");
         } else {
             header("Location: ../../vue/connexion.php?erreur");
         }
@@ -430,7 +464,7 @@ class Utilisateur
         $req = $bdd->getBdd()->prepare('UPDATE utilisateur SET mdp = :mdp WHERE email = :email');
         $res = $req->execute(array(
             "email" => $this->getEmail(),
-            "mdp" => $this->getMdp(), // Stockage du mot de passe en texte clair
+            "mdp" => $this->getMdp(),
         ));
 
         if ($res) {

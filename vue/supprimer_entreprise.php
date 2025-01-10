@@ -11,20 +11,19 @@ if (array_key_exists("erreur", $_POST)) {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Supprimer un profil</title>
+    <title>Supprimer l'entreprise</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css">
 </head>
 <body>
 
-<form action="../src/controleur/TraitementSupp_event.php" method="post">
+<form action="../src/controleur/TraitementSupp_entreprise.php" method="post">
     <br>
-    Voulez-vous supprimer réellement le compte d'id ?<?=$_GET["id_event"]?><br>
-    <input type="number" name="id_event" value="<?=$_GET["id_event"]?>"/><br><br>
+    Voulez-vous supprimer réellement le compte d'id ?<?=$_GET["id_entreprise"]?><br>
+    <input type="number" name="id_entreprise" value="<?=$_GET["id_entreprise"]?>"/><br><br>
 
     <input type="submit" name="ins" value="Confirmer"/><br><br>
-    <a href="participation_evenement_prof.php">Retour</a>
 
 </form>
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">

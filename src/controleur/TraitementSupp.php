@@ -8,4 +8,4 @@ $utilisateur = new Utilisateur([
     "idUtilisateur" =>$_POST['id_utilisateur'],
     ]);
 
-$utilisateur->supprimer();
+$utilisateur->supprimer1();

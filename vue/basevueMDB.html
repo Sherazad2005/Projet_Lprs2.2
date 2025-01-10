@@ -15,23 +15,22 @@ session_start();
 
         form input, form select, form label, form button {
             width: 100%;
-            margin-bottom: 1rem; /* Espacement vertical entre les champs */
-        }
-        /* Style pour les titres h1 */
-        h1 {
-            font-size: 2rem;  /* Taille plus grande pour h1 */
-            color: #302b2b;   /* Couleur bleue */
-            font-family: 'Arial Black';
-            font-weight: bold;  /* Texte en gras */
+            margin-bottom: 1rem;
         }
 
-        /* Flou pour l'arrière-plan */
+        h1 {
+            font-size: 2rem;
+            color: #302b2b;
+            font-family: 'Arial Black';
+            font-weight: bold;
+        }
+
         .blurred {
             filter: blur(5px);
             transition: filter 0.3s ease;
         }
 
-        /* Modale centrée */
+
         #deconnexionForm {
             display: none;
             position: fixed;
@@ -47,7 +46,7 @@ session_start();
             text-align: center;
         }
 
-        /* Ombre pour désactiver les clics à l'extérieur */
+
         #overlay {
             display: none;
             position: fixed;
@@ -60,14 +59,14 @@ session_start();
         }
     </style>
     <script>
-        // Afficher la fenêtre de déconnexion avec flou de l'arrière-plan
+
         function afficherFormulaireDeconnexion() {
             document.getElementById("content").classList.add("blurred");
             document.getElementById("overlay").style.display = "block";
             document.getElementById("deconnexionForm").style.display = "block";
         }
 
-        // Masquer la fenêtre de déconnexion et retirer le flou
+
         function fermerFormulaireDeconnexion() {
             document.getElementById("content").classList.remove("blurred");
             document.getElementById("overlay").style.display = "none";
@@ -98,7 +97,7 @@ session_start();
                 <li class="nav-item"><a class="btn btn-primary mx-2" data-mdb-ripple-init href="pageacceuil.php" role="button">Accueil</a></li>
                 <li class="nav-item"><a class="btn btn-primary mx-2" data-mdb-ripple-init href="AnnuaireEleve.php" role="button">Annuaire</a></li>
                 <li class="nav-item"><a class="btn btn-primary mx-2" data-mdb-ripple-init href="PageForumAlumniEntreprise.php" role="button">Forum</a></li>
-                <li class="nav-item"><a class="btn btn-primary mx-2" data-mdb-ripple-init href="Offres.php" role="button">Offres</a></li>
+                <li class="nav-item"><a class="btn btn-primary mx-2" data-mdb-ripple-init href="offres.php" role="button">Offres</a></li>
             </ul>
 
             <a class="btn btn-primary mx-2" href="#" onclick="afficherFormulaireDeconnexion()">Déconnection</a>
@@ -119,11 +118,9 @@ session_start();
         <div id="deconnexionForm">
             <h2>Voulez-vous vous déconnecter ?</h2>
             <div class="mt-3">
-                <!-- Formulaire pour redirection -->
                 <form action="page_ouverture.php" method="GET">
                     <button type="submit" class="btn btn-dark">Se déconnecter</button>
                 </form>
-                <!-- Bouton pour annuler -->
                 <button class="btn btn-secondary mt-2" onclick="fermerFormulaireDeconnexion()">Annuler</button>
             </div>
         </div>

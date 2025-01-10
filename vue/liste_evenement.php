@@ -1,18 +1,18 @@
 <?php
 require_once '../src/bdd/Bdd.php';
-require_once '../src/model/Entreprise.php';
+require_once '../src/model/Event.php';
 session_start();
 
 
 $bdd = new Bdd();
 
-$entreprise = [];
+$event = [];
 try {
-    $req = $bdd->getBdd()->prepare('SELECT * FROM entreprise');
+    $req = $bdd->getBdd()->prepare('SELECT * FROM event');
     $req->execute();
-    $entreprise = $req->fetchAll(PDO::FETCH_ASSOC);
+    $event = $req->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    echo "Erreur lors de la récupération des entreprises : " . $e->getMessage();
+    echo "Erreur lors de la récupération des événements : " . $e->getMessage();
 }
 ?>
 
@@ -40,7 +40,7 @@ try {
             const form = document.getElementById("editionForm");
             form.style.display = "block";
             document.getElementById("overlay").style.display = "block";
-            form.querySelector("input[name='id_entreprise']").value = id;
+            form.querySelector("input[name='id_event']").value = id;
         }
 
         function afficherSuppressionForm(id) {
@@ -49,7 +49,7 @@ try {
             const form = document.getElementById("suppressionForm");
             form.style.display = "block";
             document.getElementById("overlay").style.display = "block";
-            form.querySelector("input[name='id_entreprise']").value = id;
+            form.querySelector("input[name='id_event']").value = id;
         }
 
         function fermerFormulaire(id) {
@@ -104,30 +104,30 @@ try {
 </header>
 
 <div id="content" class="container mt-5">
-    <h1>Liste des entreprises</h1>
+    <h1>Liste des événements</h1>
     <table class="table table-striped">
         <thead>
         <tr>
             <th>ID</th>
-            <th>Nom</th>
-            <th>Gerant</th>
-            <th>Adresse</th>
-            <th>Cp</th>
-            <th>AdresseWeb</th>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Lieu</th>
+            <th>Elements requis</th>
+            <th>Nombres de places</th>
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($entreprise as $row): ?>
+        <?php foreach ($event as $row): ?>
             <tr>
-                <td><?= $row['id_entreprise'] ?></td>
-                <td><?= $row['nom'] ?></td>
-                <td><?= $row['gerant'] ?></td>
-                <td><?= $row['adresse'] ?></td>
-                <td><?= $row['cp'] ?></td>
-                <td><?= $row['adresseWeb'] ?></td>
+                <td><?= $row['id_event'] ?></td>
+                <td><?= $row['titre'] ?></td>
+                <td><?= $row['description'] ?></td>
+                <td><?= $row['lieu'] ?></td>
+                <td><?= $row['elementsrequis'] ?></td>
+                <td><?= $row['nombreplaces'] ?></td>
                 <td>
-                    <button class="btn btn-dark me-3" onclick="afficherEditionForm(<?= $row['id_entreprise'] ?>)">Editer</button>
-                    <button class="btn btn-dark me-3" onclick="afficherSuppressionForm(<?= $row['id_entreprise'] ?>)">Supprimer</button>
+                    <button class="btn btn-dark me-3" onclick="afficherEditionForm(<?= $row['id_event'] ?>)">Editer</button>
+                    <button class="btn btn-dark me-3" onclick="afficherSuppressionForm(<?= $row['id_event'] ?>)">Supprimer</button>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -136,14 +136,14 @@ try {
 </div>
 
 <div id="editionForm" class="form-container">
-    <form action="../src/controleur/traitemententre.php" method="POST">
-        <h2>Édition entreprise</h2>
-        <input type="hidden" name="id_entreprise">
-        <input type="text" class="form-control" name="nom" placeholder="nom" required>
-        <input type="text" class="form-control" name="gerant" placeholder="gerant" required>
-        <input type="text" class="form-control" name="adresse" placeholder="adresse" required>
-        <input type="text" class="form-control" name="cp" placeholder="cp" required>
-        <input type="text" class="form-control" name="adresseWeb" placeholder="adresseWeb" required>
+    <form action="../src/controleur/traitementeven.php" method="POST">
+        <h2>Édition d'utilisateur</h2>
+        <input type="hidden" name="id_event">
+        <input type="text" class="form-control" name="titre" placeholder="Titre" required>
+        <input type="text" class="form-control" name="description" placeholder="Description" required>
+        <input type="text" class="form-control" name="lieu" placeholder="Lieu" required>
+        <input type="text" class="form-control" name="elementsrequis" placeholder="Elements requis" required>
+        <input type="text" class="form-control" name="nombreplaces" placeholder="Nombres de places" required>
         <div>
             <button type="submit" class="btn btn-dark">Modifier</button>
             <button type="button" class="btn btn-secondary" onclick="fermerFormulaire('editionForm')">Fermer</button>
@@ -152,12 +152,12 @@ try {
 </div>
 
 <div id="suppressionForm" class="form-container">
-    <form action="../src/controleur/traitement_suppression_entreprise.php" method="POST"">
-    <h2>Voulez-vous supprimer cette entreprise ?</h2>
-    <input type="hidden" name="id_entreprise">
+    <form action="../src/controleur/traitement_suppression_evenement.php" method="POST"">
+        <h2>Voulez-vous supprimer cet événement ?</h2>
+        <input type="hidden" name="id_event">
 
-    <button type="submit" class="btn btn-dark">Supprimer</button>
-    <button type="button" class="btn btn-secondary" onclick="fermerFormulaire('suppressionForm')">Annuler</button>
+        <button type="submit" class="btn btn-dark">Supprimer</button>
+        <button type="button" class="btn btn-secondary" onclick="fermerFormulaire('suppressionForm')">Annuler</button>
     </form>
 </div>
 

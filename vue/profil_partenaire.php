@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-// Vérifiez si l'utilisateur est connecté
+
 if (!isset($_SESSION["utilisateur"])) {
-    header("Location: ../../vue/page_ouverture.php?erreur=4"); // Redirection si non connecté
+    header("Location: ../../vue/page_ouverture.php?erreur=4");
     exit;
 }
 
@@ -22,23 +22,22 @@ $utilisateur = $_SESSION["utilisateur"];
 
         form input, form select, form label, form button {
             width: 100%;
-            margin-bottom: 1rem; /* Espacement vertical entre les champs */
-        }
-        /* Style pour les titres h1 */
-        h1 {
-            font-size: 2rem;  /* Taille plus grande pour h1 */
-            color: #302b2b;   /* Couleur bleue */
-            font-family: 'Arial Black';
-            font-weight: bold;  /* Texte en gras */
+            margin-bottom: 1rem;
         }
 
-        /* Flou pour l'arrière-plan */
+        h1 {
+            font-size: 2rem;
+            color: #302b2b;
+            font-family: 'Arial Black';
+            font-weight: bold;
+        }
+
         .blurred {
             filter: blur(5px);
             transition: filter 0.3s ease;
         }
 
-        /* Modale centrée */
+
         #deconnexionForm {
             display: none;
             position: fixed;
@@ -54,7 +53,7 @@ $utilisateur = $_SESSION["utilisateur"];
             text-align: center;
         }
 
-        /* Ombre pour désactiver les clics à l'extérieur */
+
         #overlay {
             display: none;
             position: fixed;
@@ -67,14 +66,14 @@ $utilisateur = $_SESSION["utilisateur"];
         }
     </style>
     <script>
-        // Afficher la fenêtre de déconnexion avec flou de l'arrière-plan
+
         function afficherFormulaireDeconnexion() {
             document.getElementById("content").classList.add("blurred");
             document.getElementById("overlay").style.display = "block";
             document.getElementById("deconnexionForm").style.display = "block";
         }
 
-        // Masquer la fenêtre de déconnexion et retirer le flou
+
         function fermerFormulaireDeconnexion() {
             document.getElementById("content").classList.remove("blurred");
             document.getElementById("overlay").style.display = "none";
@@ -126,11 +125,11 @@ $utilisateur = $_SESSION["utilisateur"];
         <div id="deconnexionForm">
             <h2>Voulez-vous vous déconnecter ?</h2>
             <div class="mt-3">
-                <!-- Formulaire pour redirection -->
+
                 <form action="page_ouverture.php" method="GET">
                     <button type="submit" class="btn btn-dark">Se déconnecter</button>
                 </form>
-                <!-- Bouton pour annuler -->
+
                 <button class="btn btn-secondary mt-2" onclick="fermerFormulaireDeconnexion()">Annuler</button>
             </div>
         </div>

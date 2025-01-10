@@ -65,9 +65,6 @@ try {
             document.getElementById("overlay").style.display = "none";
         }
 
-        function confirmerSuppression() {
-            return confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
-        }
     </script>
 </head>
 
@@ -93,7 +90,7 @@ try {
                 <li class="nav-item"><a class="btn btn-primary mx-2" href="pageacceuil.php">Accueil</a></li>
                 <li class="nav-item"><a class="btn btn-primary mx-2" href="AnnuaireEleve.php">Annuaire</a></li>
                 <li class="nav-item"><a class="btn btn-primary mx-2" href="PageForumAlumniEntreprise.php">Forum</a></li>
-                <li class="nav-item"><a class="btn btn-primary mx-2" href="Offres.php">Offres</a></li>
+                <li class="nav-item"><a class="btn btn-primary mx-2" href="offres.php">Offres</a></li>
             </ul>
             <button class="btn btn-dark me-3" onclick="afficherFormulaire('deconnexionForm')">Déconnexion</button>
             <div class="dropdown">
@@ -158,9 +155,10 @@ try {
 </div>
 
 <div id="suppressionForm" class="form-container">
-    <h2>Voulez-vous supprimer cet utilisateur ?</h2>
-    <form action="../src/controleur/traitement_supression.php" method="POST" onsubmit="return confirmerSuppression()">
+    <form action="../src/controleur/traitement_supression.php" method="POST">
+        <h2>Voulez-vous supprimer cet utilisateur ?</h2>
         <input type="hidden" name="id_utilisateur">
+
         <button type="submit" class="btn btn-dark">Supprimer</button>
         <button type="button" class="btn btn-secondary" onclick="fermerFormulaire('suppressionForm')">Annuler</button>
     </form>

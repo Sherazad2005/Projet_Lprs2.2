@@ -119,7 +119,7 @@ if (array_key_exists("erreur", $_GET)) {
     <div class="row align-items-center">
         <div class="col-md-6 text-center">
 
-            <a class="btn btn-dark btn-lg mb-3" href="annuiare_anciens_eleves_alumni.php" style="width: 200px; height: 60px;">
+            <a class="btn btn-dark btn-lg mb-3" href="annuiare_anciens_eleves_prof.php" style="width: 200px; height: 60px;">
                 Accès aux profils des anciens
             </a>
 
@@ -141,6 +141,14 @@ if (array_key_exists("erreur", $_GET)) {
 
             <a class="btn btn-dark btn-lg mb-3" href="offres_tableau.php" style="width: 200px; height: 60px;">
                 Accès à la section des offres
+            </a>
+
+            <a class="btn btn-dark btn-lg mb-3" href="PageForumEleve.php" style="width: 200px; height: 60px;">
+                Accéder au forum
+            </a>
+
+            <a class="btn btn-dark btn-lg mb-3" href="PageForumGenerale.php" style="width: 200px; height: 60px;">
+                Forum générale
             </a>
 
         </div>

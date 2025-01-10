@@ -25,13 +25,13 @@ $listeevent = ListeEvent($bdd);
 
         form input, form select, form label, form button {
             width: 100%;
-            margin-bottom: 1rem; /* Espacement vertical entre les champs */
+            margin-bottom: 1rem;
         }
-        /* Style pour les titres h1 */
+
         h1 {
-            color: #000000;   /* Couleur bleue */
+            color: #000000;
             font-family: 'Arial';
-            font-weight: bolder;  /* Texte en gras */
+            font-weight: bolder;
         }
 
         h2 {
@@ -138,11 +138,9 @@ $listeevent = ListeEvent($bdd);
         <div id="deconnexionForm">
             <h2>Voulez-vous vous déconnecter ?</h2>
             <div class="mt-3">
-                <!-- Formulaire pour redirection -->
                 <form action="../src/controleur/traitement_deco.php" method="GET">
                     <button type="submit" class="btn btn-dark">Se déconnecter</button>
                 </form>
-                <!-- Bouton pour annuler -->
                 <button class="btn btn-secondary mt-2" onclick="fermerFormulaireDeconnexion()">Annuler</button>
             </div>
         </div>

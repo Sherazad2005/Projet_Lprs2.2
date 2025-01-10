@@ -1,6 +1,5 @@
 <?php
 session_start();
-var_dump($_SESSION);
 include '../bdd/Bdd.php';
 include '../model/Utilisateur.php';
 
@@ -41,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $data["specialiteProf"] = htmlspecialchars($_POST["specialiteProf"]);
 
         } elseif ($_POST["role"] == "alumni") {
-            $data["nomPromo"] = htmlspecialchars($_POST["nomPromo"]);
+            $data["nomPromo"] = htmlspecialchars($_POST["nomPromo_el"]);
             $data["secteurActivite"] = htmlspecialchars($_POST["secteur_activite"]);
 
         } elseif ($_POST["role"] == "partenaire") {

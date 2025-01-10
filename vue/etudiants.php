@@ -121,24 +121,26 @@ if (array_key_exists("erreur", $_GET)) {
     <div class="row align-items-center">
         <div class="col-md-6 text-center">
 
-            <a class="btn btn-dark btn-lg mb-3" href="annuiare_anciens_eleves_alumni.php" style="width: 200px; height: 60px;">
+            <a class="btn btn-dark btn-lg mb-3" href="annuiare_anciens_eleves.php" style="width: 200px; height: 60px;">
                 Annuaire des anciens élèves
-            </a>
-            <a class="btn btn-dark btn-lg mb-3" href="NewForum.php" style="width: 200px; height: 60px;">
-                Créer une discussion
             </a>
 
             <a class="btn btn-dark btn-lg mb-3" href="PageForumEleve.php" style="width: 200px; height: 60px;">
                 Accéder au forum
             </a>
 
-            <a class="btn btn-dark btn-lg mb-3" href="Opportunités_emplois_alumni.php" style="width: 200px; height: 60px;">
+            <a class="btn btn-dark btn-lg mb-3" href="PageForumGenerale.php" style="width: 200px; height: 60px;">
+                Forum générale
+            </a>
+
+            <a class="btn btn-dark btn-lg mb-3" href="Opportunités_emplois.php" style="width: 200px; height: 60px;">
                 Opportunités d'emplois
             </a>
 
-            <a class="btn btn-dark btn-lg mb-3" href="participation_evenement_alumni.php" style="width: 200px; height: 60px;">
+            <a class="btn btn-dark btn-lg mb-3" href="participation_evenement.php" style="width: 200px; height: 60px;">
                 Liste des événements
             </a>
+
 
         </div>
     </div>

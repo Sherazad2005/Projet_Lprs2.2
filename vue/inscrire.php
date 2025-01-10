@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
 
         echo "<p>Votre candidature a été enregistrée avec succès pour l'événement ID : $ref_event !</p>";
-        echo '<a href="participation_evenement_alumni.php">Retour à la liste des événements</a>';
+        echo '<a href="participation_evenement_prof.php">Retour à la liste des événements</a>';
         exit;
     } catch (PDOException $e) {
         die("Erreur lors de l'enregistrement de votre candidature : " . $e->getMessage());
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1>Êtes-vous sûr de vouloir participer à cet événement ?</h1>
     <form method="post">
         <button type="submit">Oui, je veux participer</button>
-        <a href="participation_evenement_alumni.php">Non, retour</a>
+        <a href="participation_evenement_prof.php">Non, retour</a>
     </form>
 </div>
 </body>

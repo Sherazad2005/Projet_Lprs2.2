@@ -1,18 +1,16 @@
 <?php
-session_start();
 include '../src/bdd/Bdd.php';
 $bdd = new Bdd();
-$req = $bdd->getBdd()->prepare('SELECT * FROM `offres` ');
-$req->execute(array());
+$req = $bdd->getBdd()->prepare('SELECT * FROM `utilisateur` WHERE role = "alumni"');
+$req->execute();
 $res = $req->fetchAll();
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Annuaire des anciens eleves</title>
+    <title>Annuaire Anciens Élève</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -20,8 +18,8 @@ $res = $req->fetchAll();
             background-color: #f8f9fa;
         }
         .table-container {
-            margin: 20px auto;
-            max-width: 90%;
+            margin: 40px auto;
+            max-width: 100%;
             background: #ffffff;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
@@ -56,51 +54,52 @@ $res = $req->fetchAll();
 <body>
 <div class="container">
     <div class="text-center py-5">
-        <h1 class="text-primary">Offres</h1>
+        <h1 class="text-primary">Annuaire des aniens Élèves</h1>
     </div>
-    <center><form action="../src/controleur/recherche_offre.php" method="GET">
-            <label for="titre">Titre de l'offre :</label>
-            <input type="text" id="titre" name="titre" placeholder="Entrez le titre" required>
+    <center><form action="../src/controleur/recherche1.php" method="GET">
+            <label for="nom">Nom de l'élève :</label>
+            <input type="text" id="nom" name="nom" placeholder="Entrez un nom" required>
             <button type="submit">Rechercher</button>
         </form></center><br>
     <div class="table-container p-4">
         <table class="table table-striped table-hover">
             <thead class="table-dark">
             <tr>
-        <th>Id</th>
-        <th>Titre</th>
-        <th>Description</th>
-        <th>Missions</th>
-        <th>Type</th>
-        <th>Salaire</th>
-        <th>Visibilite</th>
-        <th>Etat</th>
-        <th>Actions</th>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Mot de Passe</th>
+                <th>Role</th>
+                <th>Secteur d'activité</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($res as $offres): ?>
-            <tr>
-            <td><?=htmlspecialchars($offres["id_offre"]?? '' )?></td>
-            <td><?=htmlspecialchars($offres["titre"]?? '') ?></td>
-            <td><?=htmlspecialchars($offres["description"]?? '') ?></td>
-            <td><?=htmlspecialchars($offres["missions"]?? '') ?></td>
-            <td><?=htmlspecialchars($offres["type"]?? '') ?></td>
-            <td><?=htmlspecialchars($offres["salaire"]?? '') ?></td>
-            <td><?=htmlspecialchars($offres["visibilite"]?? '') ?></td>
-            <td><?=htmlspecialchars($offres["etat"]?? '') ?></td>
-            <td>
-                <a href="editer_offre.php?id_offre=<?=$offres["id_offre"]?>" class="edit-btn">Editer</a>
-                <a href="supprimer_offre.php?id_offre=<?=$offres["id_offre"]?>"class="delete-btn">Supprimer</a></td>
-                </td>
-            </tr>
+            <?php foreach ($res as $utilisateur): ?>
+                <tr>
+                    <td><?= htmlspecialchars($utilisateur["id_utilisateur"] ?? '') ?></td>
+                    <td><?= htmlspecialchars($utilisateur["nom"] ?? '') ?></td>
+                    <td><?= htmlspecialchars($utilisateur["prenom"] ?? '') ?></td>
+                    <td><?= htmlspecialchars($utilisateur["email"] ?? '') ?></td>
+                    <td><?= htmlspecialchars($utilisateur["mdp"] ?? '') ?></td>
+                    <td><?= htmlspecialchars($utilisateur["role"] ?? '') ?></td>
+                    <td><?= htmlspecialchars($utilisateur["secteur_activite"] ?? '') ?></td>
+
+                    <td>
+                        <a href="editer.php?id_utilisateur=<?= $utilisateur["id_utilisateur"] ?>" class="edit-btn">Éditer</a>
+                        <a href="Supprimer.php?id_utilisateur=<?= $utilisateur["id_utilisateur"] ?>" class="delete-btn">Supprimer</a>
+                    </td>
+                </tr>
             <?php endforeach; ?>
+
             </tbody>
         </table>
     </div>
+    <center><a href="Professeur.php">Retour</a></center>
+
 </div>
 <br>
-
 <footer class="text-center">
     <h6>Projet LPRS</h6>
     <p class="mb-0">Une initiative du Lycée Robert Schuman.</p>

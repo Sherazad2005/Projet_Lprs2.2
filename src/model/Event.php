@@ -137,7 +137,7 @@ class Event
             'nombreplaces' => $this->getNombreplaces(),
         ]);
 
-        header("Location: ../../vue/participation_evenement_alumni.php?success");
+        header("Location: ../../vue/participation_evenement_prof.php?success");
     }
 
     public function editer_event()
@@ -154,7 +154,27 @@ class Event
         ));
 
         if ($res) {
-            header("Location: ../../vue/participation_evenement_alumni.php.");
+            header("Location: ../../vue//liste_evenement.php");
+        } else {
+            header("Location: ../../vue/editer_event.php?id_event=" . $this->getIdEvent() . "&erreur");
+        }
+    }
+
+    public function editer_event1()
+    {
+        $bdd = new Bdd();
+        $req = $bdd->getBdd()->prepare('UPDATE event SET titre=:titre,description=:description,lieu=:lieu,elementsrequis=:elementsrequis,nombreplaces=:nombreplaces WHERE id_event=:id_event');
+        $res = $req->execute(array(
+            'id_event'=> $this->getIdEvent(),
+            'titre'=> $this->getTitre(),
+            'description'=> $this->getDescription(),
+            'lieu'=> $this->getLieu(),
+            'elementsrequis'=> $this->getElementsRequis(),
+            'nombreplaces'=> $this->getNombreplaces(),
+        ));
+
+        if ($res) {
+            header("Location: ../../vue/participation_evenement_prof.php.");
         } else {
             header("Location: ../../vue/editer_event.php?id_event=" . $this->getIdEvent() . "&erreur");
         }
@@ -169,9 +189,24 @@ class Event
         ));
 
         if ($res) {
-            header("Location: ../../vue/participation_evenement_alumni.php");
+            header("Location: ../../vue/participation_evenement_prof.php");
         } else {
             header("Location: ../../vue/connexion.php?erreur");
+        }
+    }
+
+    public function supprimer1()
+    {
+        $bdd = new Bdd();
+        $req = $bdd->getBdd()->prepare('DELETE FROM event WHERE id_event=:id_event');
+        $res = $req->execute(array(
+            "id_event" => $this->getIdEvent(),
+        ));
+
+        if ($res) {
+            header("Location: ../../vue//liste_evenement.php?success");
+        } else {
+            header("Location: ../../vue/gestion.php?erreur");
         }
     }
     }

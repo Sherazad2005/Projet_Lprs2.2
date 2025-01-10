@@ -96,7 +96,7 @@ try {
                 <li class="nav-item"><a class="btn btn-primary mx-2" href="pageacceuil.php">Accueil</a></li>
                 <li class="nav-item"><a class="btn btn-primary mx-2" href="AnnuaireEleve.php">Annuaire</a></li>
                 <li class="nav-item"><a class="btn btn-primary mx-2" href="PageForumAlumniEntreprise.php">Forum</a></li>
-                <li class="nav-item"><a class="btn btn-primary mx-2" href="Offres.php">Offres</a></li>
+                <li class="nav-item"><a class="btn btn-primary mx-2" href="offres.php">Offres</a></li>
             </ul>
             <button class="btn btn-dark me-3" onclick="afficherFormulaire('deconnexionForm')">Déconnexion</button>
         </div>
@@ -120,9 +120,9 @@ try {
                 Validation Utilisateurs
             </a>
 
-            <button class="btn btn-dark btn-lg mb-3 mx-4" style="width: 200px; height: 60px;" onclick="afficherFormulaire('creationForm')">
+            <a class="btn btn-dark btn-lg mb-3 mx-4" href="liste_evenement.php" style="width: 200px; height: 60px;">
                 Liste Evenements
-            </button>
+            </a>
 
             <a class="btn btn-dark btn-lg mb-3 mx-4" href="liste_entreprise.php" style="width: 200px; height: 60px;">
                 Liste Entreprise

@@ -1,8 +1,8 @@
 <?php
-include '../model/EntrepriseModel.php';
+include '../model/Entreprise.php';
 include '../bdd/Bdd.php';
 
-$EntrepriseModel = new EntrepriseModel([
+$EntrepriseModel = new Entreprise([
     "nom" =>$_POST["nom"],
     "adresse" =>$_POST["adresse"],
     "cp" =>$_POST["cp"],

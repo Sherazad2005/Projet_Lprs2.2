@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
 
         echo "<p>Votre candidature a été enregistrée avec succès pour l'emploi ID : $ref_emplois !</p>";
-        echo '<a href="Opportunités_emplois_alumni.php">Retour à la liste des emplois</a>';
+        echo '<a href="Opportunités_emplois_prof.php">Retour à la liste des emplois</a>';
         exit;
     } catch (PDOException $e) {
         die("Erreur lors de l'enregistrement de votre candidature : " . $e->getMessage());
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1>Êtes-vous sûr de vouloir postuler pour cet emploi ?</h1>
     <form method="post">
         <button type="submit">Oui, je postule</button>
-        <a href="Opportunités_emplois_alumni.php">Non, retour</a>
+        <a href="Opportunités_emplois_prof.php">Non, retour</a>
     </form>
 </div>
 

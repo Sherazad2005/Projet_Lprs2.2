@@ -128,7 +128,7 @@ if (array_key_exists("erreur", $_GET)) {
                 Publier une offre
             </a>
 
-            <a class="btn btn-dark btn-lg mb-3" href="annuiare_anciens_eleves_alumni.php" style="width: 200px; height: 60px;">
+            <a class="btn btn-dark btn-lg mb-3" href="annuiare_anciens_eleves.php" style="width: 200px; height: 60px;">
                 Accès aux profils des alumnis
             </a>
 
@@ -142,6 +142,14 @@ if (array_key_exists("erreur", $_GET)) {
 
             <a class="btn btn-dark btn-lg mb-3" href="NewEntreprise.php" style="width: 200px; height: 60px;">
                 Créer une fiche entreprise
+            </a>
+
+            <a class="btn btn-dark btn-lg mb-3" href="PageForumAlumniEntreprise.php" style="width: 200px; height: 60px;">
+                Accéder au forum
+            </a>
+
+            <a class="btn btn-dark btn-lg mb-3" href="PageForumGenerale.php" style="width: 200px; height: 60px;">
+                Forum générale
             </a>
 
         </div>
