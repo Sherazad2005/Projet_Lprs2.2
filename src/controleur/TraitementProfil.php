@@ -11,7 +11,7 @@ if (!isset($_SESSION['utilisateur'])) {
 
 $utilisateur = $_SESSION['utilisateur'];
 
-$role = $utilisateur['role'];
+$role = $utilisateur->getrole();
 
 
 
@@ -27,6 +27,9 @@ $role = $utilisateur['role'];
             exit;
         case 'professeur':
             header('Location: ../../vue/profil_professeur.php');
+            exit;
+        case 'gestionnaire':
+            header('Location: ../../vue/profil_gestionnaire.php');
             exit;
         default:
             header('Location: ../../vue/page_ouverture.php?erreur=5');

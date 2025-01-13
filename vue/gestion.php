@@ -140,47 +140,91 @@ try {
 
 <div id="creationForm" class="form-container">
     <form action="../src/controleur/TraitementIns.php" method="POST" enctype="multipart/form-data">
-        <h2>Création d'utilisateur</h2>
-        <input type="text" class="form-control" name="nom" placeholder="Nom" required>
-        <input type="text" class="form-control" name="prenom" placeholder="Prénom" required>
-        <input type="email" class="form-control" name="email" placeholder="Email" required>
-        <input type="password" class="form-control" name="mdp" placeholder="Mot de passe" required>
-        <select name="role" id="role" class="form-control" onchange="afficherChampsSpecifiques()" required>
-            <option value="">Sélectionnez un rôle</option>
-            <option value="eleve">Élève</option>
-            <option value="professeur">Professeur</option>
-            <option value="alumni">Alumni</option>
-            <option value="partenaire">Partenaire</option>
-            <option value="gestionnaire">Gestionnaire</option>
-        </select>
-
-
-        <div id="eleveFields">
-            <input type="text" name="classe" class="form-control" placeholder="Classe">
-            <input type="text" name="nomPromo_el" class="form-control" placeholder="Promo">
-            <input type="file" name="cv" class="form-control" accept=".pdf">
+        <h2>Création Utilisateur</h2>
+        <div class="form-group">
+            <input type="text" class="form-control" name="nom" required placeholder="Nom">
         </div>
-        <div id="profFields">
-            <input type="text" name="specialiteProf" class="form-control" placeholder="Spécialité">
+        <div class="form-group">
+            <input type="text" class="form-control" name="prenom" required placeholder="Prénom">
         </div>
-        <div id="alumniFields">
-            <input type="text" name="secteur_activite" class="form-control" placeholder="Secteur d'activité">
+        <div class="form-group">
+            <input type="email"
+                   class="form-control"
+                   name="email"
+                   required
+                   placeholder="Email"
+                   pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(fr|com)$"
+                   title="L'email doit se terminer par .fr ou .com">
         </div>
-        <div id="partenaireFields">
-            <input type="text" name="poste_entreprise" class="form-control" placeholder="Poste">
-            <input type="text" name="motif_inscription" class="form-control" placeholder="Motif d'inscription">
-            <select name="id_entreprise" class="form-control">
-                <option value="">Sélectionnez une entreprise</option>
-                <?php foreach ($entreprises as $entreprise): ?>
-                    <option value="<?= htmlspecialchars($entreprise['id_entreprise']) ?>">
-                        <?= htmlspecialchars($entreprise['nom']) ?>
-                    </option>
-                <?php endforeach; ?>
+        <div class="form-group">
+            <input type="password" class="form-control" name="mdp" required placeholder="Mot de Passe">
+        </div>
+        <div class="form-group">
+            <select name="role" id="role" class="form-control" onchange="afficherChampsSpecifiques()" required>
+                <option value="eleve">Élève</option>
+                <option value="professeur">Professeur</option>
+                <option value="alumni">Alumni</option>
+                <option value="partenaire">Partenaire</option>
+                <option value="gestionnaire">Gestionnaire</option>
             </select>
         </div>
-        <div>
-            <button type="submit" class="btn btn-dark">Créer</button>
-            <button type="button" class="btn btn-secondary" onclick="fermerFormulaire('creationForm')">Fermer</button>
+
+        <div id="eleveFields">
+            <div class="form-group">
+                <input type="text" name="classe" class="form-control" placeholder="Classe">
+            </div>
+            <div class="form-group">
+                <input type="text" name="nomPromo_el" class="form-control" placeholder="Promo">
+            </div>
+            <div class="form-group">
+                <input type="file" name="cv" class="form-control" accept=".pdf">
+            </div>
+        </div>
+
+        <div id="profFields">
+            <div class="form-group">
+                <input type="text" name="specialiteProf" class="form-control" placeholder="Spécialité">
+            </div>
+        </div>
+
+        <div id="alumniFields">
+            <div class="form-group">
+                <input type="text" name="secteur_activite" class="form-control" placeholder="Secteur d'activité">
+            </div>
+            <div class="form-group">
+                <select name="id_entreprise" class="form-control">
+                    <option value="">Sélectionner une entreprise</option>
+                    <?php foreach ($entreprises as $entreprise) : ?>
+                        <option value="<?= htmlspecialchars($entreprise['id_entreprise']) ?>">
+                            <?= htmlspecialchars($entreprise['nom']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+
+        <div id="partenaireFields">
+            <div class="form-group">
+                <input type="text" name="poste_entreprise" class="form-control" placeholder="Poste">
+            </div>
+            <div class="form-group">
+                <input type="text" name="motif_inscription" class="form-control" placeholder="Motif d'inscription">
+            </div>
+            <div class="form-group">
+                <select name="id_entreprise" class="form-control">
+                    <option value="">Sélectionner une entreprise</option>
+                    <?php foreach ($entreprises as $entreprise) : ?>
+                        <option value="<?= htmlspecialchars($entreprise['id_entreprise']) ?>">
+                            <?= htmlspecialchars($entreprise['nom']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-dark">S'inscrire</button>
+            <button type="button" class="btn btn-secondary" onclick="fermerFormulaire()">Fermer</button>
         </div>
     </form>
 </div>

@@ -181,14 +181,11 @@ try {
         </div>
 
         <div class="form-group">
-            <button href="OubliMDP.php">Oubli de mot de passe?</button>
-        </div>
-
-
-        <div class="form-group">
+            <a href="OubliMDP.php" class="btn btn-blue">Oubli de mot de passe?</a>
             <button type="submit" class="btn btn-dark">Se connecter</button>
             <button type="button" class="btn btn-secondary" onclick="fermerFormulaireConnexion()">Fermer</button>
         </div>
+
     </form>
 </div>
 

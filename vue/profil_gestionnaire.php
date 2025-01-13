@@ -1,14 +1,22 @@
 <?php
+require_once '../src/model/Utilisateur.php';
 session_start();
 
+// Inclure la définition de la classe Utilisateur avant tout accès à $_SESSION
+
+if (!class_exists('Utilisateur')) {
+    die('Erreur : la classe Utilisateur n\'a pas été chargée.');
+}
 
 if (!isset($_SESSION["utilisateur"])) {
     header("Location: ../../vue/page_ouverture.php?erreur=4");
     exit;
 }
 
+// Récupération de l'utilisateur stocké en session
 $utilisateur = $_SESSION["utilisateur"];
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -92,11 +100,11 @@ $utilisateur = $_SESSION["utilisateur"];
         <div class="container-fluid">
             <a class="navbar-brand mt-2 mt-lg-0" href="#">
                 <img
-                        src="../assets/img/logoLprs.png"
-                        class="img-fluid rounded"
-                        style="height: 50px; width: auto; object-fit: contain;"
-                        alt="LPRS"
-                        loading="lazy"
+                    src="../assets/img/logoLprs.png"
+                    class="img-fluid rounded"
+                    style="height: 50px; width: auto; object-fit: contain;"
+                    alt="LPRS"
+                    loading="lazy"
                 />
             </a>
 
@@ -111,11 +119,11 @@ $utilisateur = $_SESSION["utilisateur"];
             <div class="dropdown">
                 <a class="navbar-brand mt-2 mt-lg-0" href="../src/controleur/TraitementProfil.php">
                     <img
-                            src="../assets/img/istockphoto-1300845620-612x612.jpg"
-                            class="img-fluid rounded"
-                            style="height: 50px; width: auto; object-fit: contain;"
-                            alt="LPRS"
-                            loading="lazy"
+                        src="../assets/img/istockphoto-1300845620-612x612.jpg"
+                        class="img-fluid rounded"
+                        style="height: 50px; width: auto; object-fit: contain;"
+                        alt="LPRS"
+                        loading="lazy"
                     />
                 </a>
             </div>
@@ -137,61 +145,19 @@ $utilisateur = $_SESSION["utilisateur"];
 </header>
 
 <div class="container mt-5">
-    <h2 class="text-center">Profil Partenaire</h2>
+    <h2 class="text-center">Profil Gestionnaire</h2>
     <div class="card">
         <div class="card-header">
-            <h4><?php echo htmlspecialchars($utilisateur['prenom'] . ' ' . $utilisateur['nom']); ?></h4>
+            <h4><?php echo htmlspecialchars($utilisateur->getprenom() . ' ' . $utilisateur->getnom()); ?></h4>
         </div>
         <div class="card-body">
-            <p><strong>Email :</strong> <?php echo htmlspecialchars($utilisateur['email']); ?></p>
-            <p><strong>Rôle :</strong> <?php echo htmlspecialchars($utilisateur['role']); ?></p>
-            <p><strong>Nom de l'entreprise :</strong> <?php echo htmlspecialchars($utilisateur['nom_entreprise'] ?? 'Non renseigné'); ?></p>
-            <p><strong>Poste dans l'entreprise :</strong> <?php echo htmlspecialchars($utilisateur['poste_entreprise'] ?? 'Non renseigné'); ?></p>
-            <p><strong>Classe :</strong> <?php echo htmlspecialchars($utilisateur['classe'] ?? 'Non renseigné'); ?></p>
-            <p><strong>Spécialité :</strong> <?php echo htmlspecialchars($utilisateur['specialite_prof'] ?? 'Non renseigné'); ?></p>
-            <p><strong>Secteur d'activité :</strong> <?php echo htmlspecialchars($utilisateur['secteur_activite'] ?? 'Non renseigné'); ?></p>
+            <p><strong>Email :</strong> <?php echo htmlspecialchars($utilisateur->getEmail()); ?></p>
         </div>
+
         <div class="card-footer text-center">
-            <a href="deconnexion.php" class="btn btn-danger">Déconnexion</a>
+            <a href="gestionnaire.php" class="btn btn-danger">Déconnexion</a>
         </div>
     </div>
-</div>
-
-<div id="formulaireAjoutEntreprise" class="mt-4 card">
-    <div class="card-header">
-        <h5>Ajouter une Entreprise</h5>
-    </div>
-    <div class="card-body">
-        <form id="ajoutEntrepriseForm" action="../src/controleur/EntrepriseController.php" method="POST">
-            <div class="form-group">
-                <label for="nomEntreprise">Nom de l'Entreprise</label>
-                <input type="text" class="form-control" id="nomEntreprise" name="nom" required>
-            </div>
-            <div class="form-group">
-                <label for="adresseEntreprise">Adresse</label>
-                <input type="text" class="form-control" id="adresseEntreprise" name="adresse" required>
-            </div>
-            <div class="form-group">
-                <label for="cpEntreprise">Code Postal</label>
-                <input type="text" class="form-control" id="cpEntreprise" name="cp" required>
-            </div>
-            <div class="form-group">
-                <label for="emailEntreprise">Email</label>
-                <input type="email" class="form-control" id="emailEntreprise" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="gerantEntreprise">Gérant</label>
-                <input type="text" class="form-control" id="gerantEntreprise" name="gerant" required>
-            </div>
-            <button type="submit" class="btn btn-success">Ajouter</button>
-            <button type="button" class="btn btn-secondary" id="annulerBtn">Annuler</button>
-        </form>
-    </div>
-</div>
-
-
-<div class="mt-3">
-    <a href="../../vue/pageacceuil.php" class="btn btn-secondary">Retour</a>
 </div>
 
 

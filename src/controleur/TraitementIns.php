@@ -42,13 +42,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } elseif ($_POST["role"] == "alumni") {
             $data["nomPromo"] = htmlspecialchars($_POST["nomPromo_el"]);
             $data["secteurActivite"] = htmlspecialchars($_POST["secteur_activite"]);
+            $data["idEntreprise"] = intval($_POST['id_entreprise']);
 
         } elseif ($_POST["role"] == "partenaire") {
             $data["posteEntreprise"] = htmlspecialchars($_POST["poste_entreprise"]);
             $data["motifInscription"] = htmlspecialchars($_POST["motif_inscription"]);
             $data["idEntreprise"] = intval($_POST['id_entreprise']);
         }
-        $_SESSION['user_data'] = $data;
 
         $utilisateur = new Utilisateur($data);
         $utilisateur->inscription();

@@ -307,23 +307,24 @@ class Utilisateur
         if ($req) {
             header("Location: ../../vue/page_ouverture.php");
         } else {
-            header("Location: ../../vue/Contact.php?id_utilisateur=" . $this->getIdutilisateur() . "&erreur");
+            header("Location: ../../vue/Contact.php?id_utilisateur=" . $this->getIdUtilisateur(). "&erreur");
         }
     }
     public function connexion()
     {
         $bdd = new Bdd();
-        $req = $bdd->getBdd()->prepare('SELECT u.*, e.nom AS nom_entreprise 
-                                    FROM utilisateur u 
-                                    LEFT JOIN entreprise e ON u.id_entreprise = e.id_entreprise 
-                                    WHERE u.email = :email');
+        $req = $bdd->getBdd()->prepare('
+        SELECT u.*, e.nom AS nom_entreprise 
+        FROM utilisateur u 
+        LEFT JOIN entreprise e ON u.id_entreprise = e.id_entreprise 
+        WHERE u.email = :email
+    ');
         $req->execute(array("email" => $this->getEmail()));
         $res = $req->fetch();
 
         if ($res && is_array($res)) {
             // Vérification du mot de passe
             if (password_verify($this->getMdp(), $res["mdp"])) {
-                // Vérification de la validation du compte
                 if ($res['validated'] == 1) {
                     // Récupération des informations de l'utilisateur
                     $this->setIdUtilisateur($res["id_utilisateur"]);
@@ -331,20 +332,23 @@ class Utilisateur
                     $this->setPrenom($res["prenom"]);
                     $this->setEmail($res["email"]);
                     $this->setRole($res["role"]);
-                    $this->setCv($res["cv"]);
-                    $this->setClasse($res["classe"]);
-                    $this->setSpecialiteProf($res["specialite_prof"]);
-                    $this->setPosteEntreprise($res["poste_entreprise"]);
-                    $this->setRefEmplois($res["ref_emplois"]);
-                    $this->setMotifInscription($res["motif_inscription"]);
-                    $this->setSecteurActivite($res["secteur_activite"]);
-                    $this->setNomPromo($res["nom_promo"]);
-                    $this->setIdEntreprise($res["id_entreprise"]);
 
-                    // Démarrage de la session
+                    // Gestion des champs pouvant être NULL
+                    $this->setCv($res["cv"] ?? null);
+                    $this->setClasse($res["classe"] ?? null);
+                    $this->setNomPromo($res["nom_promo"] ?? null);
+                    $this->setIdEntreprise($res["id_entreprise"] ?? null);
+                    $this->setPosteEntreprise($res["poste_entreprise"] ?? null);
+                    $this->setSpecialiteProf($res["specialite_prof"] ?? null);
+                    $this->setRefEmplois($res["ref_emplois"] ?? null);
+                    $this->setMotifInscription($res["motif_inscription"] ?? null);
+                    $this->setSecteurActivite($res["secteur_activite"] ?? null);
+
                     session_start();
-                    $_SESSION["utilisateur"] = $this;
-                    $_SESSION['nom_entreprise'] = $res['nom_entreprise'];
+                    $_SESSION["utilisateur"] = $this; // Enregistre l'objet utilisateur dans la session
+
+                    // Stocke le nom de l'entreprise si disponible
+                    $_SESSION['nom_entreprise'] = $res['nom_entreprise'] ?? 'Non défini';
 
                     // Redirection en fonction du rôle
                     switch ($this->getRole()) {
@@ -359,6 +363,9 @@ class Utilisateur
                             break;
                         case 'eleve':
                             header("Location: ../../vue/etudiants.php");
+                            break;
+                        case 'gestionnaire':
+                            header("Location: ../../vue/gestionnaire.php");
                             break;
                         default:
                             header("Location: ../../vue/pageacceuil.php");
